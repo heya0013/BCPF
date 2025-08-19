@@ -2,104 +2,503 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>采购流程分析导航</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: "Microsoft YaHei", sans-serif;
-      margin: 20px;
-      background: #f4f6f8;
-    }
-    h1 {
-      text-align: center;
+      background: linear-gradient(135deg, #f0f5ff 0%, #e6f0ff 100%);
       color: #333;
+      line-height: 1.6;
+      padding: 20px;
+      min-height: 100vh;
     }
-    table {
-      width: 90%;
-      margin: 20px auto;
-      border-collapse: collapse;
-      background: #fff;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
     }
-    th, td {
-      padding: 12px;
-      border: 1px solid #ddd;
-      text-align: left;
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 20px;
+      position: relative;
     }
-    th {
-      background: #2c7be5;
-      color: #fff;
+
+    h1 {
+      font-size: 2.8rem;
+      color: #2c3e50;
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-    tr:hover {
-      background: #f1f9ff;
+
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 5px;
+      background: linear-gradient(90deg, #2c7be5, #00c9a7);
+      border-radius: 3px;
     }
-    a {
-      color: #2c7be5;
+
+    .subtitle {
+      color: #5a6a7d;
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      margin-top: 30px;
+      line-height: 1.8;
+    }
+
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+      position: relative;
+      height: 240px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(44, 123, 229, 0.1);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(44, 123, 229, 0.2);
+    }
+
+    .card-header {
+      padding: 22px 22px 18px;
+      background: linear-gradient(90deg, #2c7be5, #4a9dff);
+      color: white;
+      position: relative;
+    }
+
+    .card-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #00c9a7, #2c7be5);
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+
+    .card-title i {
+      margin-right: 12px;
+      font-size: 1.6rem;
+      background: rgba(255, 255, 255, 0.2);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-subtitle {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      margin-left: 57px;
+    }
+
+    .card-body {
+      padding: 22px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-desc {
+      color: #5a6a7d;
+      font-size: 1rem;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .card-link {
+      display: inline-block;
+      background: linear-gradient(90deg, #00c9a7, #2c7be5);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
       text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(44, 123, 229, 0.3);
+      align-self: flex-start;
+      font-size: 1rem;
     }
-    a:hover {
-      text-decoration: underline;
+
+    .card-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 7px 20px rgba(44, 123, 229, 0.4);
+      background: linear-gradient(90deg, #00d9b5, #3a8df5);
+    }
+
+    .card-link i {
+      margin-left: 8px;
+      font-size: 0.9rem;
+      transition: transform 0.3s ease;
+    }
+
+    .card-link:hover i {
+      transform: translateX(3px);
+    }
+
+    .card:nth-child(2n) .card-header {
+      background: linear-gradient(90deg, #00c9a7, #2c7be5);
+    }
+
+    .card:nth-child(3n) .card-header {
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+    }
+
+    .card:nth-child(4n) .card-header {
+      background: linear-gradient(90deg, #ff6b6b, #ff8e53);
+    }
+
+    .card:nth-child(5n) .card-header {
+      background: linear-gradient(90deg, #8e2de2, #4a00e0);
+    }
+
+    .filter-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .filter-btn {
+      background: white;
+      border: 2px solid #e0e6ed;
+      padding: 10px 25px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      color: #5a6a7d;
+      font-size: 1rem;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: linear-gradient(90deg, #2c7be5, #00c9a7);
+      color: white;
+      border-color: transparent;
+      box-shadow: 0 5px 15px rgba(44, 123, 229, 0.3);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 25px;
+      color: #7b8a9b;
+      font-size: 0.95rem;
+      border-top: 1px solid #e0e6ed;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .cards-container {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
+      
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      .subtitle {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 10px;
+      }
+      
+      .card {
+        height: auto;
+      }
+      
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      .filter-btn {
+        padding: 8px 18px;
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>采购流程分析导航</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>L3 流程</th>
-        <th>链接</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>执行协作 (Execution Collaboration)</td>
-        <td><a href="execution_collaboration.html">查看建议</a></td>
-      </tr>
-      <tr>
-        <td>供应管理 (Supply Management)</td>
-        <td><a href="supply_management.html">查看建议</a></td>
-      </tr>
-      <tr>
-        <td>付款、对账与返利 (Payments, Reconcile and Rebate)</td>
-        <td><a href="payments_reconcile_rebate.html">查看建议</a></td>
-      </tr>
-      <tr>
-        <td>采购订单交付与零部件再平衡 (PO Delivery and Parts Rebalance)</td>
-        <td><a href="po_delivery_parts_rebalance.html">查看建议</a></td>
-      </tr>
-      <tr>
-        <td>采购申请与采购订单管理 (PR and PO Management)</td>
-        <td><a href="pr_po_management.html">查看建议</a></td>
-      </tr>
-      <tr>
-        <td>合同管理 (Contract Management)</td>
-        <td><a href="contract_management.html">查看建议</a></td>
-      </tr>
-      <tr>
-        <td>招投标与授标 (Source to Award)</td>
-        <td><a href="source_to_award.html">查看建议</a></td>
-      </tr>
-      <tr>
-        <td>供应商管理 (Supplier Management)</td>
-        <td><a href="supplier_management.html">查看建议</a></td>
-      </tr>
-      <tr>
-        <td>成本管理 (Cost Management)</td>
-        <td><a href="cost_management.html">查看建议</a></td>
-      </tr>
-      <tr>
-        <td>采购来源管理 (Source Management)</td>
-        <td><a href="source_management.html">查看建议</a></td>
-      </tr>
-      <tr>
-        <td>新产品管理 (New Product Management)</td>
-        <td><a href="new_product_management.html">查看建议</a></td>
-      </tr>
-      <tr>
-        <td>复杂性管理 (Complexity Management)</td>
-        <td><a href="complexity_management.html">查看建议</a></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="container">
+    <header>
+      <h1>采购流程分析导航</h1>
+      <p class="subtitle">探索各个采购流程的分析与优化建议，点击卡片查看详细内容。我们提供全面的采购流程优化方案，帮助企业提升效率、降低成本。</p>
+    </header>
+
+    <div class="filter-container">
+      <button class="filter-btn active">全部流程</button>
+      <button class="filter-btn">供应商管理</button>
+      <button class="filter-btn">采购执行</button>
+      <button class="filter-btn">合同管理</button>
+      <button class="filter-btn">成本控制</button>
+    </div>
+
+    <div class="cards-container">
+      <!-- 执行协作 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-handshake"></i>
+            执行协作
+          </div>
+          <div class="card-subtitle">Execution Collaboration</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">优化采购执行过程中的协作效率，确保各部门无缝衔接，提升整体采购效率。</p>
+          <a href="execution_collaboration.html" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- 供应管理 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-boxes"></i>
+            供应管理
+          </div>
+          <div class="card-subtitle">Supply Management</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">优化供应链管理，确保物料及时供应并降低库存成本，提高供应链韧性。</p>
+          <a href="supply_management.html" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- 付款、对账与返利 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-file-invoice-dollar"></i>
+            付款、对账与返利
+          </div>
+          <div class="card-subtitle">Payments, Reconcile and Rebate</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">优化付款流程，提高对账效率，最大化返利收益，减少财务风险。</p>
+          <a href="payments_reconcile_rebate.html" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- 采购订单交付与零部件再平衡 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-truck-loading"></i>
+            采购订单交付与零部件再平衡
+          </div>
+          <div class="card-subtitle">PO Delivery and Parts Rebalance</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">优化订单交付流程，实现零部件库存的智能再平衡，减少库存积压。</p>
+          <a href="po_delivery_parts_rebalance.html" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- 采购申请与采购订单管理 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-file-purchase"></i>
+            采购申请与采购订单管理
+          </div>
+          <div class="card-subtitle">PR and PO Management</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">优化采购申请和订单处理流程，提高审批效率，缩短采购周期。</p>
+          <a href="pr_po_management.html" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- 合同管理 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-file-contract"></i>
+            合同管理
+          </div>
+          <div class="card-subtitle">Contract Management</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">优化合同生命周期管理，降低合规风险，确保合同条款有效执行。</p>
+          <a href="contract_management.html" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- 招投标与授标 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-gavel"></i>
+            招投标与授标
+          </div>
+          <div class="card-subtitle">Source to Award</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">优化招投标流程，提高授标效率与质量，确保公平公正的供应商选择。</p>
+          <a href="source_to_award.html" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- 供应商管理 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-address-card"></i>
+            供应商管理
+          </div>
+          <div class="card-subtitle">Supplier Management</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">优化供应商评估、选择与管理流程，建立战略合作关系，降低供应风险。</p>
+          <a href="supplier_management.html" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- 成本管理 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-chart-line"></i>
+            成本管理
+          </div>
+          <div class="card-subtitle">Cost Management</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">优化采购成本结构，实现成本节约与价值最大化，提升企业盈利能力。</p>
+          <a href="cost_management.html" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- 采购来源管理 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-search"></i>
+            采购来源管理
+          </div>
+          <div class="card-subtitle">Source Management</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">优化采购来源策略，降低供应风险，提高采购质量，确保供应链多元化。</p>
+          <a href="source_management.html" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- 新产品管理 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-cube"></i>
+            新产品管理
+          </div>
+          <div class="card-subtitle">New Product Management</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">优化新产品引入流程，缩短上市时间，降低风险，确保新产品成功推出。</p>
+          <a href="new_product_management.html" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- 复杂性管理 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-project-diagram"></i>
+            复杂性管理
+          </div>
+          <div class="card-subtitle">Complexity Management</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">简化采购流程复杂性，提高效率，降低管理成本，优化资源配置。</p>
+          <a href="complexity_management.html" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>采购流程分析导航系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
+    </footer>
+  </div>
+
+  <script>
+    // 简单的筛选功能
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('.card');
+      
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // 移除所有按钮的active类
+          filterBtns.forEach(b => b.classList.remove('active'));
+          // 为当前点击的按钮添加active类
+          this.classList.add('active');
+          
+          const filter = this.textContent;
+          
+          if (filter === '全部流程') {
+            cards.forEach(card => card.style.display = 'flex');
+          } else {
+            cards.forEach(card => {
+              const title = card.querySelector('.card-title').textContent.trim();
+              if (title.includes(filter)) {
+                card.style.display = 'flex';
+              } else {
+                card.style.display = 'none';
+              }
+            });
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
