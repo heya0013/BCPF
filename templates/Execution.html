@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>执行协作 - 采购流程分析</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Microsoft YaHei", sans-serif;
+      background: linear-gradient(135deg, #f0f5ff 0%, #e6f0ff 100%);
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* 顶部导航栏 - 第一张图片风格 */
+    .navbar {
+      background: #f8f9fa;
+      padding: 15px 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav-btn {
+      background: white;
+      color: #5a6a7d;
+      border: 2px solid #e0e6ed;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-btn:hover, .nav-btn.active {
+      background: linear-gradient(90deg, #2c7be5, #00c9a7);
+      color: white;
+      border-color: transparent;
+      box-shadow: 0 5px 15px rgba(44, 123, 229, 0.2);
+      transform: translateY(-3px);
+    }
+
+    /* 流程标题区域 - 第二张图片风格 */
+    .header-section {
+      background: linear-gradient(90deg, #2c7be5, #00c9a7);
+      padding: 70px 30px 60px;
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .process-icon {
+      width: 100px;
+      height: 100px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 25px;
+    }
+
+    .process-icon i {
+      font-size: 3.5rem;
+      color: white;
+    }
+
+    .process-title {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .process-subtitle {
+      font-size: 1.5rem;
+      opacity: 0.9;
+      margin-bottom: 30px;
+      font-weight: 500;
+    }
+
+    .process-desc {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 20px;
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+    }
+
+    /* 关键流程块区域 */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 50px 30px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .section-title h2 {
+      font-size: 2.2rem;
+      color: #2c3e50;
+      display: inline-block;
+      padding-bottom: 15px;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #2c7be5, #00c9a7);
+      border-radius: 2px;
+    }
+
+    .process-blocks {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+      gap: 35px;
+    }
+
+    .process-block {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .process-block:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(44, 123, 229, 0.2);
+    }
+
+    .block-header {
+      padding: 25px;
+      background: linear-gradient(90deg, #2c7be5, #4a9dff);
+      color: white;
+      position: relative;
+    }
+
+    .block-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #00c9a7, #2c7be5);
+    }
+
+    .block-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+
+    .block-title i {
+      margin-right: 15px;
+      font-size: 1.8rem;
+    }
+
+    .block-subtitle {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-left: 45px;
+    }
+
+    .block-body {
+      padding: 30px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .block-desc {
+      color: #5a6a7d;
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+      line-height: 1.7;
+    }
+
+    /* 内容区域 */
+    .content-area {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 25px;
+      flex-grow: 1;
+      border: 1px dashed #2c7be5;
+      min-height: 180px;
+    }
+
+    .content-placeholder {
+      color: #7b8a9b;
+      font-style: italic;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .block-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      background: linear-gradient(90deg, #00c9a7, #2c7be5);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(44, 123, 229, 0.3);
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .action-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 7px 20px rgba(44, 123, 229, 0.4);
+      background: linear-gradient(90deg, #00d9b5, #3a8df5);
+    }
+
+    .action-btn i {
+      margin-left: 8px;
+      font-size: 0.9rem;
+      transition: transform 0.3s ease;
+    }
+
+    .action-btn:hover i {
+      transform: translateX(3px);
+    }
+
+    .secondary-btn {
+      background: #e9ecef;
+      color: #5a6a7d;
+    }
+
+    .secondary-btn:hover {
+      background: #dde1e6;
+      color: #2c3e50;
+    }
+
+    /* 页脚 */
+    footer {
+      text-align: center;
+      padding: 35px;
+      color: #7b8a9b;
+      font-size: 0.95rem;
+      border-top: 1px solid #e0e6ed;
+      background: white;
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 1100px) {
+      .process-blocks {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 12px 20px;
+      }
+      
+      .nav-btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+      }
+      
+      .process-title {
+        font-size: 2.2rem;
+      }
+      
+      .process-subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .section-title h2 {
+        font-size: 1.8rem;
+      }
+      
+      .process-blocks {
+        gap: 25px;
+      }
+      
+      .block-header {
+        padding: 20px;
+      }
+      
+      .block-body {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-section {
+        padding: 40px 20px;
+      }
+      
+      .process-icon {
+        width: 80px;
+        height: 80px;
+      }
+      
+      .process-icon i {
+        font-size: 2.5rem;
+      }
+      
+      .process-title {
+        font-size: 1.8rem;
+      }
+      
+      .container {
+        padding: 30px 20px;
+      }
+      
+      .block-actions {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .action-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .nav-buttons {
+        gap: 10px;
+      }
+      
+      .nav-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 顶部导航栏 - 第一张图片风格 -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-buttons">
+        <button class="nav-btn">供应商管理</button>
+        <button class="nav-btn">采购执行</button>
+        <button class="nav-btn">合同管理</button>
+        <button class="nav-btn">成本控制</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 流程标题区域 - 第二张图片风格 -->
+  <section class="header-section">
+    <div class="header-content">
+      <div class="process-icon">
+        <i class="fas fa-handshake"></i>
+      </div>
+      <h1 class="process-title">执行协作</h1>
+      <div class="process-subtitle">Execution Collaboration</div>
+      <div class="process-desc">
+        优化采购执行过程中的协作效率，确保各部门无缝衔接，提升整体采购效率。本流程涵盖物料追踪、订单承诺、发货通知等关键环节，帮助企业实现高效协同的采购执行。
+      </div>
+    </div>
+  </section>
+
+  <!-- 关键流程块区域 -->
+  <div class="container">
+    <div class="section-title">
+      <h2>关键流程模块</h2>
+    </div>
+    
+    <div class="process-blocks">
+      <!-- 物料拉动追踪 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-box-open"></i>
+            物料拉动追踪
+          </div>
+          <div class="block-subtitle">Material Pull Tracking</div>
+        </div>
+        <div class="block-body">
+          <p class="block-desc">
+            实时追踪物料需求与供应状态，确保生产所需物料及时到位，减少停工待料情况。
+          </p>
+          <div class="content-area">
+            <div class="content-placeholder">
+              <p>物料需求与供应状态追踪内容区域</p>
+              <p>可在此处添加物料追踪图表、状态报告、预警机制等内容</p>
+            </div>
+          </div>
+          <div class="block-actions">
+            <button class="action-btn">查看追踪报告 <i class="fas fa-chart-line"></i></button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 采购订单承诺 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-file-signature"></i>
+            采购订单承诺
+          </div>
+          <div class="block-subtitle">Purchase Order Commitment</div>
+        </div>
+        <div class="block-body">
+          <p class="block-desc">
+            管理采购订单的确认与承诺流程，确保供应商明确交货时间和数量，降低订单履约风险。
+          </p>
+          <div class="content-area">
+            <div class="content-placeholder">
+              <p>订单承诺与履约评估内容区域</p>
+              <p>可在此处添加订单承诺表格、履约评估指标、供应商绩效等内容</p>
+            </div>
+          </div>
+          <div class="block-actions">
+            <button class="action-btn">查看订单状态 <i class="fas fa-clipboard-check"></i></button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 预先发货通知（ASN） -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-shipping-fast"></i>
+            预先发货通知（ASN）
+          </div>
+          <div class="block-subtitle">Advanced Shipping Notice</div>
+        </div>
+        <div class="block-body">
+          <p class="block-desc">
+            管理供应商的发货通知流程，提前获取发货信息，优化收货准备和库存安排。
+          </p>
+          <div class="content-area">
+            <div class="content-placeholder">
+              <p>ASN接收与处理流程内容区域</p>
+              <p>可在此处添加ASN模板、接收流程、异常处理机制等内容</p>
+            </div>
+          </div>
+          <div class="block-actions">
+            <button class="action-btn">查看ASN模板 <i class="fas fa-file-alt"></i></button>
+            <button class="action-btn secondary-btn">处理流程 <i class="fas fa-cogs"></i></button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 最小和最大预先发货通知 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-balance-scale"></i>
+            最小和最大预先发货通知
+          </div>
+          <div class="block-subtitle">Min/Max Advanced Shipping Notice</div>
+        </div>
+        <div class="block-body">
+          <p class="block-desc">
+            基于库存水平设置最小和最大发货阈值，优化发货频率和数量，平衡库存成本和供应风险。
+          </p>
+          <div class="content-area">
+            <div class="content-placeholder">
+              <p>最小/最大发货阈值设置内容区域</p>
+              <p>可在此处添加阈值设置工具、库存水平分析、发货策略等内容</p>
+            </div>
+          </div>
+          <div class="block-actions">
+            <button class="action-btn">设置阈值 <i class="fas fa-sliders-h"></i></button>
+            <button class="action-btn secondary-btn">策略分析 <i class="fas fa-chart-bar"></i></button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 库存移动管理 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-exchange-alt"></i>
+            库存移动管理
+          </div>
+          <div class="block-subtitle">Inventory Movement Management</div>
+        </div>
+        <div class="block-body">
+          <p class="block-desc">
+            跟踪和管理库存的移动过程，包括入库、出库、调拨等操作，确保库存数据实时准确。
+          </p>
+          <div class="content-area">
+            <div class="content-placeholder">
+              <p>库存移动记录与流程内容区域</p>
+              <p>可在此处添加库存移动记录、流程图、异常处理等内容</p>
+            </div>
+          </div>
+          <div class="block-actions">
+            <button class="action-btn">查看移动记录 <i class="fas fa-list"></i></button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 退货授权（RMA） -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-undo-alt"></i>
+            退货授权（RMA）
+          </div>
+          <div class="block-subtitle">Return Merchandise Authorization</div>
+        </div>
+        <div class="block-body">
+          <p class="block-desc">
+            管理退货授权流程，包括退货申请、审批、跟踪和处理，确保退货过程高效规范。
+          </p>
+          <div class="content-area">
+            <div class="content-placeholder">
+              <p>RMA申请与处理流程内容区域</p>
+              <p>可在此处添加RMA申请表格、处理流程、退货跟踪等内容</p>
+            </div>
+          </div>
+          <div class="block-actions">
+            <button class="action-btn">申请RMA <i class="fas fa-file-export"></i></button>
+            <button class="action-btn secondary-btn">跟踪退货 <i class="fas fa-search"></i></button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 循环盘点与库存差异 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-clipboard-list"></i>
+            循环盘点与库存差异
+          </div>
+          <div class="block-subtitle">Cycle Counting and Inventory Variance</div>
+        </div>
+        <div class="block-body">
+          <p class="block-desc">
+            实施循环盘点策略，识别库存差异，分析原因并采取措施，提高库存准确性。
+          </p>
+          <div class="content-area">
+            <div class="content-placeholder">
+              <p>盘点计划与差异分析内容区域</p>
+              <p>可在此处添加盘点计划、差异分析报告、改进措施等内容</p>
+            </div>
+          </div>
+          <div class="block-actions">
+            <button class="action-btn">查看盘点计划 <i class="fas fa-calendar-alt"></i></button>
+            <button class="action-btn secondary-btn">差异分析 <i class="fas fa-chart-pie"></i></button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 零部件计费与付款 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-file-invoice-dollar"></i>
+            零部件计费与付款
+          </div>
+          <div class="block-subtitle">Parts Billing and Payment</div>
+        </div>
+        <div class="block-body">
+          <p class="block-desc">
+            管理零部件的计费与付款流程，确保准确计费、及时付款，维护良好的供应商关系。
+          </p>
+          <div class="content-area">
+            <div class="content-placeholder">
+              <p>计费规则与付款记录内容区域</p>
+              <p>可在此处添加计费规则、付款记录、对账流程等内容</p>
+            </div>
+          </div>
+          <div class="block-actions">
+            <button class="action-btn">查看付款记录 <i class="fas fa-receipt"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>采购流程分析系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
+  </footer>
+</body>
+</html>

@@ -2,7 +2,6 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>采购流程分析导航</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -147,11 +146,12 @@
       line-height: 1.6;
     }
 
+    /* 修改按钮样式 - 减小字体大小和内边距 */
     .card-link {
       display: inline-block;
       background: linear-gradient(90deg, #00c9a7, #2c7be5);
       color: white;
-      padding: 10px 20px;
+      padding: 10px 20px; /* 减小内边距 */
       border-radius: 50px;
       text-decoration: none;
       font-weight: 500;
@@ -159,7 +159,7 @@
       text-align: center;
       box-shadow: 0 4px 15px rgba(44, 123, 229, 0.3);
       align-self: flex-start;
-      font-size: 0.9rem;
+      font-size: 0.9rem; /* 减小字体大小 */
     }
 
     .card-link:hover {
@@ -170,7 +170,7 @@
 
     .card-link i {
       margin-left: 8px;
-      font-size: 0.8rem;
+      font-size: 0.8rem; /* 减小图标大小 */
       transition: transform 0.3s ease;
     }
 
@@ -192,34 +192,6 @@
 
     .card:nth-child(5n) .card-header {
       background: linear-gradient(90deg, #8e2de2, #4a00e0);
-    }
-
-    .filter-container {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-
-    .filter-btn {
-      background: white;
-      border: 2px solid #e0e6ed;
-      padding: 10px 25px;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 500;
-      color: #5a6a7d;
-      font-size: 1rem;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-    }
-
-    .filter-btn:hover, .filter-btn.active {
-      background: linear-gradient(90deg, #2c7be5, #00c9a7);
-      color: white;
-      border-color: transparent;
-      box-shadow: 0 5px 15px rgba(44, 123, 229, 0.3);
     }
 
     footer {
@@ -259,11 +231,6 @@
       h1 {
         font-size: 1.8rem;
       }
-      
-      .filter-btn {
-        padding: 8px 18px;
-        font-size: 0.9rem;
-      }
     }
   </style>
 </head>
@@ -273,10 +240,6 @@
       <h1>采购流程分析导航</h1>
       <p class="subtitle">探索各个采购流程的分析与优化建议，点击卡片查看详细内容。我们提供全面的采购流程优化方案，帮助企业提升效率、降低成本。</p>
     </header>
-
-    <div class="filter-container">
-      <button class="filter-btn active">全部流程</button>
-    </div>
 
     <div class="cards-container">
       <!-- 执行协作 -->
@@ -289,8 +252,8 @@
           <div class="card-subtitle">Execution Collaboration</div>
         </div>
         <div class="card-body">
-          <p class="card-desc">优化采购执行过程中的协作效率，确保各部门无缝衔接，提升整体采购效率。</p>
-          <a href="execution_collaboration.html" class="card-link">关键流程 <i class="fas fa-arrow-right"></i></a>
+          <p class="card-desc">优化采购执行过程中的协作效率，确保各部门无缝衔接</p>
+          <a href="{{ url_for('execution_collaboration') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -304,8 +267,8 @@
           <div class="card-subtitle">Supply Management</div>
         </div>
         <div class="card-body">
-          <p class="card-desc">优化供应链管理，确保物料及时供应并降低库存成本，提高供应链韧性。</p>
-          <a href="supply_management.html" class="card-link">关键流程<i class="fas fa-arrow-right"></i></a>
+          <p class="card-desc">优化供应链管理，确保物料及时供应并降低库存成本</p>
+          <a href="{{ url_for('supply_management') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -319,8 +282,8 @@
           <div class="card-subtitle">Payments, Reconcile and Rebate</div>
         </div>
         <div class="card-body">
-          <p class="card-desc">优化付款流程，提高对账效率，最大化返利收益，减少财务风险。</p>
-          <a href="payments_reconcile_rebate.html" class="card-link">关键流程 <i class="fas fa-arrow-right"></i></a>
+          <p class="card-desc">优化付款流程，提高对账效率，最大化返利收益</p>
+          <a href="{{ url_for('payments_reconcile_rebate') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -334,8 +297,8 @@
           <div class="card-subtitle">PO Delivery and Parts Rebalance</div>
         </div>
         <div class="card-body">
-          <p class="card-desc">优化订单交付流程，实现零部件库存的智能再平衡，减少库存积压。</p>
-          <a href="po_delivery_parts_rebalance.html" class="card-link">关键流程 <i class="fas fa-arrow-right"></i></a>
+          <p class="card-desc">优化订单交付流程，实现零部件库存的智能再平衡</p>
+          <a href="{{ url_for('po_delivery_parts_rebalance') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -349,8 +312,8 @@
           <div class="card-subtitle">PR and PO Management</div>
         </div>
         <div class="card-body">
-          <p class="card-desc">优化采购申请和订单处理流程，提高审批效率，缩短采购周期。</p>
-          <a href="pr_po_management.html" class="card-link">关键流程 <i class="fas fa-arrow-right"></i></a>
+          <p class="card-desc">优化采购申请和订单处理流程，提高审批效率</p>
+          <a href="{{ url_for('pr_po_management') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -364,8 +327,8 @@
           <div class="card-subtitle">Contract Management</div>
         </div>
         <div class="card-body">
-          <p class="card-desc">优化合同生命周期管理，降低合规风险，确保合同条款有效执行。</p>
-          <a href="contract_management.html" class="card-link">关键流程 <i class="fas fa-arrow-right"></i></a>
+          <p class="card-desc">优化合同生命周期管理，降低合规风险</p>
+          <a href="{{ url_for('contract_management') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -379,8 +342,8 @@
           <div class="card-subtitle">Source to Award</div>
         </div>
         <div class="card-body">
-          <p class="card-desc">优化招投标流程，提高授标效率与质量，确保公平公正的供应商选择。</p>
-          <a href="source_to_award.html" class="card-link">关键流程 <i class="fas fa-arrow-right"></i></a>
+          <p class="card-desc">优化招投标流程，提高授标效率与质量</p>
+          <a href="{{ url_for('source_to_award') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -394,8 +357,8 @@
           <div class="card-subtitle">Supplier Management</div>
         </div>
         <div class="card-body">
-          <p class="card-desc">优化供应商评估、选择与管理流程，建立战略合作关系，降低供应风险。</p>
-          <a href="supplier_management.html" class="card-link">关键流程 <i class="fas fa-arrow-right"></i></a>
+          <p class="card-desc">优化供应商评估、选择与管理流程，建立战略合作关系</p>
+          <a href="{{ url_for('supplier_management') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -409,8 +372,8 @@
           <div class="card-subtitle">Cost Management</div>
         </div>
         <div class="card-body">
-          <p class="card-desc">优化采购成本结构，实现成本节约与价值最大化，提升企业盈利能力。</p>
-          <a href="cost_management.html" class="card-link">关键流程 <i class="fas fa-arrow-right"></i></a>
+          <p class="card-desc">优化采购成本结构，实现成本节约与价值最大化</p>
+          <a href="{{ url_for('cost_management') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -424,8 +387,8 @@
           <div class="card-subtitle">Source Management</div>
         </div>
         <div class="card-body">
-          <p class="card-desc">优化采购来源策略，降低供应风险，提高采购质量，确保供应链多元化。</p>
-          <a href="source_management.html" class="card-link">关键流程 <i class="fas fa-arrow-right"></i></a>
+          <p class="card-desc">优化采购来源策略，降低供应风险，提高采购质量</p>
+          <a href="{{ url_for('source_management') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -439,8 +402,8 @@
           <div class="card-subtitle">New Product Management</div>
         </div>
         <div class="card-body">
-          <p class="card-desc">优化新产品引入流程，缩短上市时间，降低风险，确保新产品成功推出。</p>
-          <a href="new_product_management.html" class="card-link">关键流程 <i class="fas fa-arrow-right"></i></a>
+          <p class="card-desc">优化新产品引入流程，缩短上市时间，降低风险</p>
+          <a href="{{ url_for('new_product_management') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -454,8 +417,8 @@
           <div class="card-subtitle">Complexity Management</div>
         </div>
         <div class="card-body">
-          <p class="card-desc">简化采购流程复杂性，提高效率，降低管理成本，优化资源配置。</p>
-          <a href="complexity_management.html" class="card-link">关键流程 <i class="fas fa-arrow-right"></i></a>
+          <p class="card-desc">简化采购流程复杂性，提高效率，降低管理成本</p>
+          <a href="{{ url_for('complexity_management') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -464,37 +427,5 @@
       <p>采购流程分析导航系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
     </footer>
   </div>
-
-  <script>
-    // 简单的筛选功能
-    document.addEventListener('DOMContentLoaded', function() {
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const cards = document.querySelectorAll('.card');
-      
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-          // 移除所有按钮的active类
-          filterBtns.forEach(b => b.classList.remove('active'));
-          // 为当前点击的按钮添加active类
-          this.classList.add('active');
-          
-          const filter = this.textContent;
-          
-          if (filter === '全部流程') {
-            cards.forEach(card => card.style.display = 'flex');
-          } else {
-            cards.forEach(card => {
-              const title = card.querySelector('.card-title').textContent.trim();
-              if (title.includes(filter)) {
-                card.style.display = 'flex';
-              } else {
-                card.style.display = 'none';
-              }
-            });
-          }
-        });
-      });
-    });
-  </script>
 </body>
 </html>
