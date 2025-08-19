@@ -11,7 +11,7 @@ def home():
 # 执行协作流程详细页面
 @app.route('/execution_collaboration')
 def execution_collaboration():
-    return render_template('Execution.html')
+    return render_template('execution_collaboration.html')
 
 # 供应管理流程详细页面
 @app.route('/supply_management')
