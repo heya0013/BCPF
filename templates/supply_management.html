@@ -427,7 +427,7 @@
     </div>
   </section>
 
-  <!-- 关键流程块区域 -->
+   <!-- 关键流程块区域 -->
   <div class="container">
     <div class="section-title">
       <h2>关键流程模块</h2>
@@ -458,8 +458,12 @@
               <li>开发移动端会议工具，支持远程实时协作</li>
             </ul>
           </div>
+          <!-- 最佳实践按钮 -->
           <div class="block-actions">
-            <button class="best-practice-btn">Best Practice <i class="fas fa-arrow-right"></i></button>
+            <a href="{{ url_for('best_practice', process='supply_management', module_name='supply_huddle') }}" 
+               class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -488,8 +492,12 @@
               <li>引入情景模拟工具，评估不同市场变化对供应的影响</li>
             </ul>
           </div>
+          <!-- 最佳实践按钮 -->
           <div class="block-actions">
-            <button class="best-practice-btn">Best Practice <i class="fas fa-arrow-right"></i></button>
+            <a href="{{ url_for('best_practice', process='supply_management', module_name='regional_sop') }}" 
+               class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -518,8 +526,12 @@
               <li>制定ODM供应商绩效评估体系，定期审计供应商合规性</li>
             </ul>
           </div>
+          <!-- 最佳实践按钮 -->
           <div class="block-actions">
-            <button class="best-practice-btn">Best Practice <i class="fas fa-arrow-right"></i></button>
+            <a href="{{ url_for('best_practice', process='supply_management', module_name='odm_audit') }}" 
+               class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
         </div>
       </div>
