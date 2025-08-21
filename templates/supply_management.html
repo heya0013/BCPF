@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>供应管理 </title>
+  <title>供应管理 - 采购流程分析</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
@@ -239,26 +239,47 @@
       min-height: 180px;
     }
 
-    .content-placeholder {
-      color: #7b8a9b;
-      font-style: italic;
-      text-align: center;
-      padding: 30px;
+    .optimization-list {
+      padding-left: 20px;
+    }
+
+    .optimization-list li {
+      margin-bottom: 12px;
+      line-height: 1.6;
+      position: relative;
+      padding-left: 25px;
+    }
+
+    .optimization-list li:before {
+      content: "✓";
+      color: #00c9a7;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .optimization-title {
+      color: #2c7be5;
+      font-weight: 600;
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+      border-bottom: 2px solid #e0e6ed;
+      padding-bottom: 8px;
     }
 
     .block-actions {
       display: flex;
       justify-content: flex-end;
-      gap: 15px;
       margin-top: 20px;
     }
 
-    .action-btn {
+    .best-practice-btn {
       display: inline-flex;
       align-items: center;
       background: linear-gradient(90deg, #00c9a7, #2c7be5);
       color: white;
-      padding: 12px 25px;
+      padding: 12px 30px;
       border-radius: 50px;
       text-decoration: none;
       font-weight: 500;
@@ -269,30 +290,20 @@
       font-size: 1rem;
     }
 
-    .action-btn:hover {
+    .best-practice-btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 7px 20px rgba(44, 123, 229, 0.4);
       background: linear-gradient(90deg, #00d9b5, #3a8df5);
     }
 
-    .action-btn i {
+    .best-practice-btn i {
       margin-left: 8px;
       font-size: 0.9rem;
       transition: transform 0.3s ease;
     }
 
-    .action-btn:hover i {
+    .best-practice-btn:hover i {
       transform: translateX(3px);
-    }
-
-    .secondary-btn {
-      background: #e9ecef;
-      color: #5a6a7d;
-    }
-
-    .secondary-btn:hover {
-      background: #dde1e6;
-      color: #2c3e50;
     }
 
     /* 页脚 */
@@ -370,11 +381,10 @@
       }
       
       .block-actions {
-        flex-direction: column;
-        gap: 10px;
+        justify-content: center;
       }
       
-      .action-btn {
+      .best-practice-btn {
         width: 100%;
         justify-content: center;
       }
@@ -424,7 +434,7 @@
     </div>
     
     <div class="process-blocks">
-      <!-- Supply Huddle -->
+      <!-- 供应协调会议 -->
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
@@ -438,20 +448,23 @@
             定期召开跨部门供应协调会议，同步供应信息，解决供应问题，优化供应链协作效率。
           </p>
           <div class="content-area">
-            <div class="content-placeholder">
-              <!-- 此处可添加会议议程、参与部门、决策流程等内容 -->
-              <p>供应协调会议内容区域</p>
-              <p>可在此处添加会议议程、参与部门、决策流程、问题跟踪等内容</p>
-            </div>
+            <div class="optimization-title">供应协调会议优化建议：</div>
+            <ul class="optimization-list">
+              <li>建立标准化的会议议程模板，确保每次会议聚焦核心议题</li>
+              <li>实施会前数据准备制度，要求各部门提前提交关键指标报告</li>
+              <li>引入决策追踪系统，记录会议决议并自动生成任务分配</li>
+              <li>优化参会人员结构，确保关键决策者出席</li>
+              <li>建立会议效率评估机制，持续改进会议质量</li>
+              <li>开发移动端会议工具，支持远程实时协作</li>
+            </ul>
           </div>
           <div class="block-actions">
-            <button class="action-btn">查看会议模板 <i class="fas fa-file-alt"></i></button>
-            <button class="action-btn secondary-btn">会议记录 <i class="fas fa-clipboard-list"></i></button>
+            <button class="best-practice-btn">Best Practice <i class="fas fa-arrow-right"></i></button>
           </div>
         </div>
       </div>
       
-      <!-- Regional Product S&OP -->
+      <!-- 区域产品S&OP -->
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
@@ -465,20 +478,23 @@
             实施区域产品销售与运营规划流程，平衡供需关系，优化库存水平，提高区域市场响应能力。
           </p>
           <div class="content-area">
-            <div class="content-placeholder">
-              <!-- 此处可添加S&OP流程、区域需求预测、供应计划等内容 -->
-              <p>区域产品S&OP流程内容区域</p>
-              <p>可在此处添加S&OP流程图、需求预测模型、供应计划工具等内容</p>
-            </div>
+            <div class="optimization-title">区域产品S&OP优化建议：</div>
+            <ul class="optimization-list">
+              <li>建立统一的数据平台，整合各区域销售预测与供应能力数据</li>
+              <li>开发基于AI的区域需求预测模型，提高预测准确性</li>
+              <li>实施动态安全库存策略，根据市场波动自动调整库存水平</li>
+              <li>建立跨区域库存共享机制，优化整体库存利用率</li>
+              <li>制定区域S&OP绩效指标，定期评估流程效果</li>
+              <li>引入情景模拟工具，评估不同市场变化对供应的影响</li>
+            </ul>
           </div>
           <div class="block-actions">
-            <button class="action-btn">查看S&OP流程 <i class="fas fa-project-diagram"></i></button>
-            <button class="action-btn secondary-btn">区域计划 <i class="fas fa-map-marked-alt"></i></button>
+            <button class="best-practice-btn">Best Practice <i class="fas fa-arrow-right"></i></button>
           </div>
         </div>
       </div>
       
-      <!-- ODM Direct Buy(DB) PO and Stock Audit -->
+      <!-- ODM直购订单与库存审计 -->
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
@@ -492,15 +508,18 @@
             管理ODM直购订单流程，实施库存审计，确保采购合规性，降低库存风险。
           </p>
           <div class="content-area">
-            <div class="content-placeholder">
-              <!-- 此处可添加直购订单流程、审计标准、库存验证方法等内容 -->
-              <p>ODM直购订单与库存审计内容区域</p>
-              <p>可在此处添加直购订单流程、审计标准、库存验证方法、合规检查表等内容</p>
-            </div>
+            <div class="optimization-title">ODM直购订单与库存审计优化建议：</div>
+            <ul class="optimization-list">
+              <li>建立标准化的ODM直购订单审批流程，缩短处理时间</li>
+              <li>实施自动化订单匹配系统，减少人工操作错误</li>
+              <li>开发智能库存审计工具，实现实时库存可视化</li>
+              <li>建立供应商库存管理协作平台，提高库存透明度</li>
+              <li>实施风险预警系统，自动识别异常订单和库存变动</li>
+              <li>制定ODM供应商绩效评估体系，定期审计供应商合规性</li>
+            </ul>
           </div>
           <div class="block-actions">
-            <button class="action-btn">查看审计标准 <i class="fas fa-file-contract"></i></button>
-            <button class="action-btn secondary-btn">库存验证 <i class="fas fa-search"></i></button>
+            <button class="best-practice-btn">Best Practice <i class="fas fa-arrow-right"></i></button>
           </div>
         </div>
       </div>

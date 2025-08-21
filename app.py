@@ -1,5 +1,5 @@
-
 from flask import Flask, render_template
+from jinja2.exceptions import TemplateNotFound
 
 app = Flask(__name__)
 
@@ -67,6 +67,27 @@ def new_product_management():
 @app.route('/complexity_management')
 def complexity_management():
     return render_template('complexity_management.html')
+
+
+@app.route('/best-practice/<process>/<module_name>')
+def best_practice(process, module_name):
+    # 安全过滤流程和模块名称
+    safe_process = ''.join(e for e in process if e.isalnum() or e == '_')
+    safe_module = ''.join(e for e in module_name if e.isalnum() or e == '_')
+    
+    # 构建模板路径
+    template_path = f"best_practice/{safe_process}/{safe_module}.html"
+    
+    try:
+        # 尝试渲染特定模块的最佳实践页面
+        return render_template(template_path, 
+                              process_name=process.replace('_', ' ').title(),
+                              module_name=module_name.replace('_', ' ').title())
+    except TemplateNotFound:
+        # 如果模板不存在，返回默认的最佳实践页面
+        return render_template('best_practice/default.html', 
+                              process_name=process.replace('_', ' ').title(),
+                              module_name=module_name.replace('_', ' ').title())
 
 if __name__ == '__main__':
     app.run(debug=True)
