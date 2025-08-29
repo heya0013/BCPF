@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>执行协作 - 采购流程分析</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="""stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
       margin: 0;
@@ -20,7 +20,7 @@
       min-height: 100vh;
     }
 
-    /* 顶部导航栏 - 第一张图片风格 */
+    /* 顶部导航栏 */
     .navbar {
       background: #f8f9fa;
       padding: 15px 30px;
@@ -66,7 +66,7 @@
       transform: translateY(-3px);
     }
 
-    /* 流程标题区域 - 第二张图片风格 */
+    /* 流程标题区域 */
     .header-section {
       background: linear-gradient(90deg, #2c7be5, #00c9a7);
       padding: 70px 30px 60px;
@@ -83,16 +83,16 @@
       z-index: 2;
     }
 
-    .process-icon {
-      width: 100px;
-      height: 100px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 25px;
-    }
+.process-icon {
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+}
 
     .process-icon i {
       font-size: 3.5rem;
@@ -253,7 +253,7 @@
       margin-top: 20px;
     }
 
-    .action-btn {
+    .best-practice-btn {
       display: inline-flex;
       align-items: center;
       background: linear-gradient(90deg, #00c9a7, #2c7be5);
@@ -269,30 +269,20 @@
       font-size: 1rem;
     }
 
-    .action-btn:hover {
+    .best-practice-btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 7px 20px rgba(44, 123, 229, 0.4);
       background: linear-gradient(90deg, #00d9b5, #3a8df5);
     }
 
-    .action-btn i {
+    .best-practice-btn i {
       margin-left: 8px;
       font-size: 0.9rem;
       transition: transform 0.3s ease;
     }
 
-    .action-btn:hover i {
+    .best-practice-btn:hover i {
       transform: translateX(3px);
-    }
-
-    .secondary-btn {
-      background: #e9ecef;
-      color: #5a6a7d;
-    }
-
-    .secondary-btn:hover {
-      background: #dde1e6;
-      color: #2c3e50;
     }
 
     /* 页脚 */
@@ -374,7 +364,7 @@
         gap: 10px;
       }
       
-      .action-btn {
+      .best-practice-btn {
         width: 100%;
         justify-content: center;
       }
@@ -391,7 +381,7 @@
   </style>
 </head>
 <body>
-  <!-- 顶部导航栏 - 第一张图片风格 -->
+  <!-- 顶部导航栏 -->
   <nav class="navbar">
     <div class="nav-container">
       <div class="nav-buttons">
@@ -403,7 +393,7 @@
     </div>
   </nav>
 
-  <!-- 流程标题区域 - 第二张图片风格 -->
+  <!-- 流程标题区域 -->
   <section class="header-section">
     <div class="header-content">
       <div class="process-icon">
@@ -444,7 +434,9 @@
             </div>
           </div>
           <div class="block-actions">
-            <button class="action-btn">查看追踪报告 <i class="fas fa-chart-line"></i></button>
+            <a href="{{ url_for('best_practice', process='execution_collaboration', module_name='material_pull_tracking') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -469,7 +461,9 @@
             </div>
           </div>
           <div class="block-actions">
-            <button class="action-btn">查看订单状态 <i class="fas fa-clipboard-check"></i></button>
+            <a href="{{ url_for('best_practice', process='execution_collaboration', module_name='purchase_order_commitment') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -494,8 +488,9 @@
             </div>
           </div>
           <div class="block-actions">
-            <button class="action-btn">查看ASN模板 <i class="fas fa-file-alt"></i></button>
-            <button class="action-btn secondary-btn">处理流程 <i class="fas fa-cogs"></i></button>
+            <a href="{{ url_for('best_practice', process='execution_collaboration', module_name='asn_management') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -520,8 +515,9 @@
             </div>
           </div>
           <div class="block-actions">
-            <button class="action-btn">设置阈值 <i class="fas fa-sliders-h"></i></button>
-            <button class="action-btn secondary-btn">策略分析 <i class="fas fa-chart-bar"></i></button>
+            <a href="{{ url_for('best_practice', process='execution_collaboration', module_name='min_max_asn') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -546,7 +542,9 @@
             </div>
           </div>
           <div class="block-actions">
-            <button class="action-btn">查看移动记录 <i class="fas fa-list"></i></button>
+            <a href="{{ url_for('best_practice', process='execution_collaboration', module_name='inventory_movement') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -571,8 +569,9 @@
             </div>
           </div>
           <div class="block-actions">
-            <button class="action-btn">申请RMA <i class="fas fa-file-export"></i></button>
-            <button class="action-btn secondary-btn">跟踪退货 <i class="fas fa-search"></i></button>
+            <a href="{{ url_for('best_practice', process='execution_collaboration', module_name='rma_management') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -597,8 +596,9 @@
             </div>
           </div>
           <div class="block-actions">
-            <button class="action-btn">查看盘点计划 <i class="fas fa-calendar-alt"></i></button>
-            <button class="action-btn secondary-btn">差异分析 <i class="fas fa-chart-pie"></i></button>
+            <a href="{{ url_for('best_practice', process='execution_collaboration', module_name='cycle_counting') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -623,7 +623,9 @@
             </div>
           </div>
           <div class="block-actions">
-            <button class="action-btn">查看付款记录 <i class="fas fa-receipt"></i></button>
+            <a href="{{ url_for('best_practice', process='execution_collaboration', module_name='parts_billing') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
         </div>
       </div>
