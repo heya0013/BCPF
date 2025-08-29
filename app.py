@@ -79,15 +79,23 @@ def best_practice(process, module_name):
     template_path = f"best_practice/{safe_process}/{safe_module}.html"
     
     try:
-        # 尝试渲染特定模块的最佳实践页面
-        return render_template(template_path, 
-                              process_name=process.replace('_', ' ').title(),
-                              module_name=module_name.replace('_', ' ').title())
+        # 尝试渲染特定模板
+        return render_template(template_path)
     except TemplateNotFound:
-        # 如果模板不存在，返回默认的最佳实践页面
-        return render_template('best_practice/default.html', 
-                              process_name=process.replace('_', ' ').title(),
-                              module_name=module_name.replace('_', ' ').title())
-
+        try:
+            # 尝试渲染默认模板
+            return render_template('best_practice/default.html', 
+                                  process=process,
+                                  process_name=process.replace('_', ' ').title(),
+                                  module=module_name,
+                                  module_name=module_name.replace('_', ' ').title())
+        except TemplateNotFound:
+            # 如果默认模板也不存在，返回简单错误页面
+            return f"""
+            <h1>模板未找到</h1>
+            <p>无法找到模板: {template_path}</p>
+            <p>默认模板也不存在: best_practice/default.html</p>
+            <p>请创建相应的模板文件。</p>
+            """, 404
 if __name__ == '__main__':
     app.run(debug=True)
