@@ -39,7 +39,6 @@
     <div class="section-title">
       <h2>关键流程模块</h2>
     </div>
-    
     <div class="process-blocks">
       <!-- 入库可视性 (ASN/CDA/AN) -->
       <div class="process-block">
@@ -53,17 +52,19 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>关键理由</strong>
+              <strong>业务价值</strong>
             </div>
             <p class="key-reason-text">
-              入库/在途可视(Inbound Visibility，含ASN/CDA/AN)构建“单据—物流—仓库事件”的统一事实表，是异常识别、延迟预测与闭环编排的“数据地基”。
+              入库可视性是实现"从供应商到收货"全程追踪的基础，通过ASN(预先发货通知)、CDA(承运商配送通知)和AN(到货通知)确保物料流动透明化，减少到货不确定性。
             </p>
           </div>
           <div class="content-area">
             <div class="optimization-title">入库可视性优化建议：</div>
             <ul class="optimization-list">
-              <li>在途与到货可视化（ETA/ASN/Commit）</li>
-              <li>打通承运商/供应商门户/仓库WMS，构建“单据-物流-仓库事件”统一事实表（Transit/ASN/ETA/Commit），驱动迟延预测与例外闭环</li>
+              <li>实施统一的ASN接收与验证系统，提高数据准确性</li>
+              <li>建立承运商实时追踪接口，获取配送状态更新</li>
+              <li>开发异常到货预警机制，提前识别潜在问题</li>
+              <li>集成WMS与TMS系统，实现端到端可视性</li>
             </ul>
           </div>
           <div class="block-actions">
@@ -73,6 +74,7 @@
           </div>
         </div>
       </div>
+    
       
       <!-- 交付管理 -->
       <div class="process-block">
@@ -86,14 +88,14 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>关键理由</strong>
+              <strong>业务价值</strong>
             </div>
             <p class="key-reason-text">
               交付管理是 OTD 的执行中枢，负责“到货登记→异常识别→纠偏闭环”，并与 ASN/在途可视与承诺(Commit)联动以提升达成率与可预测性。
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">交付管理优化建议：</div>
+            <div class="optimization-title">优化建议：</div>
             <ul class="optimization-list">
               <li>Delivery 异常智能处置</li>
               <li>基于异常类型（延误、部分到货、错发）生成处置剧本（催办/改约/替代/加急），自动派单并跟踪关闭；周/月复盘异常 Top N 根因。</li>
@@ -119,14 +121,14 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>关键理由</strong>
+              <strong>业务价值</strong>
             </div>
             <p class="key-reason-text">
               ASN管理是实现收货流程自动化的核心，通过标准化、自动化的发货通知，提高收货效率，减少人工干预，确保数据准确性。
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">ASN管理优化建议：</div>
+            <div class="optimization-title">优化建议：</div>
             <ul class="optimization-list">
               <li>实施ASN电子数据交换(EDI)标准化，提高数据一致性</li>
               <li>开发ASN自动验证规则，识别数据差异和异常</li>
@@ -154,14 +156,14 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>关键理由</strong>
+              <strong>业务价值</strong>
             </div>
             <p class="key-reason-text">
               RMA管理规范退货流程，确保不合格品、多余库存或错误发货能够快速、合规地处理，减少资产滞留，优化库存周转。
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">RMA管理优化建议：</div>
+            <div class="optimization-title">优化建议：</div>
             <ul class="optimization-list">
               <li>建立标准化的RMA申请与审批流程，缩短处理周期</li>
               <li>实施RMA状态追踪系统，提高流程透明度</li>
@@ -189,14 +191,14 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>关键理由</strong>
+              <strong>业务价值</strong>
             </div>
             <p class="key-reason-text">
               SCC承诺达成追踪确保供应商承诺与实际绩效的一致性，通过数据驱动的协作机制，提高供应链可靠性和响应能力。
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">SCC承诺追踪优化建议：</div>
+            <div class="optimization-title">优化建议：</div>
             <ul class="optimization-list">
               <li>建立供应商承诺数据库，记录和管理所有承诺事项</li>
               <li>开发承诺达成率计算模型，量化供应商绩效</li>
@@ -224,14 +226,14 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>关键理由</strong>
+              <strong>业务价值</strong>
             </div>
             <p class="key-reason-text">
               跨站点再平衡优化多地点库存分布，通过智能分配和调拨，减少局部过剩或短缺，提高整体库存利用率，降低总持有成本。
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">跨站点再平衡优化建议：</div>
+            <div class="optimization-title">优化建议：</div>
             <ul class="optimization-list">
               <li>开发库存再平衡算法，智能推荐调拨方案</li>
               <li>建立站点间库存可视性平台，支持实时库存查询</li>
@@ -259,14 +261,14 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>关键理由</strong>
+              <strong>业务价值</strong>
             </div>
             <p class="key-reason-text">
               采购与销售操作及寄售管理优化资产流转，通过规范的买卖流程和寄售库存管理，提高资金周转率，降低库存风险。
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">采购销售与寄售优化建议：</div>
+            <div class="optimization-title">优化建议：</div>
             <ul class="optimization-list">
               <li>建立寄售库存管理流程，明确所有权和责任划分</li>
               <li>实施寄售库存盘点与对账机制，确保数据准确性</li>
@@ -294,14 +296,14 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>关键理由</strong>
+              <strong>业务价值</strong>
             </div>
             <p class="key-reason-text">
               转售给经纪人流程优化过剩或过时库存的处理，通过规范的经纪人销售渠道，最大化资产回收价值，减少库存贬值和持有成本。
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">转售经纪人优化建议：</div>
+            <div class="optimization-title">优化建议：</div>
             <ul class="optimization-list">
               <li>建立经纪人评估与认证流程，确保合作伙伴可靠性</li>
               <li>开发转售定价模型，基于市场供需智能定价</li>
@@ -329,14 +331,14 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>关键理由</strong>
+              <strong>业务价值</strong>
             </div>
             <p class="key-reason-text">
               库存移动管理确保所有库存变动都被准确记录和追踪，通过标准化流程和系统控制，提高库存准确性，支持财务和运营决策。
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">库存移动管理优化建议：</div>
+            <div class="optimization-title">优化建议：</div>
             <ul class="optimization-list">
               <li>实施库存移动分类与编码标准，统一记录方式</li>
               <li>开发移动异常检测规则，自动识别异常变动</li>
