@@ -39,7 +39,6 @@
     <div class="section-title">
       <h2>关键流程模块</h2>
     </div>
-    
     <div class="process-blocks">
       <!-- 付款管理 -->
       <div class="process-block">
@@ -52,21 +51,35 @@
         </div>
         <div class="block-body">
           <p class="block-desc">
-            管理付款审批流程，确保付款及时准确，优化现金流管理，降低财务风险。
-          </p>
-          <div class="content-area">
-            <div class="content-placeholder">
-              <!-- 此处可添加付款审批流程、付款计划、付款记录等内容 -->
-              <p>付款管理内容区域</p>
-              <p>可在此处添加付款审批流程、付款计划、付款记录、供应商付款条款等内容</p>
+          <!-- 添加的关键理由部分 -->
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>关键理由</strong>
             </div>
+            <p class="key-reason-text">
+              付款管理是“合同价→下单价→发票价”一致性的最终守门，涵盖常规付款、仅发票付款、预付款/加急、冻结/释放等，直接影响供应关系与财务准确。
+            </p>
           </div>
+          <div class="content-area">
+            <div class="optimization-title">付款管理优化建议：</div>
+            <ul class="optimization-list">
+              <li>发票-收货-合同价一致性引擎</li>
+              <li>从合同抽取价目与条款，联动PO/GR/IV实现三单匹配(3-way match)与差异解释，自动触发暂停/更正/补付。
+              <li>加急/冻结-释放 智能管控
+              <li>识别高风险/关键供应场景下的加急与冻结/释放请求，给出风险-现金流-合规的综合评分与审批建议，并生成审计轨迹。
+            </ul>
+          </div>
+          <!-- 最佳实践按钮 -->
           <div class="block-actions">
-            <button class="action-btn">查看付款计划 <i class="fas fa-calendar-alt"></i></button>
-            <button class="action-btn secondary-btn">付款记录 <i class="fas fa-receipt"></i></button>
+            <a href="{{ url_for('best_practice', process='PRR', module_name='Payment_Management') }}" 
+               class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
         </div>
       </div>
+        
+          
       
       <!-- 对账管理 -->
       <div class="process-block">
@@ -75,26 +88,35 @@
             <i class="fas fa-balance-scale"></i>
             对账管理
           </div>
-          <div class="block-subtitle">Reconciliation Management</div>
+          <div class="block-subtitle">Recon Management</div>
         </div>
         <div class="block-body">
           <p class="block-desc">
-            实施高效的对账流程，识别和处理账务差异，确保账目准确一致，提高财务透明度。
-          </p>
-          <div class="content-area">
-            <div class="content-placeholder">
-              <!-- 此处可添加对账流程、差异分析、解决方案等内容 -->
-              <p>对账管理内容区域</p>
-              <p>可在此处添加对账流程、差异分析报告、解决方案、对账工具等内容</p>
+          <!-- 添加的关键理由部分 -->
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>关键理由</strong>
             </div>
+            <p class="key-reason-text">
+              对账管理（Recon）串接 Parts/ODM/EMS 的应付与交付实绩，是发现价差/量差/时间差的主战场，并向上游 PO/合同/主数据反哺修正。
+            </p>
           </div>
+          <div class="content-area">
+            <div class="optimization-title">对账管理优化建议：</div>
+            <ul class="optimization-list">
+              <li>Recon 智能分解与闭环</li>
+              <li>对 Parts/ODM/EMS 的价差/量差/时间差进行分解归因（合同/主数据/收货/发票），生成纠偏任务与责任闭环。
+            </ul>
+          </div>
+          <!-- 最佳实践按钮 -->
           <div class="block-actions">
-            <button class="action-btn">对账流程 <i class="fas fa-project-diagram"></i></button>
-            <button class="action-btn secondary-btn">差异分析 <i class="fas fa-chart-pie"></i></button>
+            <a href="{{ url_for('best_practice', process='PRR', module_name='Recon_Management') }}" 
+               class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
         </div>
       </div>
-      
       <!-- 返利管理 -->
       <div class="process-block">
         <div class="block-header">
@@ -106,23 +128,34 @@
         </div>
         <div class="block-body">
           <p class="block-desc">
-            管理返利计算、审批和发放流程，最大化返利收益，优化供应商合作关系。
-          </p>
-          <div class="content-area">
-            <div class="content-placeholder">
-              <!-- 此处可添加返利计算规则、返利审批流程、返利发放记录等内容 -->
-              <p>返利管理内容区域</p>
-              <p>可在此处添加返利计算规则、返利审批流程、返利发放记录、返利分析报告等内容</p>
+            <!-- 添加的关键理由部分 -->
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>关键理由</strong>
             </div>
+            <p class="key-reason-text">
+              返利管理通过参数化规则（阈值/期间/口径）核算与结算，若不系统化易造成漏算与争议，需与发票/对账自动核验闭环。。
+            </p>
           </div>
+          <div class="content-area">
+            <div class="optimization-title">对账管理优化建议：</div>
+            <ul class="optimization-list">
+              <li>返利规则参数化与自动结算</li>
+              <li>将阈值/期间/梯度/基数口径参数化，自动核算返利并与发票/对账联动生成结算条目与应付/应收。
+            </ul>
+          </div>
+          <!-- 最佳实践按钮 -->
           <div class="block-actions">
-            <button class="action-btn">返利计算器 <i class="fas fa-calculator"></i></button>
-            <button class="action-btn secondary-btn">返利报告 <i class="fas fa-file-alt"></i></button>
+            <a href="{{ url_for('best_practice', process='PRR', module_name='Rebate_Management') }}" 
+               class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
   <footer>
     <p>采购流程分析系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>

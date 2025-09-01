@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PO交付与零部件再平衡</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-buttons">
+        <a href="supplier_management.html" class="nav-btn">供应商管理</a>
+        <a href="execution_collaboration.html" class="nav-btn">采购执行</a>
+        <a href="contract_management.html" class="nav-btn">合同管理</a>
+        <a href="cost_management.html" class="nav-btn">成本控制</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 流程标题区域 -->
+  <section class="header-section">
+    <div class="header-content">
+      <div class="process-icon">
+        <i class="fas fa-truck-loading"></i>
+      </div>
+      <h1 class="process-title">PO交付与零部件再平衡</h1>
+      <div class="process-subtitle">PO Delivery and Parts Rebalance</div>
+      <div class="process-desc">
+        优化订单交付流程，实现零部件库存的智能再平衡，减少库存积压，提高供应链效率。本流程涵盖入库可视性、交付管理、退货授权等关键环节，确保物料流动的高效与准确。
+      </div>
+    </div>
+  </section>
+
+  <!-- 关键流程块区域 -->
+  <div class="container">
+    <div class="section-title">
+      <h2>关键流程模块</h2>
+    </div>
+    
+    <div class="process-blocks">
+      <!-- 入库可视性 (ASN/CDA/AN) -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-eye"></i>
+            入库可视性 (ASN/CDA/AN)
+          </div>
+          <div class="block-subtitle">Inbound Visibility (ASN/CDA/AN)</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>关键理由</strong>
+            </div>
+            <p class="key-reason-text">
+              入库/在途可视(Inbound Visibility，含ASN/CDA/AN)构建“单据—物流—仓库事件”的统一事实表，是异常识别、延迟预测与闭环编排的“数据地基”。
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">入库可视性优化建议：</div>
+            <ul class="optimization-list">
+              <li>在途与到货可视化（ETA/ASN/Commit）</li>
+              <li>打通承运商/供应商门户/仓库WMS，构建“单据-物流-仓库事件”统一事实表（Transit/ASN/ETA/Commit），驱动迟延预测与例外闭环</li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='po_delivery', module_name='inbound_visibility') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 交付管理 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-shipping-fast"></i>
+            交付管理
+          </div>
+          <div class="block-subtitle">Delivery Management</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>关键理由</strong>
+            </div>
+            <p class="key-reason-text">
+              交付管理是 OTD 的执行中枢，负责“到货登记→异常识别→纠偏闭环”，并与 ASN/在途可视与承诺(Commit)联动以提升达成率与可预测性。
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">交付管理优化建议：</div>
+            <ul class="optimization-list">
+              <li>Delivery 异常智能处置</li>
+              <li>基于异常类型（延误、部分到货、错发）生成处置剧本（催办/改约/替代/加急），自动派单并跟踪关闭；周/月复盘异常 Top N 根因。</li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='po_delivery', module_name='delivery_management') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 高级发货通知(ASN)管理 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-clipboard-list"></i>
+            高级发货通知(ASN)管理
+          </div>
+          <div class="block-subtitle">Advanced Supply Notice(ASN) Management</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>关键理由</strong>
+            </div>
+            <p class="key-reason-text">
+              ASN管理是实现收货流程自动化的核心，通过标准化、自动化的发货通知，提高收货效率，减少人工干预，确保数据准确性。
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">ASN管理优化建议：</div>
+            <ul class="optimization-list">
+              <li>实施ASN电子数据交换(EDI)标准化，提高数据一致性</li>
+              <li>开发ASN自动验证规则，识别数据差异和异常</li>
+              <li>建立ASN状态追踪仪表板，实时监控发货状态</li>
+              <li>集成ASN与收货系统，实现无纸化收货流程</li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='po_delivery', module_name='asn_management') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 退货授权(RMA)管理 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-undo-alt"></i>
+            退货授权(RMA)管理
+          </div>
+          <div class="block-subtitle">Return Material Authorization(RMA) Management</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>关键理由</strong>
+            </div>
+            <p class="key-reason-text">
+              RMA管理规范退货流程，确保不合格品、多余库存或错误发货能够快速、合规地处理，减少资产滞留，优化库存周转。
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">RMA管理优化建议：</div>
+            <ul class="optimization-list">
+              <li>建立标准化的RMA申请与审批流程，缩短处理周期</li>
+              <li>实施RMA状态追踪系统，提高流程透明度</li>
+              <li>开发RMA原因代码分类，支持根本原因分析</li>
+              <li>集成RMA与财务系统，自动化退款与贷记处理</li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='po_delivery', module_name='rma_management') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 供应商协作中心(SCC)承诺达成追踪 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-handshake"></i>
+            供应商协作中心(SCC)承诺达成追踪
+          </div>
+          <div class="block-subtitle">Supplier Collaboration Center(SCC) Commit Achievement Tracking</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>关键理由</strong>
+            </div>
+            <p class="key-reason-text">
+              SCC承诺达成追踪确保供应商承诺与实际绩效的一致性，通过数据驱动的协作机制，提高供应链可靠性和响应能力。
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">SCC承诺追踪优化建议：</div>
+            <ul class="optimization-list">
+              <li>建立供应商承诺数据库，记录和管理所有承诺事项</li>
+              <li>开发承诺达成率计算模型，量化供应商绩效</li>
+              <li>实施承诺异常预警系统，提前识别履约风险</li>
+              <li>创建供应商绩效仪表板，支持数据驱动的协作决策</li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='po_delivery', module_name='scc_tracking') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 跨站点再平衡 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-exchange-alt"></i>
+            跨站点再平衡
+          </div>
+          <div class="block-subtitle">Cross Site Rebalance</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>关键理由</strong>
+            </div>
+            <p class="key-reason-text">
+              跨站点再平衡优化多地点库存分布，通过智能分配和调拨，减少局部过剩或短缺，提高整体库存利用率，降低总持有成本。
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">跨站点再平衡优化建议：</div>
+            <ul class="optimization-list">
+              <li>开发库存再平衡算法，智能推荐调拨方案</li>
+              <li>建立站点间库存可视性平台，支持实时库存查询</li>
+              <li>实施再平衡成本效益分析，优化调拨决策</li>
+              <li>创建再平衡绩效指标，评估调拨效果和成本节约</li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='po_delivery', module_name='cross_site_rebalance') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 采购与销售操作及寄售 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-hand-holding-usd"></i>
+            采购与销售操作及寄售
+          </div>
+          <div class="block-subtitle">Buy and Sell Operation and Consign</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>关键理由</strong>
+            </div>
+            <p class="key-reason-text">
+              采购与销售操作及寄售管理优化资产流转，通过规范的买卖流程和寄售库存管理，提高资金周转率，降低库存风险。
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">采购销售与寄售优化建议：</div>
+            <ul class="optimization-list">
+              <li>建立寄售库存管理流程，明确所有权和责任划分</li>
+              <li>实施寄售库存盘点与对账机制，确保数据准确性</li>
+              <li>开发买卖操作标准化流程，减少交易错误和纠纷</li>
+              <li>创建寄售绩效指标，评估寄售模式的效果和效率</li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='po_delivery', module_name='buy_sell_consign') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 转售给经纪人 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-user-tie"></i>
+            转售给经纪人
+          </div>
+          <div class="block-subtitle">Resell to Broker</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>关键理由</strong>
+            </div>
+            <p class="key-reason-text">
+              转售给经纪人流程优化过剩或过时库存的处理，通过规范的经纪人销售渠道，最大化资产回收价值，减少库存贬值和持有成本。
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">转售经纪人优化建议：</div>
+            <ul class="optimization-list">
+              <li>建立经纪人评估与认证流程，确保合作伙伴可靠性</li>
+              <li>开发转售定价模型，基于市场供需智能定价</li>
+              <li>实施转售合同标准化，明确条款和责任</li>
+              <li>创建转售绩效追踪系统，监控回收率和成本效益</li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='po_delivery', module_name='resell_broker') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 库存移动管理 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-boxes"></i>
+            库存移动管理
+          </div>
+          <div class="block-subtitle">Stock Movement Management</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>关键理由</strong>
+            </div>
+            <p class="key-reason-text">
+              库存移动管理确保所有库存变动都被准确记录和追踪，通过标准化流程和系统控制，提高库存准确性，支持财务和运营决策。
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">库存移动管理优化建议：</div>
+            <ul class="optimization-list">
+              <li>实施库存移动分类与编码标准，统一记录方式</li>
+              <li>开发移动异常检测规则，自动识别异常变动</li>
+              <li>建立移动审批工作流，控制关键库存变动</li>
+              <li>创建库存移动分析报告，支持运营优化和审计</li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='po_delivery', module_name='stock_movement') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>采购流程分析系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
+  </footer>
+</body>
+</html>
