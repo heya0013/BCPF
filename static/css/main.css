@@ -281,6 +281,39 @@ body {
   transform: translateX(3px);
 }
 
+/* 添加在main.css文件的适当位置，建议放在其他.content-area相关样式之后 */
+
+.key-reason-top {
+  margin: 0 0 15px 0;;
+  padding: 0;
+}
+
+.key-reason-header {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 6px;
+  font-weight: 700;
+  border-bottom: 2px solid #2c7be5;
+  padding-bottom: 4px;
+}
+
+.key-reason-text {
+  color: #5a6a7d;
+  line-height: 1.6;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* 调整区域产品S&OP描述的底部间距 */
+.block-desc {
+  color: #5a6a7d;
+  font-size: 1.1rem;
+  margin-bottom: 2px; /* 进一步减少底部间距 */
+  line-height: 1.6;
+}
+
+
+
 /* 页脚样式 */
 footer {
   text-align: center;
