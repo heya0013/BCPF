@@ -120,16 +120,15 @@
               <strong>核心价值</strong>
             </div>
             <p class="key-reason-text">
-              采购订单是采购执行的"法律凭证"，明确采购需求、供应商承诺与价格条款。高效的PO管理确保供应连续性、合规性和成本控制。
+              PO管理贯穿“请购→下单→收货→对账”的执行主线，是交付达成率、发票准确度与库存周转的核心抓手；行业最佳实践强调异常闭环（延期/欠交/价格不一致）与端到端可追溯。
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">采购订单优化建议：</div>
+            <div class="optimization-title">优化建议：</div>
             <ul class="optimization-list">
-              <li>实施端到端PO生命周期管理系统，追踪PO从创建到关闭全过程</li>
-              <li>开发PO自动化匹配引擎，实现PO-收货-发票三单自动匹配</li>
-              <li>建立PO修改与取消审批工作流，减少人工干预和错误</li>
-              <li>创建PO绩效仪表板，监控PO履行率、准时率和争议解决时间</li>
+              <li>异常预测/智能催交<li>
+              <li>构建PO异常预测模型（延期/欠交/价格不一致），自动触发催交/改约/替代建议，并生成异常解释与影响评估。</li>
+              <li>按规则从预测/补货/合同触发PO草案，自动填充主数据与条款并路由审批；异常项（缺字段/价差/黑名单）自动拦截。</li>
             </ul>
           </div>
           <div class="block-actions">
@@ -155,16 +154,13 @@
               <strong>核心价值</strong>
             </div>
             <p class="key-reason-text">
-              主数据是采购流程的"地基工程"，标准化、准确的物料、供应商和价格主数据，是高效采购执行和财务准确性的前提。
+              采购主数据（物料/供应商/地点/价格条件等）是PR/PO/收货/发票的单据口径与校验基座；高质量主数据可显著降低价格/品类/地点错误导致的返工与争议。
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">主数据优化建议：</div>
+            <div class="optimization-title">优化建议：</div>
             <ul class="optimization-list">
-              <li>建立统一的采购主数据治理框架和审批流程</li>
-              <li>实施主数据质量监控系统，自动检测和修复数据问题</li>
-              <li>开发供应商主数据全景视图，整合资质、绩效和合同信息</li>
-              <li>创建物料主数据分类体系，支持标准化采购决策</li>
+              <li>建立“主数据质量仪表盘”（必填/唯一/一致/时效），对影响PR/PO的关键字段（价格条件、地点、供应商代码、税率）做自动校验与修复工单。</li>
             </ul>
           </div>
           <div class="block-actions">
@@ -180,7 +176,7 @@
         <div class="block-header">
           <div class="block-title">
             <i class="fas fa-forward"></i>
-            提前采购
+            预采
           </div>
           <div class="block-subtitle">Buy Ahead</div>
         </div>
@@ -190,55 +186,17 @@
               <strong>核心价值</strong>
             </div>
             <p class="key-reason-text">
-              提前采购策略平衡价格波动风险和库存成本，通过战略性采购时机选择，降低采购成本，保障供应连续性。
+              Buy Ahead（提前备料/预占LOI）在供需紧张或长交期场景下平衡风险与资金占用，需与预测/交期/库存策略联动，避免积压与呆滞。
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">提前采购优化建议：</div>
+            <div class="optimization-title">优化建议：</div>
             <ul class="optimization-list">
-              <li>开发价格波动预测模型，识别最佳采购时机</li>
-              <li>建立战略性原材料储备机制，降低供应中断风险</li>
-              <li>实施供应商价格锁定协议管理系统</li>
-              <li>创建提前采购成本效益分析工具，量化决策影响</li>
+              <li>将供需预测、交期、价格趋势与资金成本纳入目标函数，给出 Buy Ahead 额度/周期/覆盖对象建议，并跟踪实际收益与库存影响。</li>
             </ul>
           </div>
           <div class="block-actions">
             <a href="{{ url_for('best_practice', process='pr_po_management', module_name='buy_ahead') }}" class="best-practice-btn">
-              Best Practice <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Purchase Request Management -->
-      <div class="process-block">
-        <div class="block-header">
-          <div class="block-title">
-            <i class="fas fa-file-alt"></i>
-            采购申请管理
-          </div>
-          <div class="block-subtitle">Purchase Request Management</div>
-        </div>
-        <div class="block-body">
-          <div class="key-reason-top">
-            <div class="key-reason-header">
-              <strong>核心价值</strong>
-            </div>
-            <p class="key-reason-text">
-              采购申请是采购流程的"起始点"，规范PR创建、审批和流转流程，提高采购效率和合规性，减少非计划性采购。
-            </p>
-          </div>
-          <div class="content-area">
-            <div class="optimization-title">采购申请优化建议：</div>
-            <ul class="optimization-list">
-              <li>实施智能PR审批工作流，基于金额和类别自动路由</li>
-              <li>开发PR规范化检查工具，减少退回率和修改时间</li>
-              <li>建立PR跟踪系统，实时监控PR状态和审批进度</li>
-              <li>创建PR分析报告，识别优化机会和需求模式</li>
-            </ul>
-          </div>
-          <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='pr_po_management', module_name='pr_management') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
