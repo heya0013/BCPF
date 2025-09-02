@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>寻源到授标流程 - 采购流程分析</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <style>
+    /* Source to Award特定样式 */
+    .sourcing-process .process-icon {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .core-value {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 4px solid #00c9a7;
+    }
+    
+    .core-value-title {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    
+    .core-value-content {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-buttons">
+        <a href="supplier_management.html" class="nav-btn">供应商管理</a>
+        <a href="execution_collaboration.html" class="nav-btn">采购执行</a>
+        <a href="contract_management.html" class="nav-btn">合同管理</a>
+        <a href="cost_management.html" class="nav-btn">成本控制</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 流程标题区域 -->
+  <section class="header-section sourcing-process">
+    <div class="header-content">
+      <div class="process-icon">
+        <i class="fas fa-award"></i>
+      </div>
+      <h1 class="process-title">寻源到授标流程</h1>
+      <div class="process-subtitle">Source to Award</div>
+      <div class="process-desc">
+        从需求识别到供应商选择的完整流程，确保采购活动高效、合规且最大化价值。本流程涵盖RFQ管理、本地寻源、授权管理及寻源策略制定等关键环节。
+      </div>
+    </div>
+  </section>
+
+  <!-- 关键流程块区域 -->
+  <div class="container">
+    <div class="section-title">
+      <h2>关键流程模块</h2>
+    </div>
+    
+    <div class="process-blocks">
+      <!-- RFQ管理 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-file-signature"></i>
+            RFQ管理
+          </div>
+          <div class="block-subtitle">Requests for Quotation (RFQ) Management</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>核心价值</strong>
+            </div>
+            <p class="key-reason-text">
+              RFQ/招标管理是"从需求到授标"的核心执行环节，直接影响命中率、采购周期与价格发现效率；行业常以平台化与算法择优（评分/加权）提升透明度与合规性。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>RFx自动化/评分模型，建立多维评分（价格/交期/质量/风险/ESG）与权重可配置模型，自动汇总评标并生成授标建议与解释。</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='source_to_award', module_name='rfq_management') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 本地寻源 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-map-marker-alt"></i>
+            本地寻源
+          </div>
+          <div class="block-subtitle">Local Source</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>核心价值</strong>
+            </div>
+            <p class="key-reason-text">
+              本地化/Local Source 兼顾关税、交付时效、ESG与政策要求，是在关键市场快速响应与韧性建设的重要抓手；需要与全局策略/资格规则协同。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>本地化寻源加速，以本地税则/交期/资质为特征构建本地化候选库与优先级，自动生成本地化方案与财务影响测算。</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='source_to_award', module_name='local_source') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 授权与内部自评管理 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-user-shield"></i>
+            授权与内部自评管理
+          </div>
+          <div class="block-subtitle">Delegation and Internal Self-Assessment Management</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>核心价值</strong>
+            </div>
+            <p class="key-reason-text">
+              DOA授权与内部自评保障流程与授标合规、权责清晰，可显著降低审计/舞弊风险，并提升审批效率与一致性。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>将DOA与流程节点绑定，异常越权与红旗自动预警；自评报告由生成式AI自动撰写并分派整改。</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='source_to_award', module_name='delegation_assessment') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 寻源策略管理 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-chess-board"></i>
+            寻源策略管理
+          </div>
+          <div class="block-subtitle">Sourcing Strategy Management</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>核心价值</strong>
+            </div>
+            <p class="key-reason-text">
+              类目/品类寻源策略（多源、份额、授标规则）提供RFx的"方法-边界-阈值"，是成本、交期、风险与合规的上游设计，决定授标质量与稳定性。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>将授标结果与执行数据（量/价/履约）回流，自动校准品类策略的多源份额与阈值。</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='source_to_award', module_name='sourcing_strategy') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>采购流程分析系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
+  </footer>
+</body>
+</html>
