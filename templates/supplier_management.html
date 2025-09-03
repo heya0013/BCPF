@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>供应商管理 - 采购流程分析</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <style>
+    /* 供应商管理特定样式 */
+    .supplier-process .process-icon {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .core-value {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 4px solid #8e44ad;
+    }
+    
+    .core-value-title {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    
+    .core-value-content {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-buttons">
+        <a href="supplier_management.html" class="nav-btn active">供应商管理</a>
+        <a href="execution_collaboration.html" class="nav-btn">采购执行</a>
+        <a href="contract_management.html" class="nav-btn">合同管理</a>
+        <a href="cost_management.html" class="nav-btn">成本控制</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 流程标题区域 -->
+  <section class="header-section supplier-process">
+    <div class="header-content">
+      <div class="process-icon">
+        <i class="fas fa-handshake"></i>
+      </div>
+      <h1 class="process-title">供应商管理</h1>
+      <div class="process-subtitle">Supplier Management</div>
+      <div class="process-desc">
+        全面管理供应商生命周期，从准入、评估到绩效管理和风险监控，建立战略供应商关系，优化供应链稳定性。本流程直接影响供应商全生命周期质量与S2P效率，是采购合规、风险与绩效的关键支点。
+      </div>
+    </div>
+  </section>
+
+  <!-- 关键流程块区域 -->
+  <div class="container">
+    <div class="section-title">
+      <h2>关键流程模块</h2>
+    </div>
+    
+    <div class="process-blocks">
+      <!-- 供应商支出管理 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-chart-pie"></i>
+            供应商支出管理
+          </div>
+          <div class="block-subtitle">Supplier Spending Management</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>核心价值</strong>
+            </div>
+            <p class="key-reason-text">
+              该L4流程直接影响供应商全生命周期质量与S2P效率，是采购合规、风险与绩效的关键支点。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>Spend智能分析, 对供应商分组Spend进行异常检测（价差/超合同/分散化），自动建议“整合/重谈/退出/开发”策略，提升SUM（Spend Under Management）。</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='supplier_management', module_name='spending_management') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 供应商准入 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-door-open"></i>
+            供应商准入
+          </div>
+          <div class="block-subtitle">Supplier Onboarding</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>核心价值</strong>
+            </div>
+            <p class="key-reason-text">
+              供应商Onboarding是S2P生命周期的起点，负责资格合规、档案与能力核验；行业最佳实践强调"全在线化+一次通过率+合规自动审查"，其质量决定后续采购合规与交易效率。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>进行NLP/计算机审阅，对投标/准入文件进行自动抽取、比对与红旗提示（证照有效期、合规条款、冲突条款），支撑“一次通过率”和“风险分级”。</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='supplier_management', module_name='onboarding') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 供应商主数据与通用画像管理 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-database"></i>
+            供应商主数据与通用画像管理
+          </div>
+          <div class="block-subtitle">Supplier Master Data and General Profile Management</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>核心价值</strong>
+            </div>
+            <p class="key-reason-text">
+              主数据与通用画像（Profile）是寻源、合同、下单、绩效与风险算法的数据底座；缺失或不一致会直接拉低电子化率与对账效率，影响PO/付款准确与审计可追溯。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li></li>
+       
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='supplier_management', module_name='master_data') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 供应商关键绩效管理 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-chart-line"></i>
+            供应商关键绩效管理
+          </div>
+          <div class="block-subtitle">Supplier Key Performance Management</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>核心价值</strong>
+            </div>
+            <p class="key-reason-text">
+              供应商绩效（SPE/QBR/SBR）将时效/质量/成本/技术/服务等维度固化为周期治理闭环，是供应改善与合作深度的"操作系统"。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>自动化评分/生成式纪要，自动聚合准时率、质量不良、应价偏差、投诉等KPI，生成QBR简报与改进清单，并跟踪闭环达成率。</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='supplier_management', module_name='performance_management') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 分层供应商管理 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-sitemap"></i>
+            分层供应商管理
+          </div>
+          <div class="block-subtitle">Tiered Supplier Management</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>核心价值</strong>
+            </div>
+            <p class="key-reason-text">
+              分层供应商管理（含Tier-2/3可视与ECSL）扩展了可见度与杠杆，便于在短缺/中断场景进行替代与缓冲；是构建供应韧性的关键抓手。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>上游可视/替代路径，以ECSL/超ECSL为种子，构建Tier-2/3图谱，基于规格兼容性与地理/交期生成替代建议，缩短断供切换时间。</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='supplier_management', module_name='tiered_management') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 供应商风险管理 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-shield-alt"></i>
+            供应商风险管理
+          </div>
+          <div class="block-subtitle">Supplier Risk Management</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>核心价值</strong>
+            </div>
+            <p class="key-reason-text">
+              供应商风险管理通过外部（地缘/ESG/财务/网络/气候）与内部（质量/交付/投诉）数据的连续监测，形成预警与处置建议，是确保连续供给与合规的核心能力。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>风险引擎/图谱，构建外部（地缘/气候/ESG/财务/网络）+内部（质量/交付/投诉）融合的连续监测引擎与图谱，输出预警与处置编排（替代、缓冲、资格加速）。</li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='supplier_management', module_name='risk_management') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>采购流程分析系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
+  </footer>
+</body>
+</html>
