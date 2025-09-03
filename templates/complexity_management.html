@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>复杂性管理 - 采购流程分析</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <style>
+    /* 复杂性管理特定样式 */
+    .complexity-process .process-icon {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .core-value {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 4px solid #8e44ad;
+    }
+    
+    .core-value-title {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    
+    .core-value-content {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    /* 复杂性管理特定颜色 */
+    .complexity-process .block-header {
+      background: linear-gradient(90deg, #8e44ad, #9b59b6);
+    }
+    
+    .complexity-process .best-practice-btn {
+      background: linear-gradient(90deg, #8e44ad, #3498db);
+    }
+  </style>
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-buttons">
+        <a href="supplier_management.html" class="nav-btn">供应商管理</a>
+        <a href="source_management.html" class="nav-btn">寻源管理</a>
+        <a href="new_product_management.html" class="nav-btn">新产品管理</a>
+        <a href="cost_management.html" class="nav-btn">成本控制</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 流程标题区域 -->
+  <section class="header-section complexity-process">
+    <div class="header-content">
+      <div class="process-icon">
+        <i class="fas fa-project-diagram"></i>
+      </div>
+      <h1 class="process-title">复杂性管理</h1>
+      <div class="process-subtitle">Complexity Management</div>
+      <div class="process-desc">
+        优化产品组合和品类管理，降低复杂性，提高标准化水平，增强供应链效率和成本竞争力。本流程涵盖代际跟踪、产品复杂性管理和品类标准化等关键环节。
+      </div>
+    </div>
+  </section>
+
+  <!-- 关键流程块区域 -->
+  <div class="container">
+    <div class="section-title">
+      <h2>关键流程模块</h2>
+    </div>
+    
+    <div class="process-blocks">
+      <!-- 代际与SBB跟踪 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-sync-alt"></i>
+            代际与SBB跟踪
+          </div>
+          <div class="block-subtitle">Generation to Generation(G2G) and Active Sales Build Block(SBB) Tracking</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值</div>
+            <p class="core-value-content">
+              围绕代际（G2G）与SBB的微复杂度与预测闭环跟踪，直接影响BOM标准化、共用率、报价与G2G成本桥，并反哺源头寻源（Source Plan）。在行业最佳实践中，复杂度与标准化被视为寻源与成本优化的前置乘数，平台化的一体化数据贯通可显著提升端到端效率。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>实施G2G/SBB微复杂度追踪系统，量化产品组合复杂性</li>
+              <li>开发BOM标准化评估工具，提高零部件共用率</li>
+              <li>建立预测闭环机制，优化需求计划准确性</li>
+              <li>创建G2G成本桥分析仪表板，可视化代际成本变化</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='complexity_management', module_name='g2g_sbb_tracking') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 按产品复杂性管理 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-cubes"></i>
+            按产品复杂性管理
+          </div>
+          <div class="block-subtitle">By Product Complexity Management</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值</div>
+            <p class="core-value-content">
+              以MLQ、PCBA/SPEC计数等维度管理"按产品的复杂度"，是控制长尾、提升共用率与降低库存负担的源头抓手；RFQ体量与议价能力亦受其约束，因此属于寻源与成本管理的关键前置。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>开发产品复杂性指数模型，量化MLQ、PCBA/SPEC等维度</li>
+              <li>实施长尾零部件识别系统，优化库存管理</li>
+              <li>建立零部件共用率提升计划，减少SKU数量</li>
+              <li>创建复杂性影响分析工具，评估对RFQ和议价能力的影响</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='complexity_management', module_name='product_complexity') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 品类标准化与复杂性管理 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-shapes"></i>
+            品类标准化与复杂性管理
+          </div>
+          <div class="block-subtitle">Category Standardization and Complexity Management</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值</div>
+            <p class="core-value-content">
+              面向品类的复杂度度量与规格标准化（Spec Pool）可形成体量集中与共用化，最大化捆绑议价与供应韧性，是端到端S2P中"标准化→寻源→价格/交付"的关键衔接点。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>实施品类复杂度度量系统，识别标准化机会</li>
+              <li>开发规格池（Spec Pool）管理工具，促进零部件共用</li>
+              <li>建立捆绑议价策略引擎，最大化采购杠杆</li>
+              <li>创建供应韧性评估模型，量化标准化对供应风险的影响</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='complexity_management', module_name='category_standardization') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>采购流程分析系统 © 2025 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
+  </footer>
+</body>
+</html>
