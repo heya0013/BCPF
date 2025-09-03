@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport极客园" content="width=device-width, initial-scale=1.0">
+  <title>成本管理 - 采购流程分析</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <style>
+    /* 成本管理特定样式 */
+    .cost-process .process-icon {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .core-value {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 4px solid #e74c3c;
+    }
+    
+    .core-value-title {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    
+    .core-value-content {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-buttons">
+        <a href="supplier_management.html" class="nav-btn">供应商管理</a>
+        <a href="execution_collaboration.html" class="nav-btn">采购执行</a>
+        <a href="contract_management.html" class="nav-btn">合同管理</a>
+        <a href="cost_management.html" class="nav-btn active">成本控制</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 流程标题区域 -->
+  <section class="header-section cost-process">
+    <div class="header-content">
+      <div class="process-icon">
+        <i class="fas fa-money-bill-wave"></i>
+      </div>
+      <h1 class="process-title">成本管理</h1>
+      <div class="process-subtitle">Cost Management</div>
+      <div class="process-desc">
+        全面管理产品成本和费用，从关键件成本趋势分析到工具模具费用控制，实现成本可视化和持续优化。本流程涵盖成本分析、跟踪和控制等关键环节，确保企业成本竞争力。
+      </div>
+    </div>
+  </section>
+
+  <!-- 关键流程块区域 -->
+  <div class="container">
+    <div class="section-title">
+      <h2>关键流程模块</h2>
+    </div>
+    
+    <div class="process-blocks">
+      <!-- 关键件成本趋势 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-chart-line"></i>
+            关键件成本趋势
+          </div>
+          <div class="block-subtitle">Key Parts Cost Trend</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>核心价值</strong>
+            </div>
+            <p class="key-reason-text">
+              关键件成本趋势与品类竞争力指数、材料成本建模是所有产品成本分析与谈判的"数据地基"，可形成对标与趋势预测，为RFx与合同价格变更提供定量依据。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>MPN级成本对标/异常识别，集成外部MPN价格/供给曲线与内部采购历史，构建“对标偏差+异常报价”识别与解释，自动推送谈判要点与替代建议。</li>
+              <li>材料成本预测与替代建议，对关键材料建立指数联动与替代路线（跨规格/跨供方/跨地区），在成本上行时给出“替代/延后/提前采购”的处方式建议与财务影响测算。</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='cost_management', module_name='key_parts_cost') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 产品成本跟踪 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-search-dollar"></i>
+            产品成本跟踪
+          </div>
+          <div class="block-subtitle">Product Cost Tracking</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <极客园div class="key-reason-header">
+              <strong>核心价值</strong>
+            </div>
+            <p class="key-reason-text">
+              产品成本跟踪将直接物料、设计降本与情景仿真整合为"路线图式"闭环，是季度/年度降本治理的主场，驱动跨职能协同落地。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>成本桥自动化与分解，自动生成G2G/平台的“成本桥”，将材料/工艺/汇率/规模/地理等因素的贡献量化，周期性回归并输出降本机会清单与责任人。</li>
+              <li>应价/报价智能助手，在RFx与季度对账期，基于行业指数与供应商历史自动生成“目标价区间+让步边界+替代路径”，并把谈判笔记与合同条款联动。</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='cost_management', module_name='product_cost_tracking') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 产品工具、NRE和样品管理 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-tools"></i>
+            产品工具、NRE和样品管理
+          </div>
+          <div class="block-subtitle">Product Tooling, NRE and Sample Management</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>核心价值</strong>
+            </div>
+            <p class="key-reason-text">
+              工具/模具与NRE/样品费用对产品BMC有显著影响，需与产品/零件成本跟踪联动，形成"资格—样件—量产"全过程的费用可视与风险预警。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>NRE/Tooling 智能监控，将工具/模具/NRE/样品费与里程碑、采购价格、量产计划对齐，异常波动与超支自动预警，并在财季/财年滚动预测。</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='cost_management', module_name='tooling_nre_management') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>采购流程分析系统 © 2025 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
+  </footer>
+</body>
+</html>
