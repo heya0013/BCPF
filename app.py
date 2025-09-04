@@ -74,6 +74,8 @@ def best_practice(process, module_name):
     # 安全过滤流程和模块名称
     safe_process = ''.join(e for e in process if e.isalnum() or e == '_')
     safe_module = ''.join(e for e in module_name if e.isalnum() or e == '_')
+    #safe_module = ''.join(e for e in module_name if e.isalnum() or e == '_' or e == ' ')
+    #safe_module = safe_module.replace(' ', '_') 
     
     # 构建模板路径
     template_path = f"best_practice/{safe_process}/{safe_module}.html"
