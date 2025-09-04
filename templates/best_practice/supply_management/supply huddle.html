@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Best Practice - Supply Huddle</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <!-- 引入Best Practice专用样式 -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice.css') }}">
+</head>
+<body>
+  <!-- 顶部标题区域 -->
+  <header class="best-practice-header">
+    <div class="header-content">
+      <h1 class="best-practice-title">Supply Huddle最佳实践</h1>
+      <div class="best-practice-subtitle">Supply Huddle Best Practice</div>
+      <p class="process-desc">
+        通过行业最佳实践优化供应协调会议，实现物料需求与供应状态的智能匹配，提升会议效率，减少停工待料情况。
+      </p>
+    </div>
+  </header>
+
+  <!-- 主要内容区域 -->
+  <div class="best-practice-container">
+    <!-- 概述部分 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">实践概述</h2>
+      <p class="practice-desc">
+        Supply Huddle是供应链协调的核心会议，传统方式依赖人工收集数据和经验判断，效率低且容易出错。本最佳实践通过系统化方法实现：
+      </p>
+      <ul class="benefit-list">
+        <li>实时物料需求与供应状态追踪</li>
+        <li>自动识别潜在供应缺口和风险</li>
+        <li>智能生成会议议程和决策建议</li>
+        <li>会后自动生成任务分配和追踪</li>
+      </ul>
+    </div>
+    
+    <!-- 核心实践 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">核心实践方法</h2>
+      
+      <div class="practice-card">
+        <h3 class="practice-title">智能物料追踪</h3>
+        <p class="practice-desc">
+          实时监控物料需求与供应状态，预测潜在短缺风险，提前生成预警和建议解决方案。
+        </p>
+        <ul class="benefit-list">
+          <li>基于历史数据和实时信息的物料需求预测</li>
+          <li>供应商交付能力智能评估</li>
+          <li>潜在短缺风险提前7天预警</li>
+          <li>自动生成替代物料和供应商建议</li>
+        </ul>
+      </div>
+      
+      <!-- 其他实践卡片... -->
+    </div>
+    
+    <!-- 其他部分... -->
+    
+    <!-- 返回按钮 -->
+    <div style="text-align: center;">
+      <a href="supply_management.html" class="back-btn">
+        <i class="fas fa-arrow-left"></i> 返回供应管理
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <p>采购流程分析系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低风险 • 优化供应</p>
+  </footer>
+</body>
+</html>
