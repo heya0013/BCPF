@@ -47,119 +47,83 @@
   display: inline-block;
 }
 
-.practice-card {
-  background: #f8f9fa;
-  border-radius: 12px;
-  padding: 25px;
-  margin-bottom: 25px;
-  border-left: 4px solid #00c9a7;
-  transition: all 0.3s ease;
-}
-
-.practice-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(44, 123, 229, 0.2);
-}
-
-.practice-title {
-  font-size: 1.4rem;
-  color: #2c7be5;
-  margin-bottom: 15px;
-  font-weight: 600;
-}
-
-.practice-desc {
-  color: #5a6a7d;
-  line-height: 1.7;
-  margin-bottom: 15px;
-}
-
-.benefit-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.benefit-list li {
-  margin-bottom: 12px;
-  padding-left: 30px;
-  position: relative;
-  color: #5a6a7d;
-}
-
-.benefit-list li:before {
-  content: '\f00c';
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: #00c9a7;
-}
-
-.tech-stack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+.ai-case-table {
+  width: 100%;
+  border-collapse: collapse;
   margin-top: 20px;
+  box-shadow: 0 5极客园px 15px rgba(0,0,0,0.05);
 }
 
-.tech-item {
-  background: #e6f0ff;
-  border-radius: 8px;
+.ai-case-table th {
+  background: linear-gradient(90deg, #2c7be5, #00c9a7);
+  color: white;
   padding: 15px;
-  flex: 1;
-  min-width: 200px;
-  text-align: center;
-}
-
-.tech-icon {
-  font-size: 2.5rem;
-  color: #2c7be5;
-  margin-bottom: 15px;
-}
-
-.tech-name {
+  text-align: left;
   font-weight: 600;
-  color: #2c3e50;
-  margin-bottom: 8px;
 }
 
-.tech-desc {
-  color: #5a6a7d;
-  font-size: 0.95rem;
+.ai-case-table td {
+  padding: 15px;
+  border-bottom: 1px solid #e0e6ed;
 }
 
-.case-study {
-  background: linear-gradient(135deg, #f0f5ff 0%, #e6f0ff 100%);
-  border-radius: 12px;
-  padding: 30px;
-  margin-top: 20px;
+.ai-case-table tr:nth-child(even) {
+  background-color: #f8f9fa;
 }
 
-.metrics-grid {
+.ai-case-table tr:hover {
+  background-color: #e6f0ff;
+}
+
+.improvement-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-right: 8px;
+  margin-bottom: 5px;
+}
+
+.improvement-positive {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.case-link {
+  color: #2c7be5;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.case-link:hover {
+  text-decoration: underline;
+}
+
+.stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 25px;
   margin-top: 30px;
 }
 
-.metric-card {
+.stat-card {
   background: white;
   border-radius: 12px;
   padding: 25px;
   text-align: center;
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  border-top: 4px solid #2c7be5;
 }
 
-.metric-value {
+.stat-value {
   font-size: 2.5rem;
   font-weight: 700;
   color: #2c7be5;
   margin-bottom: 10px;
 }
 
-.metric-label {
+.stat-label {
   color: #5a6a7d;
   font-size: 1.1rem;
 }
@@ -181,7 +145,7 @@
 .back-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 7px 20px rgba(44, 123, 229, 0.4);
-  background: linear-gradient(90deg, #3a8df5, #00d9b5);
+  background: linear-gradient(90deg, #3a8df5,极客园 #00d9b5);
 }
 
 .back-btn i {
@@ -201,7 +165,12 @@
     font-size: 1.5rem;
   }
   
-  .tech-stack {
-    flex-direction: column;
+  .ai-case-table {
+    display: block;
+    overflow-x: auto;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
   }
 }
