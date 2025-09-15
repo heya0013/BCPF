@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI案例总结 - Cross-Site Rebalance</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice1.css') }}">
+  <style>
+    /* 补充样式 */
+    .en-translation {
+      font-size: 0.8em;
+      color: #666;
+      display: block;
+      margin-top: 0.25rem;
+      font-style: italic;
+    }
+    
+    .ai-scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin: 30px 0;
+    }
+    
+    .scenario-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      border-top: 4px solid #2c7be5;
+      transition: all 0.3s ease;
+    }
+    
+    .scenario-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(44, 123, 229, 0.2);
+    }
+    
+    .scenario-icon {
+      font-size: 2.5rem;
+      color: #2c7be5;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    
+    .scenario-title {
+      font-size: 1.4rem;
+      color: #2c3e50;
+      margin-bottom: 15px;
+      font-weight: 600;
+      text-align: center;
+    }
+    
+    .scenario-desc {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    
+    .scenario-features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .scenario-features li {
+      margin-bottom: 10px;
+      padding-left: 30px;
+      position: relative;
+    }
+    
+    .scenario-features li:before {
+      content: '\f00c';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #00c9a7;
+    }
+    
+    .case-summary {
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .case-title {
+      font-size: 1.4rem;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+    }
+    
+    .case-kpi {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .kpi-item {
+      flex: 1;
+      min-width: 200px;
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+    
+    .kpi-value {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #2c7be5;
+      margin-bottom: 0.5rem;
+    }
+    
+    .kpi-label {
+      color: #5a6a7d;
+      font-size: 0.9rem;
+    }
+    
+    .case-details {
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+    
+    .detail-row {
+      display: flex;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .detail-label {
+      font-weight: 600;
+      color: #2c3e50;
+      width: 150px;
+    }
+    
+    .detail-value {
+      flex: 1;
+      color: #5a6a7d;
+    }
+    
+    .case-link-btn {
+      display: inline-block;
+      background: #2c7be5;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 500;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .case-link-btn:hover {
+      background: #1a5276;
+      transform: translateY(-2px);
+    }
+    
+    @media (max-width: 768px) {
+      .detail-row {
+        flex-direction: column;
+      }
+      
+      .detail-label {
+        width: 100%;
+        margin-bottom: 0.5rem;
+      }
+      
+      .ai-scenario-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 顶部标题区域 -->
+  <header class="best-practice-header">
+    <h1 class="best-practice-title">AI案例总结</h1>
+    <div class="en-translation">AI Case Study Summary</div>
+    
+    <div class="best-practice-subtitle">Cross-Site Rebalance 跨站点库存调拨优化</div>
+    <div class="en-translation">Cross-Site Inventory Rebalance Optimization</div>
+    
+    <p class="process-desc">
+      基于AI驱动的需求预测、库存优化和智能调拨决策技术，实现多仓库库存动态平衡
+      <span class="en-translation">AI-driven demand forecasting, inventory optimization, and intelligent transfer decisions to achieve dynamic inventory balance across multiple warehouses</span>
+    </p>
+  </header>
+
+  <div class="best-practice-container">
+    <!-- AI应用场景模块 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">AI应用场景</h2>
+      <div class="en-translation">AI Application Scenarios</div>
+      
+      <div class="ai-scenario-grid">
+        <div class="scenario-card">
+          <div class="scenario-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3 class="scenario-title">需求预测引擎</h3>
+          <div class="en-translation">Demand Forecasting Engine</div>
+          <p class="scenario-desc">
+            基于机器学习和时间序列分析，预测各站点的未来需求，考虑季节性、促销活动和市场趋势
+            <span class="en-translation">Predict future demand at each site using machine learning and time series analysis, considering seasonality, promotions, and market trends</span>
+          </p>
+          <ul class="scenario-features">
+            <li>
+              预测准确率提升至95%+
+              <span class="en-translation">Forecast accuracy increased to 95%+</span>
+            </li>
+            <li>
+              需求波动响应时间缩短60%
+              <span class="en-translation">60% reduction in demand fluctuation response time</span>
+            </li>
+            <li>
+              支持多层级预测（SKU、品类、区域）
+              <span class="en-translation">Support multi-level forecasting (SKU, category, region)</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="scenario-card">
+          <div class="scenario-icon">
+            <i class="fas fa-boxes"></i>
+          </div>
+          <h3 class="scenario-title">库存优化算法</h3>
+          <div class="en-translation">Inventory Optimization Algorithm</div>
+          <p class="scenario-desc">
+            实时计算最优库存水平和安全库存阈值，平衡服务水平与库存成本
+            <span class="en-translation">Calculate optimal inventory levels and safety stock thresholds in real-time, balancing service levels and inventory costs</span>
+          </p>
+          <ul class="scenario-features">
+            <li>
+              库存周转率提升15-25%
+              <span class="en-translation">Inventory turnover rate increased by 15-25%</span>
+            </li>
+            <li>
+              库存持有成本降低20-30%
+              <span class="en-translation">Inventory holding costs reduced by 20-30%</span>
+            </li>
+            <li>
+              缺货率降低30-40%
+              <span class="en-translation">Out-of-stock rate reduced by 30-40%</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="scenario-card">
+          <div class="scenario-icon">
+            <i class="fas fa-exchange-alt"></i>
+          </div>
+          <h3 class="scenario-title">智能调拨决策系统</h3>
+          <div class="en-translation">Intelligent Transfer Decision System</div>
+          <p class="scenario-desc">
+            基于库存状态和需求预测，自动生成最优调拨方案，考虑运输成本、时效和约束条件
+            <span class="en-translation">Automatically generate optimal transfer plans based on inventory status and demand forecasts, considering transportation costs, timeliness, and constraints</span>
+          </p>
+          <ul class="scenario-features">
+            <li>
+              调拨决策时间缩短80%
+              <span class="en-translation">80% reduction in transfer decision time</span>
+            </li>
+            <li>
+              运输成本降低10-20%
+              <span class="en-translation">Transportation costs reduced by 10-20%</span>
+            </li>
+            <li>
+              紧急调拨需求减少35-45%
+              <span class="en-translation">Emergency transfer requirements reduced by 35-45%</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <!-- AI应用场景效果分析 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">AI应用场景效果分析</h2>
+      <div class="en-translation">AI Application Scenario Effectiveness Analysis</div>
+      
+      <table class="ai-scenario-table">
+        <thead>
+          <tr>
+            <th>AI应用场景
+              <div class="en-translation">AI Application Scenario</div>
+            </th>
+            <th>行业KPI指标
+              <div class="en-translation">Industry KPI Metrics</div>
+            </th>
+            <th>提升幅度
+              <div class="en-translation">Improvement Range</div>
+            </th>
+            <th>实际案例和出处链接
+              <div class="en-translation">Real Cases and Source Links</div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>需求预测+库存优化+智能调拨决策
+              <div class="en-translation">Demand Forecasting + Inventory Optimization + Intelligent Transfer Decisions</div>
+            </td>
+            <td>库存周转率、缺货率、跨仓调拨占比、运输成本占比
+              <div class="en-translation">Inventory Turnover Rate, Out-of-Stock Rate, Cross-Warehouse Transfer Ratio, Transportation Cost Ratio</div>
+            </td>
+            <td>
+              <span class="improvement-badge improvement-positive">库存周转率 +15–25%</span>
+              <div class="en-translation">Inventory Turnover Rate +15–25%</div>
+              <span class="improvement-badge improvement-negative">缺货率 -30–40%</span>
+              <div class="en-translation">Out-of-Stock Rate -30–40%</div>
+              <span class="improvement-badge improvement-negative">运输成本占比 -10–20%</span>
+              <div class="en-translation">Transportation Cost Ratio -10–20%</div>
+            </td>
+            <td>
+              <a href="https://www.gartner.com/en/supply-chain/insights/supply-chain-top-25" class="case-link" target="_blank">
+                Gartner供应链25强报告
+              </a>
+              <div class="en-translation">Gartner Supply Chain Top 25 Report</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- KPI和预期提升幅度 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">KPI和预期提升幅度</h2>
+      <div class="en-translation">KPI and Expected Improvement Range</div>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value">+15-25%</div>
+          <div class="stat-label">库存周转率提升
+            <div class="en-translation">Inventory Turnover Rate Improvement</div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-value">-30-40%</div>
+          <div class="stat-label">缺货率降低
+            <div class="en-translation">Out-of-Stock Rate Reduction</div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-value">-10-20%</div>
+          <div class="stat-label">运输成本占比降低
+            <div class="en-translation">Transportation Cost Ratio Reduction</div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-value">+20-30%</div>
+          <div class="stat-label">仓库利用率提升
+            <div class="en-translation">Warehouse Utilization Improvement</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 实际行业案例 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">实际行业案例</h2>
+      <div class="en-translation">Real Industry Cases</div>
+      
+      <div class="case-summary">
+        <h3 class="case-title">联合利华 (Unilever) - AI驱动的全球库存调拨系统</h3>
+        <div class="en-translation">Unilever - AI-Driven Global Inventory Rebalance System</div>
+        
+        <p>
+          全球消费品巨头通过AI驱动的跨站点库存调拨系统，优化全球供应链网络，减少库存积压和缺货风险
+          <span class="en-translation">Global consumer goods giant optimized its global supply chain network with an AI-driven cross-site inventory rebalance system, reducing inventory backlog and out-of-stock risks</span>
+        </p>
+        
+        <div class="case-kpi">
+          <div class="kpi-item">
+            <div class="kpi-value">+22%</div>
+            <div class="kpi-label">库存周转率提升
+              <div class="en-translation">Inventory Turnover Improvement</div>
+            </div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-value">-35%</div>
+            <div class="kpi-label">缺货率降低
+              <div class="en-translation">Out-of-Stock Rate Reduction</div>
+            </div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-value">-18%</div>
+            <div class="kpi-label">运输成本占比
+              <div class="en-translation">Transportation Cost Ratio</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="case-details">
+          <div class="detail-row">
+            <div class="detail-label">技术平台：</div>
+            <div class="detail-value">SAP IBP (Integrated Business Planning)、AI优化算法、实时库存可视化
+              <div class="en-translation">SAP IBP (Integrated Business Planning), AI Optimization Algorithms, Real-time Inventory Visualization</div>
+            </div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">实施范围：</div>
+            <div class="detail-value">全球190+国家，覆盖200+配送中心
+              <div class="en-translation">190+ countries worldwide, covering 200+ distribution centers</div>
+            </div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">实施成效：</div>
+            <div class="detail-value">库存持有成本降低25%，跨仓调拨效率提升40%
+              <div class="en-translation">25% reduction in inventory holding costs, 40% improvement in cross-warehouse transfer efficiency</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="case-details">
+          <div class="detail-row">
+            <div class="detail-label">AI技术应用：</div>
+            <div class="detail-value">
+              1. 基于机器学习的区域需求预测模型<br>
+              2. 多目标优化算法平衡库存水平<br>
+              3. 实时库存可视化仪表盘<br>
+              4. 智能调拨决策引擎
+              <div class="en-translation">
+                1. Machine learning-based regional demand forecasting model<br>
+                2. Multi-objective optimization algorithm to balance inventory levels<br>
+                3. Real-time inventory visualization dashboard<br>
+                4. Intelligent transfer decision engine
+              </div>
+            </div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">业务影响：</div>
+            <div class="detail-value">
+              1. 减少库存积压$1.2亿美元<br>
+              2. 提高产品可得性98.5%<br>
+              3. 降低紧急运输成本35%<br>
+              4. 提升客户满意度12%
+              <div class="en-translation">
+                1. Reduced inventory backlog by $120 million<br>
+                2. Improved product availability to 98.5%<br>
+                3. Reduced emergency transportation costs by 35%<br>
+                4. Increased customer satisfaction by 12%
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <a href="https://www.sap.com/customers/unilever.html" class="case-link-btn" target="_blank">
+          <i class="fas fa-external-link-alt"></i> 查看SAP客户案例
+          <div class="en-translation">View SAP Customer Case</div>
+        </a>
+      </div>
+    </div>
+    
+    <!-- 技术实现框架 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">技术实现框架</h2>
+      <div class="en-translation">Technical Implementation Framework</div>
+      
+      <div class="tech-grid">
+        <div class="tech-item">
+          <div class="tech-icon">
+            <i class="fas fa-database"></i>
+          </div>
+          <div class="tech-name">数据整合层
+            <div class="en-translation">Data Integration Layer</div>
+          </div>
+          <p>整合ERP、WMS、TMS等系统数据
+            <div class="en-translation">Integrate data from ERP, WMS, TMS systems</div>
+          </p>
+        </div>
+        
+        <div class="tech-item">
+          <div class="tech-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <div class="tech-name">AI引擎层
+            <div class="en-translation">AI Engine Layer</div>
+          </div>
+          <p>机器学习、优化算法、预测模型
+            <div class="en-translation">Machine learning, optimization algorithms, predictive models</div>
+          </p>
+        </div>
+        
+        <div class="tech-item">
+          <div class="tech-icon">
+            <i class="fas fa-cogs"></i>
+          </div>
+          <div class="tech-name">决策引擎层
+            <div class="en-translation">Decision Engine Layer</div>
+          </div>
+          <p>生成调拨建议和优化方案
+            <div class="en-translation">Generate transfer recommendations and optimization solutions</div>
+          </p>
+        </div>
+        
+        <div class="tech-item">
+          <div class="tech-icon">
+            <i class="fas fa-tachometer-alt"></i>
+          </div>
+          <div class="tech-name">可视化层
+            <div class="en-translation">Visualization Layer</div>
+          </div>
+          <p>实时监控和决策支持仪表盘
+            <div class="en-translation">Real-time monitoring and decision support dashboards</div>
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 返回按钮 -->
+    <div style="text-align: center;">
+      <a href="#" class="back-btn">
+        <i class="fas fa-arrow-left"></i> 返回Cross-Site Rebalance
+      </a>
+    </div>
+  </div>
+</body>
+</html>
