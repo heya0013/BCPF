@@ -1,0 +1,408 @@
+/* 基础样式 */
+:root {
+    --primary: #2c7be5;
+    --secondary: #00c9a7;
+    --accent: #ff6b6b;
+    --dark: #2c3e50;
+    --light: #f8f9fa;
+    --text: #5a6a7d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f5ff;
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* 顶部标题区域 */
+.best-practice-header {
+    background: linear-gradient(135deg, var(--primary) 0%, #1a5276 100%);
+    color: white;
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.best-practice-header::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+    transform: rotate(30deg);
+}
+
+.best-practice-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.best-practice-subtitle {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.process-desc {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* 主要内容容器 */
+.best-practice-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 20px;
+}
+
+/* 内容区块 */
+.best-practice-section {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    color: var(--dark);
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid var(--primary);
+    position: relative;
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100px;
+    height: 3px;
+    background: var(--secondary);
+}
+
+/* 场景网格 */
+.ai-scenario-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.scenario-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-top: 4px solid var(--primary);
+    transition: all 0.3s ease;
+}
+
+.scenario-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(44, 123, 229, 0.2);
+}
+
+.scenario-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.scenario-title {
+    font-size: 1.4rem;
+    color: var(--dark);
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.scenario-desc {
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* KPI列表 */
+.kpi-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.kpi-list li {
+    margin-bottom: 12px;
+    padding-left: 30px;
+    position: relative;
+    color: var(--text);
+}
+
+.kpi-list li:before {
+    content: '\f201';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--secondary);
+}
+
+/* 表格样式 */
+.ai-scenario-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.ai-scenario-table th {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.ai-scenario-table td {
+    padding: 15px;
+    border-bottom: 1px solid #e0e6ed;
+}
+
+.ai-scenario-table tr:nth-child(even) {
+    background-color: var(--light);
+}
+
+.ai-scenario-table tr:hover {
+    background-color: #e6f0ff;
+}
+
+/* 徽章样式 */
+.improvement-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-right: 8px;
+    margin-bottom: 5px;
+}
+
+.improvement-positive {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+/* 案例链接 */
+.case-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.case-link:hover {
+    text-decoration: underline;
+}
+
+/* 供应商标志网格 */
+.vendor-logo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.vendor-logo {
+    text-align: center;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.vendor-logo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.vendor-name {
+    font-weight: 600;
+    color: var(--dark);
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+/* 行业案例样式 */
+.industry-case {
+    background: linear-gradient(135deg, #f0f5ff 0%, #e6f0ff 100%);
+    border-radius: 12px;
+    padding: 25px;
+    margin: 30px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.industry-case::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--primary);
+}
+
+.case-title {
+    font-size: 1.4rem;
+    color: var(--dark);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.case-desc {
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.company-highlight {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.case-reference {
+    background: #f8f9fa;
+    border-left: 4px solid var(--secondary);
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.reference-title {
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 8px;
+}
+
+/* 统计网格 */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 25px;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    border-top: 4px solid var(--secondary);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.12);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 10px 0;
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    color: var(--text);
+}
+
+/* 返回按钮 */
+.back-btn {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 20px 0;
+    box-shadow: 0 5px 15px rgba(44, 123, 229, 0.3);
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(44, 123, 229, 0.4);
+}
+
+/* 页脚 */
+footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+/* 英文翻译样式 */
+.en-translation {
+    font-size: 0.8em;
+    color: #666;
+    display: block;
+    margin-top: 2px;
+    font-style: italic;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .best-practice-title {
+    font-size: 2rem;
+    }
+    
+    .best-practice-subtitle {
+    font-size: 1.2rem;
+    }
+    
+    .ai-scenario-grid {
+    grid-template-columns: 1fr;
+    }
+    
+    .stats-grid {
+    grid-template-columns: 1fr;
+    }
+    
+    .ai-scenario-table {
+    display: block;
+    overflow-x: auto;
+    }
+}
