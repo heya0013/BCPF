@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI案例总结 - Long Term Agreement and Continuity of Supply Management</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice1.css') }}">
+  <style>
+    /* 补充样式 */
+    .en-translation {
+      font-size: 0.8em;
+      color: #666;
+      display: block;
+      margin-top: 0.25rem;
+      font-style: italic;
+    }
+    
+    .case-summary {
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .case-title {
+      font-size: 1.4rem;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+    }
+    
+    .case-kpi {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .kpi-item {
+      flex: 1;
+      min-width: 200px;
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+    
+    .kpi-value {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #2c7be5;
+      margin-bottom: 0.5rem;
+    }
+    
+    .kpi-label {
+      color: #5a6a7d;
+      font-size: 0.9rem;
+    }
+    
+    .case-details {
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+    
+    .detail-row {
+      display: flex;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .detail-label {
+      font-weight: 600;
+      color: #2c3e50;
+      width: 150px;
+    }
+    
+    .detail-value {
+      flex: 1;
+      color: #5a6a7d;
+    }
+    
+    .case-link-btn {
+      display: inline-block;
+      background: #2c7be5;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 500;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .case-link-btn:hover {
+      background: #1a5276;
+      transform: translateY(-2px);
+    }
+    
+    /* AI应用场景模块样式 */
+    .ai-scenario-module {
+      background: linear-gradient(135deg, #f0f5ff 0%, #e6f0ff 100%);
+      border-radius: 10px;
+      padding: 2rem;
+      margin: 2rem 0;
+      border-left: 5px solid #2c7be5;
+    }
+    
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    .scenario-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+    }
+    
+    .scenario-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(44, 123, 229, 0.2);
+    }
+    
+    .scenario-icon {
+      font-size: 2.5rem;
+      color: #2c7be5;
+      margin-bottom: 1rem;
+    }
+    
+    .scenario-title {
+      font-size: 1.2rem;
+      color: #2c3e50;
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+    }
+    
+    .scenario-desc {
+      color: #5a6a7d;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    
+    @media (max-width: 768px) {
+      .detail-row {
+        flex-direction: column;
+      }
+      
+      .detail-label {
+        width: 100%;
+        margin-bottom: 0.5rem;
+      }
+      
+      .scenario-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 顶部标题区域 -->
+  <header class="best-practice-header">
+    <h1 class="best-practice-title">AI案例总结</h1>
+    <div class="en-translation">AI Case Study Summary</div>
+    
+    <div class="best-practice-subtitle">Long Term Agreement and Continuity of Supply Management 长期协议与供应连续性管理</div>
+    <div class="en-translation">Long Term Agreement and Continuity of Supply Management</div>
+    
+    <p class="process-desc">
+      基于AI驱动的义务抽取、事件监控和任务编排技术，实现长期协议管理和供应连续性的智能化保障
+      <span class="en-translation">AI-driven obligation extraction, event monitoring, and task orchestration technology to intelligently guarantee long-term agreement management and supply continuity</span>
+    </p>
+  </header>
+
+  <div class="best-practice-container">
+    <!-- AI应用场景模块 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">AI应用场景</h2>
+      <div class="en-translation">AI Application Scenarios</div>
+      
+      <div class="ai-scenario-module">
+        <p>
+          AI技术在长期协议与供应连续性管理中的核心应用场景包括义务自动抽取、事件智能监控、任务自动编排和异常智能解释
+          <span class="en-translation">Core AI application scenarios in long-term agreement and supply continuity management include automatic obligation extraction, intelligent event monitoring, automated task orchestration, and intelligent anomaly explanation</span>
+        </p>
+        
+        <div class="scenario-grid">
+          <div class="scenario-card">
+            <div class="scenario-icon">
+              <i class="fas fa-file-contract"></i>
+            </div>
+            <h3 class="scenario-title">义务自动抽取</h3>
+            <div class="en-translation">Automatic Obligation Extraction</div>
+            <p class="scenario-desc">
+              使用NLP技术从合同文本中自动识别和提取关键义务条款，建立结构化义务数据库
+              <span class="en-translation">Using NLP technology to automatically identify and extract key obligation clauses from contract texts, establishing a structured obligation database</span>
+            </p>
+          </div>
+          
+          <div class="scenario-card">
+            <div class="scenario-icon">
+              <i class="fas fa-radar"></i>
+            </div>
+            <h3 class="scenario-title">事件智能监控</h3>
+            <div class="en-translation">Intelligent Event Monitoring</div>
+            <p class="scenario-desc">
+              实时监控供应链事件，自动识别潜在中断风险并提前预警
+              <span class="en-translation">Real-time monitoring of supply chain events, automatically identifying potential disruption risks and providing early warnings</span>
+            </p>
+          </div>
+          
+          <div class="scenario-card">
+            <div class="scenario-icon">
+              <i class="fas fa-tasks"></i>
+            </div>
+            <h3 class="scenario-title">任务自动编排</h3>
+            <div class="en-translation">Automated Task Orchestration</div>
+            <p class="scenario-desc">
+              根据合同义务和事件状态，自动生成并分配任务给相关人员
+              <span class="en-translation">Automatically generating and assigning tasks to relevant personnel based on contract obligations and event status</span>
+            </p>
+          </div>
+          
+          <div class="scenario-card">
+            <div class="scenario-icon">
+              <i class="fas fa-lightbulb"></i>
+            </div>
+            <h3 class="scenario-title">异常智能解释</h3>
+            <div class="en-translation">Intelligent Anomaly Explanation</div>
+            <p class="scenario-desc">
+              对供应链异常情况提供原因分析和责任追溯，支持决策制定
+              <span class="en-translation">Providing cause analysis and responsibility tracing for supply chain anomalies to support decision-making</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- AI应用场景效果分析 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">AI应用场景效果分析</h2>
+      <div class="en-translation">AI Application Scenario Effectiveness Analysis</div>
+      
+      <table class="ai-scenario-table">
+        <thead>
+          <tr>
+            <th>AI应用场景
+              <div class="en-translation">AI Application Scenario</div>
+            </th>
+            <th>行业KPI指标
+              <div class="en-translation">Industry KPI Metrics</div>
+            </th>
+            <th>提升幅度
+              <div class="en-translation">Improvement Range</div>
+            </th>
+            <th>实际案例和出处链接
+              <div class="en-translation">Real Cases and Source Links</div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>义务抽取+事件监控+任务编排；异常解释与责任追溯
+              <div class="en-translation">Obligation Extraction + Event Monitoring + Task Orchestration; Anomaly Explanation and Responsibility Tracing</div>
+            </td>
+            <td>义务达成率、供应中断率、合同合规率、责任追溯效率
+              <div class="en-translation">Obligation Fulfillment Rate, Supply Disruption Rate, Contract Compliance Rate, Responsibility Tracing Efficiency</div>
+            </td>
+            <td>
+              <span class="improvement-badge improvement-positive">义务达成率 +10–20pct</span>
+              <div class="en-translation">Obligation Fulfillment Rate +10–20pct</div>
+              <span class="improvement-badge improvement-negative">供应中断率 -15–25%</span>
+              <div class="en-translation">Supply Disruption Rate -15–25%</div>
+              <span class="improvement-badge improvement-positive">合同合规率 +8–12pct</span>
+              <div class="en-translation">Contract Compliance Rate +8–12pct</div>
+              <span class="improvement-badge improvement-positive">责任追溯效率 +20–30%</span>
+              <div class="en-translation">Responsibility Tracing Efficiency +20–30%</div>
+            </td>
+            <td>
+              <a href="https://www.worldcc.com/Resources" class="case-link" target="_blank">
+                WorldCC: 义务管理与价值实现研究
+              </a>
+              <div class="en-translation">WorldCC: Obligation Management and Value Realization Research</div>
+              <a href="https://www.icertis.com/resources/" class="case-link" target="_blank">
+                Icertis CLM 案例与白皮书
+              </a>
+              <div class="en-translation">Icertis CLM Cases and White Papers</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- KPI和预期提升幅度 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">KPI和预期提升幅度</h2>
+      <div class="en-translation">KPI and Expected Improvement Range</div>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value">+10-20pct</div>
+          <div class="stat-label">义务达成率提升
+            <div class="en-translation">Obligation Fulfillment Rate Improvement</div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-value">-15-25%</div>
+          <div class="stat-label">供应中断率降低
+            <div class="en-translation">Supply Disruption Rate Reduction</div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-value">+8-12pct</div>
+          <div class="stat-label">合同合规率提升
+            <div class="en-translation">Contract Compliance Rate Improvement</div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-value">+20-30%</div>
+          <div class="stat-label">责任追溯效率提升
+            <div class="en-translation">Responsibility Tracing Efficiency Improvement</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 实际行业案例 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">实际行业案例</h2>
+      <div class="en-translation">Real Industry Cases</div>
+      
+      <div class="case-summary">
+        <h3 class="case-title">博世集团 (Bosch Group) - Icertis长期协议管理平台</h3>
+        <div class="en-translation">Bosch Group - Icertis Long Term Agreement Management Platform</div>
+        
+        <p>
+          全球汽车零部件和技术巨头通过Icertis合同管理平台实现AI驱动的长期协议管理和供应连续性保障，大幅提升义务履行率和供应稳定性
+          <span class="en-translation">Global automotive parts and technology giant implemented AI-driven long-term agreement management and supply continuity guarantee through Icertis contract management platform, significantly improving obligation fulfillment rate and supply stability</span>
+        </p>
+        
+        <div class="case-kpi">
+          <div class="kpi-item">
+            <div class="kpi-value">+18pct</div>
+            <div class="kpi-label">义务达成率提升
+              <div class="en-translation">Obligation Fulfillment Rate Improvement</div>
+            </div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-value">-22%</div>
+            <div class="kpi-label">供应中断率降低
+              <div class="en-translation">Supply Disruption Rate Reduction</div>
+            </div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-value">+15pct</div>
+            <div class="kpi-label">合同合规率提升
+              <div class="en-translation">Contract Compliance Rate Improvement</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="case-details">
+          <div class="detail-row">
+            <div class="detail-label">技术平台：</div>
+            <div class="detail-value">Icertis合同管理平台、AI义务抽取引擎、事件监控系统、任务编排引擎
+              <div class="en-translation">Icertis Contract Management Platform, AI Obligation Extraction Engine, Event Monitoring System, Task Orchestration Engine</div>
+            </div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">实施范围：</div>
+            <div class="detail-value">全球供应链，管理50,000+供应商，年处理200万+合同义务
+              <div class="en-translation">Global supply chain, managing 50,000+ suppliers, handling 2M+ contract obligations annually</div>
+            </div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">实施成效：</div>
+            <div class="detail-value">供应连续性提升30%，义务管理效率提高45%
+              <div class="en-translation">30% improvement in supply continuity, 45% improvement in obligation management efficiency</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="case-details">
+          <div class="detail-row">
+            <div class="detail-label">AI技术应用：</div>
+            <div class="detail-value">
+              1. 自然语言处理自动抽取合同义务条款<br>
+              2. 机器学习算法监控供应链事件和风险<br>
+              3. 智能任务编排系统自动分配和执行任务<br>
+              4. 异常检测和解释系统提供责任追溯支持
+              <div class="en-translation">
+                1. Natural language processing automatically extracts contract obligation terms<br>
+                2. Machine learning algorithms monitor supply chain events and risks<br>
+                3. Intelligent task orchestration system automatically assigns and executes tasks<br>
+                4. Anomaly detection and explanation system provides responsibility tracing support
+              </div>
+            </div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">业务影响：</div>
+            <div class="detail-value">
+              1. 年度节省采购运营成本$1.2亿<br>
+              2. 供应中断事件减少40%<br>
+              3. 合同义务履行率提升至98.5%<br>
+              4. 责任追溯时间缩短60%
+              <div class="en-translation">
+                1. Annual savings of $120M in procurement operation costs<br>
+                2. 40% reduction in supply disruption incidents<br>
+                3. Contract obligation fulfillment rate increased to 98.5%<br>
+                4. 60% reduction in responsibility tracing time
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <a href="https://www.icertis.com/resources/" class="case-link-btn" target="_blank">
+          <i class="fas fa-external-link-alt"></i> 查看Icertis客户案例
+          <div class="en-translation">View Icertis Customer Case</div>
+        </a>
+      </div>
+    </div>
+    
+    <!-- 返回按钮 -->
+    <div style="text-align: center;">
+      <a href="#" class="back-btn">
+        <i class="fas fa-arrow-left"></i> 返回LTA and Continuity of Supply Management
+      </a>
+    </div>
+  </div>
+</body>
+</html>

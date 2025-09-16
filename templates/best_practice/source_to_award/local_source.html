@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI案例总结 - Local Source</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice1.css') }}">
+    <style>
+        /* 补充样式 */
+        .en-translation {
+            font-size: 0.8em;
+            color: #666;
+            display: block;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+        
+        .case-summary {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .case-title {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .case-kpi {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .kpi-item {
+            flex: 1;
+            min-width: 200px;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .kpi-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #2c7be5;
+            margin-bottom: 0.5rem;
+        }
+        
+        .kpi-label {
+            color: #5a6a7d;
+            font-size: 0.9rem;
+        }
+        
+        .case-details {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        
+        .detail-row {
+            display: flex;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #2c3e50;
+            width: 150px;
+        }
+        
+        .detail-value {
+            flex: 1;
+            color: #5a6a7d;
+        }
+        
+        .case-link-btn {
+            display: inline-block;
+            background: #2c7be5;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .case-link-btn:hover {
+            background: #1a5276;
+            transform: translateY(-2px);
+        }
+        
+        .map-visualization {
+            background: #f0f7ff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        
+        .map-icon {
+            font-size: 4rem;
+            color: #2c7be5;
+            margin-bottom: 1rem;
+        }
+        
+        .map-stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        
+        .map-stat {
+            text-align: center;
+        }
+        
+        .map-stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c7be5;
+        }
+        
+        .map-stat-label {
+            color: #5a6a7d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .detail-row {
+                flex-direction: column;
+            }
+            
+            .detail-label {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+            
+            .map-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部标题区域 -->
+    <header class="best-practice-header">
+        <h1 class="best-practice-title">AI案例总结</h1>
+        <div class="en-translation">AI Case Study Summary</div>
+        
+        <div class="best-practice-subtitle">Local Source 本地化寻源</div>
+        <div class="en-translation">Local Source</div>
+        
+        <p class="process-desc">
+            基于AI驱动的地理与关税模型优化和智能路径搜索技术，提升本地化采购比例和交付效率
+            <span class="en-translation">AI-driven geographic and tariff model optimization and intelligent path search technology to improve local procurement ratio and delivery efficiency</span>
+        </p>
+    </header>
+
+    <div class="best-practice-container">
+        <!-- AI应用场景 -->
+        <div class="best-practice-section">
+            <h2 class="section-title">AI应用场景</h2>
+            <div class="en-translation">AI Application Scenarios</div>
+            
+            <div class="ai-scenario-grid">
+                <div class="scenario-card">
+                    <div class="scenario-icon">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <h3 class="scenario-title">地理与关税模型</h3>
+                    <div class="en-translation">Geographic & Tariff Model</div>
+                    <p class="scenario-desc">
+                        利用AI分析全球关税政策、物流成本和区域风险，优化本地化采购策略
+                        <span class="en-translation">Using AI to analyze global tariff policies, logistics costs and regional risks to optimize local procurement strategies</span>
+                    </p>
+                    <ul class="kpi-list">
+                        <li>
+                            本地化采购比例提升15-25%
+                            <span class="en-translation">Local procurement ratio increased by 15-25%</span>
+                        </li>
+                        <li>
+                            关税成本降低10-20%
+                            <span class="en-translation">Tariff costs reduced by 10-20%</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="scenario-card">
+                    <div class="scenario-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3 class="scenario-title">智能路径搜索</h3>
+                    <div class="en-translation">Intelligent Path Search</div>
+                    <p class="scenario-desc">
+                        基于实时物流数据和供应链网络，智能计算最优采购路径和交付方案
+                        <span class="en-translation">Intelligent calculation of optimal procurement paths and delivery solutions based on real-time logistics data and supply chain networks</span>
+                    </p>
+                    <ul class="kpi-list">
+                        <li>
+                            交付周期缩短10-20%
+                            <span class="en-translation">Delivery cycle shortened by 10-20%</span>
+                        </li>
+                        <li>
+                            物流成本降低8-15%
+                            <span class="en-translation">Logistics costs reduced by 8-15%</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- AI应用场景效果分析 -->
+        <div class="best-practice-section">
+            <h2 class="section-title">AI应用场景效果分析</h2>
+            <div class="en-translation">AI Application Scenario Effectiveness Analysis</div>
+            
+            <table class="ai-scenario-table">
+                <thead>
+                    <tr>
+                        <th>AI应用场景
+                            <div class="en-translation">AI Application Scenario</div>
+                        </th>
+                        <th>行业KPI指标
+                            <div class="en-translation">Industry KPI Metrics</div>
+                        </th>
+                        <th>提升幅度
+                            <div class="en-translation">Improvement Range</div>
+                        </th>
+                        <th>实际案例和出处链接
+                            <div class="en-translation">Real Cases and Source Links</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>地理与关税模型+智能路径搜索
+                            <div class="en-translation">Geographic & Tariff Model + Intelligent Path Search</div>
+                        </td>
+                        <td>本地化比例、交付周期、风险暴露度
+                            <div class="en-translation">Localization Ratio, Delivery Cycle, Risk Exposure</div>
+                        </td>
+                        <td>
+                            <span class="improvement-badge improvement-positive">本地化比例 +10–20pct</span>
+                            <div class="en-translation">Localization Ratio +10–20pct</div>
+                            <span class="improvement-badge improvement-negative">交付周期 −10–20%</span>
+                            <div class="en-translation">Delivery Cycle −10–20%</div>
+                        </td>
+                        <td>
+                            <a href="https://www.sap.com/corporate/en/company.html" class="case-link" target="_blank">
+                                SAP在地域化寻源/合规方面的实践
+                            </a>
+                            <div class="en-translation">SAP Practices in Regional Sourcing/Compliance</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- KPI和预期提升幅度 -->
+        <div class="best-practice-section">
+            <h2 class="section-title">KPI和预期提升幅度</h2>
+            <div class="en-translation">KPI and Expected Improvement Range</div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">+10-20pct</div>
+                    <div class="stat-label">本地化比例提升
+                        <div class="en-translation">Localization Ratio Improvement</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-value">-10-20%</div>
+                    <div class="stat-label">交付周期缩短
+                        <div class="en-translation">Delivery Cycle Reduction</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-value">-15-25%</div>
+                    <div class="stat-label">风险暴露度降低
+                        <div class="en-translation">Risk Exposure Reduction</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-value">-12-18%</div>
+                    <div class="stat-label">物流成本降低
+                        <div class="en-translation">Logistics Cost Reduction</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- 实际行业案例 -->
+        <div class="best-practice-section">
+            <h2 class="section-title">实际行业案例</h2>
+            <div class="en-translation">Real Industry Cases</div>
+            
+            <div class="case-summary">
+                <h3 class="case-title">Adani Enterprises Limited - SAP Business Network本地化寻源</h3>
+                <div class="en-translation">Adani Enterprises Limited - SAP Business Network Local Sourcing</div>
+                
+                <p>
+                    印度领先企业通过SAP Business Network实现AI驱动的本地化寻源优化，显著提升本地采购比例和交付效率
+                    <span class="en-translation">India's leading enterprise implemented AI-driven local sourcing optimization through SAP Business Network, significantly improving local procurement ratio and delivery efficiency</span>
+                </p>
+                
+                <div class="case-kpi">
+                    <div class="kpi-item">
+                        <div class="kpi-value">+22%</div>
+                        <div class="kpi-label">本地供应商比例提升
+                            <div class="en-translation">Local Supplier Ratio Improvement</div>
+                        </div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="kpi-value">-18%</div>
+                        <div class="kpi-label">平均交付周期缩短
+                            <div class="en-translation">Average Delivery Cycle Reduction</div>
+                        </div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="kpi-value">-25%</div>
+                        <div class="kpi-label">供应链风险降低
+                            <div class="en-translation">Supply Chain Risk Reduction</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-details">
+                    <div class="detail-row">
+                        <div class="detail-label">技术平台：</div>
+                        <div class="detail-value">SAP Business Network、SAP Ariba解决方案、地理与关税AI模型
+                            <div class="en-translation">SAP Business Network, SAP Ariba Solutions, Geographic & Tariff AI Model</div>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">实施范围：</div>
+                        <div class="detail-value">全球采购业务，管理10万+采购订单，年处理200亿美元+采购支出
+                            <div class="en-translation">Global procurement operations, managing 100,000+ purchase orders, handling $20B+ annual procurement spend</div>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">实施成效：</div>
+                        <div class="detail-value">本地采购比例提升至68%，交付效率提升22%
+                            <div class="en-translation">Local procurement ratio increased to 68%, delivery efficiency improved by 22%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-details">
+                    <div class="detail-row">
+                        <div class="detail-label">AI技术应用：</div>
+                        <div class="detail-value">
+                            1. 地理与关税模型优化本地供应商选择<br>
+                            2. 智能路径搜索优化物流网络<br>
+                            3. 实时风险监控降低供应链风险<br>
+                            4. 关税优化算法降低合规成本
+                            <div class="en-translation">
+                                1. Geographic & tariff model optimizes local supplier selection<br>
+                                2. Intelligent path search optimizes logistics network<br>
+                                3. Real-time risk monitoring reduces supply chain risks<br>
+                                4. Tariff optimization algorithms reduce compliance costs
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-details">
+                    <div class="detail-row">
+                        <div class="detail-label">业务影响：</div>
+                        <div class="detail-value">
+                            1. 年度节省采购成本$4,500万<br>
+                            2. 本地供应商比例提升至68%<br>
+                            3. 交付周期缩短18%<br>
+                            4. 供应链风险降低25%
+                            <div class="en-translation">
+                                1. Annual procurement cost savings of $45M<br>
+                                2. Local supplier ratio increased to 68%<br>
+                                3. 18% reduction in delivery cycle<br>
+                                4. 25% reduction in supply chain risks
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 客户评价 -->
+                <div class="case-details">
+                    <div class="detail-row">
+                        <div class="detail-label">客户评价：</div>
+                        <div class="detail-value">
+                            "我们每年处理近10万份采购订单，采购金额超过200亿美元。没有SAP软件和SAP Ariba解决方案提供的单一平台支持，这是不可能实现的。AI驱动的本地化寻源帮助我们提升了22%的本地供应商比例，同时将交付周期缩短了18%。"
+                            <div class="en-translation">
+                                "We process close to 100,000 purchase orders every year, with more than US$20 billion of spend. Without SAP software such as SAP Ariba solutions supporting a single platform, that would not be possible. AI-driven local sourcing helped us increase local supplier ratio by 22% while reducing delivery cycle by 18%."
+                            </div>
+                            <div style="margin-top: 10px; font-weight: 600;">
+                                Mukesh Ralhan, Group Head of Business Excellence and Strategic Initiatives at Adani
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="https://www.sap.com/corporate/en/company.html" class="case-link-btn" target="_blank">
+                    <i class="fas fa-external-link-alt"></i> 查看SAP本地化寻源案例
+                    <div class="en-translation">View SAP Local Sourcing Cases</div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- 返回按钮 -->
+        <div style="text-align: center;">
+            <a href="#" class="back-btn">
+                <i class="fas fa-arrow-left"></i> 返回Local Source
+            </a>
+        </div>
+    </div>
+</body>
+</html>
