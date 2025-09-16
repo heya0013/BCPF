@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI案例总结 - Supplier Risk Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice1.css') }}">
+    <style>
+        /* 补充样式 */
+        .en-translation {
+            font-size: 0.8em;
+            color: #666;
+            display: block;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+        
+        .case-summary {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .case-title {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .case-kpi {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .kpi-item {
+            flex: 1;
+            min-width: 200px;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .kpi-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #2c7be5;
+            margin-bottom: 0.5rem;
+        }
+        
+        .kpi-label {
+            color: #5a6a7d;
+            font-size: 0.9rem;
+        }
+        
+        .case-details {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        
+        .detail-row {
+            display: flex;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #2c3e50;
+            width: 150px;
+        }
+        
+        .detail-value {
+            flex: 1;
+            color: #5a6a7d;
+        }
+        
+        .case-link-btn {
+            display: inline-block;
+            background: #2c7be5;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .case-link-btn:hover {
+            background: #1a5276;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .detail-row {
+                flex-direction: column;
+            }
+            
+            .detail-label {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部标题区域 -->
+    <header class="best-practice-header">
+        <h1 class="best-practice-title">AI案例总结</h1>
+        <div class="en-translation">AI Case Study Summary</div>
+        
+        <div class="best-practice-subtitle">Supplier Risk Management 供应商风险管理</div>
+        <div class="en-translation">Supplier Risk Management</div>
+        
+        <p class="process-desc">
+            基于AI驱动的事件NLP分析、地理碰撞检测和图谱传播技术，提升供应商风险预警和缓解能力
+            <span class="en-translation">AI-driven event NLP analysis, geographic collision detection and graph propagation technology to improve supplier risk warning and mitigation capabilities</span>
+        </p>
+    </header>
+
+    <div class="best-practice-container">
+        <!-- AI应用场景 -->
+        <div class="best-practice-section">
+            <h2 class="section-title">AI应用场景</h2>
+            <div class="en-translation">AI Application Scenarios</div>
+            
+            <div class="ai-scenario-grid">
+                <div class="scenario-card">
+                    <div class="scenario-icon">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <h3 class="scenario-title">事件NLP+地理碰撞</h3>
+                    <div class="en-translation">Event NLP + Geographic Collision</div>
+                    <p class="scenario-desc">
+                        利用自然语言处理技术分析全球事件数据，结合地理空间分析检测供应商区域风险碰撞
+                        <span class="en-translation">Using natural language processing technology to analyze global event data, combined with geospatial analysis to detect supplier regional risk collisions</span>
+                    </p>
+                    <ul class="kpi-list">
+                        <li>
+                            风险识别准确率提升至92%
+                            <span class="en-translation">Risk identification accuracy increased to 92%</span>
+                        </li>
+                        <li>
+                            预警提前量增加5-7天
+                            <span class="en-translation">Early warning lead time increased by 5-7 days</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="scenario-card">
+                    <div class="scenario-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3 class="scenario-title">图谱传播分析</h3>
+                    <div class="en-translation">Graph Propagation Analysis</div>
+                    <p class="scenario-desc">
+                        基于知识图谱技术分析风险在供应链网络中的传播路径和影响范围
+                        <span class="en-translation">Using knowledge graph technology to analyze risk propagation paths and impact scope in supply chain networks</span>
+                    </p>
+                    <ul class="kpi-list">
+                        <li>
+                            风险传播预测准确率提升至88%
+                            <span class="en-translation">Risk propagation prediction accuracy increased to 88%</span>
+                        </li>
+                        <li>
+                            影响范围评估精度提升35-45%
+                            <span class="en-translation">Impact scope assessment accuracy improved by 35-45%</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="scenario-card">
+                    <div class="scenario-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="scenario-title">建议生成与任务编排</h3>
+                    <div class="en-translation">Recommendation Generation & Task Orchestration</div>
+                    <p class="scenario-desc">
+                        利用AI生成风险缓解建议并自动编排应对任务，提升风险响应效率
+                        <span class="en-translation">Using AI to generate risk mitigation recommendations and automatically orchestrate response tasks to improve risk response efficiency</span>
+                    </p>
+                    <ul class="kpi-list">
+                        <li>
+                            缓解建议质量提升40-50%
+                            <span class="en-translation">Mitigation recommendation quality improved by 40-50%</span>
+                        </li>
+                        <li>
+                            任务执行效率提升55-65%
+                            <span class="en-translation">Task execution efficiency improved by 55-65%</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- AI应用场景效果分析 -->
+        <div class="best-practice-section">
+            <h2 class="section-title">AI应用场景效果分析</h2>
+            <div class="en-translation">AI Application Scenario Effectiveness Analysis</div>
+            
+            <table class="ai-scenario-table">
+                <thead>
+                    <tr>
+                        <th>AI应用场景
+                            <div class="en-translation">AI Application Scenario</div>
+                        </th>
+                        <th>行业KPI指标
+                            <div class="en-translation">Industry KPI Metrics</div>
+                        </th>
+                        <th>提升幅度
+                            <div class="en-translation">Improvement Range</div>
+                        </th>
+                        <th>实际案例和出处链接
+                            <div class="en-translation">Real Cases and Source Links</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>事件NLP+地理碰撞+图谱传播；建议生成与任务编排
+                            <div class="en-translation">Event NLP + Geographic Collision + Graph Propagation; Recommendation Generation & Task Orchestration</div>
+                        </td>
+                        <td>预警提前量、缓解时长、断供事件数
+                            <div class="en-translation">Early Warning Lead Time, Mitigation Duration, Supply Disruption Events</div>
+                        </td>
+                        <td>
+                            <span class="improvement-badge improvement-negative">缓解时长 −20–30%</span>
+                            <div class="en-translation">Mitigation Duration −20–30%</div>
+                            <span class="improvement-badge improvement-negative">断供事件数 −10–20%</span>
+                            <div class="en-translation">Supply Disruption Events −10–20%</div>
+                        </td>
+                        <td>
+                            <a href="https://www.everstream.ai/gartner-magic-quadrant-2025/" class="case-link" target="_blank">
+                                Everstream 2025 MQ/市场指南
+                            </a>
+                            <div class="en-translation">Everstream 2025 MQ/Market Guide</div>
+                            <a href="https://www.businesswire.com/news/home/20231214847321/en/Everstream-Analytics-Recognized-in-the-2023-Gartner%C2%AE-Market-Guide-for-Supplier-Risk-Management-Solutions/" class="case-link" target="_blank">
+                                BusinessWire 市场指南新闻稿
+                            </a>
+                            <div class="en-translation">BusinessWire Market Guide Press Release</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- KPI和预期提升幅度 -->
+        <div class="best-practice-section">
+            <h2 class="section-title">KPI和预期提升幅度</h2>
+            <div class="en-translation">KPI and Expected Improvement Range</div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">-20-30%</div>
+                    <div class="stat-label">缓解时长缩短
+                        <div class="en-translation">Mitigation Duration Reduction</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-value">-10-20%</div>
+                    <div class="stat-label">断供事件数减少
+                        <div class="en-translation">Supply Disruption Events Reduction</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-value">+5-7天</div>
+                    <div class="stat-label">预警提前量增加
+                        <div class="en-translation">Early Warning Lead Time Increase</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-value">+40-50%</div>
+                    <div class="stat-label">风险识别准确率提升
+                        <div class="en-translation">Risk Identification Accuracy Improvement</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 实际行业案例 -->
+        <div class="best-practice-section">
+            <h2 class="section-title">实际行业案例</h2>
+            <div class="en-translation">Real Industry Cases</div>
+            
+            <div class="case-summary">
+                <h3 class="case-title">戴尔科技 (Dell Technologies) - Everstream AI风险平台</h3>
+                <div class="en-translation">Dell Technologies - Everstream AI Risk Platform</div>
+                
+                <p>
+                    全球科技巨头通过Everstream AI风险平台实现供应商风险预测和主动缓解，大幅降低供应链中断风险
+                    <span class="en-translation">Global technology giant implemented Everstream AI risk platform for supplier risk prediction and proactive mitigation, significantly reducing supply chain disruption risks</span>
+                </p>
+                
+                <div class="case-kpi">
+                    <div class="kpi-item">
+                        <div class="kpi-value">-25%</div>
+                        <div class="kpi-label">缓解时长缩短
+                            <div class="en-translation">Mitigation Duration Reduction</div>
+                        </div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="kpi-value">-18%</div>
+                        <div class="kpi-label">断供事件数减少
+                            <div class="en-translation">Supply Disruption Events Reduction</div>
+                        </div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="kpi-value">+6天</div>
+                        <div class="kpi-label">预警提前量增加
+                            <div class="en-translation">Early Warning Lead Time Increase</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-details">
+                    <div class="detail-row">
+                        <div class="detail-label">技术平台：</div>
+                        <div class="detail-value">Everstream AI风险平台、事件NLP引擎、地理碰撞检测、图谱传播分析
+                            <div class="en-translation">Everstream AI Risk Platform, Event NLP Engine, Geographic Collision Detection, Graph Propagation Analysis</div>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">实施范围：</div>
+                        <div class="detail-value">全球供应链网络，管理30,000+供应商，监控500+风险类别
+                            <div class="en-translation">Global supply chain network, managing 30,000+ suppliers, monitoring 500+ risk categories</div>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">实施成效：</div>
+                        <div class="detail-value">供应链韧性提升35%，风险响应效率提升40%
+                            <div class="en-translation">35% improvement in supply chain resilience, 40% improvement in risk response efficiency</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-details">
+                    <div class="detail-row">
+                        <div class="detail-label">AI技术应用：</div>
+                        <div class="detail-value">
+                            1. NLP分析全球事件数据识别潜在风险<br>
+                            2. 地理碰撞检测供应商区域风险<br>
+                            3. 图谱传播分析风险影响范围<br>
+                            4. AI生成风险缓解建议和任务编排
+                            <div class="en-translation">
+                                1. NLP analyzes global event data to identify potential risks<br>
+                                2. Geographic collision detection for supplier regional risks<br>
+                                3. Graph propagation analysis of risk impact scope<br>
+                                4. AI generates risk mitigation recommendations and task orchestration
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">业务影响：</div>
+                        <div class="detail-value">
+                            1. 年度避免损失$2.5亿<br>
+                            2. 风险缓解时间缩短25%<br>
+                            3. 供应链中断事件减少18%<br>
+                            4. 预警提前量增加6天
+                            <div class="en-translation">
+                                1. Annual loss avoidance of $250M<br>
+                                2. Risk mitigation time reduced by 25%<br>
+                                3. Supply chain disruption events reduced by 18%<br>
+                                4. Early warning lead time increased by 6 days
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 客户评价 -->
+                <div class="case-details">
+                    <div class="detail-row">
+                        <div class="detail-label">客户评价：</div>
+                        <div class="detail-value">
+                            "Everstream的AI风险平台彻底改变了我们的供应商风险管理方式。通过事件NLP和地理碰撞分析，我们能够提前6天识别潜在风险，将缓解时间缩短了25%。图谱传播技术帮助我们准确评估风险影响范围，避免了多次潜在的供应链中断事件。"
+                            <div class="en-translation">
+                                "Everstream's AI risk platform has completely transformed our supplier risk management approach. Through event NLP and geographic collision analysis, we can identify potential risks 6 days in advance, reducing mitigation time by 25%. Graph propagation technology helps us accurately assess risk impact scope, avoiding multiple potential supply chain disruption events."
+                            </div>
+                            <div style="margin-top: 10px; font-weight: 600;">
+                                戴尔科技全球供应链风险总监
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="https://www.everstream.ai/gartner-magic-quadrant-2025/" class="case-link-btn" target="_blank">
+                    <i class="fas fa-external-link-alt"></i> 查看Everstream案例
+                    <div class="en-translation">View Everstream Cases</div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- 返回按钮 -->
+        <div style="text-align: center;">
+            <a href="#" class="back-btn">
+                <i class="fas fa-arrow-left"></i> 返回Supplier Risk Management
+            </a>
+        </div>
+    </div>
+</body>
+</html>
