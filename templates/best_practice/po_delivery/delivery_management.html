@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice.css') }}">
   <style>
-    
     /* 特定于本页的补充样式 */
     .case-summary {
       background: #f8f9fa;
@@ -145,6 +144,15 @@
       margin-bottom: 8px;
     }
     
+    /* 新增翻译样式 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.25rem;
+      font-style: italic;
+    }
+    
     @media (max-width: 768px) {
       .best-practice-title {
         font-size: 2.2rem;
@@ -185,37 +193,64 @@
 <body>
   <!-- 顶部标题区域 -->
   <header class="best-practice-header">
-    <h1 class="best-practice-title">AI案例总结</h1>
-    <div class="best-practice-subtitle">Delivery Management 交付管理解决方案</div>
-    <p>基于异常检测、策略编排和LLM处置清单技术提升交付履约率和效率</p>
+    <h1 class="best-practice-title">AI案例总结
+      <div class="en-translation">AI Case Study Summary</div>
+    </h1>
+    <div class="best-practice-subtitle">Delivery Management 交付管理解决方案
+      <div class="en-translation">Delivery Management Solution</div>
+    </div>
+    <p>基于异常检测、策略编排和LLM处置清单技术提升交付履约率和效率
+      <span class="en-translation">Improving delivery fulfillment rate and efficiency based on anomaly detection, strategy orchestration and LLM disposal list technology</span>
+    </p>
   </header>
 
   <div class="best-practice-container">
     <!-- AI应用场景效果分析 -->
     <div class="best-practice-section">
-      <h2 class="section-title">AI应用场景效果分析</h2>
+      <h2 class="section-title">AI应用场景效果分析
+        <div class="en-translation">AI Application Scenario Effectiveness Analysis</div>
+      </h2>
       
       <table class="ai-case-table">
         <thead>
           <tr>
-            <th>AI应用场景</th>
-            <th>行业KPI指标</th>
-            <th>提升幅度</th>
-            <th>实际案例和出处链接</th>
+            <th>AI应用场景
+              <div class="en-translation">AI Application Scenario</div>
+            </th>
+            <th>行业KPI指标
+              <div class="en-translation">Industry KPI Metrics</div>
+            </th>
+            <th>提升幅度
+              <div class="en-translation">Improvement Range</div>
+            </th>
+            <th>实际案例和出处链接
+              <div class="en-translation">Real Cases and Source Links</div>
+            </th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>异常检测+策略编排+LLM处置清单与复盘生成</td>
-            <td>异常关闭时长、加急成本、承诺履约率</td>
+            <td>异常检测+策略编排+LLM处置清单与复盘生成
+              <div class="en-translation">Anomaly Detection + Strategy Orchestration + LLM Disposal List and Review Generation</div>
+            </td>
+            <td>异常关闭时长、加急成本、承诺履约率
+              <div class="en-translation">Anomaly Closure Time, Expedited Cost, Commitment Fulfillment Rate</div>
+            </td>
             <td>
-              <span class="improvement-badge improvement-negative">关闭时长 -20–30%</span>
-              <span class="improvement-badge improvement-negative">加急成本 -15–25%</span>
-              <span class="improvement-badge improvement-positive">履约率 +3–6pct</span>
+              <span class="improvement-badge improvement-negative">关闭时长 -20–30%
+                <div class="en-translation">Closure Time -20–30%</div>
+              </span>
+              <span class="improvement-badge improvement-negative">加急成本 -15–25%
+                <div class="en-translation">Expedited Cost -15–25%</div>
+              </span>
+              <span class="improvement-badge improvement-positive">履约率 +3–6pct
+                <div class="en-translation">Fulfillment Rate +3–6pct</div>
+              </span>
             </td>
             <td>
               <a href="https://www.apqc.org/research-library/benchmarking/procurement-key-benchmarks" class="case-link" target="_blank">
                 APQC 交付/履约口径与指标参考
+                <div class="en-translation">APQC Delivery/Fulfillment Metrics and Indicators Reference</div>
               </a>
             </td>
           </tr>
@@ -223,205 +258,297 @@
       </table>
       
       <div class="apqc-reference">
-        <div class="reference-title">APQC交付管理行业基准数据（基于2023年数据集）</div>
-        <p>根据APQC Open Standards Benchmarking数据，行业领先企业在交付管理方面的表现：</p>
+        <div class="reference-title">APQC交付管理行业基准数据（基于2023年数据集）
+          <div class="en-translation">APQC Delivery Management Industry Benchmark Data (Based on 2023 Dataset)</div>
+        </div>
+        <p>根据APQC Open Standards Benchmarking数据，行业领先企业在交付管理方面的表现：
+          <span class="en-translation">According to APQC Open Standards Benchmarking data, the performance of industry-leading companies in delivery management:</span>
+        </p>
         <ul>
-          <li>异常关闭周期：行业中位数 7.5天 | 标杆企业 ≤4.5天</li>
-          <li>加急成本占比：行业中位数 8.2% | 标杆企业 ≤4.5%</li>
-          <li>承诺履约率：行业中位数 88% | 标杆企业 ≥94%</li>
-          <li>订单完美率：行业中位数 92% | 标杆企业 ≥97%</li>
+          <li>异常关闭周期：行业中位数 7.5天 | 标杆企业 ≤4.5天
+            <div class="en-translation">Anomaly Closure Cycle: Industry Median 7.5 Days | Benchmark Companies ≤4.5 Days</div>
+          </li>
+          <li>加急成本占比：行业中位数 8.2% | 标杆企业 ≤4.5%
+            <div class="en-translation">Expedited Cost Ratio: Industry Median 8.2% | Benchmark Companies ≤4.5%</div>
+          </li>
+          <li>承诺履约率：行业中位数 88% | 标杆企业 ≥94%
+            <div class="en-translation">Commitment Fulfillment Rate: Industry Median 88% | Benchmark Companies ≥94%</div>
+          </li>
+          <li>订单完美率：行业中位数 92% | 标杆企业 ≥97%
+            <div class="en-translation">Perfect Order Rate: Industry Median 92% | Benchmark Companies ≥97%</div>
+          </li>
         </ul>
       </div>
     </div>
     
     <!-- KPI和预期提升幅度 -->
     <div class="best-practice-section">
-      <h2 class="section-title">KPI和预期提升幅度</h2>
+      <h2 class="section-title">KPI和预期提升幅度
+        <div class="en-translation">KPI and Expected Improvement Range</div>
+      </h2>
       
       <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-value">-20–30%</div>
-          <div class="stat-label">异常关闭时长缩短</div>
+          <div class="stat-label">异常关闭时长缩短
+            <div class="en-translation">Anomaly Closure Time Reduction</div>
+          </div>
         </div>
         
         <div class="stat-card">
           <div class="stat-value">-15–25%</div>
-          <div class="stat-label">加急成本降低</div>
+          <div class="stat-label">加急成本降低
+            <div class="en-translation">Expedited Cost Reduction</div>
+          </div>
         </div>
         
         <div class="stat-card">
           <div class="stat-value">+3–6pct</div>
-          <div class="stat-label">承诺履约率提升</div>
+          <div class="stat-label">承诺履约率提升
+            <div class="en-translation">Commitment Fulfillment Rate Improvement</div>
+          </div>
         </div>
         
         <div class="stat-card">
           <div class="stat-value">+5–8pct</div>
-          <div class="stat-label">订单完美率提升</div>
+          <div class="stat-label">订单完美率提升
+            <div class="en-translation">Perfect Order Rate Improvement</div>
+          </div>
         </div>
       </div>
     </div>
     
     <!-- 实际行业案例 -->
     <div class="best-practice-section">
-      <h2 class="section-title">实际行业案例</h2>
+      <h2 class="section-title">实际行业案例
+        <div class="en-translation">Real Industry Cases</div>
+      </h2>
       
       <div class="case-summary">
-        <h3 class="case-title">联邦快递 (FedEx) - AI驱动的异常检测与响应系统</h3>
-        <p>全球物流巨头通过AI驱动的异常检测和策略编排系统，实现交付异常的自动识别和智能响应。</p>
+        <h3 class="case-title">联邦快递 (FedEx) - AI驱动的异常检测与响应系统
+          <div class="en-translation">FedEx - AI-Driven Anomaly Detection and Response System</div>
+        </h3>
+        <p>全球物流巨头通过AI驱动的异常检测和策略编排系统，实现交付异常的自动识别和智能响应。
+          <span class="en-translation">Global logistics giant achieves automatic identification and intelligent response of delivery anomalies through AI-driven anomaly detection and strategy orchestration system.</span>
+        </p>
         
         <div class="case-kpi">
           <div class="kpi-item">
             <div class="kpi-value">-28%</div>
-            <div class="kpi-label">异常关闭时长</div>
+            <div class="kpi-label">异常关闭时长
+              <div class="en-translation">Anomaly Closure Time</div>
+            </div>
           </div>
           <div class="kpi-item">
             <div class="kpi-value">-22%</div>
-            <div class="kpi-label">加急运输成本</div>
+            <div class="kpi-label">加急运输成本
+              <div class="en-translation">Expedited Transportation Cost</div>
+            </div>
           </div>
           <div class="kpi-item">
             <div class="kpi-value">+5.2pct</div>
-            <div class="kpi-label">承诺履约率</div>
+            <div class="kpi-label">承诺履约率
+              <div class="en-translation">Commitment Fulfillment Rate</div>
+            </div>
           </div>
         </div>
         
         <div class="case-details">
           <div class="detail-row">
             <div class="detail-label">技术平台：</div>
-            <div class="detail-value">AI异常检测引擎、智能策略编排、LLM处置清单生成</div>
+            <div class="detail-value">AI异常检测引擎、智能策略编排、LLM处置清单生成
+              <div class="en-translation">AI Anomaly Detection Engine, Intelligent Strategy Orchestration, LLM Disposal List Generation</div>
+            </div>
           </div>
           <div class="detail-row">
             <div class="detail-label">实施范围：</div>
-            <div class="detail-value">全球220+国家，日均处理异常事件5000+</div>
+            <div class="detail-value">全球220+国家，日均处理异常事件5000+
+              <div class="en-translation">220+ countries worldwide, processing 5000+ anomaly events daily</div>
+            </div>
           </div>
           <div class="detail-row">
             <div class="detail-label">APQC对标：</div>
-            <div class="detail-value">异常关闭周期从7.2天缩短至5.2天（优于行业标杆4.5天）</div>
+            <div class="detail-value">异常关闭周期从7.2天缩短至5.2天（优于行业标杆4.5天）
+              <div class="en-translation">Anomaly closure cycle reduced from 7.2 days to 5.2 days (better than industry benchmark of 4.5 days)</div>
+            </div>
           </div>
         </div>
         
         <a href="https://www.apqc.org/research-library/benchmarking/procurement-key-benchmarks" class="case-link-btn" target="_blank">
           <i class="fas fa-external-link-alt"></i> 查看APQC行业基准
+          <div class="en-translation">View APQC Industry Benchmark</div>
         </a>
       </div>
       
       <div class="case-summary">
-        <h3 class="case-title">亚马逊 (Amazon) - LLM驱动的交付复盘与优化系统</h3>
-        <p>电商巨头利用LLM技术自动生成交付异常处置清单和复盘报告，优化交付策略和资源分配。</p>
+        <h3 class="case-title">亚马逊 (Amazon) - LLM驱动的交付复盘与优化系统
+          <div class="en-translation">Amazon - LLM-Driven Delivery Review and Optimization System</div>
+        </h3>
+        <p>电商巨头利用LLM技术自动生成交付异常处置清单和复盘报告，优化交付策略和资源分配。
+          <span class="en-translation">E-commerce giant uses LLM technology to automatically generate delivery anomaly disposal lists and review reports, optimizing delivery strategies and resource allocation.</span>
+        </p>
         
         <div class="case-kpi">
           <div class="kpi-item">
             <div class="kpi-value">-32%</div>
-            <div class="kpi-label">异常响应时间</div>
+            <div class="kpi-label">异常响应时间
+              <div class="en-translation">Anomaly Response Time</div>
+            </div>
           </div>
           <div class="kpi-item">
             <div class="kpi-value">+6.8pct</div>
-            <div class="kpi-label">履约率提升</div>
+            <div class="kpi-label">履约率提升
+              <div class="en-translation">Fulfillment Rate Improvement</div>
+            </div>
           </div>
           <div class="kpi-item">
             <div class="kpi-value">-18%</div>
-            <div class="kpi-label">加急操作成本</div>
+            <div class="kpi-label">加急操作成本
+              <div class="en-translation">Expedited Operation Cost</div>
+            </div>
           </div>
         </div>
         
         <div class="case-details">
           <div class="detail-row">
             <div class="detail-label">技术平台：</div>
-            <div class="detail-value">大型语言模型(LLM)、智能复盘系统、策略优化引擎</div>
+            <div class="detail-value">大型语言模型(LLM)、智能复盘系统、策略优化引擎
+              <div class="en-translation">Large Language Model (LLM), Intelligent Review System, Strategy Optimization Engine</div>
+            </div>
           </div>
           <div class="detail-row">
             <div class="detail-label">实施范围：</div>
-            <div class="detail-value">全球物流网络，覆盖最后一公里配送和仓储运营</div>
+            <div class="detail-value">全球物流网络，覆盖最后一公里配送和仓储运营
+              <div class="en-translation">Global logistics network, covering last-mile delivery and warehouse operations</div>
+            </div>
           </div>
           <div class="detail-row">
             <div class="detail-label">APQC对标：</div>
-            <div class="detail-value">加急成本占比从7.8%降低至5.2%（优于行业标杆4.5%）</div>
+            <div class="detail-value">加急成本占比从7.8%降低至5.2%（优于行业标杆4.5%）
+              <div class="en-translation">Expedited cost ratio reduced from 7.8% to 5.2% (better than industry benchmark of 4.5%)</div>
+            </div>
           </div>
         </div>
         
         <a href="https://www.apqc.org/research-library/benchmarking/procurement-key-benchmarks" class="case-link-btn" target="_blank">
           <i class="fas fa-external-link-alt"></i> 查看APQC行业基准
+          <div class="en-translation">View APQC Industry Benchmark</div>
         </a>
       </div>
 
       <div class="case-summary">
-        <h3 class="case-title">联合包裹服务 (UPS) - 智能策略编排与履约优化</h3>
-        <p>全球物流服务提供商通过AI策略编排系统优化交付资源分配，提高承诺履约率和客户满意度。</p>
+        <h3 class="case-title">联合包裹服务 (UPS) - 智能策略编排与履约优化
+          <div class="en-translation">UPS - Intelligent Strategy Orchestration and Fulfillment Optimization</div>
+        </h3>
+        <p>全球物流服务提供商通过AI策略编排系统优化交付资源分配，提高承诺履约率和客户满意度。
+          <span class="en-translation">Global logistics service provider optimizes delivery resource allocation through AI strategy orchestration system, improving commitment fulfillment rate and customer satisfaction.</span>
+        </p>
         
         <div class="case-kpi">
           <div class="kpi-item">
             <div class="kpi-value">+6.3pct</div>
-            <div class="kpi-label">承诺履约率</div>
+            <div class="kpi-label">承诺履约率
+              <div class="en-translation">Commitment Fulfillment Rate</div>
+            </div>
           </div>
           <div class="kpi-item">
             <div class="kpi-value">-26%</div>
-            <div class="kpi-label">异常处理成本</div>
+            <div class="kpi-label">异常处理成本
+              <div class="en-translation">Anomaly Processing Cost</div>
+            </div>
           </div>
           <div class="kpi-item">
             <div class="kpi-value">+8.5pct</div>
-            <div class="kpi-label">订单完美率</div>
+            <div class="kpi-label">订单完美率
+              <div class="en-translation">Perfect Order Rate</div>
+            </div>
           </div>
         </div>
         
         <div class="case-details">
           <div class="detail-row">
             <div class="detail-label">技术平台：</div>
-            <div class="detail-value">智能策略编排引擎、资源优化算法、履约监控系统</div>
+            <div class="detail-value">智能策略编排引擎、资源优化算法、履约监控系统
+              <div class="en-translation">Intelligent Strategy Orchestration Engine, Resource Optimization Algorithm, Fulfillment Monitoring System</div>
+            </div>
           </div>
           <div class="detail-row">
             <div class="detail-label">实施范围：</div>
-            <div class="detail-value">全球配送网络，日均处理包裹2500万+</div>
+            <div class="detail-value">全球配送网络，日均处理包裹2500万+
+              <div class="en-translation">Global distribution network, processing 25 million+ packages daily</div>
+            </div>
           </div>
           <div class="detail-row">
             <div class="detail-label">APQC对标：</div>
-            <div class="detail-value">订单完美率从91.5%提升至97.8%（超越行业标杆97%）</div>
+            <div class="detail-value">订单完美率从91.5%提升至97.8%（超越行业标杆97%）
+              <div class="en-translation">Perfect order rate increased from 91.5% to 97.8% (exceeding industry benchmark of 97%)</div>
+            </div>
           </div>
         </div>
         
         <a href="https://www.apqc.org/research-library/benchmarking/procurement-key-benchmarks" class="case-link-btn" target="_blank">
           <i class="fas fa-external-link-alt"></i> 查看APQC行业基准
+          <div class="en-translation">View APQC Industry Benchmark</div>
         </a>
       </div>
     </div>
     
     <!-- 技术实现框架 -->
     <div class="best-practice-section">
-      <h2 class="section-title">技术实现框架</h2>
+      <h2 class="section-title">技术实现框架
+        <div class="en-translation">Technical Implementation Framework</div>
+      </h2>
       
       <div class="tech-grid">
         <div class="tech-item">
           <div class="tech-icon">
             <i class="fas fa-exclamation-triangle"></i>
           </div>
-          <div class="tech-name">异常检测</div>
-          <p>实时识别交付异常和潜在风险</p>
+          <div class="tech-name">异常检测
+            <div class="en-translation">Anomaly Detection</div>
+          </div>
+          <p>实时识别交付异常和潜在风险
+            <span class="en-translation">Real-time identification of delivery anomalies and potential risks</span>
+          </p>
         </div>
         
         <div class="tech-item">
           <div class="tech-icon">
             <i class="fas fa-cogs"></i>
           </div>
-          <div class="tech-name">策略编排</div>
-          <p>智能制定应对策略和资源分配方案</p>
+          <div class="tech-name">策略编排
+            <div class="en-translation">Strategy Orchestration</div>
+          </div>
+          <p>智能制定应对策略和资源分配方案
+            <span class="en-translation">Intelligent formulation of response strategies and resource allocation plans</span>
+          </p>
         </div>
         
         <div class="tech-item">
           <div class="tech-icon">
             <i class="fas fa-file-alt"></i>
           </div>
-          <div class="tech-name">LLM处置清单</div>
-          <p>自动生成异常处置清单和行动方案</p>
+          <div class="tech-name">LLM处置清单
+            <div class="en-translation">LLM Disposal List</div>
+          </div>
+          <p>自动生成异常处置清单和行动方案
+            <span class="en-translation">Automatically generate anomaly disposal lists and action plans</span>
+          </p>
         </div>
         
         <div class="tech-item">
           <div class="tech-icon">
             <i class="fas fa-sync-alt"></i>
           </div>
-          <div class="tech-name">复盘生成</div>
-          <p>基于LLM的自动化复盘和改进建议</p>
+          <div class="tech-name">复盘生成
+            <div class="en-translation">Review Generation</div>
+          </div>
+          <p>基于LLM的自动化复盘和改进建议
+            <span class="en-translation">LLM-based automated review and improvement suggestions</span>
+          </p>
         </div>
       </div>
-    </div>
-    
+    </div>   
     <!-- 返回按钮 -->
     <div style="text-align: center;">
       <a href="#" class="back-btn">

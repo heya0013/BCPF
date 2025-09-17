@@ -98,16 +98,91 @@
       font-weight: 600;
       color: #2c7be5;
     }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    
+    .stat-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #2c7be5;
+      margin-bottom: 10px;
+    }
+    
+    .stat-label {
+      color: #5a6a7d;
+      font-size: 1rem;
+    }
+    
+    .back-btn {
+      display: inline-block;
+      background: #2c7be5;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(44, 123, 229, 0.3);
+    }
+    
+    .back-btn:hover {
+      background: #1a5276;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(44, 123, 229, 0.4);
+    }
+    
+    /* 新增翻译样式 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.25rem;
+      font-style: italic;
+    }
+    
+    .section-title {
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, #2c7be5, #00c9a7);
+    }
   </style>
 </head>
 <body>
   <!-- 顶部标题区域 -->
   <header class="best-practice-header">
     <div class="header-content">
-      <h1 class="best-practice-title">AI案例总结</h1>
-      <div class="best-practice-subtitle">区域S&OP预测与对齐AI应用效果分析</div>
+      <h1 class="best-practice-title">AI案例总结
+        <div class="en-translation">AI Case Study Summary</div>
+      </h1>
+      <div class="best-practice-subtitle">区域S&OP预测与对齐AI应用效果分析
+        <div class="en-translation">Regional S&OP Forecasting and Alignment AI Application Effectiveness Analysis</div>
+      </div>
       <p class="process-desc">
         展示AI技术在区域S&OP预测与对齐流程中的实际应用案例和效果评估，为企业数字化转型提供参考。
+        <span class="en-translation">Showcasing practical application cases and effectiveness evaluation of AI in regional S&OP forecasting and alignment processes, providing reference for enterprise digital transformation.</span>
       </p>
     </div>
   </header>
@@ -116,22 +191,33 @@
   <div class="best-practice-container">
     <!-- AI应用场景 -->
     <div class="best-practice-section">
-      <h2 class="section-title">AI应用场景</h2>
+      <h2 class="section-title">AI应用场景
+        <div class="en-translation">AI Application Scenarios</div>
+      </h2>
       
       <div class="ai-scenario-grid">
         <div class="scenario-card">
           <div class="scenario-icon">
             <i class="fas fa-layer-group"></i>
           </div>
-          <h3 class="scenario-title">分层时序预测</h3>
+          <h3 class="scenario-title">分层时序预测
+            <div class="en-translation">Hierarchical Time Series Forecasting</div>
+          </h3>
           <p class="scenario-desc">
             采用多层次时间序列预测模型，对不同区域、产品和渠道的需求进行精准预测，
             确保预测结果既符合总体趋势又反映区域特性。
+            <span class="en-translation">Using multi-level time series forecasting models to accurately predict demand for different regions, products, and channels, ensuring forecasts align with overall trends while reflecting regional characteristics.</span>
           </p>
           <ul class="kpi-list">
-            <li>区域需求预测准确率提升12-18%</li>
-            <li>季节性波动捕捉能力提高25%</li>
-            <li>预测稳定性提升30%</li>
+            <li>区域需求预测准确率提升12-18%
+              <div class="en-translation">Regional demand forecasting accuracy improved by 12-18%</div>
+            </li>
+            <li>季节性波动捕捉能力提高25%
+              <div class="en-translation">Seasonal fluctuation capture capability increased by 25%</div>
+            </li>
+            <li>预测稳定性提升30%
+              <div class="en-translation">Forecast stability improved by 30%</div>
+            </li>
           </ul>
         </div>
         
@@ -139,15 +225,24 @@
           <div class="scenario-icon">
             <i class="fas fa-people-arrows"></i>
           </div>
-          <h3 class="scenario-title">共识优化算法</h3>
+          <h3 class="scenario-title">共识优化算法
+            <div class="en-translation">Consensus Optimization Algorithm</div>
+          </h3>
           <p class="scenario-desc">
             通过智能算法协调不同部门间的预测差异，生成共识性预测结果，
             减少内部博弈，提高预测的准确性和可执行性。
+            <span class="en-translation">Using intelligent algorithms to coordinate forecasting differences between departments, generating consensus forecasts, reducing internal gaming, and improving forecast accuracy and executability.</span>
           </p>
           <ul class="kpi-list">
-            <li>部门间预测差异减少40-60%</li>
-            <li>共识达成时间缩短55%</li>
-            <li>预测可执行性提升35%</li>
+            <li>部门间预测差异减少40-60%
+              <div class="en-translation">Inter-departmental forecast differences reduced by 40-60%</div>
+            </li>
+            <li>共识达成时间缩短55%
+              <div class="en-translation">Consensus achievement time shortened by 55%</div>
+            </li>
+            <li>预测可执行性提升35%
+              <div class="en-translation">Forecast executability improved by 35%</div>
+            </li>
           </ul>
         </div>
         
@@ -155,15 +250,24 @@
           <div class="scenario-icon">
             <i class="fas fa-fingerprint"></i>
           </div>
-          <h3 class="scenario-title">偏差指纹识别</h3>
+          <h3 class="scenario-title">偏差指纹识别
+            <div class="en-translation">Deviation Fingerprint Identification</div>
+          </h3>
           <p class="scenario-desc">
             利用机器学习技术识别系统性预测偏差模式，建立偏差指纹库，
             实现偏差的早期预警和自动校正，提高预测准确性。
+            <span class="en-translation">Using machine learning technology to identify systematic forecast deviation patterns, building a deviation fingerprint library, enabling early warning and automatic correction of deviations, improving forecast accuracy.</span>
           </p>
           <ul class="kpi-list">
-            <li>系统性偏差识别率提高70%</li>
-            <li>偏差校正准确率提升45%</li>
-            <li预测误差减少15-25%</li>
+            <li>系统性偏差识别率提高70%
+              <div class="en-translation">Systematic deviation identification rate increased by 70%</div>
+            </li>
+            <li>偏差校正准确率提升45%
+              <div class="en-translation">Deviation correction accuracy improved by 45%</div>
+            </li>
+            <li>预测误差减少15-25%
+              <div class="en-translation">Forecast error reduced by 15-25%</div>
+            </li>
           </ul>
         </div>
       </div>
@@ -171,125 +275,177 @@
     
     <!-- 行业案例 -->
     <div class="best-practice-section">
-      <h2 class="section-title">实际行业案例</h2>
+      <h2 class="section-title">实际行业案例
+        <div class="en-translation">Real Industry Cases</div>
+      </h2>
       
       <div class="industry-case">
-        <h3 class="case-title"><span class="company-highlight">宝洁公司（Procter & Gamble）</span> - 全球S&OP数字化转型</h3>
+        <h3 class="case-title"><span class="company-highlight">宝洁公司（Procter & Gamble）</span> - 全球S&OP数字化转型
+          <div class="en-translation">Procter & Gamble - Global S&OP Digital Transformation</div>
+        </h3>
         <p class="case-desc">
           宝洁公司作为全球消费品巨头，通过实施分层时序预测和共识优化算法，实现了全球S&OP流程的数字化转型。
           该系统覆盖了全球6大区域市场，协调了销售、市场、供应链和生产部门的预测差异。
+          <span class="en-translation">As a global consumer goods giant, P&G implemented hierarchical time series forecasting and consensus optimization algorithms, achieving digital transformation of global S&OP processes. The system covers 6 major regional markets worldwide, coordinating forecasting differences between sales, marketing, supply chain, and production departments.</span>
         </p>
         <p class="case-desc">
           通过AI驱动的预测对齐技术，宝洁成功将MAPE（平均绝对百分比误差）降低了12%，
           承诺达成率提高了5.2个百分点，供需偏差减少了28%。系统还能够识别各区域的特定偏差模式，
           实现预测模型的自动优化和调整。这一转型使宝洁能够更快速地响应市场变化，优化库存水平，
           提高客户满意度。
+          <span class="en-translation">Through AI-driven forecast alignment technology, P&G successfully reduced MAPE (Mean Absolute Percentage Error) by 12%, increased commitment achievement rate by 5.2 percentage points, and reduced supply-demand deviation by 28%. The system can also identify specific deviation patterns in each region, enabling automatic optimization and adjustment of forecasting models. This transformation enables P&G to respond more quickly to market changes, optimize inventory levels, and improve customer satisfaction.</span>
         </p>
         <p class="case-desc">
-          <strong>关键技术：</strong> 多层次时间序列分析、机器学习共识算法、偏差模式识别<br>
-          <strong>实施范围：</strong> 全球6大区域，200+产品类别<br>
+          <strong>关键技术：</strong> 多层次时间序列分析、机器学习共识算法、偏差模式识别
+          <div class="en-translation"><strong>Key Technologies:</strong> Multi-level time series analysis, machine learning consensus algorithms, deviation pattern recognition</div>
+          <strong>实施范围：</strong> 全球6大区域，200+产品类别
+          <div class="en-translation"><strong>Implementation Scope:</strong> 6 global regions, 200+ product categories</div>
           <strong>效果持续时间：</strong> 持续优化超过3年
+          <div class="en-translation"><strong>Effect Duration:</strong> Continuous optimization for over 3 years</div>
         </p>
       </div>
       
       <div class="industry-case">
-        <h3 class="case-title"><span class="company-highlight">西门子（Siemens）</span> - 制造业多区域协同规划</h3>
+        <h3 class="case-title"><span class="company-highlight">西门子（Siemens）</span> - 制造业多区域协同规划
+          <div class="en-translation">Siemens - Manufacturing Multi-Region Collaborative Planning</div>
+        </h3>
         <p class="case-desc">
           西门子作为全球领先的工业制造企业，利用AI技术优化区域S&OP流程，实现了多工厂、多市场的协同预测和规划。
           系统整合了历史销售数据、市场情报和供应链约束，生成共识性预测和生产计划。
+          <span class="en-translation">As a global leading industrial manufacturer, Siemens used AI technology to optimize regional S&OP processes, achieving collaborative forecasting and planning across multiple factories and markets. The system integrates historical sales data, market intelligence, and supply chain constraints to generate consensus forecasts and production plans.</span>
         </p>
         <p class="case-desc">
           实施后，西门子成功将预测准确性提高了15%，库存周转率提升了22%，
           跨区域协调效率提高了40%。偏差指纹识别技术帮助企业发现了多个系统性预测偏差，
           通过模型校正减少了这些偏差的影响。这一改进使西门子能够更好地管理全球供应链风险，
           提高生产计划的可靠性和执行率。
+          <span class="en-translation">After implementation, Siemens successfully increased forecast accuracy by 15%, improved inventory turnover rate by 22%, and enhanced cross-regional coordination efficiency by 40%. Deviation fingerprint identification technology helped the company discover multiple systematic forecast deviations, reducing their impact through model correction. This improvement enables Siemens to better manage global supply chain risks and improve the reliability and execution rate of production plans.</span>
         </p>
         <p class="case-desc">
-          <strong>关键技术：</strong> 偏差指纹识别、实时预测校正、多目标优化<br>
-          <strong>实施范围：</strong> 全球8个业务部门，50+生产基地<br>
+          <strong>关键技术：</strong> 偏差指纹识别、实时预测校正、多目标优化
+          <div class="en-translation"><strong>Key Technologies:</strong> Deviation fingerprint identification, real-time forecast correction, multi-objective optimization</div>
+          <strong>实施范围：</strong> 全球8个业务部门，50+生产基地
+          <div class="en-translation"><strong>Implementation Scope:</strong> 8 global business units, 50+ production bases</div>
           <strong>ROI：</strong> 投资回报率达到3.5:1
+          <div class="en-translation"><strong>ROI:</strong> Achieved 3.5:1 return on investment</div>
         </p>
       </div>
 
       <div class="industry-case">
-        <h3 class="case-title"><span class="company-highlight">联合利华（Unilever）</span> - 需求预测与供应对齐</h3>
+        <h3 class="case-title"><span class="company-highlight">联合利华（Unilever）</span> - 需求预测与供应对齐
+          <div class="en-translation">Unilever - Demand Forecasting and Supply Alignment</div>
+        </h3>
         <p class="case-desc">
           联合利华通过AI驱动的S&OP预测与对齐系统，实现了需求预测与供应能力的高度协同。
           该系统利用分层时序预测技术，对不同区域和渠道的需求进行精准预测，并通过共识算法协调各部门预测差异。
+          <span class="en-translation">Unilever achieved high coordination between demand forecasting and supply capabilities through an AI-driven S&OP forecasting and alignment system. The system uses hierarchical time series forecasting technology to accurately predict demand for different regions and channels, and coordinates departmental forecast differences through consensus algorithms.</span>
         </p>
         <p class="case-desc">
           实施后，联合利华将预测误差降低了14%，产品可用率提高了8%，
           库存持有成本降低了18%。系统还能够识别季节性需求模式和促销影响，
           提供更准确的需求预测和生产计划建议。这一改进使联合利华能够更好地平衡供需关系，
           减少缺货和过剩库存的情况。
+          <span class="en-translation">After implementation, Unilever reduced forecast error by 14%, increased product availability rate by 8%, and reduced inventory holding costs by 18%. The system can also identify seasonal demand patterns and promotional impacts, providing more accurate demand forecasts and production plan recommendations. This improvement enables Unilever to better balance supply and demand relationships, reducing stockouts and excess inventory situations.</span>
         </p>
         <p class="case-desc">
-          <strong>关键技术：</strong> 分层时序预测、促销影响分析、动态安全库存<br>
-          <strong>实施范围：</strong> 全球4个主要市场，3000+SKU<br>
+          <strong>关键技术：</strong> 分层时序预测、促销影响分析、动态安全库存
+          <div class="en-translation"><strong>Key Technologies:</strong> Hierarchical time series forecasting, promotional impact analysis, dynamic safety stock</div>
+          <strong>实施范围：</strong> 全球4个主要市场，3000+SKU
+          <div class="en-translation"><strong>Implementation Scope:</strong> 4 major global markets, 3000+ SKUs</div>
           <strong>成本节约：</strong> 年度供应链成本减少约1.2亿美元
+          <div class="en-translation"><strong>Cost Savings:</strong> Annual supply chain costs reduced by approximately $120 million</div>
         </p>
       </div>
     </div>
     
     <!-- KPI和预期提升幅度 -->
     <div class="best-practice-section">
-      <h2 class="section-title">KPI和预期提升幅度</h2>
+      <h2 class="section-title">KPI和预期提升幅度
+        <div class="en-translation">KPI and Expected Improvement Range</div>
+      </h2>
       
       <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-value">5-15%</div>
-          <div class="stat-label">MAPE改善</div>
+          <div class="stat-label">MAPE改善
+            <div class="en-translation">MAPE Improvement</div>
+          </div>
         </div>
         
         <div class="stat-card">
           <div class="stat-value">3-6pct</div>
-          <div class="stat-label">承诺达成率提升</div>
+          <div class="stat-label">承诺达成率提升
+            <div class="en-translation">Commitment Achievement Rate Improvement</div>
+          </div>
         </div>
         
         <div class="stat-card">
           <div class="stat-value">20-35%</div>
-          <div class="stat-label">供需偏差减少</div>
+          <div class="stat-label">供需偏差减少
+            <div class="en-translation">Supply-Demand Deviation Reduction</div>
+          </div>
         </div>
         
         <div class="stat-card">
           <div class="stat-value">40-60%</div>
-          <div class="stat-label">部门协调效率提升</div>
+          <div class="stat-label">部门协调效率提升
+            <div class="en-translation">Department Coordination Efficiency Improvement</div>
+          </div>
         </div>
       </div>
       
       <p style="margin-top: 30px; color: #5a6a7d; line-height: 1.6;">
         以上数据基于多个行业案例的实际效果统计，展示了AI技术在区域S&OP预测与对齐流程中的应用价值。
         参考案例：S&OP/S&OE预测与对齐方法（行业综述）
+        <span class="en-translation">The above data is based on actual effect statistics from multiple industry cases, demonstrating the application value of AI technology in regional S&OP forecasting and alignment processes. Reference cases: S&OP/S&OE forecasting and alignment methods (industry review).</span>
       </p>
     </div>
     
     <!-- 技术实现框架 -->
     <div class="best-practice-section">
-      <h2 class="section-title">技术实现框架</h2>
+      <h2 class="section-title">技术实现框架
+        <div class="en-translation">Technical Implementation Framework</div>
+      </h2>
       
       <div class="stats-grid">
         <div class="stat-card">
           <i class="fas fa-chart-line"></i>
-          <div class="stat-value">时序预测</div>
-          <div class="stat-label">多层次时间序列分析</div>
+          <div class="stat-value">时序预测
+            <div class="en-translation">Time Series Forecasting</div>
+          </div>
+          <div class="stat-label">多层次时间序列分析
+            <div class="en-translation">Multi-level Time Series Analysis</div>
+          </div>
         </div>
         
         <div class="stat-card">
           <i class="fas fa-brain"></i>
-          <div class="stat-value">共识算法</div>
-          <div class="stat-label">多部门预测协调</div>
+          <div class="stat-value">共识算法
+            <div class="en-translation">Consensus Algorithm</div>
+          </div>
+          <div class="stat-label">多部门预测协调
+            <div class="en-translation">Multi-department Forecast Coordination</div>
+          </div>
         </div>
         
         <div class="stat-card">
           <i class="fas fa-fingerprint"></i>
-          <div class="stat-value">偏差识别</div>
-          <div class="stat-label">机器学习模式识别</div>
+          <div class="stat-value">偏差识别
+            <div class="en-translation">Deviation Identification</div>
+          </div>
+          <div class="stat-label">机器学习模式识别
+            <div class="en-translation">Machine Learning Pattern Recognition</div>
+          </div>
         </div>
         
         <div class="stat-card">
           <i class="fas fa-sync-alt"></i>
-          <div class="stat-value">实时优化</div>
-          <div class="stat-label">动态预测校正</div>
+          <div class="stat-value">实时优化
+            <div class="en-translation">Real-time Optimization</div>
+          </div>
+          <div class="stat-label">动态预测校正
+            <div class="en-translation">Dynamic Forecast Correction</div>
+          </div>
         </div>
       </div>
     </div>
@@ -298,12 +454,15 @@
     <div style="text-align: center;">
       <a href="{{ url_for('supply_management') }}" class="back-btn">
         <i class="fas fa-arrow-left"></i> 返回供应管理
+        <div class="en-translation">Return to Supply Management</div>
       </a>
     </div>
   </div>
 
   <footer>
-    <p>采购流程分析系统 © 2023 | AI驱动供应链优化解决方案 | 提升效率 • 降低风险 • 优化供应</p>
+    <p>采购流程分析系统 © 2023 | AI驱动供应链优化解决方案 | 提升效率 • 降低风险 • 优化供应
+      <div class="en-translation">Procurement Process Analysis System © 2023 | AI-Driven Supply Chain Optimization Solution | Improve Efficiency • Reduce Risk • Optimize Supply</div>
+    </p>
   </footer>
 </body>
 </html>

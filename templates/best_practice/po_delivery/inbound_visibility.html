@@ -111,7 +111,7 @@
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 25px;
       margin-top: 30px;
-    }
+ }
     
     .stat-card {
       background: white;
@@ -280,6 +280,15 @@
       color: #5a6a7d;
     }
     
+    /* 新增翻译样式 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.25rem;
+      font-style: italic;
+    }
+    
     @media (max-width: 768px) {
       .best-practice-title {
         font-size: 2.2rem;
@@ -320,49 +329,91 @@
 <body>
   <!-- 顶部标题区域 -->
   <header class="best-practice-header">
-    <h1 class="best-practice-title">AI案例总结</h1>
-    <div class="best-practice-subtitle">Inbound Visibility 入库可视化解决方案</div>
-    <p>基于时序预测、图模型分析和异常检测技术提升供应链透明度</p>
+    <h1 class="best-practice-title">AI案例总结
+      <div class="en-translation">AI Case Study Summary</div>
+    </h1>
+    <div class="best-practice-subtitle">Inbound Visibility 入库可视化解决方案
+      <div class="en-translation">Inbound Visibility Entry Visualization Solution</div>
+    </div>
+    <p>基于时序预测、图模型分析和异常检测技术提升供应链透明度
+      <span class="en-translation">Improving supply chain transparency based on time series forecasting, graph model analysis and anomaly detection technology</span>
+    </p>
   </header>
 
   <div class="best-practice-container">
     <!-- AI应用场景效果分析 -->
     <div class="best-practice-section">
-      <h2 class="section-title">AI应用场景效果分析</h2>
+      <h2 class="section-title">AI应用场景效果分析
+        <div class="en-translation">AI Application Scenario Effectiveness Analysis</div>
+      </h2>
       
       <table class="ai-case-table">
         <thead>
           <tr>
-            <th>AI应用场景</th>
-            <th>行业KPI指标</th>
-            <th>提升幅度</th>
-            <th>平台实践案例</th>
+            <th>AI应用场景
+              <div class="en-translation">AI Application Scenario</div>
+            </th>
+            <th>行业KPI指标
+              <div class="en-translation">Industry KPI Metrics</div>
+            </th>
+            <th>提升幅度
+              <div class="en-translation">Improvement Range</div>
+            </th>
+            <th>平台实践案例
+              <div class="en-translation">Platform Practice Cases</div>
+            </th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>时序预测+图模型+异常检测</td>
-            <td>OTD(准时交付率)、在途准确率、延迟预测准确率</td>
-            <td>
-              <span class="improvement-badge improvement-positive">OTD +3–8pct</span>
-              <span class="improvement-badge improvement-positive">在途准确率 +10%</span>
-              <span class="improvement-badge improvement-positive">延迟预测准确率 +10–20pct</span>
+            <td>时序预测+图模型+异常检测
+              <div class="en-translation">Time Series Forecasting + Graph Model + Anomaly Detection</div>
+            </td>
+            <td>OTD(准时交付率)、在途准确率、延迟预测准确率
+              <div class="en-translation">OTD (On-Time Delivery), In-Transit Accuracy, Delay Prediction Accuracy</div>
             </td>
             <td>
-              <a href="#nahdi" class="case-link">Nahdi Medical案例</a><br>
-              <a href="#tetra" class="case-link">Tetra Pak案例</a>
+              <span class="improvement-badge improvement-positive">OTD +3–8pct
+                <div class="en-translation">OTD +3–8pct</div>
+              </span>
+              <span class="improvement-badge improvement-positive">在途准确率 +10%
+                <div class="en-translation">In-Transit Accuracy +10%</div>
+              </span>
+              <span class="improvement-badge improvement-positive">延迟预测准确率 +10–20pct
+                <div class="en-translation">Delay Prediction Accuracy +10–20pct</div>
+              </span>
+            </td>
+            <td>
+              <a href="#nahdi" class="case-link">Nahdi Medical案例
+                <div class="en-translation">Nahdi Medical Case</div>
+              </a><br>
+              <a href="#tetra" class="case-link">Tetra Pak案例
+                <div class="en-translation">Tetra Pak Case</div>
+              </a>
             </td>
           </tr>
           <tr>
-            <td>网络建模+智能路由+库存优化</td>
-            <td>库存周转率、仓储成本、完美订单率</td>
-            <td>
-              <span class="improvement-badge improvement-positive">库存周转率 +15-25%</span>
-              <span class="improvement-badge improvement-positive">仓储成本 -10-20%</span>
+            <td>网络建模+智能路由+库存优化
+              <div class="en-translation">Network Modeling + Intelligent Routing + Inventory Optimization</div>
+            </td>
+            <td>库存周转率、仓储成本、完美订单率
+              <div class="en-translation">Inventory Turnover Rate, Storage Cost, Perfect Order Rate</div>
             </td>
             <td>
-              <a href="#aeo" class="case-link">AEO案例</a><br>
-              <a href="#adani" class="case-link">Adani案例</a>
+              <span class="improvement-badge improvement-positive">库存周转率 +15-25%
+                <div class="en-translation">Inventory Turnover Rate +15-25%</div>
+              </span>
+              <span class="improvement-badge improvement-positive">仓储成本 -10-20%
+                <div class="en-translation">Storage Cost -10-20%</div>
+              </span>
+            </td>
+            <td>
+              <a href="#aeo" class="case-link">AEO案例
+                <div class="en-translation">AEO Case</div>
+              </a><br>
+              <a href="#adani" class="case-link">Adani案例
+                <div class="en-translation">Adani Case</div>
+              </a>
             </td>
           </tr>
         </tbody>
@@ -371,183 +422,273 @@
     
     <!-- KPI和预期提升幅度 -->
     <div class="best-practice-section">
-      <h2 class="section-title">KPI和预期提升幅度</h2>
+      <h2 class="section-title">KPI和预期提升幅度
+        <div class="en-translation">KPI and Expected Improvement Range</div>
+      </h2>
       
       <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-value">+3-8pct</div>
-          <div class="stat-label">OTD提升</div>
+          <div class="stat-label">OTD提升
+            <div class="en-translation">OTD Improvement</div>
+          </div>
         </div>
         
         <div class="stat-card">
           <div class="stat-value">+10%</div>
-          <div class="stat-label">在途准确率</div>
+          <div class="stat-label">在途准确率
+            <div class="en-translation">In-Transit Accuracy</div>
+          </div>
         </div>
         
         <div class="stat-card">
           <div class="stat-value">+10-20pct</div>
-          <div class="stat-label">延迟预测准确率</div>
+          <div class="stat-label">延迟预测准确率
+            <div class="en-translation">Delay Prediction Accuracy</div>
+          </div>
         </div>
         
         <div class="stat-card">
           <div class="stat-value">+15-25%</div>
-          <div class="stat-label">库存周转率</div>
+          <div class="stat-label">库存周转率
+            <div class="en-translation">Inventory Turnover Rate</div>
+          </div>
         </div>
       </div>
     </div>
     
     <!-- 实际行业案例 -->
     <div class="best-practice-section">
-      <h2 class="section-title">实际行业案例</h2>
+      <h2 class="section-title">实际行业案例
+        <div class="en-translation">Real Industry Cases</div>
+      </h2>
       
       <div id="nahdi" class="case-summary">
-        <h3 class="case-title">Nahdi Medical公司 - Oracle物流可视化平台</h3>
-        <p>中东领先医药零售商通过AI驱动的入库可视化系统实现端到端供应链可见性，优化库存管理和配送流程。</p>
+        <h3 class="case-title">Nahdi Medical公司 - Oracle物流可视化平台
+          <div class="en-translation">Nahdi Medical Company - Oracle Logistics Visualization Platform</div>
+        </h3>
+        <p>中东领先医药零售商通过AI驱动的入库可视化系统实现端到端供应链可见性，优化库存管理和配送流程。
+          <span class="en-translation">Middle East's leading pharmaceutical retailer achieves end-to-end supply chain visibility through AI-driven inbound visualization system, optimizing inventory management and distribution processes.</span>
+        </p>
         
         <div class="case-kpi">
           <div class="kpi-item">
             <div class="kpi-value">+7.2%</div>
-            <div class="kpi-label">OTD提升</div>
+            <div class="kpi-label">OTD提升
+              <div class="en-translation">OTD Improvement</div>
+            </div>
           </div>
           <div class="kpi-item">
             <div class="kpi-value">+18%</div>
-            <div class="kpi-label">库存周转率</div>
+            <div class="kpi-label">库存周转率
+              <div class="en-translation">Inventory Turnover Rate</div>
+            </div>
           </div>
           <div class="kpi-item">
             <div class="kpi-value">-35%</div>
-            <div class="kpi-label">紧急订单处理时间</div>
+            <div class="kpi-label">紧急订单处理时间
+              <div class="en-translation">Emergency Order Processing Time</div>
+            </div>
           </div>
         </div>
         
         <div class="case-details">
           <div class="detail-row">
             <div class="detail-label">技术平台：</div>
-            <div class="detail-value">Oracle物流可视化平台、时序预测算法、异常检测系统</div>
+            <div class="detail-value">Oracle物流可视化平台、时序预测算法、异常检测系统
+              <div class="en-translation">Oracle Logistics Visualization Platform, Time Series Forecasting Algorithm, Anomaly Detection System</div>
+            </div>
           </div>
           <div class="detail-row">
             <div class="detail-label">实施范围：</div>
-            <div class="detail-value">覆盖300+医疗中心，日均处理500+入库订单</div>
+            <div class="detail-value">覆盖300+医疗中心，日均处理500+入库订单
+              <div class="en-translation">Covering 300+ medical centers, processing 500+ inbound orders daily</div>
+            </div>
           </div>
           <div class="detail-row">
             <div class="detail-label">实施成效：</div>
-            <div class="detail-value">预测性物流管理使紧急订单响应时间减少35%，库存持有成本降低22%</div>
+            <div class="detail-value">预测性物流管理使紧急订单响应时间减少35%，库存持有成本降低22%
+              <div class="en-translation">Predictive logistics management reduces emergency order response time by 35%, inventory holding costs by 22%</div>
+            </div>
           </div>
         </div>
         
         <a href="https://www.oracle.com/customers/nahdi/" class="case-link-btn" target="_blank">
           <i class="fas fa-external-link-alt"></i> 查看Oracle案例研究
+          <div class="en-translation">View Oracle Case Study</div>
         </a>
       </div>
       
       <div id="tetra" class="case-summary">
-        <h3 class="case-title">Tetra Pak公司 - Oracle运输管理系统</h3>
-        <p>全球食品包装公司通过AI驱动的网络建模优化全球物流网络，提高仓储资源利用率。</p>
+        <h3 class="case-title">Tetra Pak公司 - Oracle运输管理系统
+          <div class="en-translation">Tetra Pak Company - Oracle Transportation Management System</div>
+        </h3>
+        <p>全球食品包装公司通过AI驱动的网络建模优化全球物流网络，提高仓储资源利用率。
+          <span class="en-translation">Global food packaging company optimizes global logistics network through AI-driven network modeling, improving warehouse resource utilization.</span>
+        </p>
         
         <div class="case-kpi">
           <div class="kpi-item">
             <div class="kpi-value">-12%</div>
-            <div class="kpi-label">运输成本</div>
+            <div class="kpi-label">运输成本
+              <div class="en-translation">Transportation Cost</div>
+            </div>
           </div>
           <div class="kpi-item">
             <div class="kpi-value">+8.5%</div>
-            <div class="kpi-label">准时交付率</div>
+            <div class="kpi-label">准时交付率
+              <div class="en-translation">On-Time Delivery Rate</div>
+            </div>
           </div>
           <div class="kpi-item">
             <div class="kpi-value">-65%</div>
-            <div class="kpi-label">异常响应时间</div>
+            <div class="kpi-label">异常响应时间
+              <div class="en-translation">Anomaly Response Time</div>
+            </div>
           </div>
         </div>
         
         <div class="case-details">
           <div class="detail-row">
             <div class="detail-label">技术平台：</div>
-            <div class="detail-value">Oracle运输管理(OTM)、AI网络建模、实时异常检测</div>
+            <div class="detail-value">Oracle运输管理(OTM)、AI网络建模、实时异常检测
+              <div class="en-translation">Oracle Transportation Management (OTM), AI Network Modeling, Real-time Anomaly Detection</div>
+            </div>
           </div>
           <div class="detail-row">
             <div class="detail-label">实施范围：</div>
-            <div class="detail-value">全球30+生产基地，80+国家物流网络</div>
+            <div class="detail-value">全球30+生产基地，80+国家物流网络
+              <div class="en-translation">30+ global production bases, logistics network in 80+ countries</div>
+            </div>
           </div>
           <div class="detail-row">
             <div class="detail-label">实施成效：</div>
-            <div class="detail-value">通过运输网络优化减少碳排放15%，仓库空间利用率提高30%</div>
+            <div class="detail-value">通过运输网络优化减少碳排放15%，仓库空间利用率提高30%
+              <div class="en-translation">Reduced carbon emissions by 15% through transportation network optimization, increased warehouse space utilization by 30%</div>
+            </div>
           </div>
         </div>
         
-        <a href="https://www.oracle.com/customers/tetra-pak/" class="case-link-btn" target="_blank">
+        <a href=""https://www.oracle.com/customers/tetra-pak/" class="case-link-btn" target="_blank">
           <i class="fas fa-external-link-alt"></i> 查看Oracle客户案例
+          <div class="en-translation">View Oracle Customer Case</div>
         </a>
       </div>
       
       <div id="aeo" class="case-summary">
-        <h3 class="case-title">American Eagle Outfitters - SAP物流解决方案</h3>
-        <p>全球服装零售商通过SAP Business Network实现端到端物流可视化，优化全球供应链入库流程。</p>
+        <h3 class="case-title">American Eagle Outfitters - SAP物流解决方案
+          <div class="en-translation">American Eagle Outfitters - SAP Logistics Solution</div>
+        </h3>
+        <p>全球服装零售商通过SAP Business Network实现端到端物流可视化，优化全球供应链入库流程。
+          <span class="en-translation">Global apparel retailer achieves end-to-end logistics visibility through SAP Business Network, optimizing global supply chain inbound processes.</span>
+        </p>
         
         <div class="case-kpi">
           <div class="kpi-item">
             <div class="kpi-value">85%</div>
-            <div class="kpi-label">采购订单合规率</div>
+            <div class="kpi-label">采购订单合规率
+              <div class="en-translation">Purchase Order Compliance Rate</div>
+            </div>
           </div>
           <div class="kpi-item">
             <div class="kpi-value">+30%</div>
-            <div class="kpi-label">发票处理效率</div>
+            <div class="kpi-label">发票处理效率
+              <div class="en-translation">Invoice Processing Efficiency</div>
+            </div>
           </div>
           <div class="kpi-item">
             <div class="kpi-value">48,000+</div>
-            <div class="kpi-label">年处理发票量</div>
+            <div class="kpi-label">年处理发票量
+              <div class="en-translation">Annual Invoice Processing Volume</div>
+            </div>
           </div>
         </div>
         
         <div class="case-details">
           <div class="detail-row">
             <div class="detail-label">技术平台：</div>
-            <div class="detail-value">SAP Business Network、AI预测分析、实时监控系统</div>
+            <div class="detail-value">SAP Business Network、AI预测分析、实时监控系统
+              <div class="en-translation">SAP Business Network, AI Predictive Analytics, Real-time Monitoring System</div>
+            </div>
           </div>
           <div class="detail-row">
             <div class="detail-label">实施范围：</div>
-            <div class="detail-value">全球1,000+零售店，2000+供应商</div>
+            <div class="detail-value">全球1,000+零售店，2000+供应商
+              <div class="en-translation">1,000+ global retail stores, 2000+ suppliers</div>
+            </div>
           </div>
           <div class="detail-row">
             <div class="detail-label">实施成效：</div>
-            <div class="detail-value">供应商协作效率提升40%，季节性峰值处理能力提高50%</div>
+            <div class="detail-value">供应商协作效率提升40%，季节性峰值处理能力提高50%
+              <div class="en-translation">Supplier collaboration efficiency increased by 40%, seasonal peak processing capacity improved by 50%</div>
+            </div>
           </div>
         </div>
         
         <a href="https://www.sap.com/customers/american-eagle-outfitters.html" class="case-link-btn" target="_blank">
           <i class="fas fa-external-link-alt"></i> 查看SAP案例研究
+          <div class="en-translation">View SAP Case Study</div>
         </a>
       </div>
       
       <div id="adani" class="case-summary">
-        <h3 class="case-title">Adani Enterprises - SAP全球贸易管理</h3>
-        <p>印度大型企业集团通过SAP全球贸易管理解决方案优化跨境物流，实现高效清关和货物追踪。</p>
+        <h3 class="case-title">Adani Enterprises - SAP全球贸易管理
+          <div class="en-translation">Adani Enterprises - SAP Global Trade Management</div>
+        </h3>
+        <p>印度大型企业集团通过SAP全球贸易管理解决方案优化跨境物流，实现高效清关和货物追踪。
+          <span class="en-translation">India's large enterprise group optimizes cross-border logistics through SAP Global Trade Management solution, achieving efficient customs clearance and cargo tracking.</span>
+        </p>
         
         <div class="case-kpi">
           <div class="kpi-item">
             <div class="kpi-value">94%</div>
-            <div class="kpi-label">首次正确发票率</div>
+            <div class="kpi-label">首次正确发票率
+              <div class="en-translation">First-Time Correct Invoice Rate</div>
+            </div>
           </div>
           <div class="kpi-item">
             <div class="kpi-value">4,000+</div>
-            <div class="kpi-label">小时/年节省</div>
+            <div class="kpi-label">小时/年节省
+              <div class="en-translation">Hours Saved Per Year</div>
+            </div>
           </div>
           <div class="kpi-item">
             <div class="kpi-value">8.5M</div>
-            <div class="kpi-label">纸张/年节省</div>
+            <div class="kpi-label">纸张/年节省
+              <div class="en-translation">Paper Saved Per Year</div>
+            </div>
           </div>
         </div>
         
         <div class="case-details">
           <div class="detail-row">
             <div class="detail-label">技术平台：</div>
-            <div class="detail-value">SAP全球贸易管理、AI发票校验系统</div>
+            <div class="detail-value">SAP全球贸易管理
+        
+        <div class="case-details">
+          <div class="detail-row">
+            <div class="detail-label">技术平台：
+              <div class="en-translation">Technology Platform</div>
+            </div>
+            <div class="detail-value">SAP全球贸易管理、AI发票校验系统
+              <div class="en-translation">SAP Global Trade Management, AI Invoice Verification System</div>
+            </div>
           </div>
           <div class="detail-row">
-            <div class="detail-label">实施范围：</div>
-            <div class="detail-value">年处理10万+采购订单，$20亿+采购额</div>
+            <div class="detail-label">实施范围：
+              <div class="en-translation">Implementation Scope</div>
+            </div>
+            <div class="detail-value">年处理10万+采购订单，$20亿+采购额
+              <div class="en-translation">Annual Processing of 100,000+ Purchase Orders, $2 Billion+ in Procurement Volume</div>
+            </div>
           </div>
           <div class="detail-row">
-            <div class="detail-label">实施成效：</div>
-            <div class="detail-value">清关时间减少40%，跨境运输异常减少25%</div>
+            <div class="detail-label">实施成效：
+              <div class="en-translation">Implementation Effectiveness</div>
+            </div>
+            <div class="detail-value">清关时间减少40%，跨境运输异常减少25%
+              <div class="en-translation">Customs clearance time reduced by 40%, cross-border transportation exceptions reduced by 25%</div>
+            </div>
           </div>
         </div>
         
@@ -556,46 +697,6 @@
         </a>
       </div>
     </div>
-    
-    <!-- 技术实现框架 -->
-    <div class="best-practice-section">
-      <h2 class="section-title">技术实现框架</h2>
-      
-      <div class="tech-grid">
-        <div class="tech-item">
-          <div class="tech-icon">
-            <i class="fas fa-chart-line"></i>
-          </div>
-          <div class="tech-name">时序预测</div>
-          <p>基于历史数据预测PO交付时间窗口</p>
-        </div>
-        
-        <div class="tech-item">
-          <div class="tech-icon">
-            <i class="fas fa-project-diagram"></i>
-          </div>
-          <div class="tech-name">图模型分析</div>
-          <p>整合SO/PO/运单/GR事件数据</p>
-        </div>
-        
-        <div class="tech-item">
-          <div class="tech-icon">
-            <i class="fas fa-exclamation-triangle"></i>
-          </div>
-          <div class="tech-name">异常检测</div>
-          <p>实时识别运输延迟和异常模式</p>
-        </div>
-        
-        <div class="tech-item">
-          <div class="tech-icon">
-            <i class="fas fa-network-wired"></i>
-          </div>
-          <div class="tech-name">网络建模</div>
-          <p>优化运输路径和仓储资源分配</p>
-        </div>
-      </div>
-    </div>
-    
     <!-- 返回按钮 -->
     <div style="text-align: center;">
       <a href="#" class="back-btn">

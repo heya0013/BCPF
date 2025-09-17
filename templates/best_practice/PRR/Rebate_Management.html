@@ -104,7 +104,7 @@
       border-collapse: collapse;
       margin: 30px 0;
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
- }
+    }
     
     .ai-scenario-table th {
       background: linear-gradient(90deg, #2c7be5, #00c9a7);
@@ -129,7 +129,7 @@
     
     .improvement-badge {
       display: inline-block;
-      padding: 5x 12px;
+      padding: 5px 12px;
       border-radius: 50px;
       font-size: 0.9rem;
       font-weight: 600;
@@ -173,16 +173,45 @@
       margin-top: 10px;
       font-size: 0.9rem;
     }
+    
+    /* 新增翻译样式 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.25rem;
+      font-style: italic;
+    }
+    
+    .section-title {
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, #2c7be5, #00c9a7);
+    }
   </style>
 </head>
 <body>
   <!-- 顶部标题区域 -->
   <header class="best-practice-header">
     <div class="header-content">
-      <h1 class="best-practice-title">AI案例总结</h1>
-      <div class="best-practice-subtitle">Rebate Management AI应用效果分析</div>
+      <h1 class="best-practice-title">AI案例总结
+        <div class="en-translation">AI Case Study Summary</div>
+      </h1>
+      <div class="best-practice-subtitle">Rebate Management AI应用效果分析
+        <div class="en-translation">Rebate Management AI Application Effectiveness Analysis</div>
+      </div>
       <p class="process-desc">
         展示AI技术在Rebate Management流程中的实际应用案例和效果评估，提升返利效率、准确性和合规性。
+        <span class="en-translation">Showcasing practical application cases and effectiveness evaluation of AI in Rebate Management processes, improving rebate efficiency, accuracy, and compliance.</span>
       </p>
     </div>
   </header>
@@ -191,22 +220,33 @@
   <div class="best-practice-container">
     <!-- AI应用场景 -->
     <div class="best-practice-section">
-      <h2 class="section-title">AI应用场景</h2>
+      <h2 class="section-title">AI应用场景
+        <div class="en-translation">AI Application Scenarios</div>
+      </h2>
       
       <div class="ai-scenario-grid">
         <div class="scenario-card">
           <div class="scenario-icon">
             <i class="fas fa-cogs"></i>
           </div>
-          <h3 class="scenario-title">规则引擎</h3>
+          <h3 class="scenario-title">规则引擎
+            <div class="en-translation">Rules Engine</div>
+          </h3>
           <p class="scenario-desc">
             基于预设规则和机器学习算法，自动执行返利审批流程，
             识别异常交易和潜在风险，确保返利合规性和准确性。
+            <span class="en-translation">Based on predefined rules and machine learning algorithms, automatically executes rebate approval processes, identifies abnormal transactions and potential risks, ensuring rebate compliance and accuracy.</span>
           </p>
           <ul class="kpi-list">
-            <li>规则执行准确率提升至95%</li>
-            <li>异常检测效率提高60-75%</li>
-            <li>误报率降低40-50%</li>
+            <li>规则执行准确率提升至95%
+              <div class="en-translation">Rule execution accuracy increased to 95%</div>
+            </li>
+            <li>异常检测效率提高60-75%
+              <div class="en-translation">Anomaly detection efficiency improved by 60-75%</div>
+            </li>
+            <li>误报率降低40-50%
+              <div class="en-translation">False positive rate reduced by 40-50%</div>
+            </li>
           </ul>
         </div>
         
@@ -214,15 +254,24 @@
           <div class="scenario-icon">
             <i class="fas fa-exclamation-triangle"></i>
           </div>
-          <h3 class="scenario-title">异常检测</h3>
+          <h3 class="scenario-title">异常检测
+            <div class="en-translation">Anomaly Detection</div>
+          </h3>
           <p class="scenario-desc">
             通过机器学习算法自动检测返利异常模式，
             识别欺诈交易和违规操作，实现精准的风险预警。
+            <span class="en-translation">Using machine learning algorithms to automatically detect rebate anomaly patterns, identify fraudulent transactions and violations, achieving precise risk warnings.</span>
           </p>
           <ul class="kpi-list">
-            <li>异常检测准确率提高70-85%</li>
-            <li>欺诈交易识别率提升65%</li>
-            <li>风险预警时间提前3-5天</li>
+            <li>异常检测准确率提高70-85%
+              <div class="en-translation">Anomaly detection accuracy improved by 70-85%</div>
+            </li>
+            <li>欺诈交易识别率提升65%
+              <div class="en-translation">Fraudulent transaction identification rate increased by 65%</div>
+            </li>
+            <li>风险预警时间提前3-5天
+              <div class="en-translation">Risk warning time advanced by 3-5 days</div>
+            </li>
           </ul>
         </div>
         
@@ -230,15 +279,24 @@
           <div class="scenario-icon">
             <i class="fas fa-sync-alt"></i>
           </div>
-          <h3 class="scenario-title">与AP自动对账</h3>
+          <h3 class="scenario-title">与AP自动对账
+            <div class="en-translation">Automatic Reconciliation with AP</div>
+          </h3>
           <p class="scenario-desc">
             利用智能算法实现应付账款自动对账，
             确保返利数据一致性，减少人工干预和错误。
+            <span class="en-translation">Using intelligent algorithms to achieve automatic reconciliation with accounts payable, ensuring rebate data consistency, reducing manual intervention and errors.</span>
           </p>
           <ul class="kpi-list">
-            <li>对账准确率提升至92%</li>
-            <li>对账效率提高50-70%</li>
-            <li>差异发现时间减少60%</li>
+            <li>对账准确率提升至92%
+              <div class="en-translation">Reconciliation accuracy increased to 92%</div>
+            </li>
+            <li>对账效率提高50-70%
+              <div class="en-translation">Reconciliation efficiency improved by 50-70%</div>
+            </li>
+            <li>差异发现时间减少60%
+              <div class="en-translation">Discrepancy discovery time reduced by 60%</div>
+            </li>
           </ul>
         </div>
       </div>
@@ -246,29 +304,50 @@
     
     <!-- AI应用场景效果表格 -->
     <div class="best-practice-section">
-      <h2 class="section-title">AI应用场景效果分析</h2>
+      <h2 class="section-title">AI应用场景效果分析
+        <div class="en-translation">AI Application Scenario Effectiveness Analysis</div>
+      </h2>
       
       <table class="ai-scenario-table">
         <thead>
           <tr>
-            <th>AI应用场景</th>
-            <th>行业KPI指标</th>
-            <th>提升幅度</th>
-            <th>实际案例和出处链接</th>
+            <th>AI应用场景
+              <div class="en-translation">AI Application Scenario</div>
+            </th>
+            <th>行业KPI指标
+              <div class="en-translation">Industry KPI Metrics</div>
+            </th>
+            <th>提升幅度
+              <div class="en-translation">Improvement Range</div>
+            </th>
+            <th>实际案例和出处链接
+              <div class="en-translation">Real Cases and Source Links</div>
+            </th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>规则引擎+异常检测；与AP自动对账</td>
-            <td>返利结算准确率、争议率、结算周期</td>
+            <td>规则引擎+异常检测；与AP自动对账
+              <div class="en-translation">Rules Engine + Anomaly Detection; Automatic Reconciliation with AP</div>
+            </td>
+            <td>返利结算准确率、争议率、结算周期
+              <div class="en-translation">Rebate Settlement Accuracy, Dispute Rate, Settlement Cycle</div>
+            </td>
             <td>
-              <span class="improvement-badge improvement-positive">准确率 +10-20pct</span>
-              <span class="improvement-badge improvement-positive">争议 -15-25%</span>
-              <span class="improvement-badge improvement-positive">周期 -20-30%</span>
+              <span class="improvement-badge improvement-positive">准确率 +10-20pct
+                <div class="en-translation">Accuracy +10-20pct</div>
+              </span>
+              <span class="improvement-badge improvement-positive">争议 -15-25%
+                <div class="en-translation">Disputes -15-25%</div>
+              </span>
+              <span class="improvement-badge improvement-positive">周期 -20-30%
+                <div class="en-translation">Cycle -20-30%</div>
+              </span>
             </td>
             <td>
               <a href="https://www.coupa.com/blog/coupa-positioned-as-a-leader-in-the-2025-gartner-magic-quadrant-for-source-to-pay-suites/" class="case-link" target="_blank">
                 Coupa/Oracle/SAP 在回扣/返利的自动化能力（平台）
+                <div class="en-translation">Coupa/Oracle/SAP Automation Capabilities in Rebates (Platform)</div>
               </a>
             </td>
           </tr>
@@ -278,122 +357,174 @@
     
     <!-- 行业案例 -->
     <div class="best-practice-section">
-      <h2 class="section-title">实际行业案例</h2>
+      <h2 class="section-title">实际行业案例
+        <div class="en-translation">Real Industry Cases</div>
+      </h2>
       
       <div class="industry-case">
-        <h3 class="case-title"><span class="company-highlight">联合利华 (Unilever)</span> - Coupa返利管理平台实施</h3>
+        <h3 class="case-title"><span class="company-highlight">联合利华 (Unilever)</span> - Coupa返利管理平台实施
+          <div class="en-translation">Unilever - Coupa Rebate Management Platform Implementation</div>
+        </h3>
         <p class="case-desc">
           联合利华作为全球消费品巨头，通过实施Coupa的AI驱动返利管理平台，实现了全球供应商返利流程的数字化转型。
           该系统覆盖了全球2000+供应商，自动化执行返利计算、核对和支付流程。
+          <span class="en-translation">As a global consumer goods giant, Unilever implemented Coupa's AI-driven rebate management platform, achieving digital transformation of global supplier rebate processes. The system covers 2000+ global suppliers, automating rebate calculation, verification, and payment processes.</span>
         </p>
         <p class="case-desc">
           通过AI驱动的规则引擎和异常检测，联合利华成功将返利结算准确率从78%提升至95%（+17pct），
           争议率从12%降低至3%（-75%），结算周期从平均45天缩短至28天（-38%）。
           系统能够自动识别返利计算异常，生成详细分析报告，并提供改进建议和跟踪机制。
+          <span class="en-translation">Through AI-driven rules engine and anomaly detection, Unilever successfully increased rebate settlement accuracy from 78% to 95% (+17pct), reduced dispute rate from 12% to 3% (-75%), and shortened settlement cycle from an average of 45 days to 28 days (-38%). The system can automatically identify rebate calculation anomalies, generate detailed analysis reports, and provide improvement suggestions and tracking mechanisms.</span>
         </p>
         <p class="case-desc">
-          <strong>关键技术：</strong> Coupa返利管理模块、机器学习规则引擎、AP自动对账集成<br>
-          <strong>实施范围：</strong> 全球2000+供应商，涵盖食品、饮料、个护等所有产品类别<br>
+          <strong>关键技术：</strong> Coupa返利管理模块、机器学习规则引擎、AP自动对账集成
+          <div class="en-translation"><strong>Key Technologies:</strong> Coupa Rebate Management Module, Machine Learning Rules Engine, AP Automatic Reconciliation Integration</div>
+          <strong>实施范围：</strong> 全球2000+供应商，涵盖食品、饮料、个护等所有产品类别
+          <div class="en-translation"><strong>Implementation Scope:</strong> 2000+ global suppliers, covering all product categories including food, beverages, and personal care</div>
           <strong>经济效益：</strong> 年度节省返利误差和人工成本约$1200万美元
+          <div class="en-translation"><strong>Economic Benefits:</strong> Annual savings of approximately $12 million in rebate errors and labor costs</div>
         </p>
       </div>
       
       <div class="industry-case">
-        <h3 class="case-title"><span class="company-highlight">西门子 (Siemens)</span> - SAP S/4HANA返利自动化</h3>
+        <h3 class="case-title"><span class="company-highlight">西门子 (Siemens)</span> - SAP S/4HANA返利自动化
+          <div class="en-translation">Siemens - SAP S/4HANA Rebate Automation</div>
+        </h3>
         <p class="case-desc">
           西门子通过实施SAP S/4HANA的AI驱动返利管理解决方案，实现了全球返利流程的智能化和自动化。
           系统整合了多源数据，包括供应商信息、合同条款和交易历史，自动执行返利审批和异常检测。
+          <span class="en-translation">Siemens implemented SAP S/4HANA's AI-driven rebate management solution, achieving intelligent and automated global rebate processes. The system integrates multi-source data including supplier information, contract terms, and transaction history, automatically executing rebate approval and anomaly detection.</span>
         </p>
         <p class="case-desc">
           实施后，西门子成功将返利争议率降低了28%，结算准确率提升了22%，
           异常处理时间减少了70%。智能风控技术帮助企业识别了多个系统性风险点，
           通过早期预警和自动拦截减少了财务损失。
+          <span class="en-translation">After implementation, Siemens successfully reduced rebate dispute rate by 28%, increased settlement accuracy by 22%, and reduced anomaly processing time by 70%. Intelligent risk control technology helped the company identify multiple systemic risk points, reducing financial losses through early warnings and automatic interception.</span>
         </p>
         <p class="case-desc">
-          <strong>关键技术：</strong> SAP S/4HANA财务模块、机器学习异常检测、智能规则引擎<br>
-          <strong>实施范围：</strong> 全球8个业务部门，150+国家，日均处理返利5000+笔<br>
+          <strong>关键技术：</strong> SAP S/4HANA财务模块、机器学习异常检测、智能规则引擎
+          <div class="en-translation"><strong>Key Technologies:</strong> SAP S/4HANA Finance Module, Machine Learning Anomaly Detection, Intelligent Rules Engine</div>
+          <strong>实施范围：</strong> 全球8个业务部门，150+国家，日均处理返利5000+笔
+          <div class="en-translation"><strong>Implementation Scope:</strong> 8 global business units, 150+ countries, daily processing of 5000+ rebates</div>
           <strong>ROI：</strong> 投资回报率达到5.2:1，14个月收回投资
+          <div class="en-translation"><strong>ROI:</strong> Achieved 5.2:1 return on investment, payback period of 14 months</div>
         </p>
       </div>
 
       <div class="industry-case">
-        <h3 class="case-title"><span class="company-highlight">雀巢 (Nestlé)</span> - Oracle Fusion返利自动化</h3>
+        <h3 class="case-title"><span class="company-highlight">雀巢 (Nestlé)</span> - Oracle Fusion返利自动化
+          <div class="en-translation">Nestlé - Oracle Fusion Rebate Automation</div>
+        </h3>
         <p class="case-desc">
           雀巢通过Oracle Fusion Cloud的AI驱动返利解决方案，优化了全球供应链返利管理流程。
           该系统利用机器学习算法自动计算和核对供应商返利，确保数据准确性和一致性。
+          <span class="en-translation">Nestlé optimized global supply chain rebate management processes through Oracle Fusion Cloud's AI-driven rebate solution. The system uses machine learning algorithms to automatically calculate and verify supplier rebates, ensuring data accuracy and consistency.</span>
         </p>
         <p class="case-desc">
           实施后，雀巢将返利结算周期从38天缩短至22天（-42%），
           计算准确率从82%提升至96%（+14pct），人工干预需求减少80%。
           系统还能够识别季节性采购模式和促销影响，提供更准确的返利预测和建议。
+          <span class="en-translation">After implementation, Nestlé shortened rebate settlement cycle from 38 days to 22 days (-42%), increased calculation accuracy from 82% to 96% (+14pct), and reduced manual intervention requirements by 80%. The system can also identify seasonal purchasing patterns and promotional impacts, providing more accurate rebate forecasts and suggestions.</span>
         </p>
         <p class="case-desc">
-          <strong>关键技术：</strong> Oracle Fusion Cloud财务、AI驱动的返利计算、自动化对账<br>
-          <strong>实施范围：</strong> 全球3000+供应商，涵盖咖啡、奶粉、糖果等产品线<br>
+          <strong>关键技术：</strong> Oracle Fusion Cloud财务、AI驱动的返利计算、自动化对账
+          <div class="en-translation"><strong>Key Technologies:</strong> Oracle Fusion Cloud Finance, AI-Driven Rebate Calculation, Automated Reconciliation</div>
+          <strong>实施范围：</strong> 全球3000+供应商，涵盖咖啡、奶粉、糖果等产品线
+          <div class="en-translation"><strong>Implementation Scope:</strong> 3000+ global suppliers, covering product lines such as coffee, milk powder, and confectionery</div>
           <strong>成本节约：</strong> 年度财务运营成本减少约$950万美元
+          <div class="en-translation"><strong>Cost Savings:</strong> Annual financial operating costs reduced by approximately $9.5 million</div>
         </p>
       </div>
     </div>
     
     <!-- KPI和预期提升幅度 -->
     <div class="best-practice-section">
-      <h2 class="section-title">KPI和预期提升幅度</h2>
+      <h2 class="section-title">KPI和预期提升幅度
+        <div class="en-translation">KPI and Expected Improvement Range</div>
+      </h2>
       
       <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-value">10-20pct</div>
-          <div class="stat-label">结算准确率提升</div>
+          <div class="stat-label">结算准确率提升
+            <div class="en-translation">Settlement Accuracy Improvement</div>
+          </div>
         </div>
         
         <div class="stat-card">
           <div class="stat-value">15-25%</div>
-          <div class="stat-label">争议率降低</div>
+          <div class="stat-label">争议率降低
+            <div class="en-translation">Dispute Rate Reduction</div>
+          </div>
         </div>
         
         <div class="stat-card">
           <div class="stat-value">20-30%</div>
-          <div class="stat-label">结算周期缩短</div>
+          <div class="stat-label">结算周期缩短
+            <div class="en-translation">Settlement Cycle Reduction</div>
+          </div>
         </div>
         
         <div class="stat-card">
           <div class="stat-value">50-70%</div>
-          <div class="stat-label">处理效率提升</div>
+          <div class="stat-label">处理效率提升
+            <div class="en-translation">Processing Efficiency Improvement</div>
+          </div>
         </div>
       </div>
       
       <p style="margin-top: 30px; color: #5a6a7d; line-height: 1.6;">
-        以上数据基于多个行业案例的实际效果统计，展示了AI技术在Payment Management流程中的应用价值。
+        以上数据基于多个行业案例的实际效果统计，展示了AI技术在Rebate Management流程中的应用价值。
         参考案例：Coupa/Oracle/SAP在回扣/返利的自动化能力平台实践
+        <span class="en-translation">The above data is based on actual effect statistics from multiple industry cases, demonstrating the application value of AI technology in Rebate Management processes. Reference cases: Coupa/Oracle/SAP automation capabilities platform practices in rebates.</span>
       </p>
     </div>
     
     <!-- 技术实现框架 -->
     <div class="best-practice-section">
-      <h2 class="section-title">技术实现框架</h2>
+      <h2 class="section-title">技术实现框架
+        <div class="en-translation">Technical Implementation Framework</div>
+      </h2>
       
       <div class="stats-grid">
         <div class="stat-card">
           <i class="fas fa-cogs"></i>
-          <div class="stat-value">规则引擎</div>
-          <div class="stat-label">智能规则执行</div>
+          <div class="stat-value">规则引擎
+            <div class="en-translation">Rules Engine</div>
+          </div>
+          <div class="stat-label">智能规则执行
+            <div class="en-translation">Intelligent Rule Execution</div>
+          </div>
         </div>
         
         <div class="stat-card">
           <i class="fas fa-exclamation-triangle"></i>
-          <div class="stat-value">异常检测</div>
-          <div class="stat-label">机器学习算法</div>
+          <div class="stat-value">异常检测
+            <div class="en-translation">Anomaly Detection</div>
+          </div>
+          <div class="stat-label">机器学习算法
+            <div class="en-translation">Machine Learning Algorithms</div>
+          </div>
         </div>
         
         <div class="stat-card">
           <i class="fas fa-sync-alt"></i>
-          <div class="stat-value">AP对账</div>
-          <div class="stat-label">自动对账系统</div>
+          <div class="stat-value">AP对账
+            <div class="en-translation">AP Reconciliation</div>
+          </div>
+          <div class="stat-label">自动对账系统
+            <div class="en-translation">Automatic Reconciliation System</div>
+          </div>
         </div>
         
         <div class="stat-card">
           <i class="fas fa-shield-alt"></i>
-          <div class="stat-value">风控系统</div>
-          <div class="stat-label">智能风险控制</div>
+          <div class="stat-value">风控系统
+            <div class="en-translation">Risk Control System</div>
+          </div>
+          <div class="stat-label">智能风险控制
+            <div class="en-translation">Intelligent Risk Control</div>
+          </div>
         </div>
       </div>
     </div>
@@ -402,12 +533,15 @@
     <div style="text-align: center;">
       <a href="{{ url_for('payments_reconcile_rebate') }}" class="back-btn">
         <i class="fas fa-arrow-left"></i> 返回Payment Recon
+        <div class="en-translation">Return to Payment Recon</div>
       </a>
     </div>
   </div>
 
   <footer>
-    <p>采购流程分析系统 © 2023 | AI驱动供应链优化解决方案 | 提升效率 • 降低风险 • 优化供应</p>
+    <p>采购流程分析系统 © 2023 | AI驱动供应链优化解决方案 | 提升效率 • 降低风险 • 优化供应
+      <div class="en-translation">Procurement Process Analysis System © 2023 | AI-Driven Supply Chain Optimization Solution | Improve Efficiency • Reduce Risk • Optimize Supply</div>
+    </p>
   </footer>
 </body>
 </html>

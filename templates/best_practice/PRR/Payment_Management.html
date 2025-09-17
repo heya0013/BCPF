@@ -5,10 +5,72 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI案例总结 - Payment Management</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice.css') }}">
   <style>
-    /* AI案例总结特定样式补充 */
+    /* 全局样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* 顶部标题区域 */
+    .best-practice-header {
+      background: linear-gradient(135deg, #2c7be5 0%, #0066cc 100%);
+      color: white;
+      padding: 40px 30px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(44, 123, 229, 0.3);
+    }
+    
+    .best-practice-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    
+    .best-practice-subtitle {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    
+    .process-desc {
+      font-size: 1.1rem;
+      max-width: 800px;
+    }
+    
+    /* 主要内容区域 */
+    .best-practice-section {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .section-title {
+      font-size: 1.8rem;
+      color: #2c3e50;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #cbe5;
+    }
+    
+    /* AI应用场景网格 */
     .ai-scenario-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -74,31 +136,7 @@
       color: #00c9a7;
     }
     
-    .industry-case {
-      background: linear-gradient(135deg, #f0f5ff 0%, #e6f0ff 100%);
-      border-radius: 12px;
-      padding: 25px;
-      margin: 30px 0;
-    }
-    
-    .case-title {
-      font-size: 1.4rem;
-      color: #2c3e50;
-      margin-bottom: 15px;
-      font-weight: 600;
-    }
-    
-    .case-desc {
-      color: #5a6a7d;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-    
-    .company-highlight {
-      font-weight: 600;
-      color: #2c7be5;
-    }
-    
+    /* 表格样式 */
     .ai-scenario-table {
       width: 100%;
       border-collapse: collapse;
@@ -142,6 +180,11 @@
       color: #155724;
     }
     
+    .improvement-negative {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    
     .case-link {
       color: #2c7be5;
       text-decoration: none;
@@ -152,75 +195,155 @@
       text-decoration: underline;
     }
     
-    .vendor-logo-grid {
+    /* 行业案例样式 */
+    .industry-case {
+      background: linear-gradient(135deg, #f0f5ff 0%, #e6f0ff 100%);
+      border-radius: 12px;
+      padding: 25px;
+      margin: 30px 0;
+    }
+    
+    .case-title {
+      font-size: 1.4rem;
+      color: #2c3e50;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    
+    .case-desc {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    
+    .company-highlight {
+      font-weight: 600;
+      color: #2c7be5;
+    }
+    
+    /* KPI统计网格 */
+    .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
-      margin: 20px 0;
+      margin: 30px 0;
     }
     
-    .vendor-logo {
-      text-align: center;
-      padding: 15px;
+    .stat-card {
       background: white;
-      border-radius: 8px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     }
     
-    .vendor-name {
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #2c7be5;
+      margin-bottom: 10px;
+    }
+    
+    .stat-label {
+      color: #5a6a7d;
+      font-size: 1rem;
+    }
+    
+    /* 返回按钮 */
+    .back-btn {
+      display: inline-block;
+      background: #2c7be5;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-decoration: none;
       font-weight: 600;
-      color: #2c3e50;
-      margin-top: 10px;
-      font-size: 0.9rem;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(44, 123, 229, 0.3);
     }
     
-    .case-reference {
-      background: #f8f9fa;
-      border-left: 4px solid #2c7be5;
-      padding: 15px;
-      margin: 15px 0;
-      border-radius: 0 8px 8px 0;
+    .back-btn:hover {
+      background: #1a5276;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(44, 123, 229, 0.4);
     }
     
-    .reference-title {
-      font-weight: 600;
-      color: #2c3e50;
-      margin-bottom: 8px;
+    /* 新增翻译样式 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.25rem;
+      font-style: italic;
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .best-practice-title {
+        font-size: 2rem;
+      }
+      
+      .best-practice-subtitle {
+        font-size: 1.5rem;
+      }
+      
+      .section-title {
+        font-size: 1.5rem;
+      }
+      
+      .ai-scenario-grid,
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- 顶部标题区域 -->
-  <header class="best-practice-header">
-    <div class="header-content">
-      <h1 class="best-practice-title">AI案例总结</h1>
-      <div class="best-practice-subtitle">Payment Management AI应用效果分析</div>
+  <div class="container">
+    <!-- 顶部标题区域 -->
+    <header class="best-practice-header">
+      <h1 class="best-practice-title">AI案例总结
+        <div class="en-translation">AI Case Study Summary</div>
+      </h1>
+      <div class="best-practice-subtitle">Payment Management AI应用效果分析
+        <div class="en-translation">Payment Management AI Application Effectiveness Analysis</div>
+      </div>
       <p class="process-desc">
         基于NLP条款抽取、对账规则和异常解释技术，展示AI技术在Payment Management流程中的实际应用案例和效果评估。
+        <span class="en-translation">Based on NLP clause extraction, reconciliation rules, and anomaly explanation technologies, showcasing practical application cases and effectiveness evaluation of AI in Payment Management processes.</span>
       </p>
-    </div>
-  </header>
+    </header>
 
-  <!-- 主要内容区域 -->
-  <div class="best-practice-container">
     <!-- AI应用场景 -->
     <div class="best-practice-section">
-      <h2 class="section-title">AI应用场景</h2>
+      <h2 class="section-title">AI应用场景
+        <div class="en-translation">AI Application Scenarios</div>
+      </h2>
       
       <div class="ai-scenario-grid">
         <div class="scenario-card">
           <div class="scenario-icon">
             <i class="fas fa-language"></i>
           </div>
-          <h3 class="scenario-title">NLP条款抽取</h3>
+          <h3 class="scenario-title">NLP条款抽取
+            <div class="en-translation">NLP Clause Extraction</div>
+          </h3>
           <p class="scenario-desc">
             利用自然语言处理技术自动抽取合同条款和付款条件，
             确保付款规则准确性和一致性，减少人工解读错误。
+            <span class="en-translation">Using natural language processing technology to automatically extract contract clauses and payment terms, ensuring payment rule accuracy and consistency, reducing manual interpretation errors.</span>
           </p>
           <ul class="kpi-list">
-            <li>条款抽取准确率提升至92%</li>
-            <li>人工审核时间减少60-75%</li>
-            <li>条款一致性提高80%</li>
+            <li>条款抽取准确率提升至92%
+              <div class="en-translation">Clause extraction accuracy increased to 92%</div>
+            </li>
+            <li>人工审核时间减少60-75%
+              <div class="en-translation">Manual review time reduced by 60-75%</div>
+            </li>
+            <li>条款一致性提高80%
+              <div class="en-translation">Clause consistency improved by 80%</div>
+            </li>
           </ul>
         </div>
         
@@ -228,15 +351,24 @@
           <div class="scenario-icon">
             <i class="fas fa-cogs"></i>
           </div>
-          <h3 class="scenario-title">对账规则引擎</h3>
+          <h3 class="scenario-title">对账规则引擎
+            <div class="en-translation">Reconciliation Rules Engine</div>
+          </h3>
           <p class="scenario-desc">
             基于预设规则和机器学习算法，自动执行付款对账流程，
             识别差异和异常，确保付款准确性和合规性。
+            <span class="en-translation">Based on predefined rules and machine learning algorithms, automatically executes payment reconciliation processes, identifies discrepancies and anomalies, ensuring payment accuracy and compliance.</span>
           </p>
           <ul class="kpi-list">
-            <li>对账准确率提高70-85%</li>
-            <li>异常检测效率提升65%</li>
-            <li>误报率降低35-45%</li>
+            <li>对账准确率提高70-85%
+              <div class="en-translation">Reconciliation accuracy improved by 70-85%</div>
+            </li>
+            <li>异常检测效率提升65%
+              <div class="en-translation">Anomaly detection efficiency increased by 65%</div>
+            </li>
+            <li>误报率降低35-45%
+              <div class="en-translation">False positive rate reduced by 35-45%</div>
+            </li>
           </ul>
         </div>
         
@@ -244,15 +376,24 @@
           <div class="scenario-icon">
             <i class="fas fa-exclamation-circle"></i>
           </div>
-          <h3 class="scenario-title">异常解释</h3>
+          <h3 class="scenario-title">异常解释
+            <div class="en-translation">Anomaly Explanation</div>
+          </h3>
           <p class="scenario-desc">
             通过智能算法自动解释付款异常原因，
             提供详细的分析报告和改进建议，减少人工干预。
+            <span class="en-translation">Using intelligent algorithms to automatically explain payment anomaly causes, providing detailed analysis reports and improvement suggestions, reducing manual intervention.</span>
           </p>
           <ul class="kpi-list">
-            <li>异常解释准确率提升至88%</li>
-            <li>问题解决时间减少50-70%</li>
-            <li>重复异常发生率降低40%</li>
+            <li>异常解释准确率提升至88%
+              <div class="en-translation">Anomaly explanation accuracy increased to 88%</div>
+            </li>
+            <li>问题解决时间减少50-70%
+              <div class="en-translation">Problem resolution time reduced by 50-70%</div>
+            </li>
+            <li>重复异常发生率降低40%
+              <div class="en-translation">Recurring anomaly rate reduced by 40%</div>
+            </li>
           </ul>
         </div>
       </div>
@@ -260,48 +401,80 @@
     
     <!-- AI应用场景效果表格 -->
     <div class="best-practice-section">
-      <h2 class="section-title">AI应用场景效果分析</h2>
+      <h2 class="section-title">AI应用场景效果分析
+        <div class="en-translation">AI Application Scenario Effectiveness Analysis</div>
+      </h2>
       
       <table class="ai-scenario-table">
         <thead>
           <tr>
-            <th>AI应用场景</th>
-            <th>行业KPI指标</th>
-            <th>提升幅度</th>
-            <th>实际案例和出处链接</th>
+            <th>AI应用场景
+              <div class="en-translation">AI Application Scenario</div>
+            </th>
+            <th>行业KPI指标
+              <div class="en-translation">Industry KPI Metrics</div>
+            </th>
+            <th>提升幅度
+              <div class="en-translation">Improvement Range</div>
+            </th>
+            <th>实际案例和出处链接
+              <div class="en-translation">Real Cases and Source Links</div>
+            </th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>NLP条款抽取+对账规则+异常解释</td>
-            <td>三单匹配率、价格合规率、对账周期</td>
+            <td>NLP条款抽取+对账规则+异常解释
+              <div class="en-translation">NLP Clause Extraction + Reconciliation Rules + Anomaly Explanation</div>
+            </td>
+            <td>三单匹配率、价格合规率、对账周期
+              <div class="en-translation">Three-Way Match Rate, Price Compliance Rate, Reconciliation Cycle</div>
+            </td>
             <td>
-              <span class="improvement-badge improvement-positive">匹配率 +10-20pct</span>
-              <span class="improvement-badge improvement-positive">对账周期 -20-30%</span>
-              <span class="improvement-badge improvement-positive">漏付/超付率 -20-40%</span>
+              <span class="improvement-badge improvement-positive">匹配率 +10-20pct
+                <div class="en-translation">Match Rate +10-20pct</div>
+              </span>
+              <span class="improvement-badge improvement-negative">对账周期 -20-30%
+                <div class="en-translation">Reconciliation Cycle -20-30%</div>
+              </span>
+              <span class="improvement-badge improvement-negative">漏付/超付率 -20-40%
+                <div class="en-translation">Under/Over Payment Rate -20-40%</div>
+              </span>
             </td>
             <td>
               <a href="https://www.worldcc.com/Resources/" class="case-link" target="_blank">
                 WorldCC/CLM 条款抽取与合规应用（方法）
+                <div class="en-translation">WorldCC/CLM Clause Extraction & Compliance Application (Methodology)</div>
               </a><br>
               <a href="https://news.sap.com/2025/03/sap-a-leader-gartner-magic-quadrant-source-to-pay-suites/" class="case-link" target="_blank">
                 SAP/Oracle/Coupa 在应付与价目联动（平台）
+                <div class="en-translation">SAP/Oracle/Coupa in AP & Price Linkage (Platform)</div>
               </a><br>
               <a href="https://www.icertis.com/resources/" class="case-link" target="_blank">
                 平台在审批与合规联动的实践（参考）
+                <div class="en-translation">Platform Practices in Approval & Compliance Linkage (Reference)</div>
               </a>
             </td>
           </tr>
           <tr>
-            <td>风险评分+审批智能路由+异常解释</td>
-            <td>加急审批周期、冻结释放准确率、审计问题数</td>
+            <td>风险评分+审批智能路由+异常解释
+              <div class="en-translation">Risk Scoring + Intelligent Approval Routing + Anomaly Explanation</div>
+            </td>
+            <td>加急审批周期、冻结释放准确率、审计问题数
+              <div class="en-translation">Expedited Approval Cycle, Freeze Release Accuracy, Audit Issue Count</div>
+            </td>
             <td>
-              <span class="improvement-badge improvement-positive">审批周期 -15-30%</span>
-              <span class="improvement-badge improvement-positive">审计问题 -10-20%</span>
+              <span class="improvement-badge improvement-negative">审批周期 -15-30%
+                <div class="en-translation">Approval Cycle -15-30%</div>
+              </span>
+              <span class="improvement-badge improvement-negative">审计问题 -10-20%
+                <div class="en-translation">Audit Issues -10-20%</div>
+              </span>
             </td>
             <td>
               <a href="https://www.docusign.com/products/clm" class="case-link" target="_blank">
                 DocuSign CLM 解决方案
+                <div class="en-translation">DocuSign CLM Solution</div>
               </a>
             </td>
           </tr>
@@ -309,153 +482,131 @@
       </table>
     </div>
     
-    <!-- 行业案例 -->
-    <div class="best-practice-section">
-      <h2 class="section-title">实际行业案例</h2>
-      
-      <div class="industry-case">
-        <h3 class="case-title"><span class="company-highlight">西门子 (Siemens)</span> - SAP S/4HANA智能付款管理</h3>
-        <p class="case-desc">
-          西门子通过实施SAP S/4HANA的AI驱动付款管理解决方案，实现了全球付款流程的数字化转型。
-          该系统利用NLP技术自动抽取合同条款，建立智能对账规则引擎，并实现异常自动解释。
-        </p>
-        <p class="case-desc">
-          通过AI驱动的付款自动化，西门子成功将三单匹配率从72%提升至91%（+19pct），
-          对账周期从平均12天缩短至7天（-42%），漏付/超付率从5.2%降低至2.1%（-60%）。
-          系统能够自动识别合同关键条款，生成付款规则，并提供异常解释和改进建议。
-        </p>
-        <p class="case-desc">
-          <strong>关键技术：</strong> SAP S/4HANA财务模块、NLP条款抽取、机器学习规则引擎<br>
-          <strong>实施范围：</strong> 全球8个业务部门，150+国家，日均处理付款5000+笔<br>
-          <strong>经济效益：</strong> 年度节省人工成本和误差损失约$1200万美元
-        </p>
-        
-        <div class="case-reference">
-          <div class="reference-title">参考来源：</div>
-          <p>SAP官方案例研究 - "西门子数字化转型：AI驱动的智能付款管理" (2024)</p>
-        </div>
-      </div>
-      
-      <div class="industry-case">
-        <h3 class="case-title"><span class="company-highlight">联合利华 (Unilever)</span> - Coupa应付与价目联动平台</h3>
-        <p class="case-desc">
-          联合利华通过Coupa平台的AI驱动付款解决方案，优化了全球供应链付款管理流程。
-          该系统利用风险评分和智能审批路由技术，实现加急付款的自动化处理和异常监控。
-        </p>
-        <p class="case-desc">
-          实施后，联合利华成功将加急审批周期从平均4小时缩短至1小时（-75%），
-          冻结释放准确率从78%提升至95%（+17pct），审计问题数减少了22%。
-          智能风控技术帮助企业识别了多个系统性风险点，通过早期预警和自动拦截减少了财务损失。
-        </p>
-        <p class="case-desc">
-          <strong>关键技术：</strong> Coupa风险评分引擎、智能审批路由、异常检测算法<br>
-          <strong>实施范围：</strong> 全球2000+供应商，涵盖食品、饮料、个护等所有产品类别<br>
-          <strong>ROI：</strong> 投资回报率达到5.1:1，15个月收回投资
-        </p>
-        
-        <div class="case-reference">
-          <div class="reference-title">参考来源：</div>
-          <p>Coupa客户成功案例 - "联合利华：AI驱动的应付账款转型" (2023)</p>
-        </div>
-      </div>
-
-      <div class="industry-case">
-        <h3 class="case-title"><span class="company-highlight">宝马集团 (BMW Group)</span> - Icertis合同智能化平台</h3>
-        <p class="case-desc">
-          宝马集团通过Icertis合同智能化平台，实现了合同条款的自动抽取和付款条件的智能管理。
-          该系统基于WorldCC/CLM方法论，利用AI技术自动化执行合同合规检查和付款规则应用。
-        </p>
-        <p class="case-desc">
-          实施后，宝马将价格合规率从83%提升至97%（+14pct），
-          对账差异率从6.8%降低至2.3%（-66%），人工审核需求减少70%。
-          系统还能够识别季节性采购模式和促销影响，提供更准确的付款预测和建议。
-        </p>
-        <p class="case-desc">
-          <strong>关键技术：</strong> Icertis AI平台、WorldCC/CLM方法论、智能合规检查<br>
-          <strong>实施范围：</strong> 全球3000+供应商，涵盖汽车零部件和服务采购<br>
-          <strong>成本节约：</strong> 年度财务运营成本减少约$950万美元
-        </p>
-        
-        <div class="case-reference">
-          <div class="reference-title">参考来源：</div>
-          <p>Icertis客户案例研究 - "宝马集团：合同智能化的数字化转型" (2024)</p>
-        </div>
-      </div>
-    </div>
-    
     <!-- KPI和预期提升幅度 -->
     <div class="best-practice-section">
-      <h2 class="section-title">KPI和预期提升幅度</h2>
+      <h2 class="section-title">KPI和预期提升幅度
+        <div class="en-translation">KPI and Expected Improvement Range</div>
+      </h2>
       
       <div class="stats-grid">
         <div class="stat-card">
-          <div class="stat-value">10-20pct</div>
-          <div class="stat-label">三单匹配率提升</div>
+          <div class="stat-value">+10-20pct</div>
+          <div class="stat-label">三单匹配率提升
+            <div class="en-translation">Three-Way Match Rate Improvement</div>
+          </div>
         </div>
         
         <div class="stat-card">
-          <div class="stat-value">20-30%</div>
-          <div class="stat-label">对账周期缩短</div>
+          <div class="stat-value">-20-30%</div>
+          <div class="stat-label">对账周期缩短
+            <div class="en-translation">Reconciliation Cycle Reduction</div>
+          </div>
         </div>
         
         <div class="stat-card">
-          <div class="stat-value">20-40%</div>
-          <div class="stat-label">漏付/超付率降低</div>
+          <div class="stat-value">-20-40%</div>
+          <div class="stat-label">漏付/超付率降低
+            <div class="en-translation">Under/Over Payment Rate Reduction</div>
+          </div>
         </div>
         
         <div class="stat-card">
-          <div class="stat-value">15-30%</div>
-          <div class="stat-label">审批周期缩短</div>
+          <div class="stat-value">-15-30%</div>
+          <div class="stat-label">审批周期缩短
+            <div class="en-translation">Approval Cycle Reduction</div>
+          </div>
         </div>
       </div>
       
       <p style="margin-top: 30px; color: #5a6a7d; line-height: 1.6;">
         以上数据基于多个行业案例的实际效果统计，展示了AI技术在Payment Management流程中的应用价值。
         参考案例：WorldCC/CLM条款抽取与合规应用、SAP/Oracle/Coupa应付与价目联动平台实践
+        <span class="en-translation">The above data is based on actual effect statistics from multiple industry cases, demonstrating the application value of AI technology in Payment Management processes. Reference cases: WorldCC/CLM clause extraction and compliance application, SAP/Oracle/Coupa AP and price linkage platform practices.</span>
       </p>
     </div>
     
-    <!-- 技术实现框架 -->
+    <!-- 实际行业案例 -->
     <div class="best-practice-section">
-      <h2 class="section-title">技术实现框架</h2>
+      <h2 class="section-title">实际行业案例
+        <div class="en-translation">Real Industry Cases</div>
+      </h2>
       
-      <div class="stats-grid">
-        <div class="stat-card">
-          <i class="fas fa-language"></i>
-          <div class="stat-value">NLP条款抽取</div>
-          <div class="stat-label">自然语言处理</div>
-        </div>
+      <div class="industry-case">
+        <h3 class="case-title"><span class="company-highlight">西门子 (Siemens)</span> - SAP S/4HANA智能付款管理
+          <div class="en-translation">Siemens - SAP S/4HANA Intelligent Payment Management</div>
+        </h3>
+        <p class="case-desc">
+          西门子通过实施SAP S/4HANA的AI驱动付款管理解决方案，实现了全球付款流程的数字化转型。
+          该系统利用NLP技术自动抽取合同条款，建立智能对账规则引擎，并实现异常自动解释。
+          <span class="en-translation">Siemens implemented an AI-driven payment management solution through SAP S/4HANA, achieving digital transformation of global payment processes. The system uses NLP technology to automatically extract contract clauses, establish intelligent reconciliation rules engine, and enable automatic anomaly explanation.</span>
+        </p>
+        <p class="case-desc">
+          通过AI驱动的付款自动化，西门子成功将三单匹配率从72%提升至91%（+19pct），
+          对账周期从平均12天缩短至7天（-42%），漏付/超付率从5.2%降低至2.1%（-60%）。
+          系统能够自动识别合同关键条款，生成付款规则，并提供异常解释和改进建议。
+          <span class="en-translation">Through AI-driven payment automation, Siemens successfully increased the three-way match rate from 72% to 91% (+19pct), reduced the reconciliation cycle from an average of 12 days to 7 days (-42%), and decreased under/over payment rate from 5.2% to 2.1% (-60%). The system can automatically identify key contract clauses, generate payment rules, and provide anomaly explanations and improvement suggestions.</span>
+        </p>
+        <p class="case-desc">
+          <strong>关键技术：</strong> SAP S/4HANA财务模块、NLP条款抽取、机器学习规则引擎
+          <div class="en-translation"><strong>Key Technologies:</strong> SAP S/4HANA Finance Module, NLP Clause Extraction, Machine Learning Rules Engine</div>
+          <strong>实施范围：</strong> 全球8个业务部门，150+国家，日均处理付款5000+笔
+          <div class="en-translation"><strong>Implementation Scope:</strong> 8 global business units, 150+ countries, daily processing of 5000+ payments</div>
+          <strong>经济效益：</strong> 年度节省人工成本和误差损失约$1200万美元
+          <div class="en-translation"><strong>Economic Benefits:</strong> Annual savings of approximately $12 million in labor costs and error losses</div>
+        </p>
         
-        <div class="stat-card">
-          <i class="fas fa-cogs"></i>
-          <div class="stat-value">对账规则引擎</div>
-          <div class="stat-label">规则引擎技术</div>
+        <div class="case-reference">
+          <div class="reference-title">参考来源：
+            <div class="en-translation">Reference Source:</div>
+          </div>
+          <p>SAP官方案例研究 - "西门子数字化转型：AI驱动的智能付款管理" (2024)
+            <div class="en-translation">SAP Official Case Study - "Siemens Digital Transformation: AI-Driven Intelligent Payment Management" (2024)</div>
+          </p>
         </div>
+      </div>
+      
+      <div class="industry-case">
+        <h3 class="case-title"><span class="company-highlight">联合利华 (Unilever)</span> - Coupa应付与价目联动平台
+          <div class="en-translation">Unilever - Coupa AP & Price Linkage Platform</div>
+        </h3>
+        <p class="case-desc">
+          联合利华通过Coupa平台的AI驱动付款解决方案，优化了全球供应链付款管理流程。
+          该系统利用风险评分和智能审批路由技术，实现加急付款的自动化处理和异常监控。
+          <span class="en-translation">Unilever optimized global supply chain payment management processes through Coupa's AI-driven payment solution. The system utilizes risk scoring and intelligent approval routing technology to enable automated processing of expedited payments and anomaly monitoring.</span>
+        </p>
+        <p class="case-desc">
+          实施后，联合利华成功将加急审批周期从平均4小时缩短至1小时（-75%），
+          冻结释放准确率从78%提升至95%（+17pct），审计问题数减少了22%。
+          智能风控技术帮助企业识别了多个系统性风险点，通过早期预警和自动拦截减少了财务损失。
+          <span class="en-translation">After implementation, Unilever successfully reduced the expedited approval cycle from an average of 4 hours to 1 hour (-75%), increased freeze release accuracy from 78% to 95% (+17pct), and reduced audit issues by 22%. Intelligent risk control technology helped the company identify multiple systemic risk points, reducing financial losses through early warnings and automatic interception.</span>
+        </p>
+        <p class="case-desc">
+          <strong>关键技术：</strong> Coupa风险评分引擎、智能审批路由、异常检测算法
+          <div class="en-translation"><strong>Key Technologies:</strong> Coupa Risk Scoring Engine, Intelligent Approval Routing, Anomaly Detection Algorithms</div>
+          <strong>实施范围：</strong> 全球2000+供应商，涵盖食品、饮料、个护等所有产品类别
+          <div class="en-translation"><strong>Implementation Scope:</strong> 2000+ global suppliers, covering all product categories including food, beverages, and personal care</div>
+          <strong>ROI：</strong> 投资回报率达到5.1:1，15个月收回投资
+          <div class="en-translation"><strong>ROI:</strong> Achieved 5.1:1 return on investment, payback period of 15 months</div>
+        </p>
         
-        <div class="stat-card">
-          <i class="fas fa-exclamation-circle"></i>
-          <div class="stat-value">异常解释</div>
-          <div class="stat-label">智能分析算法</div>
-        </div>
-        
-        <div class="stat-card">
-          <i class="fas fa-shield-alt"></i>
-          <div class="stat-value">风险评分</div>
-          <div class="stat-label">机器学习模型</div>
+        <div class="case-reference">
+          <div class="reference-title">参考来源：
+            <div class="en-translation">Reference Source:</div>
+          </div>
+          <p>Coupa客户成功案例 - "联合利华：AI驱动的应付账款转型" (2023)
+            <div class="en-translation">Coupa Customer Success Case - "Unilever: AI-Driven Accounts Payable Transformation" (2023)</div>
+          </p>
         </div>
       </div>
     </div>
     
     <!-- 返回按钮 -->
     <div style="text-align: center;">
-      <a href="{{ url_for('payments_reconcile_rebate') }}" class="back-btn">
-        <i class="fas fa-arrow-left"></i> 返回Payment Recon
+      <a href="#" class="back-btn">
+        <i class="fas fa-arrow-left"></i> 返回Payment Management
+        <div class="en-translation">Return to Payment Management</div>
       </a>
     </div>
   </div>
-
-  <footer>
-    <p>采购流程分析系统 © 2023 | AI驱动供应链优化解决方案 | 提升效率 • 降低风险 • 优化供应</p>
-  </footer>
 </body>
 </html>
