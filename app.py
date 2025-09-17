@@ -100,4 +100,4 @@ def best_practice(process, module_name):
             <p>请创建相应的模板文件。</p>
             """, 404
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
