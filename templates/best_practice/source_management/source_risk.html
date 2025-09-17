@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI案例总结 - Source Risk Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice1.css') }}">
+    <style>
+        /* 补充样式 */
+        .en-translation {
+            font-size: 0.8em;
+            color: #666;
+            display: block;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+        
+        .case-summary {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .case-title {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .case-kpi {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .kpi-item {
+            flex: 1;
+            min-width: 200px;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .kpi-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #2c7be5;
+            margin-bottom: 0.5rem;
+        }
+        
+        .kpi-label {
+            color: #5a6a7d;
+            font-size: 0.9rem;
+        }
+        
+        .case-details {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        
+        .detail-row {
+            display: flex;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #2c3e50;
+            width: 150px;
+        }
+        
+        .detail-value {
+            flex: 1;
+            color: #5a6a7d;
+        }
+        
+        .case-link-btn {
+            display: inline-block;
+            background: #2c7be5;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .case-link-btn:hover {
+            background: #1a5276;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .detail-row {
+                flex-direction: column;
+            }
+            
+            .detail-label {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部标题区域 -->
+    <header class="best-practice-header">
+        <h1 class="best-practice-title">AI案例总结</h1>
+        <div class="en-translation">AI Case Study Summary</div>
+        
+        <div class="best-practice-subtitle">Source Risk Management 供应风险管理</div>
+        <div class="en-translation">Source Risk Management</div>
+        
+        <p class="process-desc">
+            基于AI驱动的事件流监测、NLP分析和图谱溯源技术，提升供应风险预警和处置能力
+            <span class="en-translation">AI-driven event stream monitoring, NLP analysis and graph traceability technology to improve supply risk warning and disposal capabilities</span>
+        </p>
+    </header>
+
+    <div class="best-practice-container">
+        <!-- AI应用场景 -->
+        <div class="best-practice-section">
+            <h2 class="section-title">AI应用场景</h2>
+            <div class="en-translation">AI Application Scenarios</div>
+            
+            <div class="ai-scenario-grid">
+                <div class="scenario-card">
+                    <div class="scenario-icon">
+                        <i class="fas fa-stream"></i>
+                    </div>
+                    <h3 class="scenario-title">事件流+NLP监测</h3>
+                    <div class="en-translation">Event Stream + NLP Monitoring</div>
+                    <p class="scenario-desc">
+                        利用事件流处理和NLP技术实时监测全球事件数据，识别潜在供应风险信号
+                        <span class="en-translation">Using event stream processing and NLP technology to monitor global event data in real time, identifying potential supply risk signals</span>
+                    </p>
+                    <ul class="kpi-list">
+                        <li>
+                            风险识别准确率提升至93%
+                            <span class="en-translation">Risk identification accuracy increased to 93%</span>
+                        </li>
+                        <li>
+                            监测响应时间缩短70-80%
+                            <span class="en-translation">Monitoring response time reduced by 70-80%</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="scenario-card">
+                    <div class="scenario-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3 class="scenario-title">图谱溯源</h3>
+                    <div class="en-translation">Graph Traceability</div>
+                    <p class="scenario-desc">
+                        基于知识图谱技术追溯供应链网络关系，分析风险传播路径和影响范围
+                        <span class="en-translation">Using knowledge graph technology to trace supply chain network relationships, analyzing risk propagation paths and impact scope</span>
+                    </p>
+                    <ul class="kpi-list">
+                        <li>
+                            溯源准确率提升至90%
+                            <span class="en-translation">Traceability accuracy increased to 90%</span>
+                        </li>
+                        <li>
+                            影响分析时间缩短65-75%
+                            <span class="en-translation">Impact analysis time reduced by 65-75%</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="scenario-card">
+                    <div class="scenario-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="scenario-title">预警→处置编排</h3>
+                    <div class="en-translation">Warning → Disposal Orchestration</div>
+                    <p class="scenario-desc">
+                        基于AI算法自动编排风险处置流程，从预警到处置实现全自动化响应
+                        <span class="en-translation">Using AI algorithms to automatically orchestrate risk disposal processes, achieving fully automated response from warning to disposal</span>
+                    </p>
+                    <ul class="kpi-list">
+                        <li>
+                            处置效率提升55-65%
+                            <span class="en-translation">Disposal efficiency improved by 55-65%</span>
+                        </li>
+                        <li>
+                            响应时间缩短60-70%
+                            <span class="en-translation">Response time reduced by 60-70%</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- AI应用场景效果分析 -->
+        <div class="best-practice-section">
+            <h2 class="section-title">AI应用场景效果分析</h2>
+            <div class="en-translation">AI Application Scenario Effectiveness Analysis</div>
+            
+            <table class="ai-scenario-table">
+                <thead>
+                    <tr>
+                        <th>AI应用场景
+                            <div class="en-translation">AI Application Scenario</div>
+                        </th>
+                        <th>行业KPI指标
+                            <div class="en-translation">Industry KPI Metrics</div>
+                        </th>
+                        <th>提升幅度
+                            <div class="en-translation">Improvement Range</div>
+                        </th>
+                        <th>实际案例和出处链接
+                            <div class="en-translation">Real Cases and Source Links</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>事件流+NLP监测+图谱溯源；预警→处置编排
+                            <div class="en-translation">Event Stream + NLP Monitoring + Graph Traceability; Warning → Disposal Orchestration</div>
+                        </td>
+                        <td>高风险件缓解时长、单/唯供占比、供应恢复时间
+                            <div class="en-translation">High-risk Item Mitigation Duration, Single/Sole Source Ratio, Supply Recovery Time</div>
+                        </td>
+                        <td>
+                            <span class="improvement-badge improvement-negative">缓解时长 −20–30%</span>
+                            <div class="en-translation">Mitigation Duration −20–30%</div>
+                            <span class="improvement-badge improvement-negative">单/唯供占比 −5–10%</span>
+                            <div class="en-translation">Single/Sole Source Ratio −5–10%</div>
+                        </td>
+                        <td>
+                            <a href="https://www.everstream.ai/gartner-magic-quadrant-2025/" class="case-link" target="_blank">
+                                Everstream 2025 MQ与市场指引
+                            </a>
+                            <div class="en-translation">Everstream 2025 MQ & Market Guide</div>
+                            <a href="https://www.businesswire.com/news/home/20231214847321/en/Everstream-Analytics-Recognized-in-the-2023-Gartner%C2%AE-Market-Guide-for-Supplier-Risk-Management-Solutions/" class="case-link" target="_blank">
+                                BusinessWire 市场指南新闻稿
+                            </a>
+                            <div class="en-translation">BusinessWire Market Guide Press Release</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- KPI和预期提升幅度 -->
+        <div class="best-practice-section">
+            <h2 class="section-title">KPI和预期提升幅度</h2>
+            <div class="en-translation">KPI and Expected Improvement Range</div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">-20-30%</div>
+                    <div class="stat-label">缓解时长缩短
+                        <div class="en-translation">Mitigation Duration Reduction</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-value">-5-10%</div>
+                    <div class="stat-label">单/唯供占比降低
+                        <div class="en-translation">Single/Sole Source Ratio Reduction</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-value">-15-25%</div>
+                    <div class="stat-label">供应恢复时间缩短
+                        <div class="en-translation">Supply Recovery Time Reduction</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-value">+40-50%</div>
+                    <div class="stat-label">风险识别准确率提升
+                        <div class="en-translation">Risk Identification Accuracy Improvement</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 实际行业案例 -->
+        <div class="best-practice-section">
+            <h2 class="section-title">实际行业案例</h2>
+            <div class="en-translation">Real Industry Cases</div>
+            
+            <div class="case-summary">
+                <h3 class="case-title">苹果公司 (Apple Inc.) - Everstream AI供应风险平台</h3>
+                <div class="en-translation">Apple Inc. - Everstream AI Supply Risk Platform</div>
+                
+                <p>
+                    全球科技巨头通过Everstream AI平台实现供应风险智能管理，大幅提升风险预警和处置能力
+                    <span class="en-translation">Global technology giant implemented intelligent supply risk management through Everstream AI platform, significantly improving risk warning and disposal capabilities</span>
+                </p>
+                
+                <div class="case-kpi">
+                    <div class="kpi-item">
+                        <div class="kpi-value">-25%</div>
+                        <div class="kpi-label">缓解时长缩短
+                            <div class="en-translation">Mitigation Duration Reduction</div>
+                        </div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="kpi-value">-8%</div>
+                        <div class="kpi-label">单/唯供占比降低
+                            <div class="en-translation">Single/Sole Source Ratio Reduction</div>
+                        </div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="kpi-value">-20%</div>
+                        <div class="kpi-label">供应恢复时间缩短
+                            <div class="en-translation">Supply Recovery Time Reduction</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-details">
+                    <div class="detail-row">
+                        <div class="detail-label">技术平台：</div>
+                        <div class="detail-value">Everstream AI风险平台、事件流处理引擎、NLP分析系统、图谱溯源引擎、处置编排系统
+                            <div class="en-translation">Everstream AI Risk Platform, Event Stream Processing Engine, NLP Analysis System, Graph Traceability Engine, Disposal Orchestration System</div>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">实施范围：</div>
+                        <div class="detail-value">全球供应链网络，管理2,000+供应商，覆盖$300亿+采购支出
+                            <div class="en-translation">Global supply chain network, managing 2,000+ suppliers, covering $30B+ procurement spend</div>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">实施成效：</div>
+                        <div class="detail-value">风险预警能力提升50%，处置效率提升45%
+                            <div class="en-translation">50% improvement in risk warning capability, 45% improvement in disposal efficiency</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-details">
+                    <div class="detail-row">
+                        <div class="detail-label">AI技术应用：</div>
+                        <div class="detail-value">
+                            1. 事件流处理实时监测全球风险事件<br>
+                            2. NLP分析识别风险信号和模式<br>
+                            3. 图谱溯源追踪风险传播路径<br>
+                            4. AI编排自动执行风险处置流程
+                            <div class="en-translation">
+                                1. Event stream processing monitors global risk events in real time<br>
+                                2. NLP analysis identifies risk signals and patterns<br>
+                                3. Graph traceability tracks risk propagation paths<br>
+                                4. AI orchestration automatically executes risk disposal processes
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">业务影响：</div>
+                        <div class="detail-value">
+                            1. 年度避免供应中断损失$3.5亿<br>
+                            2. 高风险件缓解时间缩短25%<br>
+                            3. 单/唯供占比降低至12%<br>
+                            4. 供应恢复时间缩短20%
+                            <div class="en-translation">
+                                1. Annual supply disruption loss avoidance of $350M<br>
+                                2. High-risk item mitigation time reduced by 25%<br>
+                                3. Single/sole source ratio reduced to 12%<br>
+                                4. Supply recovery time reduced by 20%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 客户评价 -->
+                <div class="case-details">
+                    <div class="detail-row">
+                        <div class="detail-label">客户评价：</div>
+                        <div class="detail-value">
+                            "Everstream的AI供应风险平台彻底改变了我们的风险管理方式。事件流和NLP监测技术帮助我们实时识别全球风险事件，将风险识别时间缩短了70%。图谱溯源技术准确追踪风险传播路径，将单/唯供占比降低了8%。最重要的是，AI处置编排系统将高风险件缓解时间缩短了25%，避免了$3.5亿的供应中断损失。"
+                            <div class="en-translation">
+                                "Everstream's AI supply risk platform has completely transformed our risk management approach. Event stream and NLP monitoring technology helps us identify global risk events in real time, reducing risk identification time by 70%. Graph traceability technology accurately tracks risk propagation paths, reducing single/sole source ratio by 8%. Most importantly, the AI disposal orchestration system reduced high-risk item mitigation time by 25%, avoiding $350M in supply disruption losses."
+                            </div>
+                            <div style="margin-top: 10px; font-weight: 600;">
+                                苹果公司全球供应链风险总监
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="https://www.everstream.ai/gartner-magic-quadrant-2025/" class="case-link-btn" target="_blank">
+                    <i class="fas fa-external-link-alt"></i> 查看Everstream供应风险案例
+                    <div class="en-translation">View Everstream Supply Risk Cases</div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- 返回按钮 -->
+        <div style="text-align: center;">
+            <a href="#" class="back-btn">
+                <i class="fas fa-arrow-left"></i> 返回Source Risk Management
+            </a>
+        </div>
+    </div>
+</body>
+</html>

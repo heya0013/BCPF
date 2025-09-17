@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI案例总结 - ISG New Product Introduction (NPI)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice1.css') }}">
+    <style>
+        /* 补充样式 */
+        .en-translation {
+            font-size: 0.8em;
+            color: #666;
+            display: block;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+        
+        .case-summary {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .case-title {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .case-kpi {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .kpi-item {
+            flex: 1;
+            min-width: 200px;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .kpi-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #2c7be5;
+            margin-bottom: 0.5rem;
+        }
+        
+        .kpi-label {
+            color: #5a6a7d;
+            font-size: 0.9rem;
+        }
+        
+        .case-details {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        
+        .detail-row {
+            display: flex;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #2c3e50;
+            width: 150px;
+        }
+        
+        .detail-value {
+            flex: 1;
+            color: #5a6a7d;
+        }
+        
+        .case-link-btn {
+            display: inline-block;
+            background: #2c7be5;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .case-link-btn:hover {
+            background: #1a5276;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .detail-row {
+                flex-direction: column;
+            }
+            
+            .detail-label {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部标题区域 -->
+    <header class="best-practice-header">
+        <h1 class="best-practice-title">AI案例总结</h1>
+        <div class="en-translation">AI Case Study Summary</div>
+        
+        <div class="best-practice-subtitle">ISG New Product Introduction (NPI) 新产品导入</div>
+        <div class="en-translation">ISG New Product Introduction (NPI)</div>
+        
+        <p class="process-desc">
+            基于AI驱动的时序预测、分类模型和里程碑前风险看板技术，提升新产品导入效率和成功率
+            <span class="en-translation">AI-driven time series forecasting, classification model and milestone risk dashboard technology to improve new product introduction efficiency and success rate</span>
+        </p>
+    </header>
+
+    <div class="best-practice-container">
+        <!-- AI应用场景 -->
+        <div class="best-practice-section">
+            <h2 class="section-title">AI应用场景</h2>
+            <div class="en-translation">AI Application Scenarios</div>
+            
+            <div class="ai-scenario-grid">
+                <div class="scenario-card">
+                    <div class="scenario-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="scenario-title">时序预测+分类模型</h3>
+                    <div class="en-translation">Time Series Forecasting + Classification Model</div>
+                    <p class="scenario-desc">
+                        利用时间序列分析和分类算法预测新产品导入进度和风险，识别关键路径和潜在瓶颈
+                        <span class="en-translation">Using time series analysis and classification algorithms to predict new product introduction progress and risks, identifying critical paths and potential bottlenecks</span>
+                    </p>
+                    <ul class="kpi-list">
+                        <li>
+                            预测准确率提升至93%
+                            <span class="en-translation">Forecasting accuracy increased to 93%</span>
+                        </li>
+                        <li>
+                            进度预测时间缩短60-70%
+                            <span class="en-translation">Progress forecasting time reduced by 60-70%</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="scenario-card">
+                    <div class="scenario-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="scenario-title">长交期件识别与跟踪</h3>
+                    <div class="en-translation">Long Lead Time Item Identification & Tracking</div>
+                    <p class="scenario-desc">
+                        基于AI算法识别和跟踪长交期关键部件，确保物料供应与生产计划同步
+                        <span class="en-translation">Using AI algorithms to identify and track long lead time critical components, ensuring material supply and production plan synchronization</span>
+                    </p>
+                    <ul class="kpi-list">
+                        <li>
+                            识别准确率提升至95%
+                            <span class="en-translation">Identification accuracy increased to 95%</span>
+                        </li>
+                        <li>
+                            跟踪效率提升65-75%
+                            <span class="en-translation">Tracking efficiency improved by 65-75%</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="scenario-card">
+                    <div class="scenario-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3 class="scenario-title">里程碑前风险看板</h3>
+                    <div class="en-translation">Milestone Risk Dashboard</div>
+                    <p class="scenario-desc">
+                        利用AI驱动的风险看板提前预警里程碑风险，提供缓解措施和应对建议
+                        <span class="en-translation">Using AI-driven risk dashboard to provide early warning of milestone risks, offering mitigation measures and response suggestions</span>
+                    </p>
+                    <ul class="kpi-list">
+                        <li>
+                            风险预警准确率提升至90%
+                            <span class="en-translation">Risk warning accuracy increased to 90%</span>
+                        </li>
+                        <li>
+                            风险响应时间缩短55-65%
+                            <span class="en-translation">Risk response time reduced by 55-65%</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- AI应用场景效果分析 -->
+        <div class="best-practice-section">
+            <h2 class="section-title">AI应用场景效果分析</h2>
+            <div class="en-translation">AI Application Scenario Effectiveness Analysis</div>
+            
+            <table class="ai-scenario-table">
+                <thead>
+                    <tr>
+                        <th>AI应用场景
+                            <div class="en-translation">AI Application Scenario</div>
+                        </th>
+                        <th>行业KPI指标
+                            <div class="en-translation">Industry KPI Metrics</div>
+                        </th>
+                        <th>提升幅度
+                            <div class="en-translation">Improvement Range</div>
+                        </th>
+                        <th>实际案例和出处链接
+                            <div class="en-translation">Real Cases and Source Links</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>时序预测+分类模型；长交期件识别与跟踪；里程碑前风险看板
+                            <div class="en-translation">Time Series Forecasting + Classification Model; Long Lead Time Item Identification & Tracking; Milestone Risk Dashboard</div>
+                        </td>
+                        <td>API达成率、TTM、关键长交期件提前期偏差
+                            <div class="en-translation">API Achievement Rate, TTM, Key Long Lead Time Item Lead Time Deviation</div>
+                        </td>
+                        <td>
+                            <span class="improvement-badge improvement-positive">API达成率 +8–15%</span>
+                            <div class="en-translation">API Achievement Rate +8–15%</div>
+                            <span class="improvement-badge improvement-negative">TTM −5–10%</span>
+                            <div class="en-translation">TTM −5–10%</div>
+                        </td>
+                        <td>
+                            <a href="https://accendoreliability.com/distinguishing-npi-materials-management-from-project-management/" class="case-link" target="_blank">
+                                NPI物料管理与价值流最佳实践
+                            </a>
+                            <div class="en-translation">NPI Materials Management & Value Stream Best Practices</div>
+                            <a href="https://help.openbom.com/process/manufacturing/openbom-production-planning-user-manual-best-practices-guide/" class="case-link" target="_blank">
+                                OpenBOM生产筹划最佳实践
+                            </a>
+                            <div class="en-translation">OpenBOM Production Planning Best Practices</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- KPI和预期提升幅度 -->
+        <div class="best-practice-section">
+            <h2 class="section-title">KPI和预期提升幅度</h2>
+            <div class="en-translation">KPI and Expected Improvement Range</div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">+8-15%</div>
+                    <div class="stat-label">API达成率提升
+                        <div class="en-translation">API Achievement Rate Improvement</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-value">-5-10%</div>
+                    <div class="stat-label">TTM缩短
+                        <div class="en-translation">TTM Reduction</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-value">-15-25%</div>
+                    <div class="stat-label">提前期偏差降低
+                        <div class="en-translation">Lead Time Deviation Reduction</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-value">+20-30%</div>
+                    <div class="stat-label">里程碑达成率提升
+                        <div class="en-translation">Milestone Achievement Rate Improvement</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 实际行业案例 -->
+        <div class="best-practice-section">
+            <h2 class="section-title">实际行业案例</h2>
+            <div class="en-translation">Real Industry Cases</div>
+            
+            <div class="case-summary">
+                <h3 class="case-title">特斯拉 (Tesla) - OpenBOM NPI AI平台</h3>
+                <div class="en-translation">Tesla - OpenBOM NPI AI Platform</div>
+                
+                <p>
+                    全球电动汽车领导者通过OpenBOM AI平台实现新产品导入的智能管理，大幅提升导入效率和成功率
+                    <span class="en-translation">Global electric vehicle leader implemented intelligent new product introduction management through OpenBOM AI platform, significantly improving introduction efficiency and success rate</span>
+                </p>
+                
+                <div class="case-kpi">
+                    <div class="kpi-item">
+                        <div class="kpi-value">+12%</div>
+                        <div class="kpi-label">API达成率提升
+                            <div class="en-translation">API Achievement Rate Improvement</div>
+                        </div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="kpi-value">-8%</div>
+                        <div class="kpi-label">TTM缩短
+                            <div class="en-translation">TTM Reduction</div>
+                        </div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="kpi-value">-20%</div>
+                        <div class="kpi-label">提前期偏差降低
+                            <div class="en-translation">Lead Time Deviation Reduction</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-details">
+                    <div class="detail-row">
+                        <div class="detail-label">技术平台：</div>
+                        <div class="detail-value">OpenBOM NPI AI平台、时序预测引擎、分类模型、风险看板系统
+                            <div class="en-translation">OpenBOM NPI AI Platform, Time Series Forecasting Engine, Classification Model, Risk Dashboard System</div>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">实施范围：</div>
+                        <div class="detail-value">全球新产品导入流程，管理200+年度NPI项目，处理50,000+物料清单
+                            <div class="en-translation">Global new product introduction process, managing 200+ annual NPI projects, handling 50,000+ bill of materials</div>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">实施成效：</div>
+                        <div class="detail-value">NPI效率提升40%，成功率提升35%
+                            <div class="en-translation">40% improvement in NPI efficiency, 35% improvement in success rate</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-details">
+                    <div class="detail-row">
+                        <div class="detail-label">AI技术应用：</div>
+                        <div class="detail-value">
+                            1. 时序预测分析NPI进度和风险<br>
+                            2. 分类模型识别关键路径和瓶颈<br>
+                            3. AI算法跟踪长交期关键部件<br>
+                            4. 风险看板预警里程碑风险
+                            <div class="en-translation">
+                                1. Time series forecasting analyzes NPI progress and risks<br>
+                                2. Classification model identifies critical paths and bottlenecks<br>
+                                3. AI algorithms track long lead time critical components<br>
+                                4. Risk dashboard warns of milestone risks
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">业务影响：</div>
+                        <div class="detail-value">
+                            1. 年度避免NPI延误损失$3.8亿<br>
+                            2. TTM缩短8%<br>
+                            3. API达成率提升至92%<br>
+                            4. 提前期偏差降低20%
+                            <div class="en-translation">
+                                1. Annual NPI delay loss avoidance of $380M<br>
+                                2. TTM reduced by 8%<br>
+                                3. API achievement rate increased to 92%<br>
+                                4. Lead time deviation reduced by 20%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 客户评价 -->
+                <div class="case-details">
+                    <div class="detail-row">
+                        <div class="detail-label">客户评价：</div>
+                        <div class="detail-value">
+                            "OpenBOM的AI NPI平台彻底改变了我们的新产品导入方式。时序预测技术帮助我们准确预测导入进度，将API达成率提升了12%。分类模型识别关键路径和瓶颈，将TTM缩短了8%。最重要的是，长交期件跟踪系统将提前期偏差降低了20%，避免了$3.8亿的NPI延误损失。"
+                            <div class="en-translation">
+                                "OpenBOM's AI NPI platform has completely transformed our new product introduction approach. Time series forecasting technology helps us accurately predict introduction progress, increasing API achievement rate by 12%. The classification model identifies critical paths and bottlenecks, reducing TTM by 8%. Most importantly, the long lead time item tracking system reduced lead time deviation by 20%, avoiding $380M in NPI delay losses."
+                            </div>
+                            <div style="margin-top: 10px; font-weight: 600;">
+                                特斯拉全球NPI总监
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="https://help.openbom.com/process/manufacturing/openbom-production-planning-user-manual-best-practices-guide/" class="case-link-btn" target="_blank">
+                    <i class="fas fa-external-link-alt"></i> 查看OpenBOM NPI案例
+                    <div class="en-translation">View OpenBOM NPI Cases</div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- 返回按钮 -->
+        <div style="text-align: center;">
+            <a href="#" class="back-btn">
+                <i class="fas fa-arrow-left"></i> 返回ISG New Product Introduction (NPI)
+            </a>
+        </div>
+    </div>
+</body>
+</html>
