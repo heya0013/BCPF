@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>采购流程分析导航 | Supplier collaboration Process Analysis</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Microsoft YaHei", sans-serif;
+      background: linear-gradient(135deg, #f0f5ff 0%, #e6f0ff 100%);
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 20px;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      color: #2c3e50;
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 5px;
+      background: linear-gradient(90deg, #2c7be5, #00c9a7);
+      border-radius: 3px;
+    }
+
+    .subtitle {
+      color: #5a6a7d;
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      margin-top: 30px;
+      line-height: 1.8;
+    }
+
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+      position: relative;
+      height: 360px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(44, 123, 229, 0.1);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(44, 123, 229, 0.2);
+    }
+
+    .card-header {
+      padding: 22px 22px 18px;
+      background: linear-gradient(90deg, #2c7be5, #4a9dff);
+      color: white;
+      position: relative;
+    }
+
+    .card-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #00c9a7, #2c7be5);
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+
+    .card-title i {
+      margin-right: 12px;
+      font-size: 1.6rem;
+      background: rgba(255, 255, 255, 0.2);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-subtitle {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      margin-left: 57px;
+    }
+
+    .card-body {
+      padding: 22px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-desc {
+      color: #5a6a7d;
+      font-size: 1rem;
+      margin-bottom: 15px;
+      line-height: 1.6;
+      flex-grow: 1; /* 允许描述部分扩展 */
+    }
+
+    /* 修复按钮样式 - 确保按钮正常显示 */
+    .card-link {
+      display: inline-block;
+      background: linear-gradient(90deg, #00c9a7, #2c7be5);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(44, 123, 229, 0.3);
+      align-self: flex-start;
+      font-size: 0.9rem;
+    }
+
+    .card-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 7px 20px rgba(44, 123, 229, 0.4);
+      background: linear-gradient(90deg, #00d9b5, #3a8df5);
+    }
+
+    .card-link i {
+      margin-left: 8px;
+      font-size: 0.8rem;
+      transition: transform 0.3s ease;
+    }
+
+    .card-link:hover i {
+      transform: translateX(3px);
+    }
+
+    .card:nth-child(2n) .card-header {
+      background: linear-gradient(90deg, #00c9a7, #2c7be5);
+    }
+
+    .card:nth-child(3n) .card-header {
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+    }
+
+    .card:nth-child(4n) .极客园card-header {
+      background: linear-gradient(90deg, #ff6b6b, #ff8e53);
+    }
+
+    .card:nth-child(5n) .card-header {
+      background: linear-gradient(90deg, #8e2de2, #4a00e0);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 25px;
+      color: #7b8a9b;
+      font-size: 0.95rem;
+      border-top: 1px solid #e0e6ed;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 15px;
+    }
+
+    /* 新增翻译样式 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.25rem;
+      font-style: italic;
+    }
+    
+    .card-en-title {
+      font-size: 0.9rem;
+      margin-top: 5px;
+      color: rgba(255,255,255,0.85);
+      margin-left: 57px;
+    }
+
+    @media (max-width: 768px) {
+      .cards-container {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
+      
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      .subtitle {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 10px;
+      }
+      
+      .card {
+        height: auto;
+      }
+      
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>供应商协作流程分析导航
+        <div class="en-translation">Supplier Collaboration Process Analysis Navigation</div>
+      </h1>
+      <p class="subtitle">探索各个供应商协作流程的分析与优化建议，点击卡片查看详细内容。
+        <span class="en-translation">Explore analysis and optimization suggestions for each supplier collaboration process. Click on cards for details.
+    </header>
+
+    <div class="cards-container">
+      <!-- 计划协作 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-handshake"></i>
+            计划协作
+          </div>
+          <div class="card-en-title">Planning Collaboration</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">优化供应商协作过程中的协作效率，确保各部门无缝衔接。
+            <span class="en-translation">Optimize collaboration efficiency in the Supplier collaboration process, ensure seamless coordination between departments.</span>
+          </p>
+          <a href="{{ url_for('Planning Collaboration') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i>
+            <div class="en-translation">View Suggestions</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- 执行协作 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-boxes"></i>
+            供应管理
+          </div>
+          <div class="card-en-title">Execution Collaboration</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">供应链参与方在执行环节协同处理订单、生产等，确保计划落地。。
+            <span class="en-translation">Collaboration among supply chain participants in execution to handle orders, production, etc., ensuring plan implementation..</span>
+          </p>
+          <a href="{{ url_for('supply_management') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i>
+            <div class="en-translation">View Suggestions</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- 多层级供应链管理与可视性 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-file-invoice-dollar"></i>
+            多层级供应链管理与可视性
+          </div>
+          <div class="card-en-title">Multi-Tier Supply Management & Visibility</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">管理全链条供应商层级并实时追踪状态，规避上游信息断层。
+            <span class="en-translation">Managing multi-tier suppliers and tracking status in real-time to avoid upstream information gaps.</span>
+          </p>
+          <a href="{{ url_for('payments_reconcile_rebate') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i>
+            <div class="en-translation">View Suggestions</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- 供应绩效管理-->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-truck-loading"></i>
+            供应绩效管理
+          </div>
+          <div class="card-en-title">Supply Performance Management</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">通过监控指标评估供应链表现，筛选伙伴、保障稳定。
+            <span class="en-translation">Evaluating supply chain performance via metrics to select partners and ensure stability.</span>
+          </p>
+          <a href="{{ url_for('po_delivery_parts_rebalance') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i>
+            <div class="en-translation">View Suggestions</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
