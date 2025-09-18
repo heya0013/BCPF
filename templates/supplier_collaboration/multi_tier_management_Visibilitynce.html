@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>多层级供应链管理与可视性- 供应协作流程分析</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <style>
+    /* 新产品管理特定样式 */
+    .new-product-process .process-icon {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .core-value {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 4px solid #9b59b6;
+    }
+    
+    .core-value-title {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    
+    .core-value-content {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 流程标题区域 -->
+  <section class="header-section new-product-process">
+    <div class="header-content">
+      <div class="process-icon">
+        <i class="fas fa-cube"></i>
+      </div>
+      <h1 class="process-title">新产品管理</h1>
+      <div class="process-subtitle">Master data management</div>
+      <div class="process-desc">
+        全面管理新产品引入流程，从寻源计划到产品组合跟踪，确保新产品按时高质量上市。本流程涵盖多源策略、RFQ命中率、NPI管理和代际产品跟踪等关键环节。
+      </div>
+    </div>
+  </section>
+
+  <!-- 关键流程块区域 -->
+  <div class="container">
+    <div class="section-title">
+      <h2>关键流程模块</h2>
+    </div>
+    
+    <div class="process-blocks">
+      <!-- 寻源计划管理 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-map-marked-alt"></i>
+            寻源计划管理
+          </div>
+          <div class="block-subtitle">Source Plan Management</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值</div>
+            <p class="core-value-content">
+              NPI阶段的多源策略（数量、优先级、地域/交期）直接决定成本/交付风险与BOM可制造性，是打通RFQ→合同→PO的上游主开关；行业最佳实践强调"及早介入采购+长交期件前置策划+多源容错"。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>对工程BOM与Sourcing数据进行一致性校验（关键件二供覆盖、替代策略、资格状态与Gate匹配），自动出具“缺口清单+闭环责任”。</li>
+              <li>基于需求预测、供给能力、资格/交期/地域风险，自动给出多源数量与优先级建议（含情景仿真），并按RFQ命中/实际量回流校准Source Plan。</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='new_product_management', module_name='source_plan') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- RFQ命中率管理 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-bullseye"></i>
+            RFQ命中率管理
+          </div>
+          <div class="block-subtitle">Product & Parts Request for Quotation(RFQ) Hit Rate</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值</div>
+            <p class="core-value-content">
+              RFQ命中率衡量从报价到实际量的转化质量，反映需求预测、供应匹配与成本/交付能力的综合水平，是NPI与寻源闭环的重要KPI类目。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>将“报价量→中标量→实际量”串接，自动拆解命中率变化的成因（价格、交期、资格、复杂度），生成改善建议与“下轮RFQ策略”。</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='new_product_management', module_name='rfq_hit_rate') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 新产品引入管理 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-rocket"></i>
+            新产品引入管理
+          </div>
+          <div class="block-subtitle">ISG New Product Introduction(NPI)</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值</div>
+            <p class="core-value-content">
+              NPI流程（含API跟踪与特定客户场景流程）确保"全件到位与按时量产"的节奏控制，是TTM与首批次质量/交付的基础保障。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>对BOM零件按交期/资格/供应画像构建API（All-Parts-In）风险评分，自动生成“提前下单/替代件/加速资格”的处方式建议，并在NPI里程碑前滚动预警。</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='new_product_management', module_name='npi_management') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 代际产品组合跟踪 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-sync-alt"></i>
+            代际产品组合跟踪
+          </div>
+          <div class="block-subtitle">Generation to Generation(G2G) Product Portfolio Tracking</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值</div>
+            <p class="core-value-content">
+              G2G产品组合跟踪为代际转移、产量与生产力变化提供可视化输入，支撑成本桥与转产风险管理，是NPI组合治理与资源配置的关键度量。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>把G2G组合、功能变化与物料层面的成本桥联动展示，结合外部MPN成本对标识别“超支与机会”并形成NPI降本路线图。</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='new_product_management', module_name='g2g_tracking') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>采购流程分析系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
+  </footer>
+</body>
+</html>
