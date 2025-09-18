@@ -6,87 +6,76 @@ app = Flask(__name__)
 # 主页路由
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('procurement/index.html')  # 更新路径
 
-# 执行协作流程详细页面
+# 其他路由也需要更新模板路径
 @app.route('/execution_collaboration')
 def execution_collaboration():
-    return render_template('execution_collaboration.html')
+    return render_template('procurement/execution_collaboration.html')  # 更新路径
 
-# 供应管理流程详细页面
 @app.route('/supply_management')
 def supply_management():
-    return render_template('supply_management.html')
+    return render_template('procurement/supply_management.html')  # 更新路径
 
-# 付款、对账与返利流程详细页面
 @app.route('/payments_reconcile_rebate')
 def payments_reconcile_rebate():
-    return render_template('payments_reconcile_rebate.html')
+    return render_template('procurement/payments_reconcile_rebate.html')  # 更新路径
 
-# 采购订单交付与零部件再平衡流程详细页面
 @app.route('/po_delivery_parts_rebalance')
 def po_delivery_parts_rebalance():
-    return render_template('po_delivery_parts_rebalance.html')
+    return render_template('procurement/po_delivery_parts_rebalance.html')  # 更新路径
 
-# 采购申请与采购订单管理流程详细页面
 @app.route('/pr_po_management')
 def pr_po_management():
-    return render_template('pr_po_management.html')
+    return render_template('procurement/pr_po_management.html')  # 更新路径
 
-# 合同管理流程详细页面
 @app.route('/contract_management')
 def contract_management():
-    return render_template('contract_management.html')
+    return render_template('procurement/contract_management.html')  # 更新路径
 
-# 招投标与授标流程详细页面
 @app.route('/source_to_award')
 def source_to_award():
-    return render_template('source_to_award.html')
+    return render_template('procurement/source_to_award.html')  # 更新路径
 
-# 供应商管理流程详细页面
 @app.route('/supplier_management')
 def supplier_management():
-    return render_template('supplier_management.html')
+    return render_template('procurement/supplier_management.html')  # 更新路径
 
-# 成本管理流程详细页面
 @app.route('/cost_management')
 def cost_management():
-    return render_template('cost_management.html')
+    return render_template('procurement/cost_management.html')  # 更新路径
 
-# 采购来源管理流程详细页面
 @app.route('/source_management')
 def source_management():
-    return render_template('source_management.html')
+    return render_template('procurement/source_management.html')  # 更新路径
 
-# 新产品管理流程详细页面
 @app.route('/new_product_management')
 def new_product_management():
-    return render_template('new_product_management.html')
+    return render_template('procurement/new_product_management.html')  # 更新路径
 
-# 复杂性管理流程详细页面
 @app.route('/complexity_management')
 def complexity_management():
-    return render_template('complexity_management.html')
+    return render_template('procurement/complexity_management.html')  # 更新路径
 
-
+# 最佳实践路由 - 更新模板路径
 @app.route('/best-practice/<process>/<module_name>')
 def best_practice(process, module_name):
     # 安全过滤流程和模块名称
     safe_process = ''.join(e for e in process if e.isalnum() or e == '_')
     safe_module = ''.join(e for e in module_name if e.isalnum() or e == '_')
-    #safe_module = ''.join(e for e in module_name if e.isalnum() or e == '_' or e == ' ')
-    #safe_module = safe_module.replace(' ', '_') 
     
-    # 构建模板路径
-    template_path = f"best_practice/{safe_process}/{safe_module}.html"
+    # 构建新的模板路径 - 添加到procurement目录下
+    template_path = f"procurement/best_practice/{safe_process}_{safe_module}.html"
     
     try:
         # 尝试渲染特定模板
-        return render_template(template_path)
+        return render_template(template_path,
+                             process=process,
+                             module_name=module_name)
     except TemplateNotFound:
         try:
             # 尝试渲染默认模板
-            return render_template('best_practice/default.html', 
+            return render_template('procurement/best_practice/default.html', 
                                   process=process,
                                   process_name=process.replace('_', ' ').title(),
                                   module=module_name,
@@ -96,8 +85,9 @@ def best_practice(process, module_name):
             return f"""
             <h1>模板未找到</h1>
             <p>无法找到模板: {template_path}</p>
-            <p>默认模板也不存在: best_practice/default.html</p>
+            <p>默认模板也不存在: procurement/best_practice/default.html</p>
             <p>请创建相应的模板文件。</p>
             """, 404
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
