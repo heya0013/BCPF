@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>执行协作 - 供应协作流程分析</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+
+
+  <!-- 流程标题区域 -->
+  <section class="header-section">
+    <div class="header-content">
+      <div class="process-icon">
+        <i class="fas fa-handshake"></i>
+      </div>
+      <h1 class="process-title">执行协作</h1>
+      <div class="process-subtitle">Execution Collaboration</div>
+      <div class="process-desc">
+        聚焦供应链实际落地环节，供应链参与方围绕订单履行、生产进度跟进、物流调度及异常问题（如原材料短缺）处理开展的协同配合，确保前期计划有效落地。
+      </div>
+    </div>
+  </section>
+
+      <!-- 关键流程块区域 -->
+  <div class="container">
+    <div class="section-title">
+      <h2>关键流程模块</h2>
+    </div>
+    <div class="process-blocks">
+      <!-- 物料拉动追踪 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-money-check-alt"></i>
+            物料拉动追踪
+          </div>
+          <div class="block-subtitle">Material Pull Tracking</div>
+        </div>
+        <div class="block-body">
+          <p class="block-desc">
+          <!-- 添加的关键理由部分 -->
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>关键理由</strong>
+            </div>
+            <p class="key-reason-text">
+              PO确认：逐项确认交期/数量，作为排产与ASN依据。；VMI/寄售：按可视库存与策略补货，缓解滞后与放大。；PCN/ECO：提前评估影响与替代，控制停线与呆滞风险
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">物料拉动追踪优化建议：</div>
+            <ul class="optimization-list">
+              <li>质量协同→绩效闭环,把NCR/8D结案自动回写到供应商评分卡，形成持续改进。</li>
+            </ul>
+          </div>
+          <!-- 最佳实践按钮 -->
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='Execution', module_name='Pull_Tracking') }}" 
+               class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 预先发货通知（ASN） -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-money-check-alt"></i>
+            预先发货通知（ASN）
+          </div>
+          <div class="block-subtitle">Advanced Shipping Notice</div>
+        </div>
+        <div class="block-body">
+          <p class="block-desc">
+          <!-- 添加的关键理由部分 -->
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>关键理由</strong>
+            </div>
+            <p class="key-reason-text">
+              ASN预报：提前告知到货明细与时间，提升入厂/入库接驳效率。；VMI/寄售：按可视库存与策略补货，缓解滞后与放大。；PCN/ECO：提前评估影响与替代，控制停线与呆滞风险。
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">ASN优化建议：</div>
+            <ul class="optimization-list">
+              <li>短缺分配与加急编排, 将承诺不足→allocation→排产/ASN 的应急编排标准化与仿真。</li>
+            </ul>
+          </div>
+          <!-- 最佳实践按钮 -->
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='Execution', module_name='ASN') }}" 
+               class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+        
+
+      <!-- 退货授权（RMA） -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-money-check-alt"></i>
+            退货授权（RMA）
+          </div>
+          <div class="block-subtitle">Return Merchandise Authorization</div>
+        </div>
+        <div class="block-body">
+          <p class="block-desc">
+          <!-- 添加的关键理由部分 -->
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>关键理由</strong>
+            </div>
+            <p class="key-reason-text">
+              PO确认：逐项确认交期/数量，作为排产与ASN依据。；质量协同（NCR/8D）：快速定责与纠正预防，降低PPM与退货。
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">RMA优化建议：</div>
+            <ul class="optimization-list">
+              <li>短缺分配与加急编排, 将承诺不足→allocation→排产/ASN 的应急编排标准化与仿真。</li>
+            </ul>
+          </div>
+          <!-- 最佳实践按钮 -->
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='Execution', module_name='RMA') }}" 
+               class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
