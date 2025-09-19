@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>供应绩效管理- 供应协作流程分析</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <style>
+    /* 新产品管理特定样式 */
+    .new-product-process .process-icon {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .core-value {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 4px solid #9b59b6;
+    }
+    
+    .core-value-title {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    
+    .core-value-content {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 流程标题区域 -->
+  <section class="header-section new-product-process">
+    <div class="header-content">
+      <div class="process-icon">
+        <i class="fas fa-cube"></i>
+      </div>
+      <h1 class="process-title">供应绩效管理</h1>
+      <div class="process-subtitle">Planning Collaboration</div>
+      <div class="process-desc">
+        优化供应商协作过程中的协作效率，确保各部门无缝衔接
+      </div>
+    </div>
+  </section>
+
+  <!-- 关键流程块区域 -->
+  <div class="container">
+    <div class="section-title">
+      <h2>关键流程模块</h2>
+    </div>
+    
+    <div class="process-blocks">
+      <!-- 供应商绩效跟踪 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-map-marked-alt"></i>
+            供应商绩效跟踪
+          </div>
+          <div class="block-subtitle">Supplier Performance Tracking</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值</div>
+            <p class="core-value-content">
+              PO确认：逐项确认作为排产与ASN依据，影响OTD。；质量协同：NCR/8D迅速闭环，降低PPM与退货。；绩效：用OTD/PPM/响应等指标驱动改进。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>融合Tier-2/3供方在手/在途与产能约束，构建供给可视与缺口预警。</li>
+              <li>自动从门户/邮件/表格抓取下级供方库存与出货计划，规范化入库。</li>
+              <li>对未回传的可视数据/ASN/承诺自动催办并聚合异常清单。</li>
+              <li>将预测偏差、欠料、产能瓶颈、在途延误进行归因并生成整改单。</li>
+              <li>结合路线、关务、气象与承运商历史，预测ETA并报警异常。</li>
+              <li>展示分层BOM、Tier供方风险、在途/在手、预警与整改状态。</li>
+              <li>打通供应商↔料号↔BOM层级的映射关系与变更记录，统一口径。</li>
+              <li>监控各Tier数据交换成功率/延迟/重发率，定位问题伙伴与交易。</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='supply_perf', module_name='perf_tracking') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>  
+
+      <!-- ODM 工装样件跟踪 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-bullseye"></i>
+            ODM 工装样件跟踪
+          </div>
+          <div class="block-subtitle">ODM OTS Tracking（</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值</div>
+            <p class="core-value-content">
+             PO确认：逐项确认作为排产与ASN依据，影响OTD。
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>融合Tier-2/3供方在手/在途与产能约束，构建供给可视与缺口预警。</li>
+              <li>自动从门户/邮件/表格抓取下级供方库存与出货计划，规范化入库。</li>
+              <li>对未回传的可视数据/ASN/承诺自动催办并聚合异常清单。</li>
+              <li>将预测偏差、欠料、产能瓶颈、在途延误进行归因并生成整改单。</li>
+              <li>结合路线、关务、气象与承运商历史，预测ETA并报警异常。</li>
+              <li>展示分层BOM、Tier供方风险、在途/在手、预警与整改状态。</li>
+              <li>打通供应商↔料号↔BOM层级的映射关系与变更记录，统一口径。</li>
+              <li>监控各Tier数据交换成功率/延迟/重发率，定位问题伙伴与交易。</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='supply_perf', module_name='odm_ots') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

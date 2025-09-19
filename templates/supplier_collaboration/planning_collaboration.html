@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>计划协作- 供应协作流程分析</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <style>
+    /* 新产品管理特定样式 */
+    .new-product-process .process-icon {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .core-value {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 4px solid #9b59b6;
+    }
+    
+    .core-value-title {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    
+    .core-value-content {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 流程标题区域 -->
+  <section class="header-section new-product-process">
+    <div class="header-content">
+      <div class="process-icon">
+        <i class="fas fa-cube"></i>
+      </div>
+      <h1 class="process-title">计划协作 </h1>
+      <div class="process-subtitle">Planning Collaboration</div>
+      <div class="process-desc">
+        优化供应商协作过程中的协作效率，确保各部门无缝衔接
+      </div>
+    </div>
+  </section>
+
+  <!-- 关键流程块区域 -->
+  <div class="container">
+    <div class="section-title">
+      <h2>关键流程模块</h2>
+    </div>
+    
+    <div class="process-blocks">
+      <!-- 预测协作 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-map-marked-alt"></i>
+            预测协作
+          </div>
+          <div class="block-subtitle">Forecast Collaboration</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值</div>
+            <p class="core-value-content">
+              协同预测：形成共同需求基线，抑制牛鞭效应，支撑产能与物料计划。；供应承诺：把可承接能力转为交期/数量承诺，决定缺口与分配策略。；PO确认：逐项确认交期/数量，作为排产与ASN依据。；库存可视：共享在手/在途库存，支撑补货与分配决策。；异常治理：延误/短缺预警与处置，避免停线与违约。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>预测-产能-承诺一致性引擎，融合CPFR与供给约束，输出可承接量与承诺建议。</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='planning_colla', module_name='forecast_colla') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>  
+
+      <!-- 预计到达时间与交付承诺协同 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-bullseye"></i>
+            预计到达时间与交付承诺协同
+          </div>
+          <div class="block-subtitle">ETA&Commit Synergy</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值</div>
+            <p class="core-value-content">
+             供应承诺：把可承接能力转为交期/数量承诺，决定缺口与分配策略。
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>预测-产能-承诺一致性引擎，融合CPFR与供给约束，输出可承接量与承诺建议。</li>  
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='planning_colla', module_name='eta') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 含原因代码的订单短缺协作 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-rocket"></i>
+            含原因代码的订单短缺协作
+          </div>
+          <div class="block-subtitle">Order Shortage collaboration with reason code</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值</div>
+            <p class="core-value-content">
+              协同供给的关键控制点，影响OTD、短缺与库存周转。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>PCN/ECO 智能解析与PPAP触发，自动解析PCN/ECO，识别受影响料号，触发PPAP/样件复核与承诺回写。</li>             
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='planning_colla', module_name='order_shortage') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
