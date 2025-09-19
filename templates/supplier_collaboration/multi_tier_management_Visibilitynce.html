@@ -42,10 +42,10 @@
       <div class="process-icon">
         <i class="fas fa-cube"></i>
       </div>
-      <h1 class="process-title">新产品管理</h1>
-      <div class="process-subtitle">Master data management</div>
+      <h1 class="process-title">多层级供应链管理与可视性 </h1>
+      <div class="process-subtitle">Multi-Tier Supply Management & Visibility</div>
       <div class="process-desc">
-        全面管理新产品引入流程，从寻源计划到产品组合跟踪，确保新产品按时高质量上市。本流程涵盖多源策略、RFQ命中率、NPI管理和代际产品跟踪等关键环节。
+        管理全链条供应商层级并实时追踪状态，规避上游信息断层。
       </div>
     </div>
   </section>
@@ -57,129 +57,106 @@
     </div>
     
     <div class="process-blocks">
-      <!-- 寻源计划管理 -->
+      <!-- 主数据管理 -->
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
             <i class="fas fa-map-marked-alt"></i>
-            寻源计划管理
+            主数据管理
           </div>
-          <div class="block-subtitle">Source Plan Management</div>
+          <div class="block-subtitle">Master data management</div>
         </div>
         <div class="block-body">
           <div class="core-value">
             <div class="core-value-title">核心价值</div>
             <p class="core-value-content">
-              NPI阶段的多源策略（数量、优先级、地域/交期）直接决定成本/交付风险与BOM可制造性，是打通RFQ→合同→PO的上游主开关；行业最佳实践强调"及早介入采购+长交期件前置策划+多源容错"。
+              协同预测：形成共同需求基线，抑制牛鞭效应，支撑产能/物料。；异常治理：避免停线与违约。
             </p>
           </div>
           
           <div class="content-area">
             <div class="optimization-title">优化建议：</div>
             <ul class="optimization-list">
-              <li>对工程BOM与Sourcing数据进行一致性校验（关键件二供覆盖、替代策略、资格状态与Gate匹配），自动出具“缺口清单+闭环责任”。</li>
-              <li>基于需求预测、供给能力、资格/交期/地域风险，自动给出多源数量与优先级建议（含情景仿真），并按RFQ命中/实际量回流校准Source Plan。</li>
+              <li>主数据治理（报表+质量规则），建立料号/供应商/地址/Incoterms等主数据校验与变更流程，异常自动报警。</li>
+              <li>PCN/ECO影响分析（数据分析+NLP），解析PCN文档，映射BOM与替代，量化影响并输出变更排程建议。</li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='new_product_management', module_name='source_plan') }}" class="best-practice-btn">
+            <a href="{{ url_for('best_practice', process='multi_tier', module_name='master_data') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </div>
-      </div>
-      
-      <!-- RFQ命中率管理 -->
+      </div>  
+      <!-- Smart DOS -->
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
             <i class="fas fa-bullseye"></i>
-            RFQ命中率管理
+            Smart DOS
           </div>
-          <div class="block-subtitle">Product & Parts Request for Quotation(RFQ) Hit Rate</div>
         </div>
         <div class="block-body">
           <div class="core-value">
             <div class="core-value-title">核心价值</div>
             <p class="core-value-content">
-              RFQ命中率衡量从报价到实际量的转化质量，反映需求预测、供应匹配与成本/交付能力的综合水平，是NPI与寻源闭环的重要KPI类目。
+             协同预测：形成共同需求基线，抑制牛鞭效应，支撑产能/物料。；PO确认：逐项确认作为排产与ASN依据，影响OTD。
             </p>
           </div>
           
           <div class="content-area">
             <div class="optimization-title">优化建议：</div>
             <ul class="optimization-list">
-              <li>将“报价量→中标量→实际量”串接，自动拆解命中率变化的成因（价格、交期、资格、复杂度），生成改善建议与“下轮RFQ策略”。</li>
+              <li>自动抓取未回签PO，邮件/门户/EDI多通道催办并回写交期/数量变更。</li>
+              <li>自动向供方收集RoHS/REACH/冲突矿产等证书并校验有效期，失效前预警。</li>
+              <li>自动校验ASN与PO/装箱单一致性，并触发收货预约与月台排程。</li>
+              <li>聚合预测偏差、承诺违约、运输异常等因素，做归因和优先级建议。</li>
+              <li>利用历史运输、不同时段与清关口径，预测ETA并识别异常轨迹。</li>
+              <li>统一OTD/PPM/响应、承诺命中、ASN准确、缺口与分配执行的多维看板。</li>
+              <li>监控事务成功率/延迟/重发率，自动定位异常交易/伙伴。</li>
+              <li>供方在线自助更新承诺、上传证书、登记变更，RPA校验并入库。。</li>
+              <li>对接采购/计划/质量邮件与SRM文档，支持自然语言查询承诺、ASN、PCN状态。</li>
+              <li>EDI/API健康监控（报表+告警），监控事务成功率/延迟/重发率，自动定位异常交易/伙伴。<li></li>    
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='new_product_management', module_name='rfq_hit_rate') }}" class="best-practice-btn">
+            <a href="{{ url_for('best_practice', process='multi_tier', module_name='smart_dos') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </div>
       </div>
       
-      <!-- 新产品引入管理 -->
+      <!-- 跨站点再平衡 -->
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
             <i class="fas fa-rocket"></i>
-            新产品引入管理
+            跨站点再平衡
           </div>
-          <div class="block-subtitle">ISG New Product Introduction(NPI)</div>
+          <div class="block-subtitle">Cross Site Rebalance</div>
         </div>
         <div class="block-body">
           <div class="core-value">
             <div class="core-value-title">核心价值</div>
             <p class="core-value-content">
-              NPI流程（含API跟踪与特定客户场景流程）确保"全件到位与按时量产"的节奏控制，是TTM与首批次质量/交付的基础保障。
+              PO确认：逐项确认作为排产与ASN依据，影响OTD。；供应风险：地缘/财务/灾害等提前缓释。
             </p>
           </div>
           
           <div class="content-area">
             <div class="optimization-title">优化建议：</div>
             <ul class="optimization-list">
-              <li>对BOM零件按交期/资格/供应画像构建API（All-Parts-In）风险评分，自动生成“提前下单/替代件/加速资格”的处方式建议，并在NPI里程碑前滚动预警。</li>
+              <li>融合协同预测、产能/物料约束与历史履约，输出承诺与分配建议。</li>
+              <li>统一 OTD/PPM/ 响应、承诺命中、ASN 准确、缺口与分配执行的多维看板（中的 “缺口与分配执行” 维度）</li>
+              
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='new_product_management', module_name='npi_management') }}" class="best-practice-btn">
-              Best Practice <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-      
-      <!-- 代际产品组合跟踪 -->
-      <div class="process-block">
-        <div class="block-header">
-          <div class="block-title">
-            <i class="fas fa-sync-alt"></i>
-            代际产品组合跟踪
-          </div>
-          <div class="block-subtitle">Generation to Generation(G2G) Product Portfolio Tracking</div>
-        </div>
-        <div class="block-body">
-          <div class="core-value">
-            <div class="core-value-title">核心价值</div>
-            <p class="core-value-content">
-              G2G产品组合跟踪为代际转移、产量与生产力变化提供可视化输入，支撑成本桥与转产风险管理，是NPI组合治理与资源配置的关键度量。
-            </p>
-          </div>
-          
-          <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
-            <ul class="optimization-list">
-              <li>把G2G组合、功能变化与物料层面的成本桥联动展示，结合外部MPN成本对标识别“超支与机会”并形成NPI降本路线图。</li>
-            </ul>
-          </div>
-          
-          <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='new_product_management', module_name='g2g_tracking') }}" class="best-practice-btn">
+            <a href="{{ url_for('best_practice', process='multi_tier', module_name='cross_site') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -187,9 +164,5 @@
       </div>
     </div>
   </div>
-
-  <footer>
-    <p>采购流程分析系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
-  </footer>
 </body>
 </html>
