@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>物流运营中心 - 全球物流流程分析 | logistics_Operation_Center - Global Logistics Process Analysis</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <style>
+    /* 全局样式 */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* 标题区域样式 */
+    .header-section {
+      background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+      color: white;
+      padding: 40px 20px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    
+    .process-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .process-title {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .process-subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 15px;
+    }
+    
+    .process-desc {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .en-translation {
+      display: block;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-top: 5px;
+      font-style: italic;
+    }
+    
+    /* 内容区域样式 */
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .section-title h2 {
+      font-size: 2rem;
+      color: #2c3e50;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 15px;
+      display: inline-block;
+    }
+    
+    .process-blocks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 25px;
+    }
+    
+    .process-block {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .process-block:hover {
+      transform: translateY(-5px);
+    }
+    
+    .block-header {
+      background: linear-gradient(135deg, #9b59b6 0%, #3498db 100%);
+      color: white;
+      padding: 20px;
+    }
+    
+    .block-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .block-subtitle {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+    
+    .block-body {
+      padding: 20px;
+    }
+    
+    .core-value {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 4px solid #9b59b6;
+    }
+    
+    .core-value-title {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    
+    .core-value-content {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    .content-area {
+      margin: 20px 0;
+    }
+    
+    .optimization-title {
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+    
+    .optimization-list {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .optimization-list li {
+      margin-bottom: 10px;
+      color: #5a6a7d;
+    }
+    
+    .block-actions {
+      text-align: right;
+      margin-top: 20px;
+    }
+    
+    .best-practice-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .best-practice-btn:hover {
+      opacity: 0.9;
+      transform: translateX(5px);
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .process-blocks {
+        grid-template-columns: 1fr;
+      }
+      
+      .process-title {
+        font-size: 2rem;
+      }
+      
+      .block-title {
+        font-size: 1.2rem;
+      }
+    }
+    
+    /* 新产品管理特定样式 */
+    .new-product-process .process-icon {
+      background-color: rgba(255, 255, 255, 0.2);
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 流程标题区域 -->
+    <section class="header-section new-product-process">
+      <div class="header-content">
+        <div class="process-icon">
+          <i class="fas fa-cube"></i>
+        </div>
+        <h1 class="process-title">物流运营中心
+          <span class="en-translation">logistics_Operation_Center</span>
+        </h1>
+        <div class="process-desc">
+          覆盖从采购需求到向供应商付款全流程的物流与财务协同管理，确保采供环节高效闭环
+          <span class="en-translation">Be responsible for transporting raw materials, components, etc. needed for production from suppliers to the factory to ensure that production materials arrive on time.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 关键流程块区域 -->
+    <div class="section-title">
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
+    </div>
+    
+    <div class="process-blocks">
+      <!-- 风险与中断管理-->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-map-marked-alt"></i>
+            风险与中断管理
+            <span class="en-translation">Risk & Disruption</span>
+          </div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
+            <p class="core-value-content">
+              在途/ETA可视化是客户承诺与异常处置的前提，决定SLA与客服负荷。
+              <span class="en-translation">In-transit/ETA visibility is a prerequisite for customer commitments and abnormality handling, and determines SLA and customer service workload.</span>
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
+            <ul class="optimization-list">
+              <li>汇聚延误 / 破损 / 争议构建风险画像，驱动路由 / 份额调整
+                <span class="en-translation">Aggregate delays/damage/disputes to build a risk profile, and drive route/share adjustments.</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='operation_center', module_name='risk_disruption') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 物流 ESG 管理 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-bullseye"></i>
+            物流 ESG 管理
+            <span class="en-translation">Logistics ESG Management</span>
+          </div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
+            <p class="core-value-content">
+              碳核算与减排策略关乎合规与品牌诉求。
+              <span class="en-translation">Carbon accounting and emission reduction strategies are related to compliance and brand demands.</span>
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
+            <ul class="optimization-list">
+              <li>对不同模式 / 路由 / 装载核算 tCO₂e 并推荐减排路径与权衡
+                <span class="en-translation">Calculate tCO₂e (tonnes of carbon dioxide equivalent) for different modes/routes/loading methods, and recommend emission reduction paths and trade-offs.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='operation_center', module_name='logistics_esg') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+       <!-- 物流事件管理 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-bullseye"></i>
+            物流事件管理
+            <span class="en-translation">Event Management</span>
+          </div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
+            <p class="core-value-content">
+              在途/ETA可视化是客户承诺与异常处置的前提，决定SLA与客服负荷。
+              <span class="en-translation">In-transit/ETA visibility is a prerequisite for customer commitments and abnormality handling, and determines SLA and customer service workload.</span>
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
+            <ul class="optimization-list">
+              <li>	统一 OTIF / 准点 / 异常口径与治理动作，自动推送改进建议
+                <span class="en-translation">Unify the standards for OTIF/on-time performance/abnormalities and governance actions, and automatically push improvement suggestions.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='operation_center', module_name='event_management') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
