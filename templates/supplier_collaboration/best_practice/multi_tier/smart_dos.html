@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart DOS AI案例研究 | Smart DOS AI Case Study</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice1.css') }}">
+    <style>
+        /* 补充样式 */
+        .en-translation {
+            font-size: 0.8em;
+            color: #666;
+            display: block;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .content-section h2 {
+            color: #2c7be5;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 15px;
+            margin-top: 0;
+        }
+        
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .application-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .app-icon {
+            font-size: 2.5rem;
+            color: #2c7be5;
+            margin-bottom: 15px;
+        }
+        
+        .kpi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .kpi-table th, .kpi-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .kpi-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .improvement {
+            color: #00c9a7;
+            font-weight: 600;
+        }
+        
+        .case-study {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .metric {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c7be5;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            color: #5a6a7d;
+            font-size: 0.9rem;
+        }
+        
+        .case-reference {
+            margin-top: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .case-reference a {
+            color: #2c7be5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .case-reference a:hover {
+            text-decoration: underline;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background: white;
+            color: #2c7be5;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .case-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Smart DOS AI案例研究
+                <div class="en-translation">Smart DOS AI Case Study</div>
+            </h1>
+            <p>AI驱动的智能配送优化系统，通过预测分析、约束优化和自动化技术提高供应链配送效率
+                <span class="en-translation">AI-driven smart distribution optimization system improves supply chain distribution efficiency through predictive analytics, constraint optimization, and automation technologies</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景
+                <div class="en-translation">AI Application Scenarios</div>
+            </h2>
+            <div class="applications-grid">
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>时间序列+因果分析
+                        <div class="en-translation">Time Series + Causal Analysis</div>
+                    </h3>
+                    <p>结合时间序列数据和因果推断，预测配送需求和供应变化
+                        <span class="en-translation">Combining time series data and causal inference to predict distribution demand and supply changes</span>
+                    </p>
+                </div>
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>约束优化
+                        <div class="en-translation">Constraint Optimization</div>
+                    </h3>
+                    <p>考虑多种约束条件优化配送计划，包括运输能力、仓储限制和时间窗口
+                        <span class="en-translation">Optimize distribution plans considering multiple constraints including transport capacity, storage limitations, and time windows</span>
+                    </p>
+                </div>
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>情景仿真
+                        <div class="en-translation">Scenario Simulation</div>
+                    </h3>
+                    <p>模拟不同情景下的配送表现，为决策提供数据支持
+                        <span class="en-translation">Simulate distribution performance under different scenarios to provide data support for decision-making</span>
+                    </p>
+                </div>
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>RPA机器人编排
+                        <div class="en-translation">RPA Robot Orchestration</div>
+                    </h3>
+                    <p>自动化配送流程中的重复性任务，提高操作效率
+                        <span class="en-translation">Automate repetitive tasks in the distribution process to improve operational efficiency</span>
+                    </p>
+                </div>
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>异常提醒
+                        <div class="en-translation">Anomaly Alert</div>
+                    </h3>
+                    <p>实时监测配送异常情况，及时发出预警
+                        <span class="en-translation">Monitor distribution anomalies in real time and issue timely warnings</span>
+                    </p>
+                </div>
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>接口回写
+                        <div class="en-translation">Interface Write-Back</div>
+                    </h3>
+                    <p>自动化数据同步和系统间信息传递
+                        <span class="en-translation">Automate data synchronization and information transfer between systems</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>KPI与预期提升幅度
+                <div class="en-translation">KPI and Expected Improvement</div>
+            </h2>
+            <table class="kpi-table">
+                <thead>
+                    <tr>
+                        <th>AI应用场景
+                            <div class="en-translation">AI Application</div>
+                        </th>
+                        <th>行业KPI
+                            <div class="en-translation">Industry KPI</div>
+                        </th>
+                        <th>预期提升幅度
+                            <div class="en-translation">Expected Improvement</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>时间序列+因果、约束优化、情景仿真
+                            <div class="en-translation">Time Series + Causal, Constraint Optimization, Scenario Simulation</div>
+                        </td>
+                        <td>承诺命中率、短缺率、供应商OTD
+                            <div class="en-translation">Commitment Hit Rate, Shortage Rate, Supplier OTD</div>
+                        </td>
+                        <td class="improvement">承诺命中率 +5–10pct；短缺 −20–40%；OTD +3–6pct
+                            <div class="en-translation">Commitment Hit Rate +5–10pct; Shortage −20–40%; OTD +3–6pct</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>RPA机器人编排、异常提醒、接口回写
+                            <div class="en-translation">RPA Robot Orchestration, Anomaly Alert, Interface Write-Back</div>
+                        </td>
+                        <td>PO回签时效、承诺落地周期
+                            <div class="en-translation">PO Return Time, Commitment Fulfillment Cycle</div>
+                        </td>
+                        <td class="improvement">PO回签P50 −30–50%；承诺落地周期 −20–40%
+                            <div class="en-translation">PO Return P50 −30–50%; Commitment Fulfillment Cycle −20–40%</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>RPA抓取+规则引擎+到期提醒
+                            <div class="en-translation">RPA Capture + Rule Engine + Expiration Reminder</div>
+                        </td>
+                        <td>证书齐套率、证书过期事件
+                            <div class="en-translation">Certificate Completeness Rate, Certificate Expiration Events</div>
+                        </td>
+                        <td class="improvement">齐套率 +10–20pct；过期事件 −80–100%
+                            <div class="en-translation">Completeness Rate +10–20pct; Expiration Events −80–100%</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>RPA比对、规则引擎、调度接口
+                            <div class="en-translation">RPA Comparison, Rule Engine, Scheduling Interface</div>
+                        </td>
+                        <td>ASN准确率、收货等待时长
+                            <div class="en-translation">ASN Accuracy Rate, Receiving Wait Time</div>
+                        </td>
+                        <td class="improvement">ASN准确率 +10–20pct；收货等待P50 −20–40%
+                            <div class="en-translation">ASN Accuracy Rate +10–20pct; Receiving Wait P50 −20–40%</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>特征工程、Shap解释、优先级评分
+                            <div class="en-translation">Feature Engineering, Shap Explanation, Priority Scoring</div>
+                        </td>
+                        <td>短缺率、优先订单达成率
+                            <div class="en-translation">Shortage Rate, Priority Order Fulfillment Rate</div>
+                        </td>
+                        <td class="improvement">短缺 −15–30%；优先订单达成 +5–10pct
+                            <div class="en-translation">Shortage −15–30%; Priority Order Fulfillment +5–10pct</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>回归/概率模型、异常检测
+                            <div class="en-translation">Regression/Probability Model, Anomaly Detection</div>
+                        </td>
+                        <td>到货准时率、异常处置时效
+                            <div class="en-translation">On-Time Arrival Rate, Anomaly Handling Time</div>
+                        </td>
+                        <td class="improvement">准时率 +5–10pct；处置时效 +20–40%
+                            <div class="en-translation">On-Time Rate +5–10pct; Handling Time +20–40%</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景效果分析
+                <div class="en-translation">AI Application Effect Analysis</div>
+            </h2>
+            <p>通过AI驱动的智能配送优化系统，企业能够显著提高配送效率，降低运营成本，并增强客户满意度。时间序列+因果分析提高了预测准确性，约束优化减少了资源浪费和短缺情况，情景仿真则帮助企业更好地规划配送策略。RPA机器人编排自动化了重复性任务，异常提醒及时发现问题，接口回写确保了数据一致性。
+                <span class="en-translation">Through AI-driven smart distribution optimization systems, enterprises can significantly improve distribution efficiency, reduce operating costs, and enhance customer satisfaction. Time series + causal analysis improves prediction accuracy, constraint optimization reduces resource waste and shortages, and scenario simulation helps companies better plan distribution strategies. RPA robot orchestration automates repetitive tasks, anomaly alerts identify problems in a timely manner, and interface write-back ensures data consistency.</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>实际行业案例
+                <div class="en-translation">Actual Industry Cases</div>
+            </h2>
+            
+            <!-- 案例1 -->
+            <div class="case-study">
+                <h3>全球零售巨头智能配送优化项目
+                    <div class="en-translation">Global Retail Giant Smart Distribution Optimization Project</div>
+                </h3>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <div class="metric-value">+8%</div>
+                        <div class="metric-label">承诺命中率提升
+                            <div class="en-translation">Commitment Hit Rate Improvement</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-35%</div>
+                        <div class="metric-label">短缺率减少
+                            <div class="en-translation">Shortage Rate Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">+5%</div>
+                        <div class="metric-label">供应商OTD提升
+                            <div class="en-translation">Supplier OTD Improvement</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-45%</div>
+                        <div class="metric-label">PO回签时间减少
+                            <div class="en-translation">PO Return Time Reduction</div>
+                        </div>
+                    </div>
+                </div>
+                <p>一家全球零售巨头实施了AI驱动的智能配送优化系统，通过时间序列+因果分析提高了预测准确性，使用约束优化算法减少了资源浪费和短缺情况，并通过RPA机器人编排自动化了配送流程中的重复性任务。
+                    <span class="en-translation">A global retail giant implemented an AI-driven smart distribution optimization system, using time series + causal analysis to improve prediction accuracy, constraint optimization algorithms to reduce resource waste and shortages, and RPA robot orchestration to automate repetitive tasks in the distribution process.</span>
+                </p>
+                <p>项目实施后，该企业实现了承诺命中率提升8%，短缺率减少35%，供应商OTD提升5%，PO回签时间减少45%，大幅提高了配送效率和客户满意度。
+                    <span class="en-translation">After project implementation, the company achieved an 8% improvement in commitment hit rate, a 35% reduction in shortage rate, a 5% improvement in supplier OTD, and a 45% reduction in PO return time, significantly improving distribution efficiency and customer satisfaction.</span>
+                </p>
+                <div class="case-reference">
+                    <p>案例出处: APQC供应链最佳实践案例研究
+                        <div class="en-translation">Case Source: APQC Supply Chain Best Practices Case Study</div>
+                    </p>
+                    <a href="https://www.apqc.org/resource-library/resource-listing/supply-chain-management-best-practices" target="_blank" rel="noopener noreferrer">
+                        查看APQC案例详情 <i class="fas fa-external-link-alt"></i>
+                        <div class="en-translation">View APQC Case Details <i class="fas fa-external-link-alt"></i></div>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 案例2 -->
+            <div class="case-study">
+                <h3>汽车制造商供应链自动化项目
+                    <div class="en-translation">Automotive Manufacturer Supply Chain Automation Project</div>
+                </h3>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <div class="metric-value">+15%</div>
+                        <div class="metric-label">证书齐套率提升
+                            <div class="en-translation">Certificate Completeness Rate Improvement</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-90%</div>
+                        <div class="metric-label">证书过期事件减少
+                            <div class="en-translation">Certificate Expiration Events Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">+18%</div>
+                        <div class="metric-label">ASN准确率提升
+                            <div class="en-translation">ASN Accuracy Rate Improvement</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-30%</div>
+                        <div class="metric-label">收货等待时间减少
+                            <div class="en-translation">Receiving Wait Time Reduction</div>
+                        </div>
+                    </div>
+                </div>
+                <p>一家全球汽车制造商实施了供应链自动化系统，通过RPA抓取+规则引擎+到期提醒技术提高了证书管理效率，使用RPA比对、规则引擎和调度接口优化了ASN准确率，并通过特征工程、Shap解释和优先级评分减少了短缺情况。
+                    <span class="en-translation">A global automotive manufacturer implemented a supply chain automation system, using RPA capture + rule engine + expiration reminder technology to improve certificate management efficiency, RPA comparison, rule engine, and scheduling interface to optimize ASN accuracy, and feature engineering, Shap explanation, and priority scoring to reduce shortages.</span>
+                </p>
+                <p>项目实施后，该企业实现了证书齐套率提升15%，证书过期事件减少90%，ASN准确率提升18%，收货等待时间减少30%，大幅提高了供应链效率和合规性。
+                    <span class="en-translation">After project implementation, the company achieved a 15% improvement in certificate completeness rate, a 90% reduction in certificate expiration events, an 18% improvement in ASN accuracy rate, and a 30% reduction in receiving wait time, significantly improving supply chain efficiency and compliance.</span>
+                </p>
+                <div class="case-reference">
+                    <p>案例出处: AIAG APQP/PPAP最佳实践案例研究
+                        <div class="en-translation">Case Source: AIAG APQP/PPAP Best Practices Case Study</div>
+                    </p>
+                    <a href="https://www.aiag.org/quality/apqp-and-ppap" target="_blank" rel="noopener noreferrer">
+                        查看AIAG案例详情 <i class="fas fa-external-link-alt"></i>
+                        <div class="en-translation">View AIAG Case Details <i class="fas fa-external-link-alt"></i></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>开始您的AI转型之旅
+                <div class="en-translation">Start Your AI Transformation Journey</div>
+            </h2>
+            <p>联系我们的专家团队，了解如何将AI技术应用于您的智能配送流程
+                <span class="en-translation">Contact our expert team to learn how to apply AI technology to your smart distribution processes</span>
+            </p>
+            <a href="#" class="btn-primary">联系我们
+                <div class="en-translation">Contact Us</div>
+            </a>
+            <a href="#" class="btn-primary">下载案例研究
+                <div class="en-translation">Download Case Study</div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

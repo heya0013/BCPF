@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forecast Collaboration AI案例研究 | Forecast Collaboration AI Case Study</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice1.css') }}">
+    <style>
+        /* 补充样式 */
+        .en-translation {
+            font-size: 0.8em;
+            color: #666;
+            display: block;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .content-section h2 {
+            color: #2c7be5;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 15px;
+            margin-top: 0;
+        }
+        
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .application-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .app-icon {
+            font-size: 2.5rem;
+            color: #2c7be5;
+            margin-bottom: 15px;
+        }
+        
+        .kpi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .kpi-table th, .kpi-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .kpi-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+ }
+        
+        .improvement {
+            color: #00c9a7;
+            font-weight: 600;
+        }
+        
+        .case-study {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .metric {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c7be5;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            color: #5a6a7d;
+            font-size: 0.9rem;
+        }
+        
+        .case-reference {
+            margin-top: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .case-reference a {
+            color: #2c7be5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .case-reference a:hover {
+            text-decoration: underline;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background: white;
+            color: #2c7be5;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .case-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Forecast Collaboration AI案例研究
+                <div class="en-translation">Forecast Collaboration AI Case Study</div>
+            </h1>
+            <p>AI驱动的预测协同优化解决方案，通过时间序列分析、产能约束建模和承诺优化提高供应链预测准确性
+                <span class="en-translation">AI-driven forecast collaboration optimization solutions improve supply chain prediction accuracy through time series analysis, capacity constraint modeling, and commitment optimization</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景
+                <div class="en-translation">AI Application Scenarios</div>
+            </h2>
+            <div class="applications-grid">
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>时间序列/因果分析
+                        <div class="en-translation">Time Series/Causal Analysis</div>
+                    </h3>
+                    <p>结合时间序列数据和因果推断，预测需求变化和供应波动
+                        <span class="en-translation">Combining time series data and causal inference to predict demand changes and supply fluctuations</span>
+                    </p>
+                </div>
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>产能约束建模
+                        <div class="en-translation">Capacity Constraint Modeling</div>
+                    </h3>
+                    <p>考虑多种产能约束条件优化生产计划，包括设备能力、人力资源和物料供应
+                        <span class="en-translation">Optimize production plans considering multiple capacity constraints including equipment capabilities, human resources, and material supply</span>
+                    </p>
+                </div>
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>承诺优化
+                        <div class="en-translation">Commitment Optimization</div>
+                    </h3>
+                    <p>优化客户承诺策略，提高承诺可实现性和客户满意度
+                        <span class="en-translation">Optimize customer commitment strategies to improve commitment feasibility and customer satisfaction</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>KPI与预期提升幅度
+                <div class="en-translation">KPI and Expected Improvement</div>
+            </h2>
+            <table class="kpi-table">
+                <thead>
+                    <tr>
+                        <th>AI应用场景
+                            <div class="en-translation">AI Application</div>
+                        </th>
+                        <th>行业KPI
+                            <div class="en-translation">Industry KPI</div>
+                        </th>
+                        <th>预期提升幅度
+                            <div class="en-translation">Expected Improvement</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>时间序列/因果分析
+                            <div class="en-translation">Time Series/Causal Analysis</div>
+                        </td>
+                        <td>承诺命中率
+                            <div class="en-translation">Commitment Hit Rate</div>
+                        </td>
+                        <td class="improvement">+5–10pct
+                            <div class="en-translation">+5–10pct</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>产能约束建模
+                            <div class="en-translation">Capacity Constraint Modeling</div>
+                        </td>
+                        <td>供应商OTD
+                            <div class="en-translation">Supplier On-Time Delivery</div>
+                        </td>
+                        <td class="improvement">+3–6pct
+                            <div class="en-translation">+3–6pct</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>承诺优化
+                            <div class="en-translation">Commitment Optimization</div>
+                        </td>
+                        <td>短缺率
+                            <div class="en-translation">Shortage Rate</div>
+                        </td>
+                        <td class="improvement">-20–40%
+                            <div class="en-translation">-20–40%</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景效果分析
+                <div class="en-translation">AI Application Effect Analysis</div>
+            </h2>
+            <p>通过AI驱动的预测协同优化解决方案，企业能够显著提高预测准确性，降低运营成本，并增强客户满意度。时间序列/因果分析提高了需求预测的准确性，产能约束建模优化了生产计划和资源分配，承诺优化则提高了客户承诺的可实现性和可靠性。
+                <span class="en-translation">Through AI-driven forecast collaboration optimization solutions, enterprises can significantly improve prediction accuracy, reduce operating costs, and enhance customer satisfaction. Time series/causal analysis improves the accuracy of demand forecasting, capacity constraint modeling optimizes production plans and resource allocation, and commitment optimization improves the feasibility and reliability of customer commitments.</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>实际行业案例
+                <div class="en-translation">Actual Industry Case</div>
+            </h2>
+            <div class="case-study">
+                <h3>全球消费品巨头预测协同优化项目
+                    <div class="en-translation">Global Consumer Goods Giant Forecast Collaboration Optimization Project</div>
+                </h3>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <div class="metric-value">+8%</div>
+                        <div class="metric-label">承诺命中率提升
+                            <div class="en-translation">Commitment Hit Rate Improvement</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">+5%</div>
+                        <div class="metric-label">供应商OTD提升
+                            <div class="en-translation">Supplier On-Time Delivery Improvement</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-35%</div>
+                        <div class="metric-label">短缺率减少
+                            <div class="en-translation">Shortage Rate Reduction</div>
+                        </div>
+                    </div>
+                </div>
+                <p>一家全球消费品巨头实施了AI驱动的预测协同优化系统，通过时间序列/因果分析提高了需求预测准确性，使用产能约束建模优化了生产计划和资源分配，并通过承诺优化提高了客户承诺的可实现性。
+                    <span class="en-translation">A global consumer goods giant implemented an AI-driven forecast collaboration optimization system, using time series/causal analysis to improve demand forecasting accuracy, capacity constraint modeling to optimize production plans and resource allocation, and commitment optimization to improve the feasibility of customer commitments.</span>
+                </p>
+                <p>项目实施后，该企业实现了承诺命中率提升8%，供应商OTD提升5%，短缺率减少35%，大幅提高了供应链效率和客户满意度。
+                    <span class="en-translation">After project implementation, the company achieved an 8% improvement in commitment hit rate, a 5% improvement in supplier on-time delivery, and a 35% reduction in shortage rate, significantly improving supply chain efficiency and customer satisfaction.</span>
+                </p>
+                <div class="case-reference">
+                    <p>案例出处: Gartner供应链最佳实践案例研究
+                        <div class="en-translation">Case Source: Gartner Supply Chain Best Practices Case Study</div>
+                    </p>
+                    <a href="https://www.gartner.com/en/supply-chain/topics/demand-forecasting" target="_blank" rel="noopener noreferrer">
+                        查看Gartner案例详情 <i class="fas fa-external-link-alt"></i>
+                        <div class="en-translation">View Gartner Case Details <i class="fas fa-external-link-alt"></i></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>开始您的AI转型之旅
+                <div class="en-translation">Start Your AI Transformation Journey</div>
+            </h2>
+            <p>联系我们的专家团队，了解如何将AI技术应用于您的预测协同流程
+                <span class="en-translation">Contact our expert team to learn how to apply AI technology to your forecast collaboration processes</span>
+            </p>
+            <a href="#" class="btn-primary">联系我们
+                <div class="en-translation">Contact Us</div>
+            </a>
+            <a href="#" class="btn-primary">下载案例研究
+                <div class="en-translation">Download Case Study</div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
