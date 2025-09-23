@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbound AI案例研究 | Inbound AI Case Study</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice1.css') }}">
+    <style>
+        /* 补充样式 */
+        .en-translation {
+            font-size: 0.8em;
+            color: #666;
+            display: block;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .content-section h2 {
+            color: #2c7be5;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 15px;
+            margin-top: 0;
+        }
+        
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .application-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .app-icon {
+            font-size: 2.5rem;
+            color: #2c7be5;
+            margin-bottom: 15px;
+        }
+        
+        .kpi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .kpi-table th, .kpi-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .kpi-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .improvement {
+            color: #00c9a7;
+            font-weight: 600;
+        }
+        
+        .case-study {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .metric {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c7be5;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            color: #5a6a7d;
+            font-size: 0.9rem;
+        }
+        
+        .case-reference {
+            margin-top: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .case-reference a {
+            color: #2c7be5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .case-reference a:hover {
+            text-decoration: underline;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background: white;
+            color: #2c7be5;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .case-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Inbound AI案例研究
+                <div class="en-translation">Inbound AI Case Study</div>
+            </h1>
+            <p>AI驱动的入站物流优化解决方案，通过时序分析、图模型、NLP和异常检测提高供应链效率
+                <span class="en-translation">AI-driven inbound logistics optimization solutions improve supply chain efficiency through time series analysis, graph models, NLP, and anomaly detection</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景
+                <div class="en-translation">AI Application Scenarios</div>
+            </h2>
+            <div class="applications-grid">
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>时序+图模型+实时IoT+异常检测
+                        <div class="en-translation">Time Series + Graph Models + Real-Time IoT + Anomaly Detection</div>
+                    </h3>
+                    <p>结合时序数据、路网/口岸图模型、实时IoT数据和异常检测算法，优化入站物流效率和可靠性
+                        <span class="en-translation">Combining time series data, road network/port graph models, real-time IoT data, and anomaly detection algorithms to optimize inbound logistics efficiency and reliability</span>
+                    </p>
+                </div>
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3>NLP+规则+知识图谱
+                        <div class="en-translation">NLP + Rules + Knowledge Graph</div>
+                    </h3>
+                    <p>使用自然语言处理、规则引擎和法规/关税知识图谱，提高通关效率和合规性
+                        <span class="en-translation">Using natural language processing, rule engines, and regulation/tariff knowledge graphs to improve customs clearance efficiency and compliance</span>
+                    </p>
+                </div>
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>电子对账+异常归因+RPA
+                        <div class="en-translation">Electronic Reconciliation + Anomaly Attribution + RPA</div>
+                    </h3>
+                    <p>通过电子对账、LLM异常归因和RPA自动化，优化财务对账流程和索赔追回效率
+                        <span class="en-translation">Optimizing financial reconciliation processes and claim recovery efficiency through electronic reconciliation, LLM anomaly attribution, and RPA automation</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>KPI与预期提升幅度
+                <div class="en-translation">KPI and Expected Improvement</div>
+            </h2>
+            <table class="kpi-table">
+                <thead>
+                    <tr>
+                        <th>AI应用场景
+                            <div class="en-translation">AI Application</div>
+                        </th>
+                        <th>行业KPI
+                            <div class="en-translation">Industry KPI</div>
+                        </th>
+                        <th>预期提升幅度
+                            <div class="en-translation">Expected Improvement</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>时序+图模型+实时IoT+异常检测
+                            <div class="en-translation">Time Series + Graph Models + Real-Time IoT + Anomaly Detection</div>
+                        </td>
+                        <td>OTD/OTIF、提前干预率、客户投诉率、在途库存天数
+                            <div class="en-translation">OTD/OTIF, Early Intervention Rate, Customer Complaint Rate, In-Transit Inventory Days</div>
+                        </td>
+                        <td class="improvement">OTD/OTIF +3–8pct；提前干预提升 20–40%
+                            <div class="en-translation">OTD/OTIF +3–8pct; Early Intervention +20–40%</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>NLP+规则+知识图谱
+                            <div class="en-translation">NLP + Rules + Knowledge Graph</div>
+                        </td>
+                        <td>查验率、通关时长、合规违规率
+                            <div class="en-translation">Inspection Rate, Customs Clearance Time, Compliance Violation Rate</div>
+                        </td>
+                        <td class="improvement">通关时长缩短，违规率下降
+                            <div class="en-translation">Customs Clearance Time Reduced, Violation Rate Decreased</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>电子对账+异常归因+RPA
+                            <div class="en-translation">Electronic Reconciliation + Anomaly Attribution + RPA</div>
+                        </td>
+                        <td>对账周期、差错率、索赔追回率
+                            <div class="en-translation">Reconciliation Cycle, Error Rate, Claim Recovery Rate</div>
+                        </td>
+                        <td class="improvement">对账周期缩短，追回率提升
+                            <div class="en-translation">Reconciliation Cycle Shortened, Recovery Rate Increased</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景效果分析
+                <div class="en-translation">AI Application Effect Analysis</div>
+            </h2>
+            <p>通过AI驱动的入站物流优化解决方案，企业能够显著提高供应链效率，降低运营成本，并增强客户满意度。时序+图模型+实时IoT+异常检测提高了物流运输的准时性和可靠性，NLP+规则+知识图谱则优化了通关流程和合规性，电子对账+异常归因+RPA则提高了财务对账效率和索赔追回率。
+                <span class="en-translation">Through AI-driven inbound logistics optimization solutions, enterprises can significantly improve supply chain efficiency, reduce operating costs, and enhance customer satisfaction. Time series + graph models + real-time IoT + anomaly detection improve the timeliness and reliability of logistics transportation, NLP + rules + knowledge graphs optimize customs clearance processes and compliance, and electronic reconciliation + anomaly attribution + RPA improve financial reconciliation efficiency and claim recovery rates.</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>实际行业案例
+                <div class="en-translation">Actual Industry Case</div>
+            </h2>
+            <div class="case-study">
+                <h3>全球零售巨头入站物流优化项目
+                    <div class="en-translation">Global Retail Giant Inbound Logistics Optimization Project</div>
+                </h3>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <div class="metric-value">+6.5%</div>
+                        <div class="metric-label">OTIF提升
+                            <div class="en-translation">OTIF Improvement</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-35%</div>
+                        <div class="metric-label">通关时长减少
+                            <div class="en-translation">Customs Clearance Time Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-60%</div>
+                        <div class="metric-label">对账周期缩短
+                            <div class="en-translation">Reconciliation Cycle Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">+45%</div>
+                        <div class="metric-label">索赔追回率提升
+                            <div class="en-translation">Claim Recovery Rate Improvement</div>
+                        </div>
+                    </div>
+                </div>
+                <p>一家全球零售巨头实施了AI驱动的入站物流优化系统，通过时序+图模型+实时IoT+异常检测提高了物流运输的准时性和可靠性，使用NLP+规则+知识图谱优化了通关流程和合规性，并通过电子对账+异常归因+RPA提高了财务对账效率和索赔追回率。
+                    <span class="en-translation">A global retail giant implemented an AI-driven inbound logistics optimization system, using time series + graph models + real-time IoT + anomaly detection to improve the timeliness and reliability of logistics transportation, NLP + rules + knowledge graphs to optimize customs clearance processes and compliance, and electronic reconciliation + anomaly attribution + RPA to improve financial reconciliation efficiency and claim recovery rates.</span>
+                </p>
+                <p>项目实施后，该企业实现了OTIF提升6.5%，通关时长减少35%，对账周期缩短60%，索赔追回率提升45%，大幅提高了供应链效率和客户满意度。
+                    <span class="en-translation">After project implementation, the company achieved a 6.5% improvement in OTIF, a 35% reduction in customs clearance time, a 60% reduction in reconciliation cycle, and a 45% improvement in claim recovery rate, significantly improving supply chain efficiency and customer satisfaction.</span>
+                </p>
+                <div class="case-reference">
+                    <p>案例出处: McKinsey AI赋能供应链管理研究报告
+                        <div class="en-translation">Case Source: McKinsey AI-Enabled Supply Chain Management Research Report</div>
+                    </p>
+                    <a href="https://www.mckinsey.com/capabilities/operations/our-insights/ai-enabled-supply-chain-management-from-planning-to-operations" target="_blank" rel="noopener noreferrer">
+                        查看McKinsey案例详情 <i class="fas fa-external-link-alt"></i>
+                        <div class="en-translation">View McKinsey Case Details <i class="fas fa-external-link-alt"></i></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

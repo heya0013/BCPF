@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>物流采购到付款 - 全球物流流程分析 | Logistics Procure to Pay - Global Logistics Process Analysis</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <style>
+    /* 全局样式 */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* 标题区域样式 */
+    .header-section {
+      background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+      color: white;
+      padding: 40px 20px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    
+    .process-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .process-title {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .process-subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 15px;
+    }
+    
+    .process-desc {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .en-translation {
+      display: block;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-top: 5px;
+      font-style: italic;
+    }
+    
+    /* 内容区域样式 */
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .section-title h2 {
+      font-size: 2rem;
+      color: #2c3e50;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 15px;
+      display: inline-block;
+    }
+    
+    .process-blocks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 25px;
+    }
+    
+    .process-block {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .process-block:hover {
+      transform: translateY(-5px);
+    }
+    
+    .block-header {
+      background: linear-gradient(135deg, #9b59b6 0%, #3498db 100%);
+      color: white;
+      padding: 20px;
+    }
+    
+    .block-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .block-subtitle {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+    
+    .block-body {
+      padding: 20px;
+    }
+    
+    .core-value {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 4px solid #9b59b6;
+    }
+    
+    .core-value-title {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    
+    .core-value-content {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    .content-area {
+      margin: 20px 0;
+    }
+    
+    .optimization-title {
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+    
+    .optimization-list {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .optimization-list li {
+      margin-bottom: 10px;
+      color: #5a6a7d;
+    }
+    
+    .block-actions {
+      text-align: right;
+      margin-top: 20px;
+    }
+    
+    .best-practice-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .best-practice-btn:hover {
+      opacity: 0.9;
+      transform: translateX(5px);
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .process-blocks {
+        grid-template-columns: 1fr;
+      }
+      
+      .process-title {
+        font-size: 2rem;
+      }
+      
+      .block-title {
+        font-size: 1.2rem;
+      }
+    }
+    
+    /* 新产品管理特定样式 */
+    .new-product-process .process-icon {
+      background-color: rgba(255, 255, 255, 0.2);
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 流程标题区域 -->
+    <section class="header-section new-product-process">
+      <div class="header-content">
+        <div class="process-icon">
+          <i class="fas fa-cube"></i>
+        </div>
+        <h1 class="process-title">物流采购到付款
+          <span class="en-translation">In-bound to MFG</span>
+        </h1>
+        <div class="process-desc">
+          覆盖从采购需求到向供应商付款全流程的物流与财务协同管理，确保采供环节高效闭环
+          <span class="en-translation">Cover the collaborative management of logistics and finance throughout the entire process from procurement demand to payment to suppliers, ensuring an efficient closed loop in the procurement and supply process.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 关键流程块区域 -->
+    <div class="section-title">
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
+    </div>
+    
+    <div class="process-blocks">
+      <!-- 物流合同管理-->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-map-marked-alt"></i>
+            物流合同管理
+            <span class="en-translation">Logistics Contract Management</span>
+          </div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
+            <p class="core-value-content">
+              费率 / 附加费 / 合同是审计基线，决定计费合规与真实成本。；应付 / 付款 / 过账承接审计结果，形成财务闭环。
+              <span class="en-translation">Rates/surcharges/contracts serve as the audit baseline, determining billing compliance and actual costs; Accounts payable/payment/posting follow the audit results to form a financial closed-loop.</span>
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
+            <ul class="optimization-list">
+              <li>把合同费率、执行里程碑 / POD、GTC 税费 / 放行与发票统一到 3/4-Way Match
+                <span class="en-translation">Unify contract rates, execution milestones/PODs, GTC taxes/clearance, and invoices into 3/4-Way Match.</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='procure_pay', module_name='contract') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 发票更正与核验 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-bullseye"></i>
+            发票更正与核验
+            <span class="en-translation">Invoice Correction And Verification</span>
+          </div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
+            <p class="core-value-content">
+              账单 / 发票是对账对象，需与里程碑与合同条款一致。；应付 / 付款 / 过账承接审计结果，形成财务闭环。
+              <span class="en-translation">Bills/invoices are the objects of reconciliation and must be consistent with milestones and contract terms; Accounts payable/payment/posting follow the audit results to form a financial closed-loop.</span>
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
+            <ul class="optimization-list">
+              <li>把合同费率、执行里程碑 / POD、GTC 税费 / 放行与发票统一到 3/4-Way Match
+                <span class="en-translation">Unify contract rates, execution milestones/PODs, GTC taxes/clearance, and invoices into 3/4-Way Match.</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='procure_pay', module_name='invoice') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+        <!-- 运费审计、支付与索赔 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-bullseye"></i>
+            运费审计、支付与索赔
+            <span class="en-translation">Freight Audit & Payment & Claim</span>
+          </div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
+            <p class="core-value-content">
+              账单 / 发票是对账对象，需与里程碑与合同条款一致。；审计 / 勾稽（3-Way Match）控制差错与超付，是 P2P 核心控制点。；争议 / 差异管理是追回与扣减机制，降低异常损失。
+              <span class="en-translation">Bills/invoices are the objects of reconciliation and must be consistent with milestones and contract terms; Auditing/three-way match controls errors and overpayments, and is a core control point of P2P; Dispute/discrepancy management is a recovery and deduction mechanism to reduce abnormal losses.</span>
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
+            <ul class="optimization-list">
+              <li>结合承运商信用、历史争议、金额阈值与异常置信度，动态调整审批路由与自动放款阈值
+                <span class="en-translation">Dynamically adjust approval routes and automatic payment release thresholds by integrating carrier credit, historical disputes, amount thresholds, and anomaly confidence</span>
+              </li>
+              <li>将承运商账单与 TMS 里程碑 / POD、GTC 税费 / 放行记录自动勾稽，实时标注差异并生成归因与处置建议
+                <span class="en-translation">Automatically reconcile carrier bills with TMS milestones/PODs and GTC tax/clearance records, mark discrepancies in real time, and generate attribution and disposal suggestions.</span>
+              </li>
+              <li>基于历史争议 / 索赔标签训练分类模型，联动扣减、补差、复议与承运商绩效
+                <span class="en-translation">Train classification models based on historical dispute/claim tags, and link deductions, supplements, reviews, and carrier performance.</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='procure_pay', module_name='claim') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

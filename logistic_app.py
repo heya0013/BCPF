@@ -27,11 +27,11 @@ def logistics_Operation_Center():
 
 @app.route('/Import_Export')
 def Import_Export():
-    return render_template('logistics/Import_Export') 
+    return render_template('logistics/Import_Export.html') 
 
 @app.route('/Global_Trade_Compliance')
 def Global_Trade_Compliance():
-    return render_template('logistics/Global_Trade_Compliance') 
+    return render_template('logistics/Global_Trade_Compliance.html') 
 
 # 最佳实践路由 - 更新模板路径
 @app.route('/best-practice/<process>/<module_name>')
