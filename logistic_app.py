@@ -23,7 +23,7 @@ def MFG():
 
 @app.route('/logistics_Operation_Center')
 def logistics_Operation_Center():
-    return render_template('logistics/logistics_Operation_Centernce.html')  # 更新路径
+    return render_template('logistics/logistics_Operation_Center.html')  # 更新路径
 
 @app.route('/Import_Export')
 def Import_Export():
