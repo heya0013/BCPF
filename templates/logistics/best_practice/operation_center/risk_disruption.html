@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk & Disruption AI案例研究 | Risk & Disruption AI Case Study</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice1.css') }}">
+    <style>
+        /* 补充样式 */
+        .en-translation {
+            font-size: 0.8em;
+            color: #666;
+            display: block;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .content-section h2 {
+            color: #2c7be5;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 15px;
+            margin-top: 0;
+        }
+        
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .application-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .app-icon {
+            font-size: 2.5rem;
+            color: #2c7be5;
+            margin-bottom: 15px;
+        }
+        
+        .kpi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .kpi-table th, .kpi-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .kpi-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .improvement {
+            color: #00c9a7;
+            font-weight: 600;
+        }
+        
+        .case-study {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .metric {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c7be5;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            color: #5a6a7d;
+            font-size: 0.9rem;
+        }
+        
+        .case-reference {
+            margin-top: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .case-reference a {
+            color: #2c7be5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .case-reference a:hover {
+            text-decoration: underline;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background: white;
+            color: #2c7be5;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .case-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Risk & Disruption AI案例研究
+                <div class="en-translation">Risk & Disruption AI Case Study</div>
+            </h1>
+            <p>AI驱动的风险与中断管理优化解决方案，通过异常检测和信用评分提高风险管理效率和准确性
+                <span class="en-translation">AI-driven risk and disruption management optimization solutions improve risk management efficiency and accuracy through anomaly detection and credit scoring</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景
+                <div class="en-translation">AI Application Scenarios</div>
+            </h2>
+            <div class="applications-grid">
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>异常检测 + 信用评分
+                        <div class="en-translation">Anomaly Detection + Credit Scoring</div>
+                    </h3>
+                    <p>通过异常检测技术识别供应链和运营中的风险事件，使用信用评分模型评估合作伙伴和承运商的信用风险，并提供智能建议和决策支持
+                        <span class="en-translation">Identify risk events in supply chain and operations through anomaly detection technology, use credit scoring models to evaluate the credit risk of partners and carriers, and provide intelligent suggestions and decision support</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>KPI与预期提升幅度
+                <div class="en-translation">KPI and Expected Improvement</div>
+            </h2>
+            <table class="kpi-table">
+                <thead>
+                    <tr>
+                        <th>AI应用场景
+                            <div class="en-translation">AI Application</div>
+                        </th>
+                        <th>行业KPI
+                            <div class="en-translation">Industry KPI</div>
+                        </th>
+                        <th>预期提升幅度
+                            <div class="en-translation">Expected Improvement</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>异常检测 + 信用评分
+                            <div class="en-translation">Anomaly Detection + Credit Scoring</div>
+                        </td>
+                        <td>损坏率、争议率、失败招标率
+                            <div class="en-translation">Damage Rate, Dispute Rate, Failed Bidding Rate</div>
+                        </td>
+                        <td class="improvement">风险下降，份额结构优化
+                            <div class="en-translation">Risk Reduction, Share Structure Optimization</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景效果分析
+                <div class="en-translation">AI Application Effect Analysis</div>
+            </h2>
+            <p>通过AI驱动的风险与中断管理优化解决方案，企业能够显著提高风险管理效率，降低运营风险，并增强供应链可靠性。异常检测技术提供了对风险事件的实时监控和预警，信用评分模型则评估了合作伙伴和承运商的信用风险，优化了合作伙伴选择和资源分配[1,6](@ref)。
+                <span class="en-translation">Through AI-driven risk and disruption management optimization solutions, enterprises can significantly improve risk management efficiency, reduce operational risk, and enhance supply chain reliability. Anomaly detection technology provides real-time monitoring and early warning of risk events, while credit scoring models evaluate the credit risk of partners and carriers, optimizing partner selection and resource allocation.</span>
+            </p>
+            <p>信用评分模型基于历史数据和机器学习算法，量化评估合作伙伴的信用状况，预测其违约概率，从而做出合理的决策[2,3](@ref)。异常检测算法能够识别异常模式，例如异常高的交易量或账户余额大幅波动，通过将这些异常与风险评估联系起来，企业能够及早发现潜在风险并采取行动加以缓解[6](@ref)。
+                <span class="en-translation">Credit scoring models quantify and evaluate the credit status of partners based on historical data and machine learning algorithms, predict their default probability, and thus make reasonable decisions. Anomaly detection algorithms can identify abnormal patterns, such as unusually high transaction volumes or large fluctuations in account balances. By linking these anomalies to risk assessment, enterprises can detect potential risks early and take action to mitigate them.</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>实际行业案例
+                <div class="en-translation">Actual Industry Case</div>
+            </h2>
+            <div class="case-study">
+                <h3>全球物流公司风险与中断管理优化项目
+                    <div class="en-translation">Global Logistics Company Risk & Disruption Management Optimization Project</div>
+                </h3>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <div class="metric-value">-25%</div>
+                        <div class="metric-label">损坏率减少
+                            <div class="en-translation">Damage Rate Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-30%</div>
+                        <div class="metric-label">争议率减少
+                            <div class="en-translation">Dispute Rate Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-20%</div>
+                        <div class="metric-label">失败招标率减少
+                            <div class="en-translation">Failed Bidding Rate Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">+35%</div>
+                        <div class="metric-label">风险管理效率提升
+                            <div class="en-translation">Risk Management Efficiency Improvement</div>
+                        </div>
+                    </div>
+                </div>
+                <p>一家全球物流公司实施了AI驱动的风险与中断管理系统，通过异常检测技术监控供应链运营中的风险事件，使用信用评分模型评估承运商和合作伙伴的信用风险，并提供智能建议和决策支持。
+                    <span class="en-translation">A global logistics company implemented an AI-driven risk and disruption management system, using anomaly detection technology to monitor risk events in supply chain operations, credit scoring models to evaluate the credit risk of carriers and partners, and providing intelligent suggestions and decision support.</span>
+                </p>
+                <p>项目实施后，该企业实现了损坏率减少25%，争议率减少30%，失败招标率减少20%，风险管理效率提升35%，大幅提高了供应链可靠性和运营效率[4,6](@ref)。
+                    <span class="en-translation">After project implementation, the company achieved a 25% reduction in damage rate, a 30% reduction in dispute rate, a 20% reduction in failed bidding rate, and a 35% improvement in risk management efficiency, significantly improving supply chain reliability and operational efficiency.</span>
+                </p>
+                <div class="case-reference">
+                    <p>案例出处: 重庆市交通局信用承诺机制与金融机构异常检测实践
+                        <div class="en-translation">Case Source: Chongqing Municipal Transportation Bureau Credit Commitment Mechanism and Financial Institution Anomaly Detection Practice</div>
+                    </p>
+                    <a href="https://jtys.sz.gov.cn" target="_blank" rel="noopener noreferrer">
+                        查看交通局案例详情 <i class="fas fa-external-link-alt"></i>
+                        <div class="en-translation">View Transportation Bureau Case Details <i class="fas fa-external-link-alt"></i></div>
+                    </a>
+                    <p>参考来源: 
+                        <a href="https://www.docin.com" target="_blank" rel="noopener noreferrer">金融机构异常检测案例</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>开始您的AI转型之旅
+                <div class="en-translation">Start Your AI Transformation Journey</div>
+            </h2>
+            <p>联系我们的专家团队，了解如何将AI技术应用于您的风险与中断管理流程
+                <span class="en-translation">Contact our expert team to learn how to apply AI technology to your risk and disruption management processes</span>
+            </p>
+            <a href="#" class="btn-primary">联系我们
+                <div class="en-translation">Contact Us</div>
+            </a>
+            <a href="#" class="btn-primary">下载案例研究
+                <div class="en-translation">Download Case Study</div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

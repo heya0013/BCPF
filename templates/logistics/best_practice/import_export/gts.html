@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Import & Export / (GTS) Flow AI案例研究 | Import & Export / (GTS) Flow AI Case Study</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice1.css') }}">
+    <style>
+        /* 补充样式 */
+        .en-translation {
+            font-size: 0.8em;
+            color: #666;
+            display: block;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .content-section h2 {
+            color: #2c7be5;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 15px;
+            margin-top: 0;
+        }
+        
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .application-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .app-icon {
+            font-size: 2.5rem;
+            color: #2c7be5;
+            margin-bottom: 15px;
+        }
+        
+        .kpi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .kpi-table th, .kpi-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .kpi-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .improvement {
+            color: #00c9a7;
+            font-weight: 600;
+        }
+        
+        .case-study {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .metric {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c7be5;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            color: #5a6a7d;
+            font-size: 0.9rem;
+        }
+        
+        .case-reference {
+            margin-top: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .case-reference a {
+            color: #2c7be5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .case-reference a:hover {
+            text-decoration: underline;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background: white;
+            color: #2c7be5;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .case-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Import & Export / (GTS) Flow AI案例研究
+                <div class="en-translation">Import & Export / (GTS) Flow AI Case Study</div>
+            </h1>
+            <p>AI驱动的进出口和全球贸易服务流程优化解决方案，通过网络流、时序/事件流、MIP/CP排程和事件对账技术提高贸易效率，降低运营成本，并增强合规性
+                <span class="en-translation">AI-driven import and export/global trade services flow optimization solutions improve trade efficiency, reduce operating costs, and enhance compliance through network flow, time series/event flow, MIP/CP scheduling, and event reconciliation technology</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景
+                <div class="en-translation">AI Application Scenarios</div>
+            </h2>
+            <div class="applications-grid">
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>网络流 + 装载优化 + 情景仿真
+                        <div class="en-translation">Network Flow + Loading Optimization + Scenario Simulation</div>
+                    </h3>
+                    <p>通过网络流算法优化进出口货物流动路径，使用装载优化技术提高运输效率，结合情景仿真预测各种条件下的表现，降低运输成本，提高载重利用率。
+                        <span class="en-translation">Optimize import and export cargo flow paths through network flow algorithms, use loading optimization technology to improve transportation efficiency, combine scenario simulation to predict performance under various conditions, reduce transportation costs, and improve load utilization.</span>
+                    </p>
+                </div>
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-stream"></i>
+                    </div>
+                    <h3>时序/事件流 + 异常检测 + 规则/优化
+                        <div class="en-translation">Time Series/Event Flow + Anomaly Detection + Rules/Optimization</div>
+                    </h3>
+                    <p>通过时序和事件流分析监控贸易流程，使用异常检测技术识别潜在问题，结合规则引擎和优化算法提供智能建议和决策支持，提高提前干预率。
+                        <span class="en-translation">Monitor trade processes through time series and event flow analysis, use anomaly detection technology to identify potential problems, combine rule engines and optimization algorithms to provide intelligent suggestions and decision support, and improve early intervention rates.</span>
+                    </p>
+                </div>
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>MIP/CP 排程 + 装载优化
+                        <div class="en-translation">MIP/CP Scheduling + Loading Optimization</div>
+                    </h3>
+                    <p>通过混合整数规划（MIP）和约束规划（CP）算法优化码头和仓库排程，使用装载优化技术提高资源利用率，减少Dock等待时间，提高吞吐量和劳动效率。
+                        <span class="en-translation">Optimize dock and warehouse scheduling through mixed integer programming (MIP) and constraint programming (CP) algorithms, use loading optimization technology to improve resource utilization, reduce dock waiting time, and improve throughput and labor efficiency.</span>
+                    </p>
+                </div>
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3>事件对账 + LLM归因 + RPA
+                        <div class="en-translation">Event Reconciliation + LLM Attribution + RPA</div>
+                    </h3>
+                    <p>通过事件对账技术确保贸易数据的一致性，使用大语言模型（LLM）进行差异归因分析，结合机器人流程自动化（RPA）自动化对账流程，缩短对账周期，提高追回率。
+                        <span class="en-translation">Ensure the consistency of trade data through event reconciliation technology, use large language models (LLM) for difference attribution analysis, combine robotic process automation (RPA) to automate reconciliation processes, shorten reconciliation cycles, and improve recovery rates.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>KPI与预期提升幅度
+                <div class="en-translation">KPI and Expected Improvement</div>
+            </h2>
+            <table class="kpi-table">
+                <thead>
+                    <tr>
+                        <th>AI应用场景
+                            <div class="en-translation">AI Application</div>
+                        </th>
+                        <th>行业KPI
+                            <div class="en-translation">Industry KPI</div>
+                        </th>
+                        <th>预期提升幅度
+                            <div class="en-translation">Expected Improvement</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>网络流 + 装载优化 + 情景仿真
+                            <div class="en-translation">Network Flow + Loading Optimization + Scenario Simulation</div>
+                        </td>
+                        <td>OTD/OTIF、运输成本、载重利用率、等待时长
+                            <div class="en-translation">OTD/OTIF, Transportation Cost, Load Utilization, Waiting Time</div>
+                        </td>
+                        <td class="improvement">OTIF提升、成本下降 5–12%
+                            <div class="en-translation">OTIF Improvement, Cost Reduction 5–12%</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>时序/事件流 + 异常检测 + 规则/优化
+                            <div class="en-translation">Time Series/Event Flow + Anomaly Detection + Rules/Optimization</div>
+                        </td>
+                        <td>提前干预率、客户投诉率、在途库存天数
+                            <div class="en-translation">Early Intervention Rate, Customer Complaint Rate, In-Transit Inventory Days</div>
+                        </td>
+                        <td class="improvement">异常处理效率 +30–50%
+                            <div class="en-translation">Anomaly Handling Efficiency +30–50%</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>MIP/CP 排程 + 装载优化
+                            <div class="en-translation">MIP/CP Scheduling + Loading Optimization</div>
+                        </td>
+                        <td>Dock等待、吞吐、劳动效率
+                            <div class="en-translation">Dock Waiting, Throughput, Labor Efficiency</div>
+                        </td>
+                        <td class="improvement">等待 -15–30%，吞吐提升
+                            <div class="en-translation">Waiting -15–30%, Throughput Improvement</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>事件对账 + LLM归因 + RPA
+                            <div class="en-translation">Event Reconciliation + LLM Attribution + RPA</div>
+                        </td>
+                        <td>对账周期、差错率、追回率
+                            <div class="en-translation">Reconciliation Cycle, Error Rate, Recovery Rate</div>
+                        </td>
+                        <td class="improvement">周期缩短、追回率提升
+                            <div class="en-translation">Cycle Shortening, Recovery Rate Improvement</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景效果分析
+                <div class="en-translation">AI Application Effect Analysis</div>
+            </h2>
+            <p>通过AI驱动的进出口和全球贸易服务流程优化解决方案，企业能够显著提高贸易效率，降低运营成本，并增强合规性。网络流算法优化了货物流动路径，装载优化技术提高了运输效率，情景仿真则预测了各种条件下的表现，帮助企业更好地应对不确定性。
+                <span class="en-translation">Through AI-driven import and export/global trade services flow optimization solutions, enterprises can significantly improve trade efficiency, reduce operating costs, and enhance compliance. Network flow algorithms optimize cargo flow paths, loading optimization technology improves transportation efficiency, and scenario simulation predicts performance under various conditions, helping enterprises better cope with uncertainty.</span>
+            </p>
+            <p>时序和事件流分析监控了贸易流程，异常检测技术识别了潜在问题，规则引擎和优化算法则提供了智能建议和决策支持，提高了提前干预率和异常处理效率。混合整数规划和约束规划算法优化了码头和仓库排程，减少了Dock等待时间，提高了吞吐量和劳动效率。事件对账技术确保了贸易数据的一致性，大语言模型进行了差异归因分析，机器人流程自动化则自动化了对账流程，缩短了对账周期，提高了追回率。
+                <span class="en-translation">Time series and event flow analysis monitor trade processes, anomaly detection technology identifies potential problems, rule engines and optimization algorithms provide intelligent suggestions and decision support, improving early intervention rates and anomaly handling efficiency. Mixed integer programming and constraint programming algorithms optimize dock and warehouse scheduling, reduce dock waiting time, and improve throughput and labor efficiency. Event reconciliation technology ensures the consistency of trade data, large language models perform difference attribution analysis, and robotic process automation automates reconciliation processes, shortening reconciliation cycles and improving recovery rates.</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>实际行业案例
+                <div class="en-translation">Actual Industry Case</div>
+            </h2>
+            <div class="case-study">
+                <h3>全球物流公司进出口流程优化项目
+                    <div class="en-translation">Global Logistics Company Import and Export Process Optimization Project</div>
+                </h3>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <div class="metric-value">+8.5%</div>
+                        <div class="metric-label">OTIF提升
+                            <div class="en-translation">OTIF Improvement</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-9.2%</div>
+                        <div class="metric-label">运输成本降低
+                            <div class="en-translation">Transportation Cost Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">+42%</div>
+                        <div class="metric-label">异常处理效率提升
+                            <div class="en-translation">Anomaly Handling Efficiency Improvement</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-55%</div>
+                        <div class="metric-label">对账周期缩短
+                            <div class="en-translation">Reconciliation Cycle Shortening</div>
+                        </div>
+                    </div>
+                </div>
+                <p>一家全球物流公司实施了AI驱动的进出口流程优化系统，通过网络流算法优化货物流动路径，使用时序和事件流分析监控贸易流程，异常检测技术识别潜在问题，规则引擎和优化算法提供智能建议和决策支持，混合整数规划和约束规划算法优化码头和仓库排程，事件对账技术确保贸易数据的一致性，大语言模型进行差异归因分析，机器人流程自动化自动化对账流程。
+                    <span class="en-translation">A global logistics company implemented an AI-driven import and export process optimization system, using network flow algorithms to optimize cargo flow paths, time series and event flow analysis to monitor trade processes, anomaly detection technology to identify potential problems, rule engines and optimization algorithms to provide intelligent suggestions and decision support, mixed integer programming and constraint programming algorithms to optimize dock and warehouse scheduling, event reconciliation technology to ensure the consistency of trade data, large language models to perform difference attribution analysis, and robotic process automation to automate reconciliation processes.</span>
+                </p>
+                <p>项目实施后，该企业实现了OTIF提升8.5%，运输成本降低9.2%，异常处理效率提升42%，对账周期缩短55%，大幅提高了贸易效率和合规性，降低了运营成本。
+                    <span class="en-translation">After project implementation, the company achieved an 8.5% improvement in OTIF, a 9.2% reduction in transportation costs, a 42% improvement in anomaly handling efficiency, and a 55% shortening of the reconciliation cycle, significantly improving trade efficiency and compliance, and reducing operating costs.</span>
+                </p>
+                <div class="case-reference">
+                    <p>案例出处: DHL全球贸易数据分析报告
+                        <div class="en-translation">Case Source: DHL Global Trade Data Analysis Report</div>
+                    </p>
+                    <a href="https://www.dhl.com/global-en/home/insights-and-innovation/insights/artificial-intelligence-in-logistics.html" target="_blank" rel="noopener noreferrer">
+                        查看DHL AI应用详情 <i class="fas fa-external-link-alt"></i>
+                        <div class="en-translation">View DHL AI Application Details <i class="fas fa-external-link-alt"></i></div>
+                    </a>
+                    <p>参考来源: 
+                        <a href="https://www.mckinsey.com/capabilities/operations/our-insights/ai-enabled-supply-chain-management-from-planning-to-operations" target="_blank" rel="noopener noreferrer">麦肯锡AI赋能供应链管理报告</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

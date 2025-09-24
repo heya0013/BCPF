@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parts Transportation Planning AI案例研究 | Parts Transportation Planning AI Case Study</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice1.css') }}">
+    <style>
+        /* 补充样式 */
+        .en-translation {
+            font-size: 0.8em;
+            color: #666;
+            display: block;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .content-section h2 {
+            color: #2c7be5;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 15px;
+            margin-top: 0;
+        }
+        
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .application-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .app-icon {
+            font-size: 2.5rem;
+            color: #2c7be5;
+            margin-bottom: 15px;
+        }
+        
+        .kpi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .kpi-table th, .kpi-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .kpi-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .improvement {
+            color: #00c9a7;
+            font-weight: 600;
+        }
+        
+        .case-study {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .metric {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c7be5;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            color: #5a6a7d;
+            font-size: 0.9rem;
+        }
+        
+        .case-reference {
+            margin-top: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .case-reference a {
+            color: #2c7be5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .case-reference a:hover {
+            text-decoration: underline;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background: white;
+            color: #2c7be5;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .case-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Parts Transportation Planning AI案例研究
+                <div class="en-translation">Parts Transportation Planning AI Case Study</div>
+            </h1>
+            <p>AI驱动的零部件运输规划优化解决方案，通过规则/模型+优化技术提高运输效率，降低碳排放，并增强可持续性
+                <span class="en-translation">AI-driven parts transportation planning optimization solutions improve transportation efficiency, reduce carbon emissions, and enhance sustainability through rules/models + optimization technology</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景
+                <div class="en-translation">AI Application Scenarios</div>
+            </h2>
+            <div class="applications-grid">
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>规则/模型 + 优化
+                        <div class="en-translation">Rules/Models + Optimization</div>
+                    </h3>
+                    <p>通过规则引擎和机器学习模型优化零部件运输规划，使用优化算法提高运输效率，降低碳排放，并增强可持续性。结合GLEC/EN 16258方法进行碳排放计算和报告。
+                        <span class="en-translation">Optimize parts transportation planning through rule engines and machine learning models, use optimization algorithms to improve transportation efficiency, reduce carbon emissions, and enhance sustainability. Combined with GLEC/EN 16258 method for carbon emission calculation and reporting.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>KPI与预期提升幅度
+                <div class="en-translation">KPI and Expected Improvement</div>
+            </h2>
+            <table class="kpi-table">
+                <thead>
+                    <tr>
+                        <th>AI应用场景
+                            <div class="en-translation">AI Application</div>
+                        </th>
+                        <th>行业KPI
+                            <div class="en-translation">Industry KPI</div>
+                        </th>
+                        <th>预期提升幅度
+                            <div class="en-translation">Expected Improvement</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>规则/模型 + 优化
+                            <div class="en-translation">Rules/Models + Optimization</div>
+                        </td>
+                        <td>tCO₂e/单、减排潜力、成本
+                            <div class="en-translation">tCO₂e/Order, Emission Reduction Potential, Cost</div>
+                        </td>
+                        <td class="improvement">碳强度下降
+                            <div class="en-translation">Carbon Intensity Reduction</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景效果分析
+                <div class="en-translation">AI Application Effect Analysis</div>
+            </h2>
+            <p>通过AI驱动的零部件运输规划优化解决方案，企业能够显著提高运输效率，降低碳排放，并增强可持续性。规则引擎和机器学习模型提供了对运输规划的智能优化，优化算法则提高了运输效率，降低了碳排放和运营成本。
+                <span class="en-translation">Through AI-driven parts transportation planning optimization solutions, enterprises can significantly improve transportation efficiency, reduce carbon emissions, and enhance sustainability. Rule engines and machine learning models provide intelligent optimization of transportation planning, while optimization algorithms improve transportation efficiency and reduce carbon emissions and operating costs.</span>
+            </p>
+            <p>AI技术通过分析历史数据和实时数据，识别碳排放热点和优化机会，提供个性化的减排建议和决策支持。优化算法考虑了多种约束条件，包括运输距离、载重、交通状况和能源类型，生成最优的运输方案和资源配置策略，最大化减排潜力和成本效益。结合GLEC/EN 16258方法，确保碳排放计算的准确性和一致性。
+                <span class="en-translation">AI technology analyzes historical data and real-time data to identify carbon emission hotspots and optimization opportunities, providing personalized emission reduction suggestions and decision support. Optimization algorithms consider multiple constraints, including transportation distance, load capacity, traffic conditions, and energy type, to generate optimal transportation solutions and resource allocation strategies, maximizing emission reduction potential and cost-effectiveness. Combined with GLEC/EN 16258 method to ensure the accuracy and consistency of carbon emission calculation.</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>实际行业案例
+                <div class="en-translation">Actual Industry Case</div>
+            </h2>
+            <div class="case-study">
+                <h3>全球汽车制造商零部件运输碳足迹优化项目
+                    <div class="en-translation">Global Automaker Parts Transportation Carbon Footprint Optimization Project</div>
+                </h3>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <div class="metric-value">-5.2%</div>
+                        <div class="metric-label">单均碳排放减少
+                            <div class="en-translation">Per-Order Carbon Emission Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">99.5%</div>
+                        <div class="metric-label">核算准确率
+                            <div class="en-translation">Accounting Accuracy</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-3.25kg</div>
+                        <div class="metric-label">百公里碳排放减少
+                            <div class="en-translation">Per-100km Carbon Emission Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">+97%</div>
+                        <div class="metric-label">计算效率提升
+                            <div class="en-translation">Calculation Efficiency Improvement</div>
+                        </div>
+                    </div>
+                </div>
+                <p>一家全球汽车制造商实施了AI驱动的零部件运输碳足迹优化系统，通过规则引擎和机器学习模型优化运输规划，使用优化算法提高运输效率，降低碳排放，并结合GLEC/EN 16258方法进行碳排放计算和报告。
+                    <span class="en-translation">A global automaker implemented an AI-driven parts transportation carbon footprint optimization system, using rule engines and machine learning models to optimize transportation planning, optimization algorithms to improve transportation efficiency, reduce carbon emissions, and combined with GLEC/EN 16258 method for carbon emission calculation and reporting.</span>
+                </p>
+                <p>项目实施后，该企业实现了单均碳排放减少5.2%，核算准确率提升至99.5%，货车每车每百公里减少碳排放约3.25kg，计算效率提升97%，大幅提高了运输可持续性和碳管理能力。
+                    <span class="en-translation">After project implementation, the company achieved a 5.2% reduction in per-order carbon emissions, accounting accuracy improved to 99.5%, truck carbon emissions per 100km reduced by approximately 3.25kg, calculation efficiency improved by 97%, significantly improving transportation sustainability and carbon management capabilities.</span>
+                </p>
+                <div class="case-reference">
+                    <p>案例出处: GLEC框架下的物流碳排放计算最佳实践
+                        <div class="en-translation">Case Source: Best Practices for Logistics Carbon Emission Calculation under the GLEC Framework</div>
+                    </p>
+                    <a href="https://www.smartfreightcentre.org/en/glec-framework/" target="_blank" rel="noopener noreferrer">
+                        查看GLEC框架详情 <i class="fas fa-external-link-alt"></i>
+                        <div class="en-translation">View GLEC Framework Details <i class="fas fa-external-link-alt"></i></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>开始您的AI转型之旅
+                <div class="en-translation">Start Your AI Transformation Journey</div>
+            </h2>
+            <p>联系我们的专家团队，了解如何将AI技术应用于您的零部件运输规划流程
+                <span class="en-translation">Contact our expert team to learn how to apply AI technology to your parts transportation planning processes</span>
+            </p>
+            <a href="#" class="btn-primary">联系我们
+                <div class="en-translation">Contact Us</div>
+            </a>
+            <a href="#" class="btn-primary">下载案例研究
+                <div class="en-translation">Download Case Study</div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

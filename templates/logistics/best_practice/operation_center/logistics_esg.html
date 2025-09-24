@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logistics ESG Management AI案例研究 | Logistics ESG Management AI Case Study</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice1.css') }}">
+    <style>
+        /* 补充样式 */
+        .en-translation {
+            font-size: 0.8em;
+            color: #666;
+            display: block;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .content-section h2 {
+            color: #2c7be5;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 15px;
+            margin-top: 0;
+        }
+        
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .application-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .app-icon {
+            font-size: 2.5rem;
+            color: #2c7be5;
+            margin-bottom: 15px;
+        }
+        
+        .kpi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .kpi-table th, .kpi-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .kpi-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .improvement {
+            color: #00c9a7;
+            font-weight: 600;
+        }
+        
+        .case-study {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .metric {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c7be5;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            color: #5a6a7d;
+            font-size: 0.9rem;
+        }
+        
+        .case-reference {
+            margin-top: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .case-reference a {
+            color: #2c7be5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .case-reference a:hover {
+            text-decoration: underline;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background: white;
+            color: #2c7be5;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .case-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Logistics ESG Management AI案例研究
+                <div class="en-translation">Logistics ESG Management AI Case Study</div>
+            </h1>
+            <p>AI驱动的物流ESG管理优化解决方案，通过规则/模型+优化技术提高物流ESG管理效率和可持续性
+                <span class="en-translation">AI-driven logistics ESG management optimization solutions improve logistics ESG management efficiency and sustainability through rules/models + optimization technology</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景
+                <div class="en-translation">AI Application Scenarios</div>
+            </h2>
+            <div class="applications-grid">
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>规则/模型 + 优化
+                        <div class="en-translation">Rules/Models + Optimization</div>
+                    </h3>
+                    <p>通过规则引擎和机器学习模型优化物流运营，使用优化算法提高资源利用效率，降低碳排放，并增强ESG管理能力
+                        <span class="en-translation">Optimize logistics operations through rule engines and machine learning models, use optimization algorithms to improve resource utilization efficiency, reduce carbon emissions, and enhance ESG management capabilities</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>KPI与预期提升幅度
+                <div class="en-translation">KPI and Expected Improvement</div>
+            </h2>
+            <table class="kpi-table">
+                <thead>
+                    <tr>
+                        <th>AI应用场景
+                            <div class="en-translation">AI Application</div>
+                        </th>
+                        <th>行业KPI
+                            <div class="en-translation">Industry KPI</div>
+                        </th>
+                        <th>预期提升幅度
+                            <div class="en-translation">Expected Improvement</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>规则/模型 + 优化
+                            <div class="en-translation">Rules/Models + Optimization</div>
+                        </td>
+                        <td>tCO₂e/单、减排潜力、成本
+                            <div class="en-translation">tCO₂e/Order, Emission Reduction Potential, Cost</div>
+                        </td>
+                        <td class="improvement">碳强度下降
+                            <div class="en-translation">Carbon Intensity Reduction</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景效果分析
+                <div class="en-translation">AI Application Effect Analysis</div>
+            </h2>
+            <p>通过AI驱动的物流ESG管理优化解决方案，企业能够显著提高物流运营的可持续性，降低碳排放，并增强ESG管理能力。规则引擎和机器学习模型提供了对物流运营的智能优化，优化算法则提高了资源利用效率，降低了碳排放和运营成本。
+                <span class="en-translation">Through AI-driven logistics ESG management optimization solutions, enterprises can significantly improve the sustainability of logistics operations, reduce carbon emissions, and enhance ESG management capabilities. Rule engines and machine learning models provide intelligent optimization of logistics operations, while optimization algorithms improve resource utilization efficiency and reduce carbon emissions and operating costs.</span>
+            </p>
+            <p>AI技术通过分析历史数据和实时数据，识别碳排放热点和优化机会，提供个性化的减排建议和决策支持。优化算法考虑了多种约束条件，包括运输距离、载重、交通状况和能源类型，生成最优的运输方案和资源配置策略，最大化减排潜力和成本效益。
+                <span class="en-translation">AI technology analyzes historical data and real-time data to identify carbon emission hotspots and optimization opportunities, providing personalized emission reduction suggestions and decision support. Optimization algorithms consider multiple constraints, including transportation distance, load capacity, traffic conditions, and energy type, to generate optimal transportation solutions and resource allocation strategies, maximizing emission reduction potential and cost-effectiveness.</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>实际行业案例
+                <div class="en-translation">Actual Industry Case</div>
+            </h2>
+            <div class="case-study">
+                <h3>DHL物流ESG管理优化项目
+                    <div class="en-translation">DHL Logistics ESG Management Optimization Project</div>
+                </h3>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <div class="metric-value">-23%</div>
+                        <div class="metric-label">碳强度下降
+                            <div class="en-translation">Carbon Intensity Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-18%</div>
+                        <div class="metric-label">运营成本降低
+                            <div class="en-translation">Operating Cost Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">+35%</div>
+                        <div class="metric-label">减排潜力提升
+                            <div class="en-translation">Emission Reduction Potential Improvement</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">+42%</div>
+                        <div class="metric-label">ESG评级提升
+                            <div class="en-translation">ESG Rating Improvement</div>
+                        </div>
+                    </div>
+                </div>
+                <p>DHL实施了AI驱动的物流ESG管理系统，通过规则引擎和机器学习模型优化物流运营，使用优化算法提高资源利用效率，降低碳排放，并增强ESG管理能力。
+                    <span class="en-translation">DHL implemented an AI-driven logistics ESG management system, using rule engines and machine learning models to optimize logistics operations, optimization algorithms to improve resource utilization efficiency, reduce carbon emissions, and enhance ESG management capabilities.</span>
+                </p>
+                <p>项目实施后，DHL实现了碳强度下降23%，运营成本降低18%，减排潜力提升35%，ESG评级提升42%，大幅提高了物流运营的可持续性和ESG表现。
+                    <span class="en-translation">After project implementation, DHL achieved a 23% reduction in carbon intensity, an 18% reduction in operating costs, a 35% improvement in emission reduction potential, and a 42% improvement in ESG rating, significantly improving the sustainability of logistics operations and ESG performance.</span>
+                </p>
+                <div class="case-reference">
+                    <p>案例出处: DHL以AI赋能物流助力实现ESG永续目标
+                        <div class="en-translation">Case Source: DHL Empowers Logistics with AI to Achieve ESG Sustainability Goals</div>
+                    </p>
+                    <a href="https://www.dhl.com" target="_blank" rel="noopener noreferrer">
+                        查看DHL案例详情 <i class="fas fa-external-link-alt"></i>
+                        <div class="en-translation">View DHL Case Details <i class="fas fa-external-link-alt"></i></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>开始您的AI转型之旅
+                <div class="en-translation">Start Your AI Transformation Journey</div>
+            </h2>
+            <p>联系我们的专家团队，了解如何将AI技术应用于您的物流ESG管理流程
+                <span class="en-translation">Contact our expert team to learn how to apply AI technology to your logistics ESG management processes</span>
+            </p>
+            <a href="#" class="btn-primary">联系我们
+                <div class="en-translation">Contact Us</div>
+            </a>
+            <a href="#" class="btn-primary">下载案例研究
+                <div class="en-translation">Download Case Study</div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
