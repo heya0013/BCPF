@@ -219,12 +219,12 @@
         <div class="process-icon">
           <i class="fas fa-cube"></i>
         </div>
-        <h1 class="process-title">制造端入厂
+        <h1 class="process-title">订单录入
           <span class="en-translation">In-bound to MFG</span>
         </h1>
         <div class="process-desc">
-          负责将生产所需的原材料、零部件等从供应商运输至工厂，保障生产物料按时到位。
-          <span class="en-translation">Be responsible for transporting raw materials, components, etc. needed for production from suppliers to the factory to ensure that production materials arrive on time.</span>
+          接收并录入客户订单信息的初始环节。
+          <span class="en-translation">The initial stage of receiving and entering customer order information.</span>
         </div>
       </div>
     </section>
@@ -237,13 +237,13 @@
     </div>
     
     <div class="process-blocks">
-      <!-- 货物运输里程碑与状态-->
+      <!-- 信用管理-->
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
             <i class="fas fa-map-marked-alt"></i>
-            货物运输里程碑与状态
-            <span class="en-translation">Shipment Milestone And Status</span>
+            信用管理
+            <span class="en-translation">Credit Management</span>
           </div>
         </div>
         <div class="block-body">
@@ -252,8 +252,8 @@
               <span class="en-translation">Core Value</span>
             </div>
             <p class="core-value-content">
-              运输计划/承运商选择/费率管理决定时效与成本，是端到端履约的主干流程；仓内入库/拣选/波次/装载与码头排程直接影响出入库效率与发运达成。
-              <span class="en-translation">Transport planning/carrier selection/rate management determine timeliness and cost, which is the backbone process of end-to-end fulfillment; warehouse inbound/picking/wave/loading and dock scheduling directly affect inbound and outbound efficiency and shipping achievement.</span>
+              信用与条款：授信额度、账期与逾期状态为硬性前置，防止无效承诺与拒收。；下发放行：向仓储系统下发并锁定库存，将优先级信息一并传递。
+              <span class="en-translation">Credit and Terms: Credit limits, payment terms, and overdue status are hard prerequisites to prevent invalid commitments and order rejection. ; Issue Release Instructions: Send release instructions to the warehouse management system, lock the corresponding inventory, and transmit priority information simultaneously.</span>
             </p>
           </div>
           
@@ -262,30 +262,27 @@
               <span class="en-translation">Optimization Suggestions:</span>
             </div>
             <ul class="optimization-list">
-              <li>统一 OTD/OTIF、里程碑、异常与成本口径，构建 lane / 承运商 / 客户维度的可视化
-                <span class="en-translation">Unify the standards for OTD/OTIF, milestones, abnormalities, and costs, and build visualization by lane/carrier/customer dimensions.</span>
-              </li>
-              <li>基于异常根因 / 严重度自动编排 SLA 与补救动作
-                <span class="en-translation">Automatically arrange SLAs (Service Level Agreements) and remedial actions based on the root cause/severity of abnormalities.</span>
+              <li>接入客户授信、账期与逾期记录，对异常订单自动挂起并回写原因，减少后段拒收
+                <span class="en-translation">Integrate customer credit, payment terms, and overdue records to automatically suspend abnormal orders and write back reasons, reducing downstream order rejection.</span>
               </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='mfg', module_name='shipment') }}" class="best-practice-btn">
+            <a href="{{ url_for('best_practice', process='entry', module_name='credit_management') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </div>
       </div>
       
-      <!-- 零部件运输计划 -->
+      <!-- 信用放行 -->
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
             <i class="fas fa-bullseye"></i>
-            零部件运输计划
-            <span class="en-translation">Parts Transportation Planning</span>
+            信用放行
+            <span class="en-translation">Credit Release</span>
           </div>
         </div>
         <div class="block-body">
@@ -294,8 +291,8 @@
               <span class="en-translation">Core Value</span>
             </div>
             <p class="core-value-content">
-              承运商与费率/协议直接决定单位运输成本与服务分层，是P&L与SLA的主杠杆。
-              <span class="en-translation">Transport planning/carrier selection/rate management determine timeliness and cost, which is the backbone process of end-to-end fulfillment.</span>
+              异常拦截：禁运、超额、信息缺失等进入挂起，等待处理后再放行。；下发放行：向仓储系统下发并锁定库存，将优先级信息一并传递。
+              <span class="en-translation">Exception Interception: Issues such as embargoes, exceeding limits, and missing information will be put on hold, awaiting processing before release. ; Issue Release Instructions: Send release instructions to the warehouse management system, lock the corresponding inventory, and transmit priority information simultaneously.</span>
             </p>
           </div>
           
@@ -304,19 +301,51 @@
               <span class="en-translation">Optimization Suggestions:</span>
             </div>
             <ul class="optimization-list">
-              <li>按 EN 16258/GLEC 方法核算并输出模式 / 装载 / 路由的减排建议
-                <span class="en-translation">Calculate and output emission reduction suggestions for modes/loading/routes in accordance with the EN 16258/GLEC methodology</span>
+              <li>用大模型从客户 PO / 邮件 / 门户自动抽取字段，匹配主数据并提示缺失项，异常自动拦截与回询
+                <span class="en-translation">Use LLMs to automatically extract fields from customer POs/emails/portals, match them with master data, and prompt for missing items. Automatically intercept and inquire about anomalies.</span>
               </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='mfg', module_name='parts_transportation') }}" class="best-practice-btn">
+            <a href="{{ url_for('best_practice', process='entry', module_name='credit_release') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </div>
       </div>
+
+      <!-- 订单放行-->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-map-marked-alt"></i>
+            订单放行
+          </div>
+          <div class="block-subtitle">Order Release</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值</div>
+            <p class="core-value-content">
+              信用与条款：授信额度、账期与逾期状态为硬性前置，防止无效承诺与拒收。；下发放行：向仓储系统下发并锁定库存，将优先级信息一并传递。
+              <span class="en-translation">Credit and Terms: Credit limits, payment terms, and overdue status are hard prerequisites to prevent invalid commitments and refusals. ; Release Instructions: Send release instructions to the warehouse management system, lock the corresponding inventory, and transmit priority information simultaneously.</span>
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>结合在库、在制、在途与产能计算可承诺时间窗；缺货时给出替代料或分批承诺方案并对客户展示可解释理由</li>
+              <span class="en-translation"> Combine inventory, work-in-progress, in-transit, and capacity data to calculate a reliable promise window; in case of stockouts, provide alternative materials or partial fulfillment plans with explainable reasons for customers.</span>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='entry', module_name='order_release') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>  
     </div>
   </div>
 </body>
