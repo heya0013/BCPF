@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restricted Party Screening AI案例研究 | Restricted Party Screening AI Case Study</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice1.css') }}">
+    <style>
+        /* 补充样式 */
+        .en-translation {
+            font-size: 0.8em;
+            color: #666;
+            display: block;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .content-section h2 {
+            color: #2c7be5;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 15px;
+            margin-top: 0;
+        }
+        
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .application-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .app-icon {
+            font-size: 2.5rem;
+            color: #2c7be5;
+            margin-bottom: 15px;
+        }
+        
+        .kpi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .kpi-table th, .kpi-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .kpi-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .improvement {
+            color: #00c9a7;
+            font-weight: 600;
+        }
+        
+        .case-study {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .metric {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c7be5;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            color: #5a6a7d;
+            font-size: 0.9rem;
+        }
+        
+        .case-reference {
+            margin-top: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .case-reference a {
+            color: #2c7be5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .case-reference a:hover {
+            text-decoration: underline;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background: white;
+            color: #2c7be5;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .case-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Restricted Party Screening AI案例研究
+                <div class="en-translation">Restricted Party Screening AI Case Study</div>
+            </h1>
+            <p>AI驱动的受限方筛查优化解决方案，通过智能筛查技术提高合规性，降低违规风险，并加速交易流程
+                <span class="en-translation">AI-driven restricted party screening optimization solutions improve compliance, reduce violation risks, and accelerate transaction processes through intelligent screening technology</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景
+                <div class="en-translation">AI Application Scenarios</div>
+            </h2>
+            <div class="applications-grid">
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>智能受限方筛查
+                        <div class="en-translation">Intelligent Restricted Party Screening</div>
+                    </h3>
+                    <p>通过AI技术自动筛查交易伙伴是否在受限方名单中，使用自然语言处理和机器学习算法提高筛查准确性，降低误报率和漏报率，优化合规性检查流程。
+                        <span class="en-translation">Automatically screen whether trading partners are on restricted party lists through AI technology, use natural language processing and machine learning algorithms to improve screening accuracy, reduce false positive and false negative rates, and optimize compliance check processes.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>KPI与预期提升幅度
+                <div class="en-translation">KPI and Expected Improvement</div>
+            </h2>
+            <table class="kpi-table">
+                <thead>
+                    <tr>
+                        <th>AI应用场景
+                            <div class="en-translation">AI Application</div>
+                        </th>
+                        <th>行业KPI
+                            <div class="en-translation">Industry KPI</div>
+                        </th>
+                        <th>预期提升幅度
+                            <div class="en-translation">Expected Improvement</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>智能受限方筛查
+                            <div class="en-translation">Intelligent Restricted Party Screening</div>
+                        </td>
+                        <td>筛查准确率、误报率、漏报率、处理时间
+                            <div class="en-translation">Screening Accuracy, False Positive Rate, False Negative Rate, Processing Time</div>
+                        </td>
+                        <td class="improvement">准确率 +15–25%，处理时间 -40–60%
+                            <div class="en-translation">Accuracy +15–25%, Processing Time -40–60%</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景效果分析
+                <div class="en-translation">AI Application Effect Analysis</div>
+            </h2>
+            <p>通过AI驱动的受限方筛查优化解决方案，企业能够显著提高筛查准确性，降低违规风险，并加速交易流程。智能筛查技术提供了对交易伙伴的自动筛查和风险评估，机器学习算法则提高了筛查准确性，降低了误报率和漏报率，优化了合规性检查流程。
+                <span class="en-translation">Through AI-driven restricted party screening optimization solutions, enterprises can significantly improve screening accuracy, reduce violation risks, and accelerate transaction processes. Intelligent screening technology provides automatic screening and risk assessment of trading partners, while machine learning algorithms improve screening accuracy, reduce false positive and false negative rates, and optimize compliance check processes.</span>
+            </p>
+            <p>AI技术通过分析历史数据和实时数据，识别潜在风险和合规问题，提供个性化的筛查建议和决策支持。机器学习算法考虑了多种约束条件，包括交易伙伴信息、受限方名单、合规要求和风险评估，生成最优的筛查方案和合规策略，最大化筛查准确性和合规性。结合SCOR数字标准的最佳实践，确保受限方筛查流程的准确性和一致性。
+                <span class="en-translation">AI technology analyzes historical data and real-time data to identify potential risks and compliance issues, providing personalized screening suggestions and decision support. Machine learning algorithms consider multiple constraints, including trading partner information, restricted party lists, compliance requirements, and risk assessment, to generate optimal screening solutions and compliance strategies, maximizing screening accuracy and compliance. Combined with SCOR Digital Standard best practices to ensure the accuracy and consistency of the restricted party screening process.</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>实际行业案例
+                <div class="en-translation">Actual Industry Case</div>
+            </h2>
+            <div class="case-study">
+                <h3>全球金融机构受限方筛查优化项目
+                    <div class="en-translation">Global Financial Institution Restricted Party Screening Optimization Project</div>
+                </h3>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <div class="metric-value">+22%</div>
+                        <div class="metric-label">筛查准确率提升
+                            <div class="en-translation">Screening Accuracy Improvement</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-55%</div>
+                        <div class="metric-label">处理时间减少
+                            <div class="en-translation">Processing Time Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-68%</div>
+                        <div class="metric-label">误报率降低
+                            <div class="en-translation">False Positive Rate Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-75%</div>
+                        <div class="metric-label">漏报率降低
+                            <div class="en-translation">False Negative Rate Reduction</div>
+                        </div>
+                    </div>
+                </div>
+                <p>一家全球金融机构实施了AI驱动的受限方筛查系统，通过智能筛查技术自动检查交易伙伴是否在受限方名单中，使用自然语言处理和机器学习算法提高筛查准确性，降低误报率和漏报率，优化合规性检查流程。
+                    <span class="en-translation">A global financial institution implemented an AI-driven restricted party screening system, using intelligent screening technology to automatically check whether trading partners are on restricted party lists, natural language processing and machine learning algorithms to improve screening accuracy, reduce false positive and false negative rates, and optimize compliance check processes.</span>
+                </p>
+                <p>项目实施后，该企业实现了筛查准确率提升22%，处理时间减少55%，误报率降低68%，漏报率降低75%，大幅提高了受限方筛查效率和合规性。
+                    <span class="en-translation">After project implementation, the company achieved a 22% improvement in screening accuracy, a 55% reduction in processing time, a 68% reduction in false positive rate, and a 75% reduction in false negative rate, significantly improving restricted party screening efficiency and compliance.</span>
+                </p>
+                <div class="case-reference">
+                    <p>案例出处: SCOR数字标准指南 - 供应链合规最佳实践
+                        <div class="en-translation">Case Source: SCOR Digital Standard Guide - Supply Chain Compliance Best Practices</div>
+                    </p>
+                    <a href="https://scor.ascm.org/" target="_blank" rel="noopener noreferrer">
+                        查看SCOR数字标准指南详情 <i class="fas fa-external-link-alt"></i>
+                        <div class="en-translation">View SCOR Digital Standard Guide Details <i class="fas fa-external-link-alt"></i></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>开始您的AI转型之旅
+                <div class="en-translation">Start Your AI Transformation Journey</div>
+            </h2>
+            <p>联系我们的专家团队，了解如何将AI技术应用于您的受限方筛查流程
+                <span class="en-translation">Contact our expert team to learn how to apply AI technology to your restricted party screening processes</span>
+            </p>
+            <a href="#" class="btn-primary">联系我们
+                <div class="en-translation">Contact Us</div>
+            </a>
+            <a href="#" class="btn-primary">下载案例研究
+                <div class="en-translation">Download Case Study</div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
