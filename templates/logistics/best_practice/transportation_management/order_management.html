@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Management AI案例研究 | Order Management AI Case Study</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice1.css') }}">
+    <style>
+        /* 补充样式 */
+        .en-translation {
+            font-size: 0.8em;
+            color: #666;
+            display: block;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .content-section h2 {
+            color: #2c7be5;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 15px;
+            margin-top: 0;
+        }
+        
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .application-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .app-icon {
+            font-size: 2.5rem;
+            color: #2c7be5;
+            margin-bottom: 15px;
+        }
+        
+        .kpi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .kpi-table th, .kpi-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .kpi-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .improvement {
+            color: #00c9a7;
+            font-weight: 600;
+        }
+        
+        .case-study {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .metric {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c7be5;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            color: #5a6a7d;
+            font-size: 0.9rem;
+        }
+        
+        .case-reference {
+            margin-top: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .case-reference a {
+            color: #2c7be5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .case-reference a:hover {
+            text-decoration: underline;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background: white;
+            color: #2c7be5;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .case-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Order Management AI案例研究
+                <div class="en-translation">Order Management AI Case Study</div>
+            </h1>
+            <p>AI驱动的订单管理优化解决方案，通过知识图谱和NLP规则提高订单处理效率和合规性
+                <span class="en-translation">AI-driven order management optimization solutions improve order processing efficiency and compliance through knowledge graphs and NLP rules</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景
+                <div class="en-translation">AI Application Scenarios</div>
+            </h2>
+            <div class="applications-grid">
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>知识图谱 + NLP规则
+                        <div class="en-translation">Knowledge Graph + NLP Rules</div>
+                    </h3>
+                    <p>构建产品、法规和客户关系的知识图谱，结合NLP规则引擎，实现智能订单处理和合规检查
+                        <span class="en-translation">Build knowledge graphs of products, regulations, and customer relationships, combined with NLP rule engines, to achieve intelligent order processing and compliance checks</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>KPI与预期提升幅度
+                <div class="en-translation">KPI and Expected Improvement</div>
+            </h2>
+            <table class="kpi-table">
+                <thead>
+                    <tr>
+                        <th>AI应用场景
+                            <div class="en-translation">AI Application</div>
+                        </th>
+                        <th>行业KPI
+                            <div class="en-translation">Industry KPI</div>
+                        </th>
+                        <th>预期提升幅度
+                            <div class="en-translation">Expected Improvement</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>知识图谱 + NLP规则
+                            <div class="en-translation">Knowledge Graph + NLP Rules</div>
+                        </td>
+                        <td>查验率、通关时长、违规率
+                            <div class="en-translation">Inspection Rate, Customs Clearance Time, Violation Rate</div>
+                        </td>
+                        <td class="improvement">通关加速，违规下降
+                            <div class="en-translation">Customs Clearance Accelerated, Violations Reduced</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景效果分析
+                <div class="en-translation">AI Application Effect Analysis</div>
+            </h2>
+            <p>通过AI驱动的订单管理优化解决方案，企业能够显著提高订单处理效率，降低合规风险，并增强客户满意度。知识图谱技术整合了产品、法规和客户关系数据，提供了全面的业务视图，NLP规则引擎则实现了智能的订单处理和合规检查，减少了人工干预和错误。
+                <span class="en-translation">Through AI-driven order management optimization solutions, enterprises can significantly improve order processing efficiency, reduce compliance risks, and enhance customer satisfaction. Knowledge graph technology integrates product, regulation, and customer relationship data, providing a comprehensive business view, while NLP rule engines enable intelligent order processing and compliance checks, reducing manual intervention and errors.</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>实际行业案例
+                <div class="en-translation">Actual Industry Case</div>
+            </h2>
+            <div class="case-study">
+                <h3>全球电子制造商的订单管理优化项目
+                    <div class="en-translation">Global Electronics Manufacturer Order Management Optimization Project</div>
+                </h3>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <div class="metric-value">-40%</div>
+                        <div class="metric-label">查验率减少
+                            <div class="en-translation">Inspection Rate Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-35%</div>
+                        <div class="metric-label">通关时长缩短
+                            <div class="en-translation">Customs Clearance Time Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-60%</div>
+                        <div class="metric-label">违规率下降
+                            <div class="en-translation">Violation Rate Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">+30%</div>
+                        <div class="metric-label">订单处理效率提升
+                            <div class="en-translation">Order Processing Efficiency Improvement</div>
+                        </div>
+                    </div>
+                </div>
+                <p>一家全球电子制造商实施了AI驱动的订单管理系统，通过知识图谱技术整合了产品、法规和客户关系数据，使用NLP规则引擎实现了智能订单处理和合规检查。
+                    <span class="en-translation">A global electronics manufacturer implemented an AI-driven order management system, using knowledge graph technology to integrate product, regulation, and customer relationship data, and NLP rule engines to achieve intelligent order processing and compliance checks.</span>
+                </p>
+                <p>项目实施后，该企业实现了查验率减少40%，通关时长缩短35%，违规率下降60%，订单处理效率提升30%，大幅提高了订单管理效率和合规性。
+                    <span class="en-translation">After project implementation, the company achieved a 40% reduction in inspection rate, a 35% reduction in customs clearance time, a 60% reduction in violation rate, and a 30% improvement in order processing efficiency, significantly improving order management efficiency and compliance.</span>
+                </p>
+                <div class="case-reference">
+                    <p>案例出处: MIT CTL供应链合规最佳实践研究
+                        <div class="en-translation">Case Source: MIT CTL Supply Chain Compliance Best Practices Study</div>
+                    </p>
+                    <a href="https://ctl.mit.edu/research/ctl-research" target="_blank" rel="noopener noreferrer">
+                        查看MIT CTL案例详情 <i class="fas fa-external-link-alt"></i>
+                        <div class="en-translation">View MIT CTL Case Details <i class="fas fa-external-link-alt"></i></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loss & Damage Process AI案例研究 | Loss & Damage Process AI Case Study</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice1.css') }}">
+    <style>
+        /* 补充样式 */
+        .en-translation {
+            font-size: 0.8em;
+            color: #666;
+            display: block;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .content-section h2 {
+            color: #2c7be5;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 15px;
+            margin-top: 0;
+        }
+        
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .application-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .app-icon {
+            font-size: 2.5rem;
+            color: #2c7be5;
+            margin-bottom: 15px;
+        }
+        
+        .kpi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .kpi-table th, .kpi-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .kpi-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .improvement {
+            color: #00c9a7;
+            font-weight: 600;
+        }
+        
+        .case-study {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .metric {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c7be5;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            color: #5a6a7d;
+            font-size: 0.9rem;
+        }
+        
+        .case-reference {
+            margin-top: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .case-reference a {
+            color: #2c7be5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .case-reference a:hover {
+            text-decoration: underline;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-top: 40px;
+ }
+        
+        .btn-primary {
+            display: inline-block;
+            background: white;
+            color: #2c7be5;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .case-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Loss & Damage Process AI案例研究
+                <div class="en-translation">Loss & Damage Process AI Case Study</div>
+            </h1>
+            <p>AI驱动的损失与损坏处理优化解决方案，通过事件对账、LLM归因和RPA自动化提高索赔效率和追回率
+                <span class="en-translation">AI-driven loss and damage process optimization solutions improve claim efficiency and recovery rate through event reconciliation, LLM attribution, and RPA automation</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景
+                <div class="en-translation">AI Application Scenarios</div>
+            </h2>
+            <div class="applications-grid">
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3>事件对账 + LLM归因 + RPA
+                        <div class="en-translation">Event Reconciliation + LLM Attribution + RPA</div>
+                    </h3>
+                    <p>通过自动化事件对账系统匹配运输记录和索赔数据，使用LLM技术归因损失原因，并通过RPA自动化索赔流程
+                        <span class="en-translation">Match transportation records and claim data through automated event reconciliation systems, use LLM technology to attribute loss causes, and automate claim processes through RPA</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>KPI与预期提升幅度
+                <div class="en-translation">KPI and Expected Improvement</div>
+            </h2>
+            <table class="kpi-table">
+                <thead>
+                    <tr>
+                        <th>AI应用场景
+                            <div class="en-translation">AI Application</div>
+                        </th>
+                        <th>行业KPI
+                            <div class="en-translation">Industry KPI</div>
+                        </th>
+                        <th>预期提升幅度
+                            <div class="en-translation">Expected Improvement</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>事件对账 + LLM归因 + RPA
+                            <div class="en-translation">Event Reconciliation + LLM Attribution + RPA</div>
+                        </td>
+                        <td>对账周期、差错率、追回率
+                            <div class="en-translation">Reconciliation Cycle, Error Rate, Recovery Rate</div>
+                        </td>
+                        <td class="improvement">周期缩短、追回率提升
+                            <div class="en-translation">Cycle Shortened, Recovery Rate Improved</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景效果分析
+                <div class="en-translation">AI Application Effect Analysis</div>
+            </h2>
+            <p>通过AI驱动的损失与损坏处理优化解决方案，企业能够显著提高索赔处理效率，降低差错率，并增强资金追回能力。事件对账系统自动化了数据匹配和验证过程，LLM归因技术准确识别损失原因和责任方，RPA则自动化了索赔流程，减少了人工干预和错误。
+                <span class="en-translation">Through AI-driven loss and damage process optimization solutions, enterprises can significantly improve claim processing efficiency, reduce error rates, and enhance fund recovery capabilities. Event reconciliation systems automate data matching and verification processes, LLM attribution technology accurately identifies loss causes and responsible parties, and RPA automates claim processes, reducing manual intervention and errors.</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>实际行业案例
+                <div class="en-translation">Actual Industry Case</div>
+            </h2>
+            <div class="case-study">
+                <h3>全球物流公司损失与损坏处理优化项目
+                    <div class="en-translation">Global Logistics Company Loss & Damage Process Optimization Project</div>
+                </h3>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <div class="metric-value">-65%</div>
+                        <div class="metric-label">对账周期缩短
+                            <div class="en-translation">Reconciliation Cycle Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-45%</div>
+                        <div class="metric-label">差错率减少
+                            <div class="en-translation">Error Rate Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">+40%</div>
+                        <div class="metric-label">追回率提升
+                            <div class="en-translation">Recovery Rate Improvement</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">+50%</div>
+                        <div class="metric-label">处理效率提升
+                            <div class="en-translation">Processing Efficiency Improvement</div>
+                        </div>
+                    </div>
+                </div>
+                <p>一家全球物流公司实施了AI驱动的损失与损坏处理系统，通过事件对账技术自动化了运输记录和索赔数据的匹配，使用LLM归因算法准确识别损失原因和责任方，并通过RPA自动化了索赔流程。
+                    <span class="en-translation">A global logistics company implemented an AI-driven loss and damage processing system, automating the matching of transportation records and claim data through event reconciliation technology, using LLM attribution algorithms to accurately identify loss causes and responsible parties, and automating claim processes through RPA.</span>
+                </p>
+                <p>项目实施后，该企业实现了对账周期缩短65%，差错率减少45%，追回率提升40%，处理效率提升50%，大幅提高了索赔处理效率和资金追回能力。
+                    <span class="en-translation">After project implementation, the company achieved a 65% reduction in reconciliation cycle, a 45% reduction in error rate, a 40% improvement in recovery rate, and a 50% improvement in processing efficiency, significantly improving claim processing efficiency and fund recovery capabilities.</span>
+                </p>
+                <div class="case-reference">
+                    <p>案例出处: UiPath财务自动化最佳实践案例研究
+                        <div class="en-translation">Case Source: UiPath Financial Automation Best Practices Case Study</div>
+                    </p>
+                    <a href="https://www.uipath.com/solutions/finance-automation" target="_blank" rel="noopener noreferrer">
+                        查看UiPath案例详情 <i class="fas fa-external-link-alt"></i>
+                        <div class="en-translation">View UiPath Case Details <i class="fas fa-external-link-alt"></i></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>开始您的AI转型之旅
+                <div class="en-translation">Start Your AI Transformation Journey</div>
+            </h2>
+            <p>联系我们的专家团队，了解如何将AI技术应用于您的损失与损坏处理流程
+                <span class="en-translation">Contact our expert team to learn how to apply AI technology to your loss and damage processing processes</span>
+            </p>
+            <a href="#" class="btn-primary">联系我们
+                <div class="en-translation">Contact Us</div>
+            </a>
+            <a href="#" class="btn-primary">下载案例研究
+                <div class="en-translation">Download Case Study</div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
