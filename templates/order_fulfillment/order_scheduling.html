@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>订单寻源- 订单履约流程分析 | Order sourcing - Order fulfillment Process Analysis</title>
+  <title>订单调度- 订单履约流程分析 | Order scheduling - Order fulfillment Process Analysis</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <style>
@@ -219,12 +219,12 @@
         <div class="process-icon">
           <i class="fas fa-cube"></i>
         </div>
-        <h1 class="process-title">订单寻源
+        <h1 class="process-title">订单调度
           <span class="en-translation">In-bound to MFG</span>
         </h1>
         <div class="process-desc">
-          确定订单所需的物料采购或库存调配来源。
-          <span class="en-translation">Identifies the sourcing or inventory allocation for materials required by the order.</span>
+          安排订单的生产、仓储和物流执行计划。
+          <span class="en-translation">Plans the production, warehousing, and logistics execution of orders.</span>
         </div>
       </div>
     </section>
@@ -237,13 +237,13 @@
     </div>
     
     <div class="process-blocks">
-      <!-- 寻源矩阵-->
+      <!-- 客户销售订单计划与调度文档-->
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
             <i class="fas fa-map-marked-alt"></i>
-            寻源矩阵
-            <span class="en-translation">Sourcing Matrix</span>
+            客户销售订单计划与调度文档
+            <span class="en-translation">Customer SO PSD</span>
           </div>
         </div>
         <div class="block-body">
@@ -252,37 +252,36 @@
               <span class="en-translation">Core Value</span>
             </div>
             <p class="core-value-content">
-              放行门控、波次编排、任务生成、任务排序、可得性保障、齐套控制、集货 / 合流、异常闭环、系统贯通。
-              <span class="en-translation">Release Gating, Wave Planning, Task Generation, Task Sequencing, Availability Assurance, Set Completeness Check, Goods Consolidation/Convergence, Exception Closure, System Connectivity Monitoring.</span>
+              运输执行的关键控制点，直接影响准时提送与成本。
+              <span class="en-translation">The key control points in transportation execution directly affect on-time pickup and delivery as well as costs.</span>
             </p>
           </div>
-          
           <div class="content-area">
             <div class="optimization-title">优化建议：
               <span class="en-translation">Optimization Suggestions:</span>
             </div>
             <ul class="optimization-list">
-              <li>把截单时间、承运商预约与门位容量作为硬约束，把优先级作为权重，联合优化分组与门位计划
-                <span class="en-translation">Treat order cut-off time, carrier appointments, and dock capacity as hard constraints, take priority as the weight, and jointly optimize grouping (e.g., order wave grouping) and dock planning.</span>
+              <li>把服务等级、截点、承运商容量与历史履约表现纳入分配与预约排程，减少改配与撞窗。
+                <span class="en-translation">Incorporate service level, cut-off points, carrier capacity, and historical fulfillment performance into allocation and reservation scheduling to reduce re-allocation and time slot conflicts.</span>
               </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='sourcing', module_name='matrix') }}" class="best-practice-btn">
+            <a href="{{ url_for('best_practice', process='scheduling', module_name='psd') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </div>
       </div>
       
-      <!-- 动态寻源 -->
+      <!-- 交付周期调度流程 -->
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
             <i class="fas fa-bullseye"></i>
-            动态寻源
-            <span class="en-translation">Dynamic Sourcing</span>
+            交付周期调度流程
+            <span class="en-translation">LT Scheduling </span>
           </div>
         </div>
         <div class="block-body">
@@ -291,8 +290,8 @@
               <span class="en-translation">Core Value</span>
             </div>
             <p class="core-value-content">
-              放行门控、波次编排、任务生成、任务排序、可得性保障、齐套控制、集货 / 合流、异常闭环、系统贯通。
-              <span class="en-translation">Release Gating, Wave Planning, Task Generation, Task Sequencing, Availability Assurance, Set Completeness Check, Goods Consolidation/Convergence, Exception Closure, System Connectivity Monitoring.</span>
+              运输执行的关键控制点，直接影响准时提送与成本。
+              <span class="en-translation">The key control points in transportation execution directly affect on-time pickup and delivery as well as costs.</span>
             </p>
           </div>
           
@@ -301,51 +300,19 @@
               <span class="en-translation">Optimization Suggestions:</span>
             </div>
             <ul class="optimization-list">
-              <li>用历史短拣与库存记录准确率的偏差训练缺货风险模型，提前触发预补或库位切换
-                <span class="en-translation">Train a stock-out risk model using deviations between historical short picking data and inventory record accuracy, and proactively trigger pre-replenishment or storage location switching.</span>
+              <li>电子签收影像 / 坐标与异常分类打通理赔与对账，缩短处理周期。
+                <span class="en-translation">Integrate electronic signature images/coordinates and exception classification with claims processing and reconciliation to shorten the processing cycle.</span>
               </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='sourcing', module_name='dynamic_sourcing') }}" class="best-practice-btn">
+            <a href="{{ url_for('best_practice', process='scheduling', module_name='lt') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </div>
       </div>
-
-      <!-- 订单改道-->
-      <div class="process-block">
-        <div class="block-header">
-          <div class="block-title">
-            <i class="fas fa-map-marked-alt"></i>
-            订单改道
-          </div>
-          <div class="block-subtitle">Order Reroute</div>
-        </div>
-        <div class="block-body">
-          <div class="core-value">
-            <div class="core-value-title">核心价值</div>
-            <p class="core-value-content">
-              放行门控、波次编排、任务生成、任务排序、可得性保障、齐套控制、集货 / 合流、异常闭环、系统贯通。
-              <span class="en-translation">Release Gating, Wave Planning, Task Generation, Task Sequencing, Availability Assurance, Set Completeness Check, Goods Consolidation/Convergence, Exception Closure, System Connectivity Monitoring.</span>
-            </p>
-          </div>
-          <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
-            <ul class="optimization-list">
-              <li>将短拣 / 缺货统一进入异常池，依据服务等级与截单时间自动选择重分组或承运商改配，并回写优先级</li>
-              <span class="en-translation">Uniformly move short picking/stock-out issues into the exception pool, automatically select re-grouping (e.g., re-waving orders) or carrier rerouting based on service levels and order cut-off time, and write back the priority.</span>
-            </ul>
-          </div>
-          <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='sourcing', module_name='order_reroute') }}" class="best-practice-btn">
-              Best Practice <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-      </div>  
     </div>
   </div>
 </body>
