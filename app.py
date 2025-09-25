@@ -65,7 +65,7 @@ def best_practice(process, module_name):
     safe_module = ''.join(e for e in module_name if e.isalnum() or e == '_')
     
     # 构建新的模板路径 - 添加到procurement目录下
-    template_path = f"procurement/best_practice/{safe_process}_{safe_module}.html"
+    template_path = f"procurement/best_practice/{safe_process}/{safe_module}.html"
     
     try:
         # 尝试渲染特定模板
