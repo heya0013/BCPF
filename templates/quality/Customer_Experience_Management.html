@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>客户体验管理- 质量流程分析 | ​Customer Experience Management - Quality Process Analysis</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <style>
+    /* 全局样式 */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* 标题区域样式 */
+    .header-section {
+      background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+      color: white;
+      padding: 40px 20px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    
+    .process-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .process-title {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .process-subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 15px;
+    }
+    
+    .process-desc {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .en-translation {
+      display: block;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-top: 5px;
+      font-style: italic;
+    }
+    
+    /* 内容区域样式 */
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .section-title h2 {
+      font-size: 2rem;
+      color: #2c3e50;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 15px;
+      display: inline-block;
+    }
+    
+    .process-blocks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 25px;
+    }
+    
+    .process-block {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .process-block:hover {
+      transform: translateY(-5px);
+    }
+    
+    .block-header {
+      background: linear-gradient(135deg, #9b59b6 0%, #3498db 100%);
+      color: white;
+      padding: 20px;
+    }
+    
+    .block-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .block-subtitle {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+    
+    .block-body {
+      padding: 20px;
+    }
+    
+    .core-value {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 4px solid #9b59b6;
+    }
+    
+    .core-value-title {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    
+    .core-value-content {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    .content-area {
+      margin: 20px 0;
+    }
+    
+    .optimization-title {
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+    
+    .optimization-list {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .optimization-list li {
+      margin-bottom: 10px;
+      color: #5a6a7d;
+    }
+    
+    .block-actions {
+      text-align: right;
+      margin-top: 20px;
+    }
+    
+    .best-practice-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .best-practice-btn:hover {
+      opacity: 0.9;
+      transform: translateX(5px);
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .process-blocks {
+        grid-template-columns: 1fr;
+      }
+      
+      .process-title {
+        font-size: 2rem;
+      }
+      
+      .block-title {
+        font-size: 1.2rem;
+      }
+    }
+    
+    /* 新产品管理特定样式 */
+    .new-product-process .process-icon {
+      background-color: rgba(255, 255, 255, 0.2);
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 流程标题区域 -->
+    <section class="header-section new-product-process">
+      <div class="header-content">
+        <div class="process-icon">
+          <i class="fas fa-cube"></i>
+        </div>
+        <h1 class="process-title">客户体验管理
+          <span class="en-translation">Customer Experience Management</span>
+        </h1>
+        <div class="process-desc">
+          客户全交互旅程优化，提升质量相关满意度
+          <span class="en-translation">Optimizing the entire customer interaction journey to enhance quality-related satisfaction.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 关键流程块区域 -->
+    <div class="section-title">
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
+    </div>
+    
+    <div class="process-blocks">
+      <!-- 北美地区库存单位（NA SKU）新产品开箱即用（OOB）流程-->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-map-marked-alt"></i>
+            北美地区库存单位新产品开箱即用
+            <span class="en-translation">New product OOB process for NA SKU</span>
+          </div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
+            <p class="core-value-content">
+              定义开箱即用体验场景 NA SKU 的规则与判定标准，强调术语、证据与处理口径的一致性。
+              <span class="en-translation">Define the rules and judgment criteria for NA SKU's out-of-box (OOB) experience scenarios, emphasizing consistency in terminology, evidence, and processing standards.</span>
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
+            <ul class="optimization-list">
+              <li>建立统一的 VOC（客户声音）术语 / 主题 / 情感模型与映射词典，确保跨渠道的一致度量与可解释洞察。
+                <span class="en-translation">Establish a unified VOC (Voice of Customer) terminology/theme/emotion model and mapping dictionary to ensure consistent measurement and interpretable insights across channels.</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='customer_experience', module_name='oob') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 缺件、错件、破损及外观问题 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-bullseye"></i>
+            缺件、错件、破损及外观问题
+            <span class="en-translation">Missing, Wrong, Damage, and Cosmetic issue</span>
+          </div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
+            <p class="core-value-content">
+              对缺件 / 错件 / 破损 / 外观等场景的对象定义与判定规则，保证处理口径可执行、可核验。
+              <span class="en-translation">Define the rules and judgment criteria for missing/wrong/damaged/cosmetic issues, ensuring that processing standards are executable and verifiable.</span>
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
+            <ul class="optimization-list">
+              <li>统一 NPS/CSAT/CES 的抽样、问卷与偏差校正方法，形成统计上稳健的追踪机制。
+                <span class="en-translation">Establish a unified VOC (Voice of Customer) terminology/theme/emotion model and mapping dictionary to ensure consistent measurement and interpretable insights across channels.</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='customer_experience', module_name='cosmetic') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 现场案例升级流程-->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-map-marked-alt"></i>
+            现场案例升级流程
+          </div>
+          <div class="block-subtitle">Field Case Escalation Process</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值</div>
+            <p class="core-value-content">
+              设定现场案例的分级标准、受理边界与责任分配，确保响应策略与权限边界清晰。
+              <span class="en-translation">Set the classification standards, acceptance boundaries, and responsibility allocation for on-site cases to ensure clear response strategies and authority boundaries.</span>
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>对投诉进行自动分流与优先级判定，并提供证据清单与闭环标准，缩短解决周期。
+                <span class="en-translation">Automatically route and prioritize complaints, providing evidence checklists and closed-loop standards to shorten resolution cycles.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='customer_experience', module_name='field_case') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>  
+      
+      <!-- 现场服务公告-->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-map-marked-alt"></i>
+            现场服务公告
+          </div>
+          <div class="block-subtitle">Field Service Bulletin</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值</div>
+            <p class="core-value-content">
+              以服务公告形式固化诊断与修复标准，确保对外表达、零件与作业一致。
+              <span class="en-translation">Solidify diagnosis and repair standards in the form of service bulletins to ensure consistency in external communication, parts, and operations.</span>
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>自动抽取症状 - 原因 - 对策三元组，归并相似案件并生成可复用的维修策略 / 注意事项。
+                <span class="en-translation">Automatically extract symptom-cause-countermeasure triplets, merge similar cases, and generate reusable repair strategies and precautions.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='customer_experience', module_name='bulletin') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+</body>
+</html>
