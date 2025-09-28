@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>产品生命周期管理- 质量流程分析 | ​Product Lifecycle Management - Quality Process Analysis</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <style>
+    /* 全局样式 */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* 标题区域样式 */
+    .header-section {
+      background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+      color: white;
+      padding: 40px 20px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    
+    .process-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .process-title {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .process-subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 15px;
+    }
+    
+    .process-desc {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .en-translation {
+      display: block;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-top: 5px;
+      font-style: italic;
+    }
+    
+    /* 内容区域样式 */
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .section-title h2 {
+      font-size: 2rem;
+      color: #2c3e50;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 15px;
+      display: inline-block;
+    }
+    
+    .process-blocks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 25px;
+    }
+    
+    .process-block {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .process-block:hover {
+      transform: translateY(-5px);
+    }
+    
+    .block-header {
+      background: linear-gradient(135deg, #9b59b6 0%, #3498db 100%);
+      color: white;
+      padding: 20px;
+    }
+    
+    .block-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .block-subtitle {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+    
+    .block-body {
+      padding: 20px;
+    }
+    
+    .core-value {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 4px solid #9b59b6;
+    }
+    
+    .core-value-title {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    
+    .core-value-content {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    .content-area {
+      margin: 20px 0;
+    }
+    
+    .optimization-title {
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+    
+    .optimization-list {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .optimization-list li {
+      margin-bottom: 10px;
+      color: #5a6a7d;
+    }
+    
+    .block-actions {
+      text-align: right;
+      margin-top: 20px;
+    }
+    
+    .best-practice-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .best-practice-btn:hover {
+      opacity: 0.9;
+      transform: translateX(5px);
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .process-blocks {
+        grid-template-columns: 1fr;
+      }
+      
+      .process-title {
+        font-size: 2rem;
+      }
+      
+      .block-title {
+        font-size: 1.2rem;
+      }
+    }
+    
+    /* 新产品管理特定样式 */
+    .new-product-process .process-icon {
+      background-color: rgba(255, 255, 255, 0.2);
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 流程标题区域 -->
+    <section class="header-section new-product-process">
+      <div class="header-content">
+        <div class="process-icon">
+          <i class="fas fa-cube"></i>
+        </div>
+        <h1 class="process-title">产品生命周期管理
+          <span class="en-translation">Product Lifecycle Management</span>
+        </h1>
+        <div class="process-desc">
+          产品全阶段管理，优化质量相关成本、效率
+          <span class="en-translation">Manage all stages of the product lifecycle, optimizing quality-related costs and efficiency.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 关键流程块区域 -->
+    <div class="section-title">
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
+    </div>
+    
+    <div class="process-blocks">
+      <!--生产件批准程序-->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-map-marked-alt"></i>
+            生产件批准程序
+            <span class="en-translation">Production Part Approval Process</span>
+          </div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
+            <p class="core-value-content">
+              以量产条件下的零件与过程文件为对象的合规确认框架，强调能力验证、记录完整与文件一致性。
+              <span class="en-translation">Provide a compliance confirmation framework focused on parts and process documents under mass production conditions, emphasizing capability verification, complete documentation, and consistency.</span>
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
+            <ul class="optimization-list">
+              <li>自动抽取能力指数、测量报告、FMEA/CP 一致性，生成 PPAP 包与差异清单。
+                <span class="en-translation">Automatically extract capability indices, measurement reports, and FMEA/CP consistency to generate PPAP packages and discrepancy lists.</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='lifecycle', module_name='part_approval') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 工装验证流程（ -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-bullseye"></i>
+            工装验证流程
+            <span class="en-translation">Tooling Qualification Process</span>
+          </div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
+            <p class="core-value-content">
+              对量产工装的合格性与稳定性建立验证标准与记录口径，保证批量生产的一致性。
+              <span class="en-translation">Establish verification standards and recording specifications for the qualification and stability of mass-production tooling to ensure consistency in mass production.</span>
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
+            <ul class="optimization-list">
+              <li>将工装台账、点检、试模 / 试冲数据与在线 SPC 打通，自动生成资格健康度。
+                <span class="en-translation">Realize online management of tooling ledgers, inspection data, and trial mold/stamping data; automatically generate qualification health status.</span>
+              </li>
+            </ul>
+          </div> 
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='lifecycle', module_name='tooling_qualification') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 卓越设计-->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-map-marked-alt"></i>
+            卓越设计
+          </div>
+          <div class="block-subtitle">Design for Excellence</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值</div>
+            <p class="core-value-content">
+              将可制造性 / 质量 / 可靠性 / 维修性等准则结构化为设计检查项与接受标准，提升早期设计的可生产与可维护性
+              <span class="en-translation">Structure criteria such as manufacturability, quality, reliability, and maintainability into design check items and acceptance standards to improve the producibility and maintainability of early-stage designs.</span>
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>NCMR（不合格品材料报告）/MRB（物料评审委员会）流转电子化与证据校验，自动生成处置决策建议与追溯要求。
+                <span class="en-translation">Realize electronic circulation and evidence verification of NCMR (Non-Conforming Material Report)/MRB (Material Review Board); automatically generate disposal decision recommendations and traceability requirements.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='foundation_process', module_name='action_tracking') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>  
+      
+      <!--专项质量控制-->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-map-marked-alt"></i>
+            专项质量控制
+          </div>
+          <div class="block-subtitle">Field Service Bulletin</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值</div>
+            <p class="core-value-content">
+              在制造质量域提供稳定的规则、度量与证据结构，强调一致性与可审计性。
+              <span class="en-translation">Provide stable rules, metrics, and evidence frameworks in the manufacturing quality domain, emphasizing consistency and auditability.</span>
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>批次 / 序列追溯闭环与定期演练，自动计算召回影响范围与客户清单。
+                <span class="en-translation">Realize closed-loop batch/serial traceability and regular drills; automatically calculate recall scope and customer list.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='foundation_process', module_name='special_quality_control') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+</body>
+</html>
