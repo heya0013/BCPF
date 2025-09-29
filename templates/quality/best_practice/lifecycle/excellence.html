@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卓越设计AI案例研究 | Design for Excellence AI Case Study</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice1.css') }}">
+    <style>
+        /* 补充样式 */
+        .en-translation {
+            font-size: 0.8em;
+            color: #666;
+            display: block;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .content-section h2 {
+            color: #2c7be5;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 15px;
+            margin-top: 0;
+        }
+        
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .application-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .app-icon {
+            font-size: 2.5rem;
+            color: #2c7be5;
+            margin-bottom: 15px;
+        }
+        
+        .kpi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .kpi-table th, .kpi-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .kpi-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .improvement {
+            color: #00c9a7;
+            font-weight: 600;
+        }
+        
+        .case-study {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .metric {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c7be5;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            color: #5a6a7d;
+            font-size: 0.9rem;
+        }
+        
+        .case-reference {
+            margin-top: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .case-reference a {
+            color: #2c7be5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .case-reference a:hover {
+            text-decoration: underline;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background: white;
+            color: #2c7be5;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .case-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>卓越设计AI案例研究
+                <div class="en-translation">Excellence Design AI Case Study</div>
+            </h1>
+            <p>AI驱动的卓越设计优化解决方案，通过跨源异常检测+根因聚类+应对策略推荐技术提高设计质量，降低缺陷率，并加速问题解决周期
+                <span class="en-translation">AI-driven excellence design optimization solutions improve design quality, reduce defect rates, and accelerate problem resolution cycles through cross-source anomaly detection + root cause clustering + response strategy recommendation technology</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景
+                <div class="en-translation">AI Application Scenarios</div>
+            </h2>
+            <div class="applications-grid">
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h3>跨源异常检测 + 根因聚类 + 应对策略推荐
+                        <div class="en-translation">Cross-Source Anomaly Detection + Root Cause Clustering + Response Strategy Recommendation</div>
+                    </h3>
+                    <p>通过跨源异常检测技术整合多源设计数据，使用根因聚类算法分析缺陷模式和关联关系，结合应对策略推荐技术提供智能的问题解决方案，优化设计质量和问题解决效率。
+                        <span class="en-translation">Integrate multi-source design data through cross-source anomaly detection technology, use root cause clustering algorithms to analyze defect patterns and correlation relationships, combine response strategy recommendation technology to provide intelligent problem solutions, optimizing design quality and problem resolution efficiency.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>KPI与预期提升幅度
+                <div class="en-translation">KPI and Expected Improvement</div>
+            </h2>
+            <table class="kpi-table">
+                <thead>
+                    <tr>
+                        <th>AI应用场景
+                            <div class="en-translation">AI Application</div>
+                        </th>
+                        <th>行业KPI
+                            <div class="en-translation">Industry KPI</div>
+                        </th>
+                        <th>预期提升幅度
+                            <div class="en-translation">Expected Improvement</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>跨源异常检测 + 根因聚类 + 应对策略推荐
+                            <div class="en-translation">Cross-Source Anomaly Detection + Root Cause Clustering + Response Strategy Recommendation</div>
+                        </td>
+                        <td>早期缺陷发现时滞、pTCRR、应对闭环周期
+                            <div class="en-translation">Early Defect Discovery Time Lag, pTCRR, Response Closed-Loop Cycle</div>
+                        </td>
+                        <td class="improvement">发现时滞 -20–40%；pTCRR -10–20%
+                            <div class="en-translation">Discovery Time Lag -20–40%; pTCRR -10–20%</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景效果分析
+                <div class="en-translation">AI Application Effect Analysis</div>
+            </h2>
+            <p>通过AI驱动的卓越设计优化解决方案，企业能够显著提高设计质量，降低缺陷率，并加速问题解决周期。跨源异常检测技术提供了对多源设计数据的整合分析能力，根因聚类算法则分析缺陷模式和关联关系，应对策略推荐技术提供了智能的问题解决方案，优化了设计质量和问题解决效率。
+                <span class="en-translation">Through AI-driven excellence design optimization solutions, enterprises can significantly improve design quality, reduce defect rates, and accelerate problem resolution cycles. Cross-source anomaly detection technology provides integration analysis capabilities for multi-source design data, root cause clustering algorithms analyze defect patterns and correlation relationships, and response strategy recommendation technology provides intelligent problem solutions, optimizing design quality and problem resolution efficiency.</span>
+            </p>
+            <p>AI技术通过分析历史设计数据和实时质量数据，识别设计缺陷模式和异常行为，提供个性化的设计优化建议和决策支持。根因聚类算法考虑了多种约束条件，包括设计参数、材料特性、工艺要求和客户反馈，生成最优的设计改进方案和问题解决策略，最大化设计质量和客户满意度。结合8D/FRACAS框架和ISO 10002客诉指南的最佳实践，确保卓越设计流程的准确性和一致性。
+                <span class="en-translation">AI technology analyzes historical design data and real-time quality data to identify design defect patterns and abnormal behaviors, providing personalized design optimization suggestions and decision support. Root cause clustering algorithms consider multiple constraints, including design parameters, material characteristics, process requirements, and customer feedback, to generate optimal design improvement solutions and problem resolution strategies, maximizing design quality and customer satisfaction. Combined with 8D/FRACAS framework and ISO 10002 customer complaint guidelines best practices to ensure the accuracy and consistency of the excellence design process.</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>实际行业案例
+                <div class="en-translation">Actual Industry Case</div>
+            </h2>
+            <div class="case-study">
+                <h3>全球汽车零部件制造商卓越设计优化项目
+                    <div class="en-translation">Global Automotive Parts Manufacturer Excellence Design Optimization Project</div>
+                </h3>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <div class="metric-value">-32%</div>
+                        <div class="metric-label">早期缺陷发现时滞减少
+                            <div class="en-translation">Early Defect Discovery Time Lag Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-18%</div>
+                        <div class="metric-label">pTCRR降低
+                            <div class="en-translation">pTCRR Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-45%</div>
+                        <div class="metric-label">应对闭环周期缩短
+                            <div class="en-translation">Response Closed-Loop Cycle Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">+25%</div>
+                        <div class="metric-label">设计质量提升
+                            <div class="en-translation">Design Quality Improvement</div>
+                        </div>
+                    </div>
+                </div>
+                <p>一家全球汽车零部件制造商实施了AI驱动的卓越设计优化系统，通过跨源异常检测技术整合多源设计数据，使用根因聚类算法分析缺陷模式和关联关系，结合应对策略推荐技术提供智能的问题解决方案，优化设计质量和问题解决效率。
+                    <span class="en-translation">A global automotive parts manufacturer implemented an AI-driven excellence design optimization system, using cross-source anomaly detection technology to integrate multi-source design data, root cause clustering algorithms to analyze defect patterns and correlation relationships, and response strategy recommendation technology to provide intelligent problem solutions, optimizing design quality and problem resolution efficiency.</span>
+                </p>
+                <p>项目实施后，该企业实现了早期缺陷发现时滞减少32%，pTCRR降低18%，应对闭环周期缩短45%，设计质量提升25%，大幅提高了卓越设计效率和客户满意度。
+                    <span class="en-translation">After project implementation, the company achieved a 32% reduction in early defect discovery time lag, an 18% reduction in pTCRR, a 45% reduction in response closed-loop cycle, and a 25% improvement in design quality, significantly improving excellence design efficiency and customer satisfaction.</span>
+                </p>
+                <div class="case-reference">
+                    <p>案例出处: 8D/FRACAS框架 - 卓越设计问题解决方法论最佳实践
+                        <div class="en-translation">Case Source: 8D/FRACAS Framework - Excellence Design Problem Solving Methodology Best Practices</div>
+                    </p>
+                    <p>参考标准: ISO 10002客诉指南 - 客户满意度与质量管理体系
+                        <div class="en-translation">Reference Standard: ISO 10002 Customer Complaint Guidelines - Customer Satisfaction and Quality Management System</div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

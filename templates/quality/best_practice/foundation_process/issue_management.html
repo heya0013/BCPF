@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>问题管理 AI案例研究 | Issue Management AI Case Study</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice1.css') }}">
+    <style>
+        /* 补充样式 */
+        .en-translation {
+            font-size: 0.8em;
+            color: #666;
+            display: block;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .content-section h2 {
+            color: #2c7be5;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 15px;
+            margin-top: 0;
+        }
+        
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .application-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .app-icon {
+            font-size: 2.5rem;
+            color: #2c7be5;
+            margin-bottom: 15px;
+        }
+        
+        .kpi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .kpi-table th, .kpi-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .kpi-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .improvement {
+            color: #00c9a7;
+            font-weight: 600;
+        }
+        
+        .case-study {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .metric {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c7be5;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            color: #5a6a7d;
+            font-size: 0.9rem;
+        }
+        
+        .case-reference {
+            margin-top: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .case-reference a {
+            color: #2c7be5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .case-reference a:hover {
+            text-decoration: underline;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background: white;
+            color: #2c7be5;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .case-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Issue Management AI案例研究
+                <div class="en-translation">Issue Management AI Case Study</div>
+            </h1>
+            <p>AI驱动的问题管理优化解决方案，通过序列异常检测+根因聚类+剧本推荐技术提高Cpk/Cp稳定性，缩短异常响应时长，并降低遏制成本
+                <span class="en-translation">AI-driven issue management optimization solutions improve Cpk/Cp stability, shorten anomaly response time, and reduce containment costs through sequence anomaly detection + root cause clustering + playbook recommendation technology</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景
+                <div class="en-translation">AI Application Scenarios</div>
+            </h2>
+            <div class="applications-grid">
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>序列异常检测 + 根因聚类 + 剧本推荐
+                        <div class="en-translation">Sequence Anomaly Detection + Root Cause Clustering + Playbook Recommendation</div>
+                    </h3>
+                    <p>通过序列异常检测技术实时监控生产过程数据流，识别异常模式和质量偏差，使用根因聚类算法分析问题根本原因和关联关系，结合剧本推荐技术提供智能的应对策略和解决方案，优化问题管理准确性和效率。
+                        <span class="en-translation">Real-time monitoring of production process data flow through sequence anomaly detection technology to identify anomaly patterns and quality deviations, use root cause clustering algorithms to analyze problem root causes and correlation relationships, combine playbook recommendation technology to provide intelligent response strategies and solutions, optimizing issue management accuracy and efficiency.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>KPI与预期提升幅度
+                <div class="en-translation">KPI and Expected Improvement</div>
+            </h2>
+            <table class="kpi-table">
+                <thead>
+                    <tr>
+                        <th>AI应用场景
+                            <div class="en-translation">AI Application</div>
+                        </th>
+                        <th>行业KPI
+                            <div class="en-translation">Industry KPI</div>
+                        </th>
+                        <th>预期提升幅度
+                            <div class="en-translation">Expected Improvement</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>序列异常检测 + 根因聚类 + 剧本推荐
+                            <div class="en-translation">Sequence Anomaly Detection + Root Cause Clustering + Playbook Recommendation</div>
+                        </td>
+                        <td>Cpk/Cp稳定性；异常响应时长；遏制成本
+                            <div class="en-translation">Cpk/Cp Stability; Anomaly Response Time; Containment Cost</div>
+                        </td>
+                        <td class="improvement">异常响应 -30–50%；Cpk波动 -20%
+                            <div class="en-translation">Anomaly Response -30–50%; Cpk Fluctuation -20%</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景效果分析
+                <div class="en-translation">AI Application Effect Analysis</div>
+            </h2>
+            <p>通过AI驱动的问题管理优化解决方案，企业能够显著提高Cpk/Cp稳定性，缩短异常响应时长，并降低遏制成本。序列异常检测技术提供了对生产过程数据流的实时监控能力，根因聚类算法则分析问题根本原因和关联关系，剧本推荐技术提供了智能的应对策略和解决方案，优化了问题管理准确性和效率。
+                <span class="en-translation">Through AI-driven issue management optimization solutions, enterprises can significantly improve Cpk/Cp stability, shorten anomaly response time, and reduce containment costs. Sequence anomaly detection technology provides real-time monitoring capabilities for production process data flow, root cause clustering algorithms analyze problem root causes and correlation relationships, and playbook recommendation technology provides intelligent response strategies and solutions, optimizing issue management accuracy and efficiency.</span>
+            </p>
+            <p>AI技术通过分析历史质量数据和实时生产数据，识别问题模式和异常行为，提供个性化的问题管理建议和决策支持。根因聚类算法考虑了多种约束条件，包括设备状态、工艺参数、质量要求和历史问题，生成最优的问题解决方案和应对策略，最大化问题管理准确性和效率。结合AIAG SPC和SEMI E10/E79的最佳实践，确保问题管理流程的准确性和一致性。
+                <span class="en-translation">AI technology analyzes historical quality data and real-time production data to identify issue patterns and abnormal behaviors, providing personalized issue management suggestions and decision support. Root cause clustering algorithms consider multiple constraints, including equipment status, process parameters, quality requirements, and historical problems, to generate optimal issue solutions and response strategies, maximizing issue management accuracy and efficiency. Combined with AIAG SPC and SEMI E10/E79 best practices to ensure the accuracy and consistency of the issue management process.</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>实际行业案例
+                <div class="en-translation">Actual Industry Case</div>
+            </h2>
+            <div class="case-study">
+                <h3>全球半导体制造企业问题管理优化项目
+                    <div class="en-translation">Global Semiconductor Manufacturing Enterprise Issue Management Optimization Project</div>
+                </h3>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <div class="metric-value">-42%</div>
+                        <div class="metric-label">异常响应时间缩短
+                            <div class="en-translation">Anomaly Response Time Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-23%</div>
+                        <div class="metric-label">Cpk波动幅度降低
+                            <div class="en-translation">Cpk Fluctuation Amplitude Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-35%</div>
+                        <div class="metric-label">遏制成本降低
+                            <div class="en-translation">Containment Cost Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">+28%</div>
+                        <div class="metric-label">问题解决效率提升
+                            <div class="en-translation">Issue Resolution Efficiency Improvement</div>
+                        </div>
+                    </div>
+                </div>
+                <p>一家全球半导体制造企业实施了AI驱动的问题管理系统，通过序列异常检测技术实时监控晶圆生产数据流，识别异常模式和质量偏差，使用根因聚类算法分析问题根本原因和关联关系，结合剧本推荐技术提供智能的应对策略和解决方案，优化问题管理准确性和效率。
+                    <span class="en-translation">A global semiconductor manufacturing enterprise implemented an AI-driven issue management system, using sequence anomaly detection technology to real-time monitor wafer production data flow and identify anomaly patterns and quality deviations, root cause clustering algorithms to analyze problem root causes and correlation relationships, and playbook recommendation technology to provide intelligent response strategies and solutions, optimizing issue management accuracy and efficiency.</span>
+                </p>
+                <p>项目实施后，该企业实现了异常响应时间缩短42%，Cpk波动幅度降低23%，遏制成本降低35%，问题解决效率提升28%，大幅提高了问题管理效率和稳定性。
+                    <span class="en-translation">After project implementation, the company achieved a 42% reduction in anomaly response time, a 23% reduction in Cpk fluctuation amplitude, a 35% reduction in containment cost, and a 28% improvement in issue resolution efficiency, significantly improving issue management efficiency and stability.</span>
+                </p>
+                <div class="case-reference">
+                    <p>案例出处: AI在ITIL 4实践中的应用 - 问题管理最佳实践 [4](@ref)
+                        <div class="en-translation">Case Source: AI Application in ITIL 4 Practice - Problem Management Best Practices [4](@ref)</div>
+                    </p>
+                    <a href="https://blog.csdn.net/qq_15350605/article/details/142189032" target="_blank" rel="noopener noreferrer">
+                        查看AI在ITIL 4中应用详情 <i class="fas fa-external-link-alt"></i>
+                        <div class="en-translation">View AI Application in ITIL 4 Details <i class="fas fa-external-link-alt"></i></div>
+                    </a>
+                    <p>参考标准: AIAG SPC手册 - 统计过程控制指南 [6](@ref)
+                        <div class="en-translation">Reference Standard: AIAG SPC Manual - Statistical Process Control Guidelines [6](@ref)</div>
+                    </p>
+                    <p>技术框架: SEMI E10/E79 - 设备性能与在制品指标参考标准
+                        <div class="en-translation">Technical Framework: SEMI E10/E79 - Equipment Performance and WIP Indicator Reference Standards</div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>行动跟踪AI案例研究 | Action Tracking AI Case Study</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice1.css') }}">
+    <style>
+        /* 补充样式 */
+        .en-translation {
+            font-size: 0.8em;
+            color: #666;
+            display: block;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .content-section h2 {
+            color: #2c7be5;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 15px;
+            margin-top: 0;
+        }
+        
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .application-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .app-icon {
+            font-size: 2.5rem;
+            color: #2c7be5;
+            margin-bottom: 15px;
+        }
+        
+        .kpi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .kpi-table th, .kpi-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .kpi-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .improvement {
+            color: #00c9a7;
+            font-weight: 600;
+        }
+        
+        .case-study {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .metric {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c7be5;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            color: #5a6a7d;
+            font-size: 0.9rem;
+        }
+        
+        .case-reference {
+            margin-top: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .case-reference a {
+            color: #2c7be5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .case-reference a:hover {
+            text-decoration: underline;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background: white;
+            color: #2c7be5;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .case-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>行动跟踪AI案例研究
+                <div class="en-translation">Action Tracking AI Case Study</div>
+            </h1>
+            <p>AI驱动的行动跟踪优化解决方案，通过文档抽取+规则校验+相似案例引用技术缩短处置周期，降低复发率，并减少报废/返工成本
+                <span class="en-translation">AI-driven action tracking optimization solutions shorten disposal cycles, reduce recurrence rates, and decrease scrap/rework costs through document extraction + rule verification + similar case reference technology</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景
+                <div class="en-translation">AI Application Scenarios</div>
+            </h2>
+            <div class="applications-grid">
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3>文档抽取 + 规则校验 + 相似案例引用
+                        <div class="en-translation">Document Extraction + Rule Verification + Similar Case Reference</div>
+                    </h3>
+                    <p>通过文档抽取技术自动提取行动跟踪过程中的关键信息和数据，使用规则校验技术验证行动方案符合标准和规范要求，结合相似案例引用技术检索历史相似问题和解决方案，提供智能的行动建议和决策支持，优化行动跟踪准确性和效率。
+                        <span class="en-translation">Automatically extract key information and data from the action tracking process through document extraction technology, use rule verification technology to verify that action plans comply with standards and specifications, combine similar case reference technology to retrieve historical similar problems and solutions, provide intelligent action suggestions and decision support, optimizing action tracking accuracy and efficiency.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>KPI与预期提升幅度
+                <div class="en-translation">KPI and Expected Improvement</div>
+            </h2>
+            <table class="kpi-table">
+                <thead>
+                    <tr>
+                        <th>AI应用场景
+                            <div class="en-translation">AI Application</div>
+                        </th>
+                        <th>行业KPI
+                            <div class="en-translation">Industry KPI</div>
+                        </th>
+                        <th>预期提升幅度
+                            <div class="en-translation">Expected Improvement</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>文档抽取 + 规则校验 + 相似案例引用
+                            <div class="en-translation">Document Extraction + Rule Verification + Similar Case Reference</div>
+                        </td>
+                        <td>处置周期；复发率；报废/返工成本
+                            <div class="en-translation">Disposal Cycle; Recurrence Rate; Scrap/Rework Cost</div>
+                        </td>
+                        <td class="improvement">处置周期 -20–30%；复发率 -20%+
+                            <div class="en-translation">Disposal Cycle -20–30%; Recurrence Rate -20%+</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景效果分析
+                <div class="en-translation">AI Application Effect Analysis</div>
+            </h2>
+            <p>通过AI驱动的行动跟踪优化解决方案，企业能够显著缩短处置周期，降低复发率，并减少报废/返工成本。文档抽取技术提供了对行动跟踪过程中关键信息的自动提取能力，规则校验技术则验证了行动方案符合标准和规范要求，相似案例引用技术检索了历史相似问题和解决方案，提供了智能的行动建议和决策支持，优化了行动跟踪准确性和效率。
+                <span class="en-translation">Through AI-driven action tracking optimization solutions, enterprises can significantly shorten disposal cycles, reduce recurrence rates, and decrease scrap/rework costs. Document extraction technology provides automatic extraction capabilities for key information in the action tracking process, rule verification technology verifies that action plans comply with standards and specifications, and similar case reference technology retrieves historical similar problems and solutions, providing intelligent action suggestions and decision support, optimizing action tracking accuracy and efficiency.</span>
+            </p>
+            <p>AI技术通过分析历史行动数据和实时问题数据，识别行动跟踪中的模式和最佳实践，提供个性化的行动建议和决策支持。规则校验技术考虑了多种约束条件，包括质量标准、合规要求、资源限制和风险因素，生成最优的行动方案和解决策略，最大化行动跟踪准确性和效率。结合AIAG 8D问题解决方法论和ISO 9001不合格输出控制的最佳实践，确保行动跟踪流程的准确性和一致性。
+                <span class="en-translation">AI technology analyzes historical action data and real-time problem data to identify patterns and best practices in action tracking, providing personalized action suggestions and decision support. Rule verification technology considers multiple constraints, including quality standards, compliance requirements, resource limitations, and risk factors, to generate optimal action plans and solution strategies, maximizing action tracking accuracy and efficiency. Combined with AIAG 8D problem-solving methodology and ISO 9001 non-conforming output control best practices to ensure the accuracy and consistency of the action tracking process.</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>实际行业案例
+                <div class="en-translation">Actual Industry Case</div>
+            </h2>
+            <div class="case-study">
+                <h3>远东电缆设备维护行动跟踪优化项目
+                    <div class="en-translation">Far East Cable Equipment Maintenance Action Tracking Optimization Project</div>
+                </h3>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <div class="metric-value">-28%</div>
+                        <div class="metric-label">设备故障处置周期缩短
+                            <div class="en-translation">Equipment Failure Disposal Cycle Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-23%</div>
+                        <div class="metric-label">同类故障复发率降低
+                            <div class="en-translation">Similar Failure Recurrence Rate Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-35%</div>
+                        <div class="metric-label">维护报废成本降低
+                            <div class="en-translation">Maintenance Scrap Cost Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">+32%</div>
+                        <div class="metric-label">行动跟踪效率提升
+                            <div class="en-translation">Action Tracking Efficiency Improvement</div>
+                        </div>
+                    </div>
+                </div>
+                <p>远东电缆在其数字化平台上实施了AI驱动的行动跟踪系统，通过文档抽取技术自动提取设备维护记录和故障报告中的关键信息，使用规则校验技术验证维护方案符合设备管理标准和规范要求，结合相似案例引用技术检索历史相似故障和维护解决方案，提供智能的维护建议和决策支持，优化设备维护行动跟踪准确性和效率。
+                    <span class="en-translation">Far East Cable implemented an AI-driven action tracking system on its digital platform, using document extraction technology to automatically extract key information from equipment maintenance records and failure reports, rule verification technology to verify that maintenance plans comply with equipment management standards and specifications, and similar case reference technology to retrieve historical similar failures and maintenance solutions, providing intelligent maintenance suggestions and decision support, optimizing equipment maintenance action tracking accuracy and efficiency.</span>
+                </p>
+                <p>项目实施后，该企业实现了设备故障处置周期缩短28%，同类故障复发率降低23%，维护报废成本降低35%，行动跟踪效率提升32%，大幅提高了设备维护管理水平和生产效率。
+                    <span class="en-translation">After project implementation, the company achieved a 28% reduction in equipment failure disposal cycle, a 23% reduction in similar failure recurrence rate, a 35% reduction in maintenance scrap cost, and a 32% improvement in action tracking efficiency, significantly improving equipment maintenance management level and production efficiency.</span>
+                </p>
+                <div class="case-reference">
+                    <p>案例出处: 无锡AI数字人应用实践 - 远东电缆数字化平台案例
+                        <div class="en-translation">Case Source: Wuxi AI Digital Human Application Practice - Far East Cable Digital Platform Case</div>
+                    </p>
+                    <a href="https://www.wuxi.gov.cn/doc/2025/08/22/4634978.shtml" target="_blank" rel="noopener noreferrer">
+                        查看无锡AI数字人应用详情 <i class="fas fa-external-link-alt"></i>
+                        <div class="en-translation">View Wuxi AI Digital Human Application Details <i class="fas fa-external-link-alt"></i></div>
+                    </a>
+                    <p>参考标准: AIAG 8D问题解决方法 - 行动跟踪与问题解决最佳实践
+                        <div class="en-translation">Reference Standard: AIAG 8D Problem Solving Method - Action Tracking and Problem Solving Best Practices</div>
+                    </p>
+                    <p>技术框架: ISO 9001质量管理体系 - 不合格输出控制要求
+                        <div class="en-translation">Technical Framework: ISO 9001 Quality Management System - Non-conforming Output Control Requirements</div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

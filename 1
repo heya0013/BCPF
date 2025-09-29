@@ -1,42 +1,45 @@
 procurement_system/
-├── app.py                        # Flask 主应用文件
-├── requirements.txt              # Python 依赖列表
-├── .nojekyll                     # 禁用 Jekyll 处理
-├── templates/
-│   ├── index.html                # 主页面
-│   ├── execution_collaboration.html  # 执行协作详细页面
-│   ├── supply_management.html     # 供应管理详细页面
-│   ├── payments_reconcile_rebate.html # 付款、对账与返利页面
-│   ├── po_delivery_parts_rebalance.html # 采购订单交付与零部件再平衡
-│   ├── pr_po_management.html     # 采购申请与采购订单管理
-│   ├── contract_management.html  # 合同管理
-│   ├── source_to_award.html       # 招投标与授标
-│   ├── supplier_management.html    # 供应商管理
-│   ├── cost_management.html       # 成本管理
-│   ├── source_management.html     # 采购来源管理
-│   ├── new_product_management.html # 新产品管理
-│   ├── complexity_management.html # 复杂性管理
-│   └── best_practice/            # 最佳实践目录
-│       ├── default.html          # 默认最佳实践页面
-│       ├── execution_collaboration/
-│       │   ├── material_pull_tracking.html
-│       │   ├── purchase_order_commitment.html
-│       │   └── ASN.html
-│       ├── supply_management/
-│       │   ├── supply_huddle.html
-│       │   ├── regional_sop.html
-│       │   └── odm_audit.html
-│       ├── cost_management/
-│       │   ├── cost_analysis.html
-│       │   ├── savings_opportunities.html
-│       │   └── ...
-│       └── ... (其他流程目录)
-├── static/
+├── app.py                      # 采购分析主应用
+├── supplier_app.py             # 供应商协作主应用
+├── requirements.txt
+├── config.py
+├── static/                     # 共享静态文件目录
 │   ├── css/
-│   │   ├── styles.css            # 全局样式
-│   │   └── best_practice.css     # 最佳实践页面专用样式
+│   │   ├── styles.css          # 全局样式
+│   │   ├── procurement.css     # 采购专用样式
+│   │   └── supplier_collaboration.css # 供应商协作专用样式
 │   ├── js/
-│   │   └── main.js               # 全局JavaScript
-│   └── images/                   # 图片资源
-└── .github/workflows/            # GitHub Actions 工作流
-    └── deploy.yml                # 自动部署配置      # Flask应用主文件
+│   │   ├── main.js             # 全局JavaScript
+│   │   ├── procurement.js      # 采购专用JS
+│   │   └── supplier_collaboration.js # 供应商协作专用JS
+│   └── images/
+│       ├── procurement/        # 采购相关图片
+│       └── supplier_collaboration/ # 供应商协作相关图片
+├── templates/
+│   ├── procurement/            # 采购模板
+│   ├── supplier_collaboration/ # 供应商协作模板
+│   │   ├── best_practice/      # 供应商协作最佳实践
+│   │   │   ├── overview.html
+│   │   │   ├── supplier_onboarding/
+│   │   │   ├── risk_assessment/
+│   │   │   ├── performance_management/
+│   │   │   ├── collaborative_innovation/
+│   │   │   ├── relationship_management/
+│   │   │   └── sustainability/
+│   │   ├── index.html          # 供应商协作主页
+│   │   ├── supplier_onboarding.html
+│   │   ├── risk_assessment.html
+│   │   ├── performance_management.html
+│   │   ├── collaborative_innovation.html
+│   │   ├── relationship_management.html
+│   │   ├── portal_management.html
+│   │   ├── communication_center.html
+│   │   ├── document_exchange.html
+│   │   ├── scorecard_management.html
+│   │   ├── development_programs.html
+│   │   └── sustainability.html
+│   └── base.html              # 基础模板
+└── blueprints/
+    ├── __init__.py
+    ├── procurement.py          # 采购蓝图
+    └── supplier_collaboration.py # 供应商协作蓝图          # 自动部署配置      # Flask应用主文件

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>质量通知与确认AI案例研究 | Quality Notification & Confirmation AI Case Study</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice1.css') }}">
+    <style>
+        /* 补充样式 */
+        .en-translation {
+            font-size: 0.8em;
+            color: #666;
+            display: block;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .content-section h2 {
+            color: #2c7be5;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 15px;
+            margin-top: 0;
+        }
+        
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .application-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .app-icon {
+            font-size: 2.5rem;
+            color: #2c7be5;
+            margin-bottom: 15px;
+        }
+        
+        .kpi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .kpi-table th, .kpi-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .kpi-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .improvement {
+            color: #00c9a7;
+            font-weight: 600;
+        }
+        
+        .case-study {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .metric {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c7be5;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            color: #5a6a7d;
+            font-size: 0.9rem;
+        }
+        
+        .case-reference {
+            margin-top: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .case-reference a {
+            color: #2c7be5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .case-reference a:hover {
+            text-decoration: underline;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background: white;
+            color: #2c7be5;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .case-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>质量通知与确认AI案例研究
+                <div class="en-translation">Quality Notification & Confirmation AI Case Study</div>
+            </h1>
+            <p>AI驱动的质量通知与确认优化解决方案，通过文本分类与相似案例检索（RAG）+证据清单生成+规则校验技术提高8D一次通过率，缩短事件关闭周期，并降低复发率
+                <span class="en-translation">AI-driven quality notification and confirmation optimization solutions improve 8D first-time pass rate, shorten incident closure cycles, and reduce recurrence rates through text classification and similar case retrieval (RAG) + evidence list generation + rule verification technology</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景
+                <div class="en-translation">AI Application Scenarios</div>
+            </h2>
+            <div class="applications-grid">
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>文本分类与相似案例检索（RAG） + 证据清单生成 + 规则校验
+                        <div class="en-translation">Text Classification and Similar Case Retrieval (RAG) + Evidence List Generation + Rule Verification</div>
+                    </h3>
+                    <p>通过文本分类技术自动识别质量通知类型和关键问题，使用RAG（检索增强生成）技术检索历史相似案例和解决方案，结合证据清单生成技术自动创建验证所需的证据清单，通过规则校验技术确保质量通知符合标准和规范，优化质量通知与确认准确性和效率。
+                        <span class="en-translation">Automatically identify quality notification types and key issues through text classification technology, use RAG (Retrieval-Augmented Generation) technology to retrieve historical similar cases and solutions, combine evidence list generation technology to automatically create evidence lists required for verification, and ensure quality notifications comply with standards and specifications through rule verification technology, optimizing quality notification and confirmation accuracy and efficiency.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>KPI与预期提升幅度
+                <div class="en-translation">KPI and Expected Improvement</div>
+            </h2>
+            <table class="kpi-table">
+                <thead>
+                    <tr>
+                        <th>AI应用场景
+                            <div class="en-translation">AI Application</div>
+                        </th>
+                        <th>行业KPI
+                            <div class="en-translation">Industry KPI</div>
+                        </th>
+                        <th>预期提升幅度
+                            <div class="en-translation">Expected Improvement</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>文本分类与相似案例检索（RAG） + 证据清单生成 + 规则校验
+                            <div class="en-translation">Text Classification and Similar Case Retrieval (RAG) + Evidence List Generation + Rule Verification</div>
+                        </td>
+                        <td>8D一次通过率；事件关闭周期；复发率
+                            <div class="en-translation">8D First-Time Pass Rate; Incident Closure Cycle; Recurrence Rate</div>
+                        </td>
+                        <td class="improvement">关闭周期 -20–30%；复发率 -20%+
+                            <div class="en-translation">Closure Cycle -20–30%; Recurrence Rate -20%+</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景效果分析
+                <div class="en-translation">AI Application Effect Analysis</div>
+            </h2>
+            <p>通过AI驱动的质量通知与确认优化解决方案，企业能够显著提高8D一次通过率，缩短事件关闭周期，并降低复发率。文本分类与相似案例检索（RAG）技术提供了对质量通知的智能分类和历史相似案例的检索能力，证据清单生成技术则自动创建了验证所需的证据清单，规则校验技术确保了质量通知符合标准和规范，优化了质量通知与确认准确性和效率。
+                <span class="en-translation">Through AI-driven quality notification and confirmation optimization solutions, enterprises can significantly improve 8D first-time pass rate, shorten incident closure cycles, and reduce recurrence rates. Text classification and similar case retrieval (RAG) technology provides intelligent classification of quality notifications and retrieval of historical similar cases, evidence list generation technology automatically creates evidence lists required for verification, and rule verification technology ensures quality notifications comply with standards and specifications, optimizing quality notification and confirmation accuracy and efficiency.</span>
+            </p>
+            <p>AI技术通过分析历史质量数据和实时通知数据，识别质量通知模式和最佳实践，提供个性化的通知建议和决策支持。RAG技术考虑了多种约束条件，包括问题类型、严重程度、影响范围和历史解决方案，生成最优的通知方案和确认策略，最大化质量通知准确性和效率。结合AIAG 8D和ISO 10002的最佳实践，确保质量通知与确认流程的准确性和一致性。
+                <span class="en-translation">AI technology analyzes historical quality data and real-time notification data to identify quality notification patterns and best practices, providing personalized notification suggestions and decision support. RAG technology considers multiple constraints, including problem type, severity, impact scope, and historical solutions, to generate optimal notification solutions and confirmation strategies, maximizing quality notification accuracy and efficiency. Combined with AIAG 8D and ISO 10002 best practices to ensure the accuracy and consistency of the quality notification and confirmation process.</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>实际行业案例
+                <div class="en-translation">Actual Industry Case</div>
+            </h2>
+            <div class="case-study">
+                <h3>全球汽车制造商质量通知管理优化项目
+                    <div class="en-translation">Global Automaker Quality Notification Management Optimization Project</div>
+                </h3>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <div class="metric-value">+25%</div>
+                        <div class="metric-label">8D一次通过率提升
+                            <div class="en-translation">8D First-Time Pass Rate Improvement</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-28%</div>
+                        <div class="metric-label">事件关闭周期缩短
+                            <div class="en-translation">Incident Closure Cycle Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-22%</div>
+                        <div class="metric-label">复发率降低
+                            <div class="en-translation">Recurrence Rate Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">+35%</div>
+                        <div class="metric-label">处理效率提升
+                            <div class="en-translation">Processing Efficiency Improvement</div>
+                        </div>
+                    </div>
+                </div>
+                <p>一家全球汽车制造商实施了AI驱动的质量通知管理系统，通过文本分类技术自动识别质量通知类型和关键问题，使用RAG技术检索历史相似案例和解决方案，结合证据清单生成技术自动创建验证所需的证据清单，通过规则校验技术确保质量通知符合标准和规范，优化质量通知与确认准确性和效率。
+                    <span class="en-translation">A global automaker implemented an AI-driven quality notification management system, using text classification technology to automatically identify quality notification types and key issues, RAG technology to retrieve historical similar cases and solutions, evidence list generation technology to automatically create evidence lists required for verification, and rule verification technology to ensure quality notifications comply with standards and specifications, optimizing quality notification and confirmation accuracy and efficiency.</span>
+                </p>
+                <p>项目实施后，该企业实现了8D一次通过率提升25%，事件关闭周期缩短28%，复发率降低22%，处理效率提升35%，大幅提高了质量通知管理效率和准确性。
+                    <span class="en-translation">After project implementation, the company achieved a 25% improvement in 8D first-time pass rate, a 28% reduction in incident closure cycle, a 22% reduction in recurrence rate, and a 35% improvement in processing efficiency, significantly improving quality notification management efficiency and accuracy.</span>
+                </p>
+                <div class="case-reference">
+                    <p>案例出处: AIAG 8D问题解决方法 - 质量通知管理最佳实践
+                        <div class="en-translation">Case Source: AIAG 8D Problem Solving Method - Quality Notification Management Best Practices</div>
+                    </p>
+                    <a href="https://www.aiag.org/quality/automotive-core-tools/8d-problem-solving" target="_blank" rel="noopener noreferrer">
+                        查看AIAG 8D详情 <i class="fas fa-external-link-alt"></i>
+                        <div class="en-translation">View AIAG 8D Details <i class="fas fa-external-link-alt"></i></div>
+                    </a>
+                    <p>参考标准: ISO 10002质量管理 - 客户满意度指南
+                        <div class="en-translation">Reference Standard: ISO 10002 Quality Management - Customer Satisfaction Guidelines</div>
+                    </p>
+                    <a href="https://www.iso.org/standard/46073.html" target="_blank" rel="noopener noreferrer">
+                        查看ISO 10002详情 <i class="fas fa-external-link-alt"></i>
+                        <div class="en-translation">View ISO 10002 Details <i class="fas fa-external-link-alt"></i></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

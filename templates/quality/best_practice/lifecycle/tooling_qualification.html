@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工装验证流程AI案例研究 | Tooling Verification Process AI Case Study</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice1.css') }}">
+    <style>
+        /* 补充样式 */
+        .en-translation {
+            font-size: 0.8em;
+            color: #666;
+            display: block;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .content-section h2 {
+            color: #2c7be5;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 15px;
+            margin-top: 0;
+        }
+        
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .application-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .app-icon {
+            font-size: 2.5rem;
+            color: #2c7be5;
+            margin-bottom: 15px;
+        }
+        
+        .kpi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .kpi-table th, .kpi-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .kpi-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .improvement {
+            color: #00c9a7;
+            font-weight: 600;
+        }
+        
+        .case-study {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .metric {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c7be5;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            color: #5a6a7d;
+            font-size: 0.9rem;
+        }
+        
+        .case-reference {
+            margin-top: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .case-reference a {
+            color: #2c7be5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .case-reference a:hover {
+            text-decoration: underline;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #2c7be5 0%, #00c9a7 100%);
+            color: white;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background: white;
+            color: #2c7be5;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .case-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>工装验证流程AI案例研究
+                <div class="en-translation">Tooling Verification Process AI Case Study</div>
+            </h1>
+            <p>AI驱动的工装验证流程优化解决方案，通过设备健康评分+过程能力趋势检测+异常预警技术提高Cp/Cpk稳定性，降低换模后不良率，并减少停机损失
+                <span class="en-translation">AI-driven tooling verification process optimization solutions improve Cp/Cpk stability, reduce post-changeover defect rates, and minimize downtime losses through equipment health scoring + process capability trend detection + anomaly warning technology</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景
+                <div class="en-translation">AI Application Scenarios</div>
+            </h2>
+            <div class="applications-grid">
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>设备健康评分 + 过程能力趋势检测 + 异常预警
+                        <div class="en-translation">Equipment Health Scoring + Process Capability Trend Detection + Anomaly Warning</div>
+                    </h3>
+                    <p>通过设备健康评分技术实时评估工装设备状态，使用过程能力趋势检测技术监控Cp/Cpk指标变化，结合异常预警技术提前识别潜在问题，优化工装验证准确性和效率。
+                        <span class="en-translation">Real-time assessment of tooling equipment status through equipment health scoring technology, monitoring Cp/Cpk indicator changes using process capability trend detection technology, combining anomaly warning technology to identify potential problems in advance, optimizing tooling verification accuracy and efficiency.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>KPI与预期提升幅度
+                <div class="en-translation">KPI and Expected Improvement</div>
+            </h2>
+            <table class="kpi-table">
+                <thead>
+                    <tr>
+                        <th>AI应用场景
+                            <div class="en-translation">AI Application</div>
+                        </th>
+                        <th>行业KPI
+                            <div class="en-translation">Industry KPI</div>
+                        </th>
+                        <th>预期提升幅度
+                            <div class="en-translation">Expected Improvement</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>设备健康评分 + 过程能力趋势检测 + 异常预警
+                            <div class="en-translation">Equipment Health Scoring + Process Capability Trend Detection + Anomaly Warning</div>
+                        </td>
+                        <td>Cp/Cpk稳定性、换模后不良率、停机损失
+                            <div class="en-translation">Cp/Cpk Stability, Post-Changeover Defect Rate, Downtime Loss</div>
+                        </td>
+                        <td class="improvement">Cpk波动幅度 -20%；换模不良 -15%
+                            <div class="en-translation">Cpk Fluctuation Amplitude -20%; Post-Changeover Defects -15%</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-section">
+            <h2>AI应用场景效果分析
+                <div class="en-translation">AI Application Effect Analysis</div>
+            </h2>
+            <p>通过AI驱动的工装验证流程优化解决方案，企业能够显著提高Cp/Cpk稳定性，降低换模后不良率，并减少停机损失。设备健康评分技术提供了对工装设备状态的实时评估能力，过程能力趋势检测技术则监控了Cp/Cpk指标变化，异常预警技术提前识别了潜在问题，优化了工装验证准确性和效率。
+                <span class="en-translation">Through AI-driven tooling verification process optimization solutions, enterprises can significantly improve Cp/Cpk stability, reduce post-changeover defect rates, and minimize downtime losses. Equipment health scoring technology provides real-time assessment capabilities for tooling equipment status, process capability trend detection technology monitors Cp/Cpk indicator changes, and anomaly warning technology identifies potential problems in advance, optimizing tooling verification accuracy and efficiency.</span>
+            </p>
+            <p>AI技术通过分析历史数据和实时数据，识别工装验证过程中的模式和异常行为，提供个性化的验证建议和决策支持。过程能力趋势检测考虑了多种约束条件，包括设备状态、工艺参数和质量要求，生成最优的工装验证方案和预防性维护策略，最大化Cp/Cpk稳定性和生产效率。结合AIAG SPC和TPM相关最佳实践，确保工装验证流程的准确性和一致性。
+                <span class="en-translation">AI technology analyzes historical data and real-time data to identify patterns and abnormal behaviors in the tooling verification process, providing personalized verification suggestions and decision support. Process capability trend detection considers multiple constraints, including equipment status, process parameters, and quality requirements, to generate optimal tooling verification solutions and preventive maintenance strategies, maximizing Cp/Cpk stability and production efficiency. Combined with AIAG SPC and TPM related best practices to ensure the accuracy and consistency of the tooling verification process.</span>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>实际行业案例
+                <div class="en-translation">Actual Industry Case</div>
+            </h2>
+            <div class="case-study">
+                <h3>中铁十四局盾构机设备健康管理项目
+                    <div class="en-translation">China Railway 14th Bureau Shield Machine Equipment Health Management Project</div>
+                </h3>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <div class="metric-value">-22%</div>
+                        <div class="metric-label">Cpk波动幅度降低
+                            <div class="en-translation">Cpk Fluctuation Amplitude Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-18%</div>
+                        <div class="metric-label">换模后不良率降低
+                            <div class="en-translation">Post-Changeover Defect Rate Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">-50%</div>
+                        <div class="metric-label">关键部件日均故障率下降
+                            <div class="en-translation">Key Component Daily Failure Rate Reduction</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">+45%</div>
+                        <div class="metric-label">设备管理问题改善效率提升
+                            <div class="en-translation">Equipment Management Problem Improvement Efficiency Increase</div>
+                        </div>
+                    </div>
+                </div>
+                <p>中铁十四局在其济南济泺路穿黄北延隧道项目中实施了TPM（全面生产维护）驱动的设备健康管理系统。该项目使用两台直径15.76米的超大直径盾构机，通过设备健康评分技术实时评估盾构机关键部件状态，使用过程能力趋势检测技术监控掘进过程稳定性，结合异常预警技术提前识别潜在故障，优化设备管理效率[10](@ref)。
+                    <span class="en-translation">China Railway 14th Bureau implemented a TPM (Total Productive Maintenance) driven equipment health management system in its Jinan Jiluo Road Yellow River North Extension Tunnel project. The project uses two super-large diameter shield machines with a diameter of 15.76 meters, using equipment health scoring technology to real-time assess the status of key components of the shield machine, process capability trend detection technology to monitor tunneling process stability, and anomaly warning technology to identify potential faults in advance, optimizing equipment management efficiency[10](@ref).</span>
+                </p>
+                <p>项目实施后，盾构机注浆泵、油脂泵等关键部件日均故障率下降超50%，全年人均改善设备管理问题点从5.4个提升到12.1个，设备管理效率提升45%。两台盾构机在掘进过程中共计穿越风险源12个，停机率低于5%，创造了最高日进尺18米、最高月进尺332米的记录[10](@ref)。
+                    <span class="en-translation">After project implementation, the daily failure rate of key components such as shield machine grouting pumps and grease pumps decreased by more than 50%, the number of equipment management problems improved per person per year increased from 5.4 to 12.1, and equipment management efficiency increased by 45%. The two shield machines crossed a total of 12 risk sources during the tunneling process, with a downtime rate of less than 5%, creating records of the highest daily advance of 18 meters and the highest monthly advance of 332 meters[10](@ref).</span>
+                </p>
+                <div class="case-reference">
+                    <p>案例出处: 中铁十四局盾构机TPM管理实践 - 设备精细化管理提升路径
+                        <div class="en-translation">Case Source: China Railway 14th Bureau Shield Machine TPM Management Practice - Equipment Refined Management Improvement Path</div>
+                    </p>
+                    <p>参考标准: AIAG TPM指南 - 全面生产维护最佳实践
+                        <div class="en-translation">Reference Standard: AIAG TPM Guidelines - Total Productive Maintenance Best Practices</div>
+                    </p>
+                    <p>技术框架: 设备健康评分与异常预警系统基于TPM第四代智能维护理念
+                        <div class="en-translation">Technical Framework: Equipment Health Scoring and Anomaly Warning System Based on TPM Fourth Generation Intelligent Maintenance Concept</div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
