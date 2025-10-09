@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>复杂性管理 - 采购流程分析</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <style>
+    /* 复杂性管理特定样式 */
+    .complexity-process .process-icon {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .core-value {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 4px solid #8e44ad;
+    }
+    
+    .core-value-title {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    
+    .core-value-content {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    /* 复杂性管理特定颜色 */
+    .complexity-process .block-header {
+      background: linear-gradient(90deg, #8e44ad, #9b59b6);
+    }
+    
+    .complexity-process .best-practice-btn {
+      background: linear-gradient(90deg, #8e44ad, #3498db);
+    }
+  </style>
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-buttons">
+        <a href="supplier_management.html" class="nav-btn">供应商管理</a>
+        <a href="source_management.html" class="nav-btn">寻源管理</a>
+        <a href="new_product_management.html" class="nav-btn">新产品管理</a>
+        <a href="cost_management.html" class="nav-btn">成本控制</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 流程标题区域 -->
+  <section class="header-section complexity-process">
+    <div class="header-content">
+      <div class="process-icon">
+        <i class="fas fa-project-diagram"></i>
+      </div>
+      <h1 class="process-title">可售库存</h1>
+      <div class="process-subtitle">ATS (Available To Sell)</div>
+      <div class="process-desc">
+        可售库存ATS指企业当前能直接卖给客户的商品数量。其核心价值在于通过动态管理库存（总库存减去已订单锁定等不可售部分），确保销售渠道显示真实库存，从而有效避免超卖缺货，提升订单履约能力。
+      </div>
+    </div>
+  </section>
+
+  <!-- 关键流程块区域 -->
+  <div class="container">
+    <div class="section-title">
+      <h2>关键流程模块</h2>
+    </div>
+    
+    <div class="process-blocks">
+      <!-- CV项目组可售量 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-sync-alt"></i>
+            CV项目组可售量
+          </div>
+          <div class="block-subtitle">CV Itemgroup ATS</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">关键理由</div>
+            <p class="core-value-content">
+              统一暴露可售可得量，将库存、在途、锁库与分配状态汇合，避免重复承诺，支撑跨渠道的实时可用性。；Itemgroup/CV维度的ATS实现族群级聚合视角，便于按照产品系列或配置族进行策略分配与可视化。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>建设ATS主数据与口径治理：统一库存状态枚举（在手/质检/在途/锁定/预约/分配）、暴露策略与时点规则</li>
+              <li>基于对时点库存与在途的短期预测（短缺风险、到货偏差）+ 规则/优化策略，动态生成多时点ATS曲线</li>
+              <li>提供‘Why/Why Not/Next Best’可售解释：为何此时不可售、下一个可售时点、需要哪些解锁动作（替代、转仓、替代料）</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='available_to_sell', module_name='cv_itemgroup_ats') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Excess stock ATS -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-cubes"></i>
+            过剩库存可售量
+          </div>
+          <div class="block-subtitle">Excess stock ATS</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">关键理由</div>
+            <p class="core-value-content">
+              统一暴露可售可得量，将库存、在途、锁库与分配状态汇合，避免重复承诺，支撑跨渠道的实时可用性。；Itemgroup/CV维度的ATS实现族群级聚合视角，便于按照产品系列或配置族进行策略分配与可视化。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>基于对时点库存与在途的短期预测（短缺风险、到货偏差）+ 规则/优化策略，动态生成多时点ATS曲线</li>
+              <li>与Allocation/Reservation/CTB/DRP/ATP建立双向同步与门禁：锁库与配额即时扣减；CTB通过批次入池；跨库位暴露差异化策略</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='available_to_sell', module_name='excess_stock_ats') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Family MTM level ATS -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-shapes"></i>
+            系列MTM级别可售量
+          </div>
+          <div class="block-subtitle">Family MTM level ATS</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">关键理由</div>
+            <p class="core-value-content">
+              统一暴露可售可得量，将库存、在途、锁库与分配状态汇合，避免重复承诺，支撑跨渠道的实时可用性。；Itemgroup/CV维度的ATS实现族群级聚合视角，便于按照产品系列或配置族进行策略分配与可视化。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>建设ATS主数据与口径治理：统一库存状态枚举（在手/质检/在途/锁定/预约/分配）、暴露策略与时点规则</li>
+              <li>基于对时点库存与在途的短期预测（短缺风险、到货偏差）+ 规则/优化策略，动态生成多时点ATS曲线</li>
+              <li>与Allocation/Reservation/CTB/DRP/ATP建立双向同步与门禁：锁库与配额即时扣减；CTB通过批次入池；跨库位暴露差异化策略</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='available_to_sell', module_name='family_mtm_level_ats') }}" 
+              class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>采购流程分析系统 © 2025 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
+  </footer>
+</body>
+</html>

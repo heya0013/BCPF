@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>采购申请与采购订单管理</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <style>
+    /* 添加特定于此页面的样式 */
+    .process-icon {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .best-practice-btn {
+      background: linear-gradient(90deg, #00c9a7, #2c7be5);
+    }
+    .content-area {
+      background: #ffffff;
+      border: 2px solid #2c7be5;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .optimization-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 15px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #e0e6ed;
+    }
+    .optimization-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .optimization-list li {
+      font-size: 1.1rem;
+      font-weight: 600;
+      line-height: 1.7;
+      margin-bottom: 12px;
+      color: #2c3e50;
+      padding-left: 25px;
+      position: relative;
+    }
+    .optimization-list li:before {
+      content: "•";
+      color: #2c7be5;
+      font-weight: bold;
+      font-size: 1.4rem;
+      position: absolute;
+      left: 0;
+      top: -2px;
+    }
+    .key-reason-top {
+      margin: 0 0 15px 0;
+    }
+    .key-reason-header {
+      font-size: 1.3rem;
+      color: #2c3e50;
+      margin-bottom: 6px;
+      font-weight: 700;
+      border-bottom: 2px solid #2c7be5;
+      padding-bottom: 4px;
+    }
+    .key-reason-text {
+      color: #5a6a7d;
+      line-height: 1.5;
+      margin: 0;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- 流程标题区域 -->
+  <section class="header-section">
+    <div class="header-content">
+      <div class="process-icon">
+        <i class="fas fa-file-purchase"></i>
+      </div>
+      <h1 class="process-title">物料需求计划</h1>
+      <div class="process-subtitle">MRP</div>
+      <div class="process-desc">
+        以需求计划为基础，分解产品结构，计算物料需求量与时间，确保原材料与零部件按时到位，支持生产计划顺利执行。
+      </div>
+    </div>
+  </section>
+
+  <!-- 关键流程块区域 -->
+  <div class="container">
+    <div class="section-title">
+      <h2>关键流程模块</h2>
+    </div>
+    
+    <div class="process-blocks">
+      <!-- One MRP integration with Network -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-file-invoice"></i>
+            统一MRP与供应链网络集成
+          </div>
+          <div class="block-subtitle">One MRP integration with Network</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>核心价值</strong>
+            </div>
+            <p class="key-reason-text">
+              MRP负责在BOM层级进行净需求展开并生成计划建议，是采购与生产执行的主驱动，直接影响CTB与承诺稳定。；供应商承诺/ASN与ETA预测是计划兑现的关键输入，决定MRP消息（加急/延后）的有效性。；MRP与ERP/MES集成（PO/WO下达、Reschedule、异常消息）是计划→执行闭环的核心，影响交付与成本。
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>基于供应商/通道/历史ASN构建ETA预测与承诺质量评分，驱动MRP消息阈值与优先级（加急/延后）<li>
+              <li>用LLM对MRP异常消息智能分流（合并/去噪/指派），对低风险建议自动Firm/Release/Reschedule</li>
+              <li>建立计划兑现率与FVA风格评估（MRP建议→实际交付），闭环优化参数（安全期、冻结窗、最小批量）</li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='pr_po_management', module_name='po_management') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Purchase Request (PR) Suggestion -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-database"></i>
+            采购申请（PR）建议
+          </div>
+          <div class="block-subtitle">Purchase Request (PR) Suggestion</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>核心价值</strong>
+            </div>
+            <p class="key-reason-text">
+              MRP与ERP/MES集成（PO/WO下达、Reschedule、异常消息）是计划→执行闭环的核心，影响交付与成本。
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>对关键器件做滚动短缺预测，结合物料相似度/功能替代/兼容性规则生成替代推荐与审批流</li>
+              <li>建立计划兑现率与FVA风格评估（MRP建议→实际交付），闭环优化参数（安全期、冻结窗、最小批量）</li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='pr_po_management', module_name='master_data') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Hedge MRP -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-forward"></i>
+            对冲MRP 或 MRP需求对冲
+          </div>
+          <div class="block-subtitle">Hedge MRP</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>核心价值</strong>
+            </div>
+            <p class="key-reason-text">
+              MRP 负责在BOM层级进行净需求展开并生成计划建议，是采购与生产执行的主驱动，直接影响CTB与承诺稳定。；MRP与ERP/MES集成（PO/WO下达、Reschedule、异常消息）是计划→执行闭环的核心，影响交付与成本。
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>对关键器件做滚动短缺预测，结合物料相似度/功能替代/兼容性规则生成替代推荐与审批流</li>
+              <li>建立计划兑现率与FVA风格评估（MRP建议→实际交付），闭环优化参数（安全期、冻结窗、最小批量）</li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='pr_po_management', module_name='buy_ahead') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>采购流程分析系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
+  </footer>
+</body>
+</html>

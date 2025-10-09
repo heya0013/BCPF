@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>执行协作 - 采购流程分析</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-buttons">
+        <button class="nav-btn">供应商管理</button>
+        <button class="nav-btn">采购执行</button>
+        <button class="nav-btn">合同管理</button>
+        <button class="nav-btn">成本控制</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 流程标题区域 -->
+  <section class="header-section">
+    <div class="header-content">
+      <div class="process-icon">
+        <i class="fas fa-handshake"></i>
+      </div>
+      <h1 class="process-title">工厂计划</h1>
+      <div class="process-subtitle">Factory Planning</div>
+      <div class="process-desc">
+        优化采购执行过程中的协作效率，确保各部门无缝衔接，提升整体采购效率。本流程涵盖物料追踪、订单承诺、发货通知等关键环节，帮助企业实现高效协同的采购执行。
+      </div>
+    </div>
+  </section>
+
+  <!-- 关键流程块区域 -->
+  <div class="container">
+    <div class="section-title">
+      <h2>关键流程模块</h2>
+    </div>
+    
+    <div class="process-blocks">
+      <!-- 提前生产申请 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-database"></i>
+            提前生产申请
+          </div>
+          <div class="block-subtitle">Build Ahead Request</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>核心价值</strong>
+            </div>
+            <p class="key-reason-text">
+              排程与MES派工/工单下达的准实时联动，保障计划→执行闭环与达成可视。
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>用LLM/规则对派工与异常进行智能分流，自动合并/去噪并下发低风险指令（Release/Reschedule/换线提醒）</li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='pr_po_management', module_name='master_data') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 工厂产能规划 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-database"></i>
+            工厂产能规划
+          </div>
+          <div class="block-subtitle">Site Capacity Planning</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>核心价值</strong>
+            </div>
+            <p class="key-reason-text">
+              该流程决定车间层的节奏与可执行性，对交付与成本具有决定性影响。
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>构建有限能力排程（APS/FCS）优化器，考虑瓶颈、换型、班次、物料齐套与优先级，多目标（OTS/吞吐/换型损失）</li>
+              <li>建设车间数字孪生与达成看板，实时跟踪瓶颈、WIP与排程偏差，触发自动重排</li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='pr_po_management', module_name='master_data') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 最终装配生产计划 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-database"></i>
+            最终装配生产计划
+          </div>
+          <div class="block-subtitle">Final Assembly Manufacturing Plan</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>核心价值</strong>
+            </div>
+            <p class="key-reason-text">
+             该流程决定车间层的节奏与可执行性，对交付与成本具有决定性影响。
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>构建有限能力排程（APS/FCS）优化器，考虑瓶颈、换型、班次、物料齐套与优先级，多目标（OTS/吞吐/换型损失）</li>
+              <li>建设车间数字孪生与达成看板，实时跟踪瓶颈、WIP与排程偏差，触发自动重排</li>
+              <li>对序依赖换型进行聚类排程与批量策略优化，平衡OTS与库存/在制</li>
+              <li>用LLM/规则对派工与异常进行智能分流，自动合并/去噪并下发低风险指令（Release/Reschedule/换线提醒）</li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='pr_po_management', module_name='master_data') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>采购流程分析系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
+  </footer>
+</body>
+</html>

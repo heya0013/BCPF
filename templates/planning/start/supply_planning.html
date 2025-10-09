@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>供应计划 - 计划流程分析</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <style>
+    /* 复杂性管理特定样式 */
+    .complexity-process .process-icon {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .core-value {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 4px solid #8e44ad;
+    }
+    
+    .core-value-title {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    
+    .core-value-content {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    /* 复杂性管理特定颜色 */
+    .complexity-process .block-header {
+      background: linear-gradient(90deg, #8e44ad, #9b59b6);
+    }
+    
+    .complexity-process .best-practice-btn {
+      background: linear-gradient(90deg, #8e44ad, #3498db);
+    }
+  </style>
+</head>
+<body>
+  <!-- 流程标题区域 -->
+  <section class="header-section complexity-process">
+    <div class="header-content">
+      <div class="process-icon">
+        <i class="fas fa-project-diagram"></i>
+      </div>
+      <h1 class="process-title">供应计划</h1>
+      <div class="process-subtitle">Supply Planning</div>
+      <div class="process-desc">
+        综合考虑需求预测、库存水平与生产能力，制定最优供应方案，保障物料及时到位并提升供应链整体效率。
+      </div>
+    </div>
+  </section>
+
+  <!-- 关键流程块区域 -->
+  <div class="container">
+    <div class="section-title">
+      <h2>关键流程模块</h2>
+    </div>
+    
+    <div class="process-blocks">
+      <!-- 可投产量 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-sync-alt"></i>
+            可投产量
+          </div>
+          <div class="block-subtitle">CTB (Clear To Build)</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">关键理由</div>
+            <p class="core-value-content">
+              CTB 连接物料齐套与可制造性，是供应计划到工厂排产的关键关口；可提前发现短缺/替代需求并驱动优先级分配，直接影响OTIF与完美订单率（SCOR）。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>将 CTB 自动化（齐套计算+替代建议+短缺优先级），与工厂排产/出货计划闭环。</li>
+              <li>构建可解释的 Allocation 引擎（客户/渠道/利润/服务等级），与 ATS/ATP/CTB 联动。</li>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='supply_palnning', module_name='ctb') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 供应计划分析 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-cubes"></i>
+            供应计划分析
+          </div>
+          <div class="block-subtitle">Supply Planning Analytics</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">关键理由</div>
+            <p class="core-value-content">
+              Supply Planning Analytics 作为例外管理中枢，聚合跨 BG/GEO/Site 的供需偏差、短缺与约束，支持根因分析与闭环；是“One Plan”可视化与治理的抓手。；供应计划是统一平衡需求、产能、物料与网络约束的核心引擎，决定计划可执行性与后续承诺的稳定性。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>引入约束优化与情景仿真，将物料/产能/网络约束内生到供需平衡，输出多方案与代价函数。</li>
+              <li>将消费/售罄（POS/电商）与价格/活动等外部因子引入供给端的计划假设，缩短信息回路。</li>
+              <li>建设 Supply Planning Analytics 中台，统一例外、根因、行动建议与闭环追踪，支持 One Plan 版本治理。</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='supply_palnning', module_name='supply_planning_analytics') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 集中订单计划 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-shapes"></i>
+            集中订单计划
+          </div>
+          <div class="block-subtitle">Central Order Plan</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">关键理由</div>
+            <p class="core-value-content">
+              该流程在供应计划链条中承担关键的协调或校核职责，对计划可执行性与客户承诺具有直接影响。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>构建可解释的 Allocation 引擎（客户/渠道/利润/服务等级），与 ATS/ATP/CTB 联动。</li>
+              <li>引入约束优化与情景仿真，将物料/产能/网络约束内生到供需平衡，输出多方案与代价函数。</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='supply_palnning', module_name='central_order_plan') }}" 
+              class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>采购流程分析系统 © 2025 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
+  </footer>
+</body>
+</html>

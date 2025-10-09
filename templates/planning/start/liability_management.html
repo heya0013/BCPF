@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>负债管理 - 计划流程分析</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <style>
+    /* 新产品管理特定样式 */
+    .new-product-process .process-icon {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .core-value {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 4px solid #9b59b6;
+    }
+    
+    .core-value-title {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    
+    .core-value-content {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-buttons">
+        <a href="supplier_management.html" class="nav-btn">供应商管理</a>
+        <a href="source_management.html" class="nav-btn">寻源管理</a>
+        <a href="contract_management.html" class="nav-btn">合同管理</a>
+        <a href="cost_management.html" class="nav-btn">成本控制</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 流程标题区域 -->
+  <section class="header-section new-product-process">
+    <div class="header-content">
+      <div class="process-icon">
+        <i class="fas fa-cube"></i>
+      </div>
+      <h1 class="process-title">负债管理</h1>
+      <div class="process-subtitle">Liability Management</div>
+      <div class="process-desc">
+        在产品迭代或生产切换过程中，制定资源与产能的过渡方案，确保新旧产品平稳衔接，减少停工、浪费与供应链波动。
+      </div>
+    </div>
+  </section>
+
+  <!-- 关键流程块区域 -->
+  <div class="container">
+    <div class="section-title">
+      <h2>关键流程模块</h2>
+    </div>
+    
+    <div class="process-blocks">
+      <!-- MWD端到端管理 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-map-marked-alt"></i>
+            MWD端到端管理
+          </div>
+          <div class="block-subtitle">MWD E2E Management</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值</div>
+            <p class="core-value-content">
+              MWD/减值计提与冲回确保财务真实性，要求与库存/需求/转产策略联动，避免过计或漏计。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>基于SKU×区域×通道建立责任金与E&O暴露预测，驱动S&OP红线与处置优先级。</li>
+              <li>对不同通道/区域做价格-销量响应建模与清仓路径优化，平衡回收率与速度。</li>
+              <li>自动解析NCNR/MOQ/价保/回购条款，结合在途与需求偏差给出‘最小责任金’谈判建议。</li>
+              <li>构建计划→财务桥接，自动计提/冲回MWD并给出差异解释，提升透明度与合规。</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='new_product_management', module_name='source_plan') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>采购流程分析系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
+  </footer>
+</body>
+</html>

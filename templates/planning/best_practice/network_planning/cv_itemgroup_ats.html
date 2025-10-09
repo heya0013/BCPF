@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CV Itemgroup ATS 案例研究 - Supply Huddle</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice.css') }}"/>
+  <style>
+    .ai-scenario-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:25px; margin:30px 0; }
+    .scenario-card { background:white; border-radius:12px; padding:22px; box-shadow:0 6px 18px rgba(0,0,0,0.05); border-top:4px solid #2c7be5; transition:all .28s; }
+    .scenario-card:hover{ transform:translateY(-6px); box-shadow:0 14px 30px rgba(44,123,229,0.12); }
+    .scenario-icon{ font-size:2.2rem; color:#2c7be5; text-align:center; margin-bottom:10px;}
+    .scenario-title{ font-size:1.25rem; text-align:center; color:#2c3e50; margin-bottom:10px; font-weight:600;}
+    .kpi-list{ list-style:none; padding:0; margin:0; color:#5a6a7d; }
+    .industry-case{ background:linear-gradient(135deg,#f9fbff 0%,#eef6ff 100%); border-radius:12px; padding:20px; margin:18px 0;}
+    .stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; margin-top:12px; }
+    .stat-card{ background:#fff; border-radius:10px; padding:14px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.04); }
+    .stat-value{ font-weight:700; color:#2c7be5; font-size:1.25rem; }
+    .back-btn{ display:inline-block; padding:10px 14px; border-radius:8px; background:#486EBC; color:#fff; text-decoration:none; margin-top:18px;}
+  </style>
+</head>
+<body>
+  <header class="best-practice-header">
+    <div class="header-content">
+      <h1 class="best-practice-title">CV Itemgroup ATS（Item / Group 可售库存）</h1>
+      <div class="best-practice-subtitle">可售口径 → 动态 ATS 计算 → 排他/优先规则驱动的分配</div>
+      <p class="process-desc">重点：提升 item-level 可售可见性与准确的可售口径定义，支持实时承诺与店仓互补履约。</p>
+    </div>
+  </header>
+
+  <div class="best-practice-container">
+    <!-- 1️⃣ AI 应用场景 -->
+    <section class="best-practice-section">
+      <h2 class="section-title">AI 应用场景</h2>
+      <div class="ai-scenario-grid">
+        <div class="scenario-card">
+          <div class="scenario-icon"><i class="fas fa-boxes"></i></div>
+          <h3 class="scenario-title">可售口径与策略引擎</h3>
+          <p>统一定义 ATS 口径（含在途、保留、被占用、店内可售），在分配引擎中按优先级与规则计算实时 ATS。</p>
+        </div>
+        <div class="scenario-card">
+          <div class="scenario-icon"><i class="fas fa-truck-plane"></i></div>
+          <h3 class="scenario-title">短期到货预测 + 动态 ATS</h3>
+          <p>结合 ETA / 运输数据与 ML 模型预测短期到货，动态调整承诺窗口。</p>
+        </div>
+        <div class="scenario-card">
+          <div class="scenario-icon"><i class="fas fa-bolt"></i></div>
+          <h3 class="scenario-title">事件驱动集成（CDC）</h3>
+          <p>CDC 实时捕获变更并触发规则引擎，保证多系统 ATS 一致。</p>
+        </div>
+        <div class="scenario-card">
+          <div class="scenario-icon"><i class="fas fa-eye"></i></div>
+          <h3 class="scenario-title">可解释看板 + 行动建议</h3>
+          <p>XAI 解释 ATS 变化，推送补货/调拨建议，实现“建议 - 采纳 - 反馈”闭环。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2️⃣ AI 应用场景效果分析 -->
+    <section class="best-practice-section">
+      <h2 class="section-title">AI 应用场景效果分析</h2>
+      <div class="industry-case">
+        <p>通过 item-level 可见性和 ETA 预测，承诺口径一致性显著提升，减少人工校正与改期；CDC 实时集成降低二次改配；XAI 看板改善争议关闭周期和客户体验。</p>
+      </div>
+    </section>
+
+    <!-- 3️⃣ KPI 和预期提升幅度 -->
+    <section class="best-practice-section">
+      <h2 class="section-title">KPI 与预期提升幅度</h2>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-value">承诺准确率</div><div class="stat-label">+5–15%</div></div>
+        <div class="stat-card"><div class="stat-value">改期率</div><div class="stat-label">下降 10–20%</div></div>
+        <div class="stat-card"><div class="stat-value">争议关闭周期</div><div class="stat-label">缩短 20–40%</div></div>
+        <div class="stat-card"><div class="stat-value">客户处理时长</div><div class="stat-label">下降 15–30%</div></div>
+      </div>
+    </section>
+
+    <!-- 4️⃣ 实际行业案例 -->
+    <section class="best-practice-section">
+      <h2 class="section-title">实际行业案例</h2>
+      <div class="industry-case">
+        <h3 class="case-title">Inditex / Zara：RFID 提升库存可见性</h3>
+        <p>Inditex 自 2014 年起在 Zara 门店和 DC 铺设 RFID，提高了库存可见性与补货速度，为准确 ATS 和实时承诺提供数据支撑。</p>
+        <p style="font-size:0.9rem;color:#394a5a;">小结：Item-level 可见性是高准确度 ATS 的前提，随后结合 ETA、规则引擎与 XAI 才能全面放量。</p>
+      </div>
+    </section>
+
+    <div style="text-align:center; margin:20px 0;">
+      <a class="back-btn" href="{{ url_for('smart_allocation') }}"><i class="fas fa-arrow-left"></i> 返回智能分配</a>
+    </div>
+
+    <!-- 参考 -->
+    <section class="best-practice-section">
+      <h2 class="section-title">参考与来源</h2>
+      <ul class="kpi-list">
+        <li>Inditex 官方声明 — RFID 部署相关报道</li>
+        <li>Business of Fashion / RFIDJournal — 零售库存可见性</li>
+        <li>McKinsey — AI 在供应链的应用综述</li>
+      </ul>
+    </section>
+  </div>
+
+  <footer><small>采购流程分析系统 © 2023–2025 | Available-to-Sell • 实时可售口径</small></footer>
+</body>
+</html>

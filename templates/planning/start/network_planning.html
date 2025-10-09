@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>网络规划</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-buttons">
+        <a href="supplier_management.html" class="nav-btn">供应商管理</a>
+        <a href="execution_collaboration.html" class="nav-btn">采购执行</a>
+        <a href="contract_management.html" class="nav-btn">合同管理</a>
+        <a href="cost_management.html" class="nav-btn">成本控制</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 流程标题区域 -->
+  <section class="header-section">
+    <div class="header-content">
+      <div class="process-icon">
+        <i class="fas fa-truck-loading"></i>
+      </div>
+      <h1 class="process-title">网络规划</h1>
+      <div class="process-subtitle">network planning</div>
+      <div class="process-desc">
+        其核心目标是构建一个高效、敏捷且成本最优的物流网络，以提升客户服务水平，同时平衡运输、仓储和库存持有总成本，增强供应链的整体韧性。
+      </div>
+    </div>
+  </section>
+
+  <!-- 关键流程块区域 -->
+  <div class="container">
+    <div class="section-title">
+      <h2>关键流程模块</h2>
+    </div>
+    <div class="process-blocks">
+      <!-- ODM赋能 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-eye"></i>
+            ODM赋能
+          </div>
+          <div class="block-subtitle">ODM Enablement</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>业务价值</strong>
+            </div>
+            <p class="key-reason-text">
+              ODM/EMS Enablement 保证外协制造网络与自有网络口径一致，涵盖BOM/锁定/出货规则与在途对账，降低信息时延。
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>建立DRP/Deployment优化器，联合库存定位、运输时效与通道能力，按多目标（服务水平/总成本/现金占用）求解部署波次与路径。</li>
+              <li>建设在途与通道能力可视化（Lane Monitor），结合ETA预测，提前暴露拥堵与偏差并重算部署。</li>
+              <li>固化网络定位与延迟配置策略（Postponement/Cross-dock），将S&OP政策落地为DRP规则。</li>
+              <li>推进 ODM/EMS Enablement：对齐BOM/锁定/出货窗口与在途对账，减少口径分裂与信息时延。</li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='po_delivery', module_name='inbound_visibility') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    
+     
+
+    </div>
+  </div>
+
+  <footer>
+    <p>采购流程分析系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Function Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#165DFF',
+            secondary: '#36CFC9',
+            accent: '#722ED1',
+            neutral: '#F5F7FA',
+            'neutral-dark': '#1D2129',
+            success: '#52C41A',
+            warning: '#FAAD14',
+            danger: '#FF4D4F',
+          },
+          fontFamily: {
+            inter: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .card-shadow {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      }
+      .hover-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .hover-lift:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(22, 93, 255, 0.15);
+      }
+    }
+  </style>
+</head>
+
+<body class="font-inter bg-gray-50 text-neutral-dark min-h-screen flex flex-col">
+  <!-- 顶部导航栏 -->
+  <header class="bg-white shadow-sm sticky top-0 z-50 transition-all duration-300">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-3">
+          <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-white">
+            <i class="fa fa-cubes text-xl"></i>
+          </div>
+          <div>
+            <h1 class="text-xl font-bold text-primary">Function Hub</h1>
+            <p class="text-xs text-gray-500 -mt-1">Central Management System</p>
+          </div>
+        </div>
+        
+        <div class="flex items-center space-x-6">
+          <button class="text-gray-500 hover:text-primary transition-colors">
+            <i class="fa fa-bell-o text-xl"></i>
+          </button>
+          <div class="flex items-center space-x-2">
+            <img src="{{ url_for('static', filename='images/user-avatar.jpg') }}" alt="User Avatar" class="w-8 h-8 rounded-full object-cover border-2 border-primary/20">
+            <span class="text-sm font-medium">Admin User</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主内容区（核心修改：模块卡片的href路径） -->
+  <main class="flex-grow container mx-auto px-4 py-8">
+    <div class="mb-8">
+      <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800">Function Dashboard</h2>
+      <p class="text-gray-500 mt-2">Access and manage all system functions from one central location</p>
+    </div>
+    
+    <!-- 功能模块卡片网格（关键：每个a标签的href对应模块蓝图路径） -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <!-- 1. Supplier模块（对应/supplier/路径） -->
+      <a href="/supplier/" class="block">
+        <div class="bg-white rounded-xl p-6 card-shadow hover-lift h-full">
+          <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+            <i class="fa fa-handshake-o text-primary text-xl"></i>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Supplier Collaboration</h3>
+          <p class="text-gray-500 text-sm mb-4">Manage planning, execution and supply performance</p>
+          <div class="flex items-center text-primary text-sm mt-auto">
+            <span>Access Module</span>
+            <i class="fa fa-arrow-right ml-2"></i>
+          </div>
+        </div>
+      </a>
+
+      <!-- 2. Procurement模块（对应/procurement/路径） -->
+      <a href="/procurement/" class="block">
+        <div class="bg-white rounded-xl p-6 card-shadow hover-lift h-full">
+          <div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-4">
+            <i class="fa fa-shopping-cart text-secondary text-xl"></i>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Procurement</h3>
+          <p class="text-gray-500 text-sm mb-4">Handle PR/PO, contracts and supplier management</p>
+          <div class="flex items-center text-secondary text-sm mt-auto">
+            <span>Access Module</span>
+            <i class="fa fa-arrow-right ml-2"></i>
+          </div>
+        </div>
+      </a>
+
+      <!-- 3. Quality模块（对应/quality/路径） -->
+      <a href="/quality/" class="block">
+        <div class="bg-white rounded-xl p-6 card-shadow hover-lift h-full">
+          <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+            <i class="fa fa-check-circle text-accent text-xl"></i>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Quality Management</h3>
+          <p class="text-gray-500 text-sm mb-4">Manage supply chain and product lifecycle quality</p>
+          <div class="flex items-center text-accent text-sm mt-auto">
+            <span>Access Module</span>
+            <i class="fa fa-arrow-right ml-2"></i>
+          </div>
+        </div>
+      </a>
+
+      <!-- 4. Logistics模块（对应/logistics/路径） -->
+      <a href="/logistics/" class="block">
+        <div class="bg-white rounded-xl p-6 card-shadow hover-lift h-full">
+          <div class="w-12 h-12 rounded-lg bg-success/10 flex items-center justify-center mb-4">
+            <i class="fa fa-truck text-success text-xl"></i>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Logistics</h3>
+          <p class="text-gray-500 text-sm mb-4">Manage warehousing, transportation and trade compliance</p>
+          <div class="flex items-center text-success text-sm mt-auto">
+            <span>Access Module</span>
+            <i class="fa fa-arrow-right ml-2"></i>
+          </div>
+        </div>
+      </a>
+
+      <!-- （可选）其他模块卡片可按此格式补充 -->
+      <a href="#" class="block opacity-50 cursor-not-allowed">
+        <div class="bg-white rounded-xl p-6 card-shadow h-full">
+          <div class="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center mb-4">
+            <i class="fa fa-cog text-gray-400 text-xl"></i>
+          </div>
+          <h3 class="text-lg font-semibold mb-2 text-gray-400">More Modules</h3>
+          <p class="text-gray-300 text-sm mb-4">To be developed</p>
+          <div class="flex items-center text-gray-400 text-sm mt-auto">
+            <span>Coming Soon</span>
+            <i class="fa fa-arrow-right ml-2"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+    
+    <!-- 辅助信息区（保持不变） -->
+    <div class="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-1 bg-white rounded-xl p-6 card-shadow">
+        <h3 class="text-lg font-semibold mb-4 flex items-center">
+          <i class="fa fa-tachometer text-primary mr-2"></i> System Status
+        </h3>
+        <div class="space-y-4">
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-gray-600">Overall Health</span>
+            <span class="px-3 py-1 bg-success/10 text-success text-xs rounded-full">Operational</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-gray-600">Last Backup</span>
+            <span class="text-sm">Today, 08:30 AM</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-gray-600">Active Users</span>
+            <span class="text-sm">24</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-gray-600">Pending Updates</span>
+            <span class="text-sm">1</span>
+          </div>
+        </div>
+        <button class="mt-6 w-full py-2 text-center text-primary text-sm border border-primary/30 rounded-lg hover:bg-primary/5 transition-colors">
+          View Detailed Status
+        </button>
+      </div>
+      
+      <div class="lg:col-span-2 bg-white rounded-xl p-6 card-shadow">
+        <h3 class="text-lg font-semibold mb-4 flex items-center">
+          <i class="fa fa-history text-primary mr-2"></i> Recent Activity
+        </h3>
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead>
+              <tr>
+                <th class="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Activity</th>
+                <th class="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Module</th>
+                <th class="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User</th>
+                <th class="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <tr>
+                <td class="px-2 py-3 text-sm">Quality audit completed</td>
+                <td class="px-2 py-3 text-sm"><span class="px-2 py-1 bg-accent/10 text-accent text-xs rounded">Quality</span></td>
+                <td class="px-2 py-3 text-sm">John Smith</td>
+                <td class="px-2 py-3 text-sm text-gray-500">10:24 AM</td>
+              </tr>
+              <tr>
+                <td class="px-2 py-3 text-sm">New supplier added</td>
+                <td class="px-2 py-3 text-sm"><span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded">Supplier</span></td>
+                <td class="px-2 py-3 text-sm">Jane Doe</td>
+                <td class="px-2 py-3 text-sm text-gray-500">Yesterday</td>
+              </tr>
+              <tr>
+                <td class="px-2 py-3 text-sm">PO created</td>
+                <td class="px-2 py-3 text-sm"><span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">Procurement</span></td>
+                <td class="px-2 py-3 text-sm">Michael Brown</td>
+                <td class="px-2 py-3 text-sm text-gray-500">Yesterday</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button class="mt-4 text-primary text-sm hover:text-primary/80 transition-colors">
+          View All Activities <i class="fa fa-angle-right ml-1"></i>
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="bg-white border-t border-gray-200 mt-12">
+    <div class="container mx-auto px-4 py-6">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <p class="text-sm text-gray-500">© 2023 Function Hub. All rights reserved.</p>
+        </div>
+        <div class="flex space-x-6">
+          <a href="#" class="text-gray-500 hover:text-primary text-sm transition-colors">Help Center</a>
+          <a href="#" class="text-gray-500 hover:text-primary text-sm transition-colors">Privacy Policy</a>
+          <a href="#" class="text-gray-500 hover:text-primary text-sm transition-colors">Contact Support</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 交互脚本 -->
+  <script>
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 10) {
+        header.classList.add('shadow');
+      } else {
+        header.classList.remove('shadow');
+      }
+    });
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      const cards = document.querySelectorAll('.hover-lift');
+      cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(10px)';
+        setTimeout(() => {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, 100 * index);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>过渡计划</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+
+
+  <!-- 流程标题区域 -->
+  <section class="header-section">
+    <div class="header-content">
+      <div class="process-icon">
+        <i class="fas fa-file-invoice-dollar"></i>
+      </div>
+      <h1 class="process-title">过渡计划</h1>
+      <div class="process-subtitle">Transition Planning</div>
+      <div class="process-desc">
+        在产品迭代或生产切换过程中，制定资源与产能的过渡方案，确保新旧产品平稳衔接，减少停工、浪费与供应链波动。
+      </div>
+    </div>
+  </section>
+
+  <!-- 关键流程块区域 -->
+  <div class="container">
+    <div class="section-title">
+      <h2>关键流程模块</h2>
+    </div>
+    <div class="process-blocks">
+      <!-- 零部件EC管理 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-money-check-alt"></i>
+            零部件EC管理
+          </div>
+          <div class="block-subtitle">Components EC Management</div>
+        </div>
+        <div class="block-body">
+          <p class="block-desc">
+          <!-- 添加的关键理由部分 -->
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>关键理由</strong>
+            </div>
+            <p class="key-reason-text">
+              Phase-in/Phase-out 与爬坡/降坡计划决定切换窗口与服务稳定，需与工厂/网络/分配协同。
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li></li>
+            </ul>
+          </div>
+          <!-- 最佳实践按钮 -->
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='PRR', module_name='Payment_Management') }}" 
+               class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- 零部件转移 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-balance-scale"></i>
+            零部件转移
+          </div>
+          <div class="block-subtitle">Components Transition</div>
+        </div>
+        <div class="block-body">
+          <p class="block-desc">
+          <!-- 添加的关键理由部分 -->
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>关键理由</strong>
+            </div>
+            <p class="key-reason-text">
+              EOL/LTB/LTS 管理决定旧品清尾与现金风险，是控制E&O与责任金的核心抓手。
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li></li>
+            </ul>
+          </div>
+          <!-- 最佳实践按钮 -->
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='PRR', module_name='Recon_Management') }}" 
+               class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- 产品转移 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-hand-holding-usd"></i>
+            产品转移
+          </div>
+          <div class="block-subtitle">Product Transition</div>
+        </div>
+        <div class="block-body">
+          <p class="block-desc">
+            <!-- 添加的关键理由部分 -->
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>关键理由</strong>
+            </div>
+            <p class="key-reason-text">
+              EOL/LTB/LTS 管理决定旧品清尾与现金风险，是控制E&O与责任金的核心抓手。；责任金/减值（MWD）约束转产与清尾节奏，需纳入S&OP/财务协同。
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li></li>
+            </ul>
+          </div>
+          <!-- 最佳实践按钮 -->
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='PRR', module_name='Rebate_Management') }}" 
+               class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 转移模拟 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-money-check-alt"></i>
+            转移模拟
+          </div>
+          <div class="block-subtitle">Transition Simulation</div>
+        </div>
+        <div class="block-body">
+          <p class="block-desc">
+          <!-- 添加的关键理由部分 -->
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>关键理由</strong>
+            </div>
+            <p class="key-reason-text">
+              责任金/减值（MWD）约束转产与清尾节奏，需纳入S&OP/财务协同。
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li></li>
+            </ul>
+          </div>
+          <!-- 最佳实践按钮 -->
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='PRR', module_name='Payment_Management') }}" 
+               class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+  <footer>
+    <p>采购流程分析系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>寻源管理 - 采购流程分析</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <style>
+    /* 寻源管理特定样式 */
+    .source-process .process-icon {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .core-value {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 4px solid #3498db;
+    }
+    
+    .core-value-title {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    
+    .core-value-content {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <nav class="navbar">
+    <div class="nav-container">  
+      <div class="nav-buttons">
+        <a href="supplier_management.html" class="nav-btn">供应商管理</a>
+        <a href="source_to_award.html" class="nav-btn">寻源到授标</a>
+        <a href="contract_management.html" class="nav-btn">合同管理</a>
+        <a href="cost_management.html" class="nav-btn">成本控制</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 流程标题区域 -->
+  <section class="header-section source-process">
+    <div class="header-content">
+      <div class="process-icon">
+        <i class="fas fa-search"></i>
+      </div>
+      <h1 class="process-title">销售与运营计划</h1>
+      <div class="process-subtitle">S&OP</div>
+      <div class="process-desc">
+        全面管理寻源流程，从需求分析到风险监控，确保供应连续性、成本优化和合规性。本流程涵盖计划分析、变更管理、寻源指导和风险管理等关键环节。
+      </div>
+    </div>
+  </section>
+
+  <!-- 关键流程块区域 -->
+  <div class="container">
+    <div class="section-title">
+      <h2>关键流程模块</h2>
+    </div>
+    
+    <div class="process-blocks">
+      <!-- 品类规划 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-clipboard-list"></i>
+            品类规划
+          </div>
+          <div class="block-subtitle">Segment Planning</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值</div>
+            <p class="core-value-content">
+              S&OP/IBP 通过月度例会实现需求、供给与财务三结合的滚动共识，是One Plan与策略变更的最高门禁。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>构建情景优化与多目标权衡（服务水平 / 现金 / 利润），自动生成候选情景并量化代价函数，支持会议“一键对比”</li>
+              <li>建设 Financial Reconciliation 模块，将量化计划自动映射至收入/毛利/现金流，并校验单位经济与预算对齐</li>
+              <li>用AI生成议题与纪要（异常 → 议题 → 决策），自动分配Owner与截止日期，并追踪闭环状态</li>
+              <li>构建风险登记与对冲库（供应中断、物流拥堵、需求暴增），情景触发自动回调政策与缓冲</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='source_management', module_name='source_plan_bom') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 区域产销协同会议 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-sync-alt"></i>
+            区域产销协同会议
+          </div>
+          <div class="block-subtitle">Regional Product S&OP</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值</div>
+            <p class="core-value-content">
+              S&OP/IBP 通过月度例会实现需求、供给与财务三结合的滚动共识，是One Plan与策略变更的最高门禁。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>构建情景优化与多目标权衡，聚合区域层级的场景对比与跨品类/跨区域的多目标权衡</li>
+              <li>建设 Financial Reconciliation 模块，进行区域层级财务对账，保证整体预算、现金流与财务目标一致</li>
+              <li>用AI生成区域S&OP会议议题与纪要，聚合跨职能异常，形成决策闭环</li>
+              <li>构建风险登记与对冲库，区域层面协调风险对冲策略，触发跨区域或跨产品的缓冲动作</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='source_management', module_name='pcr_management') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>     
+    </div>
+  </div>
+
+  <footer>
+    <p>采购流程分析系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
+  </footer>
+</body>
+</html>

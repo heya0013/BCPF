@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>成本管理 - 采购流程分析</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <style>
+    /* 成本管理特定样式 */
+    .cost-process .process-icon {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .core-value {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 4px solid #e74c3c;
+    }
+    
+    .core-value-title {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    
+    .core-value-content {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 流程标题区域 -->
+  <section class="header-section cost-process">
+    <div class="header-content">
+      <div class="process-icon">
+        <i class="fas fa-money-bill-wave"></i>
+      </div>
+      <h1 class="process-title">需求计划</h1>
+      <div class="process-subtitle">Demand Planning</div>
+      <div class="process-desc">
+        基于历史数据与市场趋势进行需求预测，提升计划准确性，帮助企业实现生产、采购与销售的协同，降低不确定性与波动风险。
+      </div>
+    </div>
+  </section>
+
+  <!-- 关键流程块区域 -->
+  <div class="container">
+    <div class="section-title">
+      <h2>关键流程模块</h2>
+    </div>
+    
+    <div class="process-blocks">
+      <!-- 长期预测 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-chart-line"></i>
+            长期预测
+          </div>
+          <div class="block-subtitle">LTF (Long Term Forecast)</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>核心价值</strong>
+            </div>
+            <p class="key-reason-text">
+              基线预测提供供给与库存策略的量化底座，需支持分层汇总一致性与偏差治理（MAPE/WAPE/Bias/FVA）。"数据地基"，可形成对标与趋势预测，为RFx与合同价格变更提供定量依据。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>建立多模型融合的分层可解释预测（统计+ML+因果），结合Demand Sensing与促销/价格弹性建模</li>
+              <li>以类比法+相似度检索+外部先行指标（搜索/媒体）构建NPI冷启动预测与替换链路管理</li>
+              <li>严格执行FVA评估与偏差门禁，并将预测与S&OP/One Plan联动打通</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='demand_planning', module_name='ltf') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 细分产品长期预测 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-search-dollar"></i>
+            细分产品长期预测
+          </div>
+          <div class="block-subtitle">Segment Product LTF</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>核心价值</strong>
+            </div>
+            <p class="key-reason-text">
+              该流程直接决定供需平衡的质量与稳定性，是端到端计划的起点。"路线图式"闭环，是季度/年度降本治理的主场，驱动跨职能协同落地。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>建立多模型融合的分层可解释预测（统计+ML+因果），结合Demand Sensing与促销/价格弹性建模</li>
+              <li>建设促销提升、价格弹性与互相蚕食模型，联动分配与网络部署的资源预置</li>
+              <li>以类比法+相似度检索+外部先行指标（搜索/媒体）构建NPI冷启动预测与替换链路管理</li>
+              <li>严格执行FVA评估与偏差门禁，并将预测与S&OP/One Plan联动打通</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='demand_planning', module_name='segment_product_ltf') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 预测净需求计算 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-tools"></i>
+            预测净需求计算
+          </div>
+          <div class="block-subtitle"> Forecast Netting</div>
+        </div>
+        <div class="block-body">
+          <div class="key-reason-top">
+            <div class="key-reason-header">
+              <strong>核心价值</strong>
+            </div>
+            <p class="key-reason-text">
+              基线预测提供供给与库存策略的量化底座，需支持分层汇总一致性与偏差治理（MAPE/WAPE/Bias/FVA）。；Demand Sensing 利用短期外部信号（POS/网页/在途）实时纠偏，提高短期承诺稳定性。
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>引入POS/网页/渠道库存与在途等高频数据，做Nowcast纠偏与突发识别，驱动ATS与承诺稳定</li>
+              <li>严格执行FVA评估与偏差门禁，并将预测与S&OP/One Plan联动打通</li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('best_practice', process='demand_planning', module_name='forecast_netting') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>采购流程分析系统 © 2025 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
+  </footer>
+</body>
+</html>

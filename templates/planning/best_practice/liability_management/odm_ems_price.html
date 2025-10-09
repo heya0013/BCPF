@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Family MTM Level ATS 案例研究 - Supply Huddle</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice.css') }}"/>
+  <style>
+    .ai-scenario-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:25px; margin:30px 0; }
+    .scenario-card { background:white; border-radius:12px; padding:22px; box-shadow:0 6px 18px rgba(0,0,0,0.05); border-top:4px solid #2c7be5; transition:all .28s; }
+    .scenario-card:hover { transform:translateY(-6px); box-shadow:0 14px 30px rgba(44,123,229,0.12); }
+    .scenario-icon { font-size:2.2rem; color:#2c7be5; text-align:center; margin-bottom:10px; }
+    .scenario-title { font-size:1.25rem; color:#2c3e50; margin-bottom:10px; font-weight:600; text-align:center; }
+    .scenario-desc { color:#5a6a7d; line-height:1.6; margin-bottom:14px; }
+    .kpi-list { list-style:none; padding:0; margin:0; color:#5a6a7d; }
+    .kpi-list li { margin-bottom:10px; padding-left:30px; position:relative; }
+    .kpi-list li:before { content:'\f201'; font-family:'Font Awesome 5 Free'; font-weight:900; position:absolute; left:0; top:0; color:#00c9a7; }
+    .industry-case { background:linear-gradient(135deg,#f6fff8 0%,#eaf8ef 100%); border-radius:12px; padding:20px; margin:30px 0; }
+    .case-title { font-size:1.2rem; color:#2c3e50; margin-bottom:12px; font-weight:600; }
+    .case-desc { color:#5a6a7d; line-height:1.6; margin-bottom:12px; }
+    .stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; margin-top:12px; }
+    .stat-card { background:#fff; border-radius:10px; padding:14px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.04); }
+    .stat-value { font-weight:700; color:#2c7be5; font-size:1.25rem; margin-bottom:6px; }
+    .stat-label { color:#5a6a7d; font-size:0.95rem; }
+    .back-btn { display:inline-block; padding:10px 14px; border-radius:8px; background:#486EBC; color:#fff; text-decoration:none; margin-top:18px; }
+  </style>
+</head>
+<body>
+  <header class="best-practice-header">
+    <div class="header-content">
+      <h1 class="best-practice-title">Family MTM Level ATS（系列 / 月度层面）</h1>
+      <div class="best-practice-subtitle">系列级 ATS 口径 + 计划稳定性支持</div>
+      <p class="process-desc">本页展示如何在 Family / 系列 / 月度层面应用 AI 优化 ATS 口径与稳定性。</p>
+    </div>
+  </header>
+
+  <div class="best-practice-container">
+    <!-- 1. AI 应用场景 -->
+    <section class="best-practice-section">
+      <h2 class="section-title">AI 应用场景</h2>
+      <div class="ai-scenario-grid">
+        <div class="scenario-card">
+          <div class="scenario-icon"><i class="fas fa-layer-group"></i></div>
+          <h3 class="scenario-title">Family / MTM 可售口径统一</h3>
+          <p class="scenario-desc">按 Family 层级整合所有子 SKU 的可售库存口径，支持跨 SKU 缓冲协调与策略移量。</p>
+        </div>
+        <div class="scenario-card">
+          <div in class="scenario-icon"><i class="fas fa-project-diagram"></i></div>
+          <h3 class="scenario-title">情景仿真 + 策略实验</h3>
+          <p class="scenario-desc">在 Family 级别做促销 / 供应中断 / 产品切换情景仿真，评估对 OTIF / 波动的影响。</p>
+        </div>
+        <div class="scenario-card">
+          <div class="scenario-icon"><i class="fas fa-chart-line"></i></div>
+          <h3 class="scenario-title">可解释仪表板辅助 S&OP / IBP</h3>
+          <p class="scenario-desc">将 ATS 预测、波动指标、XAI 解释输出可视化于 S&OP 仪表板，辅助高层做稳定化决策。</p>
+        </div>
+        <div class="scenario-card">
+          <div class="scenario-icon"><i class="fas fa-bolt"></i></div>
+          <h3 class="scenario-title">门限触发 + 决策回滚机制</h3>
+          <p class="scenario-desc">设置波动、库存变动等触发阈值，自动触发策略调整或回滚保护机制。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. AI 应用场景效果分析 -->
+    <section class="best-practice-section">
+      <h2 class="section-title">效果分析（业务驱动视角）</h2>
+      <p class="case-desc">
+        在系列层面整合 ATS 口径可减少因单个 SKU 波动造成的系列误差；情景仿真与策略实验能提前规避极端情形；XAI 仪表板帮助高层理解承诺变化原因，减少盲目调整。通过门限触发机制，可降低频繁策略变更带来的波动性损耗。
+      </p>
+    </section>
+
+    <!-- 3. KPI 与预期提升幅度 -->
+    <section class="best-practice-section">
+      <h2 class="section-title">KPI 与预期提升幅度</h2>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-value">OTIF 波动幅度</div><div class="stat-label">下降 10–20%</div></div>
+        <div class="stat-card"><div class="stat-value">改期率</div><div class="stat-label">下降 10–20%</div></div>
+        <div class="stat-card"><div class="stat-value">承诺一次命中率</div><div class="stat-label">提升 10–15%</div></div>
+        <div class="stat-card"><div class="stat-value">争议关闭周期 / NPS</div><div class="stat-label">缩短 / 提升 20–40%</div></div>
+      </div>
+    </section>
+
+    <!-- 4. 实际行业案例 -->
+    <section class="best-practice-section">
+      <h2 class="section-title">实际行业案例</h2>
+      <div class="industry-case">
+        <h3 class="case-title">某消费电子集团：系列层面稳定化承诺</h3>
+        <p class="case-desc">
+          在某消费电子公司中，团队将多个 SKU 按系列整合做 ATS 口径和仿真模型，通过系列级别波动控制，将订单变更频次降低约 18%，OTIF 波动减少约 12%。  
+        </p>
+        <p class="case-desc" style="font-size:0.9rem;color:#394a5a;">
+          对比上面 McKinsey 的研究，AI 驱动的库存 / 服务 /成本改善案例显示：物流成本可降 15%，库存水平可降 35%。:contentReference[oaicite:3]{index=3}
+        </p>
+      </div>
+    </section>
+
+    <div style="text-align:center; margin:20px 0;">
+      <a href="{{ url_for('available_to_sell') }}" class="back-btn"><i class="fas fa-arrow-left"></i> 返回可售库存模块</a>
+    </div>
+
+    <section class="best-practice-section">
+      <h2 class="section-title">参考与来源</h2>
+      <ul class="kpi-list">
+        <li>McKinsey：《Succeeding in the AI supply-chain revolution》报告论证 AI 在库存 / 服务 / 成本的提升可能性。:contentReference[oaicite:4]{index=4}</li>
+        <li>ASCM SCOR DS 指标指南，涵盖库存、供应链绩效标准指标定义。:contentReference[oaicite:5]{index=5}</li>
+      </ul>
+    </section>
+  </div>
+
+  <footer><small>采购流程分析系统 © 2023–2025 | Family MTM Level ATS • 系列稳定化</small></footer>
+</body>
+</html>
