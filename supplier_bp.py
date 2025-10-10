@@ -13,7 +13,7 @@ supplier_bp = Blueprint(
 @supplier_bp.route('/')
 def home():
     # 模板路径简化：直接写文件名，自动对应'templates/supplier_collaboration/index.html'
-    return render_template('index.html')
+    return render_template('sc/index.html')
 
 # 3. 计划协作页面路由（访问路径：/supplier/planning_collaboration）
 @supplier_bp.route('/planning_collaboration')

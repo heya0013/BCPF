@@ -13,7 +13,7 @@ procurement_bp = Blueprint(
 @procurement_bp.route('/')
 def home():
     # 模板路径简化：相对于template_folder，直接写'index.html'
-    return render_template('index.html')
+    return render_template('procure/index.html')
 
 # 执行协作页面
 @procurement_bp.route('/execution_collaboration')

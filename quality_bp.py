@@ -13,7 +13,7 @@ quality_bp = Blueprint(
 @quality_bp.route('/')
 def home():
     # 模板路径简化：相对于template_folder，直接使用'index.html'
-    return render_template('index.html')
+    return render_template('qua/index.html')
 
 # 供应链质量管理页面
 @quality_bp.route('/Supply_Chain_Quality_Management')

@@ -12,7 +12,7 @@ logistics_bp = Blueprint(
 # 主页路由（对应原/logistics/）
 @logistics_bp.route('/')
 def home():
-    return render_template('index.html')  # 实际路径：templates/logistics/index.html
+    return render_template('logi/index.html')  # 实际路径：templates/logistics/index.html
 
 # 其他路由（无需再写"logistics/"前缀，蓝图会自动添加）
 @logistics_bp.route('/warehouse_management')

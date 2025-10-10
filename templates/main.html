@@ -79,8 +79,8 @@
   <!-- 主内容区（核心修改：模块卡片的href路径） -->
   <main class="flex-grow container mx-auto px-4 py-8">
     <div class="mb-8">
-      <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800">Function Dashboard</h2>
-      <p class="text-gray-500 mt-2">Access and manage all system functions from one central location</p>
+      <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800">Function BCPF Dashboard</h2>
+      <p class="text-gray-500 mt-2">Access and manage all functions BCPF from one central location</p>
     </div>
     
     <!-- 功能模块卡片网格（关键：每个a标签的href对应模块蓝图路径） -->
@@ -160,117 +160,8 @@
         </div>
       </a>
     </div>
-    
-    <!-- 辅助信息区（保持不变） -->
-    <div class="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
-      <div class="lg:col-span-1 bg-white rounded-xl p-6 card-shadow">
-        <h3 class="text-lg font-semibold mb-4 flex items-center">
-          <i class="fa fa-tachometer text-primary mr-2"></i> System Status
-        </h3>
-        <div class="space-y-4">
-          <div class="flex justify-between items-center">
-            <span class="text-sm text-gray-600">Overall Health</span>
-            <span class="px-3 py-1 bg-success/10 text-success text-xs rounded-full">Operational</span>
-          </div>
-          <div class="flex justify-between items-center">
-            <span class="text-sm text-gray-600">Last Backup</span>
-            <span class="text-sm">Today, 08:30 AM</span>
-          </div>
-          <div class="flex justify-between items-center">
-            <span class="text-sm text-gray-600">Active Users</span>
-            <span class="text-sm">24</span>
-          </div>
-          <div class="flex justify-between items-center">
-            <span class="text-sm text-gray-600">Pending Updates</span>
-            <span class="text-sm">1</span>
-          </div>
-        </div>
-        <button class="mt-6 w-full py-2 text-center text-primary text-sm border border-primary/30 rounded-lg hover:bg-primary/5 transition-colors">
-          View Detailed Status
-        </button>
-      </div>
-      
-      <div class="lg:col-span-2 bg-white rounded-xl p-6 card-shadow">
-        <h3 class="text-lg font-semibold mb-4 flex items-center">
-          <i class="fa fa-history text-primary mr-2"></i> Recent Activity
-        </h3>
-        <div class="overflow-x-auto">
-          <table class="min-w-full divide-y divide-gray-200">
-            <thead>
-              <tr>
-                <th class="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Activity</th>
-                <th class="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Module</th>
-                <th class="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User</th>
-                <th class="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-200">
-              <tr>
-                <td class="px-2 py-3 text-sm">Quality audit completed</td>
-                <td class="px-2 py-3 text-sm"><span class="px-2 py-1 bg-accent/10 text-accent text-xs rounded">Quality</span></td>
-                <td class="px-2 py-3 text-sm">John Smith</td>
-                <td class="px-2 py-3 text-sm text-gray-500">10:24 AM</td>
-              </tr>
-              <tr>
-                <td class="px-2 py-3 text-sm">New supplier added</td>
-                <td class="px-2 py-3 text-sm"><span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded">Supplier</span></td>
-                <td class="px-2 py-3 text-sm">Jane Doe</td>
-                <td class="px-2 py-3 text-sm text-gray-500">Yesterday</td>
-              </tr>
-              <tr>
-                <td class="px-2 py-3 text-sm">PO created</td>
-                <td class="px-2 py-3 text-sm"><span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">Procurement</span></td>
-                <td class="px-2 py-3 text-sm">Michael Brown</td>
-                <td class="px-2 py-3 text-sm text-gray-500">Yesterday</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <button class="mt-4 text-primary text-sm hover:text-primary/80 transition-colors">
-          View All Activities <i class="fa fa-angle-right ml-1"></i>
-        </button>
-      </div>
-    </div>
   </main>
 
-  <!-- 页脚 -->
-  <footer class="bg-white border-t border-gray-200 mt-12">
-    <div class="container mx-auto px-4 py-6">
-      <div class="flex flex-col md:flex-row justify-between items-center">
-        <div class="mb-4 md:mb-0">
-          <p class="text-sm text-gray-500">© 2023 Function Hub. All rights reserved.</p>
-        </div>
-        <div class="flex space-x-6">
-          <a href="#" class="text-gray-500 hover:text-primary text-sm transition-colors">Help Center</a>
-          <a href="#" class="text-gray-500 hover:text-primary text-sm transition-colors">Privacy Policy</a>
-          <a href="#" class="text-gray-500 hover:text-primary text-sm transition-colors">Contact Support</a>
-        </div>
-      </div>
-    </div>
-  </footer>
 
-  <!-- 交互脚本 -->
-  <script>
-    window.addEventListener('scroll', function() {
-      const header = document.querySelector('header');
-      if (window.scrollY > 10) {
-        header.classList.add('shadow');
-      } else {
-        header.classList.remove('shadow');
-      }
-    });
-    
-    document.addEventListener('DOMContentLoaded', function() {
-      const cards = document.querySelectorAll('.hover-lift');
-      cards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(10px)';
-        setTimeout(() => {
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
-        }, 100 * index);
-      });
-    });
-  </script>
-</body>
-</html>
+
+        
