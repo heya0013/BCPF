@@ -140,16 +140,51 @@
     footer { text-align:center; padding:18px 8px; color:#8892A6; font-size:0.95rem; }
     /* 可解释AI 小提示样式 */
     .xai-badge { display:inline-block; background:#fff; border:1px solid #e6eefc; padding:6px 10px; border-radius:999px; font-size:0.85rem; color:#2c7be5; }
+
+    /* 中英双语翻译样式：统一控制英文排版 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.3rem;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* 适配不同元素的翻译间距 */
+    .scenario-desc .en-translation,
+    .case-desc .en-translation,
+    .kpi-list li .en-translation {
+      margin-top: 0.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 标题类元素翻译样式 */
+    .section-title .en-translation,
+    .case-title .en-translation,
+    .scenario-title .en-translation,
+    .best-practice-subtitle .en-translation,
+    .stat-label .en-translation,
+    .stat-value .en-translation {
+      margin-top: 0.1rem;
+      font-size: 0.8em;
+      display: inline-block;
+    }
   </style>
 </head>
 <body>
   <!-- 顶部标题 -->
   <header class="best-practice-header">
     <div class="header-content">
-      <h1 class="best-practice-title">智能分配（Smart Allocation） — AI 案例研究</h1>
-      <div class="best-practice-subtitle">基于规则+约束优化与 ML 融合的 Allocation 引擎</div>
+      <h1 class="best-practice-title">智能分配 — AI 案例研究
+        <span class="en-translation">Smart Allocation — AI Case Study</span>
+      </h1>
+      <div class="best-practice-subtitle">基于规则+约束优化与 ML 融合的 Allocation 引擎
+        <span class="en-translation">Rule-Based + Constraint Optimization and ML Integrated Allocation Engine</span>
+      </div>
       <p class="process-desc">
-        本页展示“智能分配”在供应链订单承诺与履约中的应用场景、效果分析、关键KPI与行业落地案例，供规划与实施参考。
+        本页展示"智能分配"在供应链订单承诺与履约中的应用场景、效果分析、关键KPI与行业落地案例，供规划与实施参考。
+        <span class="en-translation">This page demonstrates the application scenarios, effect analysis, key KPIs, and industry implementation cases of "Smart Allocation" in supply chain order commitment and fulfillment, providing references for planning and implementation.</span>
       </p>
     </div>
   </header>
@@ -157,21 +192,32 @@
   <div class="best-practice-container">
     <!-- AI 应用场景 -->
     <div class="best-practice-section">
-      <h2 class="section-title">AI 应用场景</h2>
+      <h2 class="section-title">AI 应用场景
+        <span class="en-translation">AI Application Scenarios</span>
+      </h2>
 
       <div class="ai-scenario-grid">
         <div class="scenario-card">
           <div class="scenario-icon" aria-hidden="true">
             <i class="fas fa-cogs"></i>
           </div>
-          <h3 class="scenario-title">规则 + 约束优化 + ML 融合的 Allocation 引擎</h3>
+          <h3 class="scenario-title">规则 + 约束优化 + ML 融合的 Allocation 引擎
+            <span class="en-translation">Rule + Constraint Optimization + ML Integrated Allocation Engine</span>
+          </h3>
           <p class="scenario-desc">
             将业务规则与实时约束（库存、交期、优先级、运输能力）与机器学习的需求/短缺预测结合，自动给出最优分配（谁先发、从哪个 DC、是否拆单或部分履约），同时保持业务策略可配置。
+            <span class="en-translation">Combine business rules with real-time constraints (inventory, delivery dates, priorities, transportation capacity) and machine learning demand/shortage predictions to automatically provide optimal allocation (who to ship first, from which DC, whether to split orders or partial fulfillment), while maintaining configurable business strategies.</span>
           </p>
           <ul class="kpi-list">
-            <li>首次承诺命中率（First Promise Accuracy）提升</li>
-            <li>优先客户履约率提升（High-priority fulfillment）</li>
-            <li>降低改期率 / 减少加急成本</li>
+            <li>首次承诺命中率（First Promise Accuracy）提升
+              <span class="en-translation">First Promise Accuracy Improvement</span>
+            </li>
+            <li>优先客户履约率提升（High-priority fulfillment）
+              <span class="en-translation">High-Priority Fulfillment Rate Improvement</span>
+            </li>
+            <li>降低改期率 / 减少加急成本
+              <span class="en-translation">Reduce Rescheduling Rate / Expedited Costs</span>
+            </li>
           </ul>
         </div>
 
@@ -179,13 +225,20 @@
           <div class="scenario-icon" aria-hidden="true">
             <i class="fas fa-vials"></i>
           </div>
-          <h3 class="scenario-title">情景仿真（缺料 / 突发需求 / 策略切换）</h3>
+          <h3 class="scenario-title">情景仿真（缺料 / 突发需求 / 策略切换）
+            <span class="en-translation">Scenario Simulation (Material Shortage / Sudden Demand / Strategy Switching)</span>
+          </h3>
           <p class="scenario-desc">
-            在数字孪生或沙箱中模拟多种突发情景（关键零件短缺、促销爆单、运输中断），评估 Allocation 策略的鲁棒性并选择风险最小化的分配方案，支持“一键对比”候选方案。
+            在数字孪生或沙箱中模拟多种突发情景（关键零件短缺、促销爆单、运输中断），评估 Allocation 策略的鲁棒性并选择风险最小化的分配方案，支持"一键对比"候选方案。
+            <span class="en-translation">Simulate various emergency scenarios (critical component shortages, promotional order surges, transportation disruptions) in digital twins or sandboxes, evaluate the robustness of allocation strategies and select risk-minimizing allocation solutions, supporting "one-click comparison" of candidate solutions.</span>
           </p>
           <ul class="kpi-list">
-            <li>策略变更前后 OTIF 与成本对比</li>
-            <li>异常订单与加急单占比变化</li>
+            <li>策略变更前后 OTIF 与成本对比
+              <span class="en-translation">OTIF and Cost Comparison Before and After Strategy Changes</span>
+            </li>
+            <li>异常订单与加急单占比变化
+              <span class="en-translation">Changes in Abnormal Orders and Expedited Order Ratios</span>
+            </li>
           </ul>
         </div>
 
@@ -193,13 +246,20 @@
           <div class="scenario-icon" aria-hidden="true">
             <i class="fas fa-database"></i>
           </div>
-          <h3 class="scenario-title">主数据 + 策略参数管理</h3>
+          <h3 class="scenario-title">主数据 + 策略参数管理
+            <span class="en-translation">Master Data + Strategy Parameter Management</span>
+          </h3>
           <p class="scenario-desc">
             统一管理 SKU 主数据、优先级规则、履约等级与 SLA 约定，支持按客户/渠道/产品线维度自定义策略，并与 Allocation 引擎实时联动。
+            <span class="en-translation">Unified management of SKU master data, priority rules, fulfillment levels and SLA agreements, supporting customized strategies by customer/channel/product line dimensions, and real-time linkage with the Allocation engine.</span>
           </p>
           <ul class="kpi-list">
-            <li>承诺一致性与可追溯性</li>
-            <li>策略版本化与实验回滚能力</li>
+            <li>承诺一致性与可追溯性
+              <span class="en-translation">Commitment Consistency and Traceability</span>
+            </li>
+            <li>策略版本化与实验回滚能力
+              <span class="en-translation">Strategy Versioning and Experiment Rollback Capability</span>
+            </li>
           </ul>
         </div>
 
@@ -207,13 +267,20 @@
           <div class="scenario-icon" aria-hidden="true">
             <i class="fas fa-eye"></i>
           </div>
-          <h3 class="scenario-title">可解释 AI（XAI）+ 可视化看板</h3>
+          <h3 class="scenario-title">可解释 AI（XAI）+ 可视化看板
+            <span class="en-translation">Explainable AI (XAI) + Visual Dashboard</span>
+          </h3>
           <p class="scenario-desc">
             为关键分配决策提供可解释性的原因说明（XAI），在控制塔仪表板展示约束命中、替代方案及预计成本变化，帮助业务快速接受并调优模型。
+            <span class="en-translation">Provide explainable reasoning (XAI) for key allocation decisions, display constraint hits, alternative solutions, and estimated cost changes on the control tower dashboard, helping business quickly accept and optimize models.</span>
           </p>
           <ul class="kpi-list">
-            <li><span class="xai-badge">XAI</span>：解释为什么把库存分配给 A 客户而非 B 客户</li>
-            <li>可视化策略实验结果与回归监控</li>
+            <li><span class="xai-badge">XAI</span>：解释为什么把库存分配给 A 客户而非 B 客户
+              <span class="en-translation"><span class="xai-badge">XAI</span>: Explain why inventory is allocated to Customer A instead of Customer B</span>
+            </li>
+            <li>可视化策略实验结果与回归监控
+              <span class="en-translation">Visualize Strategy Experiment Results and Regression Monitoring</span>
+            </li>
           </ul>
         </div>
 
@@ -221,13 +288,20 @@
           <div class="scenario-icon" aria-hidden="true">
             <i class="fas fa-bolt"></i>
           </div>
-          <h3 class="scenario-title">门限化触发 + 策略实验</h3>
+          <h3 class="scenario-title">门限化触发 + 策略实验
+            <span class="en-translation">Threshold Triggering + Strategy Experiments</span>
+          </h3>
           <p class="scenario-desc">
             通过阈值触发（如库存低于 X、优先级高于 Y）自动切换守护策略；并对候选策略做 A/B 风险实验以量化收益与副作用。
+            <span class="en-translation">Automatically switch protection strategies through threshold triggering (e.g., inventory below X, priority above Y); and conduct A/B risk experiments on candidate strategies to quantify benefits and side effects.</span>
           </p>
           <ul class="kpi-list">
-            <li>减少手工干预、缩短异常关闭周期</li>
-            <li>支持回滚与逐步放量</li>
+            <li>减少手工干预、缩短异常关闭周期
+              <span class="en-translation">Reduce Manual Intervention, Shorten Exception Closure Cycle</span>
+            </li>
+            <li>支持回滚与逐步放量
+              <span class="en-translation">Support Rollback and Gradual Scaling</span>
+            </li>
           </ul>
         </div>
       </div>
@@ -235,112 +309,175 @@
 
     <!-- 应用场景效果分析（行业 KPI 对应） -->
     <div class="best-practice-section">
-      <h2 class="section-title">AI 应用场景效果分析（行业 KPI 对应）</h2>
+      <h2 class="section-title">AI 应用场景效果分析（行业 KPI 对应）
+        <span class="en-translation">AI Application Scenario Effect Analysis (Industry KPI Correspondence)</span>
+      </h2>
 
       <div class="industry-case">
-        <h3 class="case-title">关键行业 KPI 与衡量</h3>
+        <h3 class="case-title">关键行业 KPI 与衡量
+          <span class="en-translation">Key Industry KPIs and Measurement</span>
+        </h3>
 
         <p class="case-desc">
           本方案重点关注的 KPI 包括：首次承诺命中率（First Promise Accuracy）、改期率（Reschedule Rate）、优先客户履约率（High-priority fulfillment）、OTIF、POF（Perfect Order）、加急成本、客户投诉率与争议关闭周期、NPS 以及计划稳定性与波动收敛度。
+          <span class="en-translation">The key KPIs focused on by this solution include: First Promise Accuracy, Reschedule Rate, High-priority fulfillment, OTIF, POF (Perfect Order), expedited costs, customer complaint rate and dispute closure cycle, NPS, and planning stability and fluctuation convergence.</span>
         </p>
 
         <p class="case-desc">
           这些 KPI 可分为三类：1）承诺与履约质量（首次承诺命中率、OTIF、POF、优先客户履约）；2）运营成本与应急（加急成本、异常订单率）；3）客户感受与流程收敛（投诉率、争议关闭周期、NPS、计划稳定性）。
+          <span class="en-translation">These KPIs can be divided into three categories: 1) Commitment and fulfillment quality (First Promise Accuracy, OTIF, POF, high-priority fulfillment); 2) Operational costs and emergency response (expedited costs, abnormal order rate); 3) Customer experience and process convergence (complaint rate, dispute closure cycle, NPS, planning stability).</span>
         </p>
       </div>
 
-      <h3 style="margin-top:18px;">对应的数据指标示例（供监控）</h3>
+      <h3 style="margin-top:18px;">对应的数据指标示例（供监控）
+        <span class="en-translation">Corresponding Data Indicator Examples (For Monitoring)</span>
+      </h3>
       <ul class="kpi-list" style="margin-top:10px;">
-        <li>首次承诺命中率（按日/周/产品线分解）</li>
-        <li>改期率（%）与改期次数的分布</li>
-        <li>高优先级履约率（针对 VIP / 合同客户）</li>
-        <li>加急订单占比与加急成本</li>
-        <li>争议关闭周期（平均小时/天）</li>
-        <li>OTIF 波动（rolling std）与计划稳定性收敛度</li>
+        <li>首次承诺命中率（按日/周/产品线分解）
+          <span class="en-translation">First Promise Accuracy (broken down by day/week/product line)</span>
+        </li>
+        <li>改期率（%）与改期次数的分布
+          <span class="en-translation">Reschedule Rate (%) and Distribution of Rescheduling Frequency</span>
+        </li>
+        <li>高优先级履约率（针对 VIP / 合同客户）
+          <span class="en-translation">High-Priority Fulfillment Rate (for VIP/contract customers)</span>
+        </li>
+        <li>加急订单占比与加急成本
+          <span class="en-translation">Expedited Order Ratio and Expedited Costs</span>
+        </li>
+        <li>争议关闭周期（平均小时/天）
+          <span class="en-translation">Dispute Closure Cycle (average hours/days)</span>
+        </li>
+        <li>OTIF 波动（rolling std）与计划稳定性收敛度
+          <span class="en-translation">OTIF Fluctuation (rolling std) and Planning Stability Convergence</span>
+        </li>
       </ul>
     </div>
 
-    <!-- KPI 和 预期提升幅度 -->
-    <div class="best-practice-section">
-      <h2 class="section-title">KPI 与预期提升幅度（基于行业实践与文献）</h2>
+<!-- KPI 和 预期提升幅度 -->
+<div class="best-practice-section">
+  <h2 class="section-title">KPI 与预期提升幅度（基于行业实践与文献）
+    <span class="en-translation">KPIs and Expected Improvement Range (Based on Industry Practice and Literature)</span>
+  </h2>
 
-      <div class="stats-grid" style="margin-bottom:12px;">
-        <div class="stat-card">
-          <div class="stat-value">+5–15%</div>
-          <div class="stat-label">承诺准确率（首次承诺命中率）</div>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-value">+5–10%</div>
-          <div class="stat-label">高优先级履约率</div>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-value">-5–15%</div>
-          <div class="stat-label">异常订单与加急成本</div>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-value">-20–40%</div>
-          <div class="stat-label">争议关闭周期</div>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-value">计划稳定性提升</div>
-          <div class="stat-label">OTIF 波动收敛（波动幅度下降）</div>
-        </div>
+  <div class="stats-grid" style="margin-bottom:12px;">
+    <div class="stat-card">
+      <div class="stat-value">+5–15%
+        <span class="en-translation">+5–15%</span>
       </div>
-
-      <p style="margin-top: 18px; color:#5a6a7d; line-height:1.6;">
-        以上幅度为基于行业研究与多家企业实践后的范围估计（实际效果受基础数据质量、策略粒度与变更控制能力影响）。在实施初期建议先做小规模试点（优先客户 / 指定 SKU），通过持续的策略实验与 XAI 反馈，放量推广并监控侧向影响。
-      </p>
-    </div>
-
-    <!-- 实际行业案例 -->
-    <div class="best-practice-section">
-      <h2 class="section-title">实际行业案例（示例）</h2>
-
-      <div class="industry-case">
-        <h3 class="case-title">Inditex / Zara：基于实时可见性与数据驱动的分配与补货能力</h3>
-
-        <p class="case-desc">
-          Zara（Inditex）通过在供应链大量部署 RFID 与结合门店/仓库实时数据，显著提升了库存可见性与补货速度，从而为更精准的分配与订单承诺打下基础。RFID 带来的高精度库存使其能够更快识别门店缺货、优先补货与执行更精细的分配策略，间接提升店铺可售率与履约表现。
-        </p>
-
-        <p class="case-desc">
-          公开报道与行业研究显示，RFID 与数据驱动的库存可见性能显著提高库存准确性与可用率，从而支持更高效的 allocation / order-promising 决策（参考链接见下）。该案例说明：要想把 Allocation 引擎落地并实现 OTIF / 首次承诺提升，**先提升主数据和库存可见性（item-level）是关键**。
-        </p>
-
-        <p class="case-desc" style="font-size:0.9rem; color:#394a5a;">
-          主要来源：McKinsey 行业综述（AI 在供应链的价值与实证提升）与 Inditex RFID 报道。下方“来源”有逐条链接。
-        </p>
+      <div class="stat-label">承诺准确率（首次承诺命中率）
+        <span class="en-translation">Commitment Accuracy (First Promise Accuracy)</span>
       </div>
     </div>
+
+    <div class="stat-card">
+      <div class="stat-value">+5–10%
+        <span class="en-translation">+5–10%</span>
+      </div>
+      <div class="stat-label">高优先级履约率
+        <span class="en-translation">High-Priority Fulfillment Rate</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-value">-5–15%
+        <span class="en-translation">-5–15%</span>
+      </div>
+      <div class="stat-label">异常订单与加急成本
+        <span class="en-translation">Abnormal Orders & Expedited Costs</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-value">-20–40%
+        <span class="en-translation">-20–40%</span>
+      </div>
+      <div class="stat-label">争议关闭周期
+        <span class="en-translation">Dispute Closure Cycle</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-value">计划稳定性提升
+        <span class="en-translation">Planning Stability Improvement</span>
+      </div>
+      <div class="stat-label">OTIF 波动收敛（波动幅度下降）
+        <span class="en-translation">OTIF Fluctuation Convergence (Reduced Fluctuation Amplitude)</span>
+      </div>
+    </div>
+  </div>
+
+  <p style="margin-top: 18px; color:#5a6a7d; line-height:1.6;">
+    以上幅度为基于行业研究与多家企业实践后的范围估计（实际效果受基础数据质量、策略粒度与变更控制能力影响）。在实施初期建议先做小规模试点（优先客户 / 指定 SKU），通过持续的策略实验与 XAI 反馈，放量推广并监控侧向影响。
+    <span class="en-translation">The above ranges are estimates based on industry research and practices of multiple enterprises (actual effects are influenced by basic data quality, strategy granularity, and change control capabilities). In the initial implementation phase, it is recommended to start with small-scale pilots (priority customers / specified SKUs), and gradually scale up and monitor side effects through continuous strategy experiments and XAI feedback.</span>
+  </p>
+</div>
+
+<!-- 实际行业案例 -->
+<div class="best-practice-section">
+  <h2 class="section-title">实际行业案例（示例）
+    <span class="en-translation">Practical Industry Cases (Examples)</span>
+  </h2>
+
+  <div class="industry-case">
+    <h3 class="case-title">Inditex / Zara：基于实时可见性与数据驱动的分配与补货能力
+      <span class="en-translation">Inditex / Zara: Real-Time Visibility and Data-Driven Allocation and Replenishment Capabilities</span>
+    </h3>
+
+    <p class="case-desc">
+      Zara（Inditex）通过在供应链大量部署 RFID 与结合门店/仓库实时数据，显著提升了库存可见性与补货速度，从而为更精准的分配与订单承诺打下基础。RFID 带来的高精度库存使其能够更快识别门店缺货、优先补货与执行更精细的分配策略，间接提升店铺可售率与履约表现。
+      <span class="en-translation">Zara (Inditex) significantly improved inventory visibility and replenishment speed by extensively deploying RFID in the supply chain and combining store/warehouse real-time data, thereby laying the foundation for more accurate allocation and order commitment. The high-precision inventory brought by RFID enables faster identification of store stockouts, priority replenishment, and execution of more refined allocation strategies, indirectly improving store sell-through rates and fulfillment performance.</span>
+    </p>
+
+    <p class="case-desc">
+      公开报道与行业研究显示，RFID 与数据驱动的库存可见性能显著提高库存准确性与可用率，从而支持更高效的 allocation / order-promising 决策（参考链接见下）。该案例说明：要想把 Allocation 引擎落地并实现 OTIF / 首次承诺提升，**先提升主数据和库存可见性（item-level）是关键**。
+      <span class="en-translation">Public reports and industry research show that RFID and data-driven inventory visibility can significantly improve inventory accuracy and availability, thereby supporting more efficient allocation/order-promising decisions (see reference links below). This case illustrates that to implement the Allocation engine and achieve OTIF/first promise improvements, **first improving master data and item-level inventory visibility is key**.</span>
+    </p>
+
+    <p class="case-desc" style="font-size:0.9rem; color:#394a5a;">
+      主要来源：McKinsey 行业综述（AI 在供应链的价值与实证提升）与 Inditex RFID 报道。下方"来源"有逐条链接。
+      <span class="en-translation">Main sources: McKinsey industry review (AI value and empirical improvements in supply chain) and Inditex RFID reports. Detailed links are provided in the "Sources" section below.</span>
+    </p>
+  </div>
+</div>
 
     <!-- 返回按钮 -->
     <div style="text-align: center; margin-bottom: 28px;">
       <a href="{{ url_for('smart_allocation') }}" class="back-btn">
         <i class="fas fa-arrow-left"></i> 返回智能分配
+        <span class="en-translation">Back to Smart Allocation</span>
       </a>
     </div>
 
     <!-- References -->
     <div class="best-practice-section">
-      <h2 class="section-title">来源与参考</h2>
+      <h2 class="section-title">来源与参考
+        <span class="en-translation">Sources and References</span>
+      </h2>
       <ul class="kpi-list" style="margin-top:8px;">
-        <li>McKinsey — Succeeding in the AI supply-chain revolution（行业综述与实证数据，含 AI 对库存/服务/成本的影响）。</li>
-        <li>RFIDJournal / 行业报道 — Inditex (Zara) 的 RFID 部署与库存可见性案例（用于说明如何提升 allocation 基础能力）。</li>
-        <li>行业白皮书与供应链技术提供商（关于自动化 order allocation / order promising 的做法）。</li>
+        <li>McKinsey — Succeeding in the AI supply-chain revolution（行业综述与实证数据，含 AI 对库存/服务/成本的影响）。
+          <a href="https://www.mckinsey.com/capabilities/operations/our-insights/succeeding-in-the-ai-supply-chain-revolution" target="_blank">https://www.mckinsey.com/capabilities/operations/our-insights/succeeding-in-the-ai-supply-chain-revolution</a>
+          <span class="en-translation">McKinsey — Succeeding in the AI supply-chain revolution (industry review and empirical data, including AI's impact on inventory/service/cost).</span>
+        </li>
+        <li>RFIDJournal / 行业报道 — Inditex (Zara) 的 RFID 部署与库存可见性案例（用于说明如何提升 allocation 基础能力）。
+          <span class="en-translation">RFIDJournal / Industry Reports — Inditex (Zara) RFID deployment and inventory visibility cases (used to illustrate how to improve allocation foundation capabilities).</span>
+        </li>
+        <li>行业白皮书与供应链技术提供商（关于自动化 order allocation / order promising 的做法）。
+          <span class="en-translation">Industry White Papers and Supply Chain Technology Providers (practices for automated order allocation/order promising).</span>
+        </li>
       </ul>
 
       <p style="margin-top:12px; color:#7a8899; font-size:0.9rem;">
         （注：以上页面内容为汇总与结构化呈现，具体落地请在你方环境中先做数据覆盖度与小范围试点验证。）
+        <span class="en-translation">(Note: The above page content is a summary and structured presentation. For specific implementation, please first conduct data coverage assessment and small-scale pilot verification in your environment.)</span>
       </p>
     </div>
   </div>
 
   <footer>
-    <small>计划流程分析系统 © 2023–2025 | 智能分配 • AI驱动供应链优化</small>
+    <small>计划流程分析系统 © 2023–2025 | 智能分配 • AI驱动供应链优化
+      <span class="en-translation">Planning Process Analysis System © 2023–2025 | Smart Allocation • AI-Driven Supply Chain Optimization</span>
+    </small>
   </footer>
 </body>
 </html>
