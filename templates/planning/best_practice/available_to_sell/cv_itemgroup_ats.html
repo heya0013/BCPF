@@ -19,89 +19,197 @@
     .stat-card{ background:#fff; border-radius:10px; padding:14px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.04); }
     .stat-value{ font-weight:700; color:#2c7be5; font-size:1.25rem; }
     .back-btn{ display:inline-block; padding:10px 14px; border-radius:8px; background:#486EBC; color:#fff; text-decoration:none; margin-top:18px;}
+
+    /* 中英双语翻译样式：统一控制英文排版 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.3rem;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* 适配列表项翻译的间距 */
+    .kpi-list li .en-translation,
+    .scenario-card p .en-translation,
+    .industry-case p .en-translation {
+      margin-top: 0.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 标题翻译样式 */
+    .section-title .en-translation,
+    .case-title .en-translation,
+    .stat-label .en-translation,
+    .best-practice-subtitle .en-translation {
+      margin-top: 0.1rem;
+      font-size: 0.8em;
+      display: inline-block;
+    }
   </style>
 </head>
 <body>
   <header class="best-practice-header">
     <div class="header-content">
-      <h1 class="best-practice-title">CV Itemgroup ATS（Item / Group 可售库存）</h1>
-      <div class="best-practice-subtitle">可售口径 → 动态 ATS 计算 → 排他/优先规则驱动的分配</div>
-      <p class="process-desc">重点：提升 item-level 可售可见性与准确的可售口径定义，支持实时承诺与店仓互补履约。</p>
+      <h1 class="best-practice-title">CV Itemgroup ATS（Item / Group 可售库存）
+        <span class="en-translation">CV Itemgroup ATS (Item/Group Available-to-Sell Inventory)</span>
+      </h1>
+      <div class="best-practice-subtitle">可售口径 → 动态 ATS 计算 → 排他/优先规则驱动的分配
+        <span class="en-translation">Sellable Caliber → Dynamic ATS Calculation → Exclusive/Priority Rule-Driven Allocation</span>
+      </div>
+      <p class="process-desc">重点：提升 item-level 可售可见性与准确的可售口径定义，支持实时承诺与店仓互补履约。
+        <span class="en-translation">Key Focus: Improve item-level sellable visibility and accurate definition of sellable caliber, supporting real-time commitment and store-warehouse complementary fulfillment.</span>
+      </p>
     </div>
   </header>
 
   <div class="best-practice-container">
     <!-- 1️⃣ AI 应用场景 -->
     <section class="best-practice-section">
-      <h2 class="section-title">AI 应用场景</h2>
+      <h2 class="section-title">AI 应用场景
+        <span class="en-translation">AI Application Scenarios</span>
+      </h2>
       <div class="ai-scenario-grid">
         <div class="scenario-card">
           <div class="scenario-icon"><i class="fas fa-boxes"></i></div>
-          <h3 class="scenario-title">可售口径与策略引擎</h3>
-          <p>统一定义 ATS 口径（含在途、保留、被占用、店内可售），在分配引擎中按优先级与规则计算实时 ATS。</p>
+          <h3 class="scenario-title">可售口径与策略引擎
+            <span class="en-translation">Sellable Caliber & Strategy Engine</span>
+          </h3>
+          <p>统一定义 ATS 口径（含在途、保留、被占用、店内可售），在分配引擎中按优先级与规则计算实时 ATS。
+            <span class="en-translation">Unify the definition of ATS caliber (including in-transit, reserved, occupied, in-store sellable), and calculate real-time ATS in the allocation engine according to priorities and rules.</span>
+          </p>
         </div>
         <div class="scenario-card">
           <div class="scenario-icon"><i class="fas fa-truck-plane"></i></div>
-          <h3 class="scenario-title">短期到货预测 + 动态 ATS</h3>
-          <p>结合 ETA / 运输数据与 ML 模型预测短期到货，动态调整承诺窗口。</p>
+          <h3 class="scenario-title">短期到货预测 + 动态 ATS
+            <span class="en-translation">Short-Term Arrival Prediction + Dynamic ATS</span>
+          </h3>
+          <p>结合 ETA / 运输数据与 ML 模型预测短期到货，动态调整承诺窗口。
+            <span class="en-translation">Combine ETA/transportation data with ML models to predict short-term arrivals and dynamically adjust commitment windows.</span>
+          </p>
         </div>
         <div class="scenario-card">
           <div class="scenario-icon"><i class="fas fa-bolt"></i></div>
-          <h3 class="scenario-title">事件驱动集成（CDC）</h3>
-          <p>CDC 实时捕获变更并触发规则引擎，保证多系统 ATS 一致。</p>
+          <h3 class="scenario-title">事件驱动集成（CDC）
+            <span class="en-translation">Event-Driven Integration (CDC)</span>
+          </h3>
+          <p>CDC 实时捕获变更并触发规则引擎，保证多系统 ATS 一致。
+            <span class="en-translation">CDC captures changes in real time and triggers the rule engine to ensure ATS consistency across multiple systems.</span>
+          </p>
         </div>
         <div class="scenario-card">
           <div class="scenario-icon"><i class="fas fa-eye"></i></div>
-          <h3 class="scenario-title">可解释看板 + 行动建议</h3>
-          <p>XAI 解释 ATS 变化，推送补货/调拨建议，实现“建议 - 采纳 - 反馈”闭环。</p>
+          <h3 class="scenario-title">可解释看板 + 行动建议
+            <span class="en-translation">Interpretable Dashboard + Action Recommendations</span>
+          </h3>
+          <p>XAI 解释 ATS 变化，推送补货/调拨建议，实现“建议 - 采纳 - 反馈”闭环。
+            <span class="en-translation">XAI explains ATS changes, pushes replenishment/transfer recommendations, and realizes a "recommendation-adoption-feedback" closed loop.</span>
+          </p>
         </div>
       </div>
     </section>
 
     <!-- 2️⃣ AI 应用场景效果分析 -->
     <section class="best-practice-section">
-      <h2 class="section-title">AI 应用场景效果分析</h2>
+      <h2 class="section-title">AI 应用场景效果分析
+        <span class="en-translation">Effect Analysis of AI Application Scenarios</span>
+      </h2>
       <div class="industry-case">
-        <p>通过 item-level 可见性和 ETA 预测，承诺口径一致性显著提升，减少人工校正与改期；CDC 实时集成降低二次改配；XAI 看板改善争议关闭周期和客户体验。</p>
+        <p>通过 item-level 可见性和 ETA 预测，承诺口径一致性显著提升，减少人工校正与改期；CDC 实时集成降低二次改配；XAI 看板改善争议关闭周期和客户体验。
+          <span class="en-translation">Through item-level visibility and ETA prediction, the consistency of commitment caliber is significantly improved, reducing manual correction and rescheduling; real-time CDC integration reduces secondary reallocation; XAI dashboard improves dispute closure cycle and customer experience.</span>
+        </p>
       </div>
     </section>
 
     <!-- 3️⃣ KPI 和预期提升幅度 -->
     <section class="best-practice-section">
-      <h2 class="section-title">KPI 与预期提升幅度</h2>
+      <h2 class="section-title">KPI 与预期提升幅度
+        <span class="en-translation">KPIs & Expected Improvement Range</span>
+      </h2>
       <div class="stats-grid">
-        <div class="stat-card"><div class="stat-value">承诺准确率</div><div class="stat-label">+5–15%</div></div>
-        <div class="stat-card"><div class="stat-value">改期率</div><div class="stat-label">下降 10–20%</div></div>
-        <div class="stat-card"><div class="stat-value">争议关闭周期</div><div class="stat-label">缩短 20–40%</div></div>
-        <div class="stat-card"><div class="stat-value">客户处理时长</div><div class="stat-label">下降 15–30%</div></div>
+        <div class="stat-card">
+          <div class="stat-value">承诺准确率
+            <span class="en-translation">Commitment Accuracy</span>
+          </div>
+          <div class="stat-label">+5–15%
+            <span class="en-translation">Increase by 5–15%</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">改期率
+            <span class="en-translation">Rescheduling Rate</span>
+          </div>
+          <div class="stat-label">下降 10–20%
+            <span class="en-translation">Decrease by 10–20%</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">争议关闭周期
+            <span class="en-translation">Dispute Closure Cycle</span>
+          </div>
+          <div class="stat-label">缩短 20–40%
+            <span class="en-translation">Shorten by 20–40%</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">客户处理时长
+            <span class="en-translation">Customer Handling Time</span>
+          </div>
+          <div class="stat-label">下降 15–30%
+            <span class="en-translation">Decrease by 15–30%</span>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- 4️⃣ 实际行业案例 -->
     <section class="best-practice-section">
-      <h2 class="section-title">实际行业案例</h2>
+      <h2 class="section-title">实际行业案例
+        <span class="en-translation">Practical Industry Cases</span>
+      </h2>
       <div class="industry-case">
-        <h3 class="case-title">Inditex / Zara：RFID 提升库存可见性</h3>
-        <p>Inditex 自 2014 年起在 Zara 门店和 DC 铺设 RFID，提高了库存可见性与补货速度，为准确 ATS 和实时承诺提供数据支撑。</p>
-        <p style="font-size:0.9rem;color:#394a5a;">小结：Item-level 可见性是高准确度 ATS 的前提，随后结合 ETA、规则引擎与 XAI 才能全面放量。</p>
+        <h3 class="case-title">Inditex / Zara：RFID 提升库存可见性
+          <span class="en-translation">Inditex / Zara: RFID Enhances Inventory Visibility</span>
+        </h3>
+        <p>Inditex 自 2014 年起在 Zara 门店和 DC 铺设 RFID，提高了库存可见性与补货速度，为准确 ATS 和实时承诺提供数据支撑。
+          <span class="en-translation">Since 2014, Inditex has deployed RFID in Zara stores and DCs, improving inventory visibility and replenishment speed, and providing data support for accurate ATS and real-time commitments.</span>
+        </p>
+        <p style="font-size:0.9rem;color:#394a5a;">小结：Item-level 可见性是高准确度 ATS 的前提，随后结合 ETA、规则引擎与 XAI 才能全面放量。
+          <span class="en-translation">Summary: Item-level visibility is a prerequisite for high-accuracy ATS; subsequent integration with ETA, rule engines, and XAI is required to achieve full-scale application.</span>
+        </p>
       </div>
     </section>
 
     <div style="text-align:center; margin:20px 0;">
-      <a class="back-btn" href="{{ url_for('smart_allocation') }}"><i class="fas fa-arrow-left"></i> 返回智能分配</a>
+      <a class="back-btn" href="{{ url_for('smart_allocation') }}"><i class="fas fa-arrow-left"></i> 返回智能分配
+        <span class="en-translation">Back to Smart Allocation</span>
+      </a>
     </div>
 
     <!-- 参考 -->
     <section class="best-practice-section">
-      <h2 class="section-title">参考与来源</h2>
+      <h2 class="section-title">参考与来源
+        <span class="en-translation">References & Sources</span>
+      </h2>
       <ul class="kpi-list">
-        <li>Inditex 官方声明 — RFID 部署相关报道</li>
-        <li>Business of Fashion / RFIDJournal — 零售库存可见性</li>
-        <li>McKinsey — AI 在供应链的应用综述</li>
+        <li>Inditex 官方声明 — RFID 部署相关报道
+          <span class="en-translation">Inditex Official Statement — Reports on RFID Deployment</span>
+        </li>
+        <li>Business of Fashion / RFIDJournal — 零售库存可见性
+          <span class="en-translation">Business of Fashion / RFIDJournal — Retail Inventory Visibility</span>
+        </li>
+        <li>McKinsey — AI 在供应链的应用综述
+          <span class="en-translation">McKinsey — Overview of AI Applications in Supply Chains</span>
+        </li>
       </ul>
     </section>
   </div>
 
-  <footer><small>采购流程分析系统 © 2023–2025 | Available-to-Sell • 实时可售口径</small></footer>
+  <footer>
+    <small>计划流程分析系统 © 2023–2025 | Available-to-Sell • 实时可售口径
+      <span class="en-translation">Planning Process Analysis System © 2023–2025 | Available-to-Sell • Real-Time Sellable Caliber</span>
+    </small>
+  </footer>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>供应商管理 - 采购流程分析</title>
+  <title>供应商管理 - 计划流程分析</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <style>
@@ -32,6 +32,35 @@
       line-height: 1.6;
       margin: 0;
     }
+
+    /* 中英双语翻译样式：统一控制英文排版 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.3rem;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* 适配列表项翻译的间距 */
+    .optimization-list li .en-translation {
+      margin-top: 0.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 导航按钮翻译样式 */
+    .nav-btn .en-translation {
+      margin-top: 0.1rem;
+      font-size: 0.8em;
+    }
+
+    /* 核心价值标题翻译样式 */
+    .key-reason-header .en-translation {
+      margin-top: 0.1rem;
+      font-size: 0.8em;
+      display: inline-block;
+    }
   </style>
 </head>
 <body>
@@ -39,10 +68,18 @@
   <nav class="navbar">
     <div class="nav-container">
       <div class="nav-buttons">
-        <a href="supplier_management.html" class="nav-btn active">供应商管理</a>
-        <a href="execution_collaboration.html" class="nav-btn">采购执行</a>
-        <a href="contract_management.html" class="nav-btn">合同管理</a>
-        <a href="cost_management.html" class="nav-btn">成本控制</a>
+        <a href="supplier_management.html" class="nav-btn active">供应商管理
+          <span class="en-translation">Supplier Management</span>
+        </a>
+        <a href="execution_collaboration.html" class="nav-btn">计划执行
+          <span class="en-translation">Plan Execution</span>
+        </a>
+        <a href="contract_management.html" class="nav-btn">合同管理
+          <span class="en-translation">Contract Management</span>
+        </a>
+        <a href="cost_management.html" class="nav-btn">成本控制
+          <span class="en-translation">Cost Control</span>
+        </a>
       </div>
     </div>
   </nav>
@@ -57,6 +94,7 @@
       <div class="process-subtitle">Order Promising</div>
       <div class="process-desc">
         基于库存、产能与供应情况，快速判断订单能否按期交付，提升客户满意度并优化资源利用。
+        <span class="en-translation">Based on inventory, production capacity and supply status, quickly determine whether orders can be delivered on time, improve customer satisfaction and optimize resource utilization.</span>
       </div>
     </div>
   </section>
@@ -64,7 +102,9 @@
   <!-- 关键流程块区域 -->
   <div class="container">
     <div class="section-title">
-      <h2>关键流程模块</h2>
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
     </div>
     
     <div class="process-blocks">
@@ -80,25 +120,40 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>核心价值</strong>
+              <strong>核心价值
+                <span class="en-translation">Core Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
-              ATP/CTP/ATB 承诺引擎在物料、产能与运输约束下给出可行承诺日期（PSD/EDD），直接决定客户体验与改期率。；承诺需实时校验运输时效、产能排程与物料齐套（MRP/CTB/ETA），保障承诺可兑现。
+              ATP/CTP/ATB 承诺引擎在物料、产能与运输约束下给出可行承诺日期（PSD/EDD），直接决定客户体验与改期率。
+              <span class="en-translation">The ATP/CTP/ATB promising engine provides feasible commitment dates (PSD/EDD) under material, production capacity and transportation constraints, directly determining customer experience and rescheduling rate.</span>
+              承诺需实时校验运输时效、产能排程与物料齐套（MRP/CTB/ETA），保障承诺可兑现。
+              <span class="en-translation">Commitments need to real-time verify transportation timeliness, production capacity scheduling and material readiness (MRP/CTB/ETA) to ensure commitments can be fulfilled.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
             <ul class="optimization-list">
-              <li>构建多约束ATP/CTP引擎（材料、产能、运输、政策联合求解）。 </li>
-              <li>在缺料/拥堵时生成“下一最佳”方案（拆单、替代、跨库、改期+补偿），并量化客户体验与成本。</li>
-              <li>建设全局ATP缓存（多站点/多渠道），CDC事件驱动的增量扣减与一致性校验，防止超卖。</li>
-              <li>基于ETA/产能/运输波动构建承诺风险评分，LLM对异常承诺分流处理，提前触发加急或替代</li>    
+              <li>构建多约束ATP/CTP引擎（材料、产能、运输、政策联合求解）。
+                <span class="en-translation">Build a multi-constraint ATP/CTP engine (joint solution for materials, production capacity, transportation and policies).</span>
+              </li>
+              <li>在缺料/拥堵时生成“下一最佳”方案（拆单、替代、跨库、改期+补偿），并量化客户体验与成本。
+                <span class="en-translation">Generate "next best" solutions (order splitting, substitution, cross-warehouse, rescheduling + compensation) when materials are in short supply or there is congestion, and quantify customer experience and costs.</span>
+              </li>
+              <li>建设全局ATP缓存（多站点/多渠道），CDC事件驱动的增量扣减与一致性校验，防止超卖。
+                <span class="en-translation">Build a global ATP cache (multi-site/multi-channel), CDC event-driven incremental deduction and consistency verification to prevent overselling.</span>
+              </li>
+              <li>基于ETA/产能/运输波动构建承诺风险评分，LLM对异常承诺分流处理，提前触发加急或替代
+                <span class="en-translation">Build a commitment risk score based on ETA/production capacity/transportation fluctuations, and use LLM for diversion processing of abnormal commitments to trigger expedited or substitution in advance</span>
+              </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='supplier_management', module_name='spending_management') }}" class="best-practice-btn">
+            <a href="{{ url_for('planning.best_practice', process='order_promising', module_name='available_to_build') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -117,23 +172,34 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>核心价值</strong>
+              <strong>核心价值
+                <span class="en-translation">Core Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
-              ATP/CTP/ATB 承诺引擎在物料、产能与运输约束下给出可行承诺日期（PSD/EDD），直接决定客户体验与改期率。；与ATS的双向同步可避免重复承诺与超卖，保证渠道口径一致。
+              ATP/CTP/ATB 承诺引擎在物料、产能与运输约束下给出可行承诺日期（PSD/EDD），直接决定客户体验与改期率。
+              <span class="en-translation">The ATP/CTP/ATB promising engine provides feasible commitment dates (PSD/EDD) under material, production capacity and transportation constraints, directly determining customer experience and rescheduling rate.</span>
+              与ATS的双向同步可避免重复承诺与超卖，保证渠道口径一致。
+              <span class="en-translation">Two-way synchronization with ATS can avoid duplicate commitments and overselling, ensuring consistent channel standards.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
             <ul class="optimization-list">
-              <li>建设全局ATP缓存（多站点/多渠道），CDC事件驱动的增量扣减与一致性校验，防止超卖。</li>
-              <li>基于ETA/产能/运输波动构建承诺风险评分，LLM对异常承诺分流处理，提前触发加急或替代。</li>
+              <li>建设全局ATP缓存（多站点/多渠道），CDC事件驱动的增量扣减与一致性校验，防止超卖。
+                <span class="en-translation">Build a global ATP cache (multi-site/multi-channel), CDC event-driven incremental deduction and consistency verification to prevent overselling.</span>
+              </li>
+              <li>基于ETA/产能/运输波动构建承诺风险评分，LLM对异常承诺分流处理，提前触发加急或替代。
+                <span class="en-translation">Build a commitment risk score based on ETA/production capacity/transportation fluctuations, and use LLM for diversion processing of abnormal commitments to trigger expedited or substitution in advance.</span>
+              </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='supplier_management', module_name='onboarding') }}" class="best-practice-btn">
+            <a href="{{ url_for('planning.best_practice', process='order_promising', module_name='psd_publish') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -152,22 +218,31 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>核心价值</strong>
+              <strong>核心价值
+                <span class="en-translation">Core Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               ATP/CTP/ATB 承诺引擎在物料、产能与运输约束下给出可行承诺日期（PSD/EDD），直接决定客户体验与改期率。
+              <span class="en-translation">The ATP/CTP/ATB promising engine provides feasible commitment dates (PSD/EDD) under material, production capacity and transportation constraints, directly determining customer experience and rescheduling rate.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
             <ul class="optimization-list">
-              <li>构建多约束ATP/CTP引擎（材料、产能、运输、政策联合求解）。</li>
-              <li>在缺料/拥堵时生成“下一最佳”方案（拆单、替代、跨库、改期+补偿），并量化客户体验与成本。</li>
+              <li>构建多约束ATP/CTP引擎（材料、产能、运输、政策联合求解）。
+                <span class="en-translation">Build a multi-constraint ATP/CTP engine (joint solution for materials, production capacity, transportation and policies).</span>
+              </li>
+              <li>在缺料/拥堵时生成“下一最佳”方案（拆单、替代、跨库、改期+补偿），并量化客户体验与成本。
+                <span class="en-translation">Generate "next best" solutions (order splitting, substitution, cross-warehouse, rescheduling + compensation) when materials are in short supply or there is congestion, and quantify customer experience and costs.</span>
+              </li>
             </ul>
           </div>
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='supplier_management', module_name='risk_management') }}" class="best-practice-btn">
+            <a href="{{ url_for('planning.best_practice', process='order_promising', module_name='psd_calculation') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -175,9 +250,5 @@
       </div>
     </div>
   </div>
-
-  <footer>
-    <p>采购流程分析系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
-  </footer>
 </body>
 </html>

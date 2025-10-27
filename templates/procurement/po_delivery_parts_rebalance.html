@@ -3,22 +3,217 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PO交付与零部件再平衡</title>
+  <title>PO交付与零部件再平衡 | PO Delivery and Parts Rebalance</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <style>
+    /* PO交付与零部件再平衡特定样式 */
+    .po-delivery-process .process-icon {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .key-reason-top {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 4px solid #3498db;
+    }
+    
+    .key-reason-header {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    
+    .key-reason-text {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    /* 英文翻译样式 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.25rem;
+      font-style: italic;
+      line-height: 1.4;
+    }
+    
+    .process-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .block-subtitle {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    
+    .optimization-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #2c3e50;
+    }
+    
+    .optimization-list {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .optimization-list li {
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+      .en-translation {
+        font-size: 0.8em;
+      }
+    }
+    
+    /* 页面整体样式 */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .header-section {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #3498db 0%, #2c7be5 100%);
+      color: white;
+      border-radius: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .process-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .process-title {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .process-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      opacity: 0.9;
+    }
+    
+    .process-desc {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .section-title h2 {
+      color: #3498db;
+      font-size: 2rem;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 15px;
+    }
+    
+    .process-blocks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 25px;
+    }
+    
+    .process-block {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    
+    .block-header {
+      background: linear-gradient(90deg, #3498db 0%, #2c7be5 100%);
+      color: white;
+      padding: 20px;
+    }
+    
+    .block-title {
+      font-size: 1.4rem;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .block-body {
+      padding: 25px;
+    }
+    
+    .content-area {
+      margin-bottom: 20px;
+    }
+    
+    .block-actions {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .best-practice-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #3498db 0%, #2c7be5 100%);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .best-practice-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 30px;
+      margin-top: 50px;
+      background: #2c3e50;
+      color: white;
+    }
+  </style>
 </head>
 <body>
 
   <!-- 流程标题区域 -->
-  <section class="header-section">
+  <section class="header-section po-delivery-process">
     <div class="header-content">
       <div class="process-icon">
         <i class="fas fa-truck-loading"></i>
       </div>
-      <h1 class="process-title">PO交付与零部件再平衡</h1>
+      <h1 class="process-title">PO交付与零部件再平衡
+      </h1>
       <div class="process-subtitle">PO Delivery and Parts Rebalance</div>
       <div class="process-desc">
         优化订单交付流程，实现零部件库存的智能再平衡，减少库存积压，提高供应链效率。本流程涵盖入库可视性、交付管理、退货授权等关键环节，确保物料流动的高效与准确。
+        <span class="en-translation">Optimize order delivery processes, achieve intelligent rebalancing of parts inventory, reduce inventory backlog, and improve supply chain efficiency. This process covers key aspects such as inbound visibility, delivery management, and return authorization, ensuring efficient and accurate material flow.</span>
       </div>
     </div>
   </section>
@@ -26,8 +221,11 @@
   <!-- 关键流程块区域 -->
   <div class="container">
     <div class="section-title">
-      <h2>关键流程模块</h2>
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
     </div>
+    
     <div class="process-blocks">
       <!-- 入库可视性 (ASN/CDA/AN) -->
       <div class="process-block">
@@ -41,17 +239,26 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>业务价值</strong>
+              <strong>业务价值
+                <span class="en-translation">Business Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               入库可视性是实现"从供应商到收货"全程追踪的基础，通过ASN(预先发货通知)、CDA(承运商配送通知)和AN(到货通知)确保物料流动透明化，减少到货不确定性。
+              <span class="en-translation">Inbound visibility is the foundation for end-to-end tracking from supplier to receipt, ensuring transparent material flow through ASN (Advanced Shipping Notice), CDA (Carrier Delivery Advice), and AN (Arrival Notice), reducing arrival uncertainty.</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>在途与到货可视化（ETA/ASN/Commit）</li>
-              <li>打通承运商/供应商门户/仓库WMS，构建“单据-物流-仓库事件”统一事实表（Transit/ASN/ETA/Commit），驱动迟延预测与例外闭环。</li>
+              <li>在途与到货可视化（ETA/ASN/Commit）
+                <span class="en-translation">Visualization of in-transit and arrival status (ETA/ASN/Commit)</span>
+              </li>
+              <li>打通承运商/供应商门户/仓库WMS，构建"单据-物流-仓库事件"统一事实表（Transit/ASN/ETA/Commit），驱动迟延预测与例外闭环。
+                <span class="en-translation">Integrate carrier/supplier portal/warehouse WMS to build a unified fact table for "document-logistics-warehouse events" (Transit/ASN/ETA/Commit), driving delay prediction and exception closed-loop.</span>
+              </li>
             </ul>
           </div>
           <div class="block-actions">
@@ -62,7 +269,6 @@
         </div>
       </div>
     
-      
       <!-- 交付管理 -->
       <div class="process-block">
         <div class="block-header">
@@ -75,17 +281,26 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>业务价值</strong>
+              <strong>业务价值
+                <span class="en-translation">Business Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
-              交付管理是 OTD 的执行中枢，负责“到货登记→异常识别→纠偏闭环”，并与 ASN/在途可视与承诺(Commit)联动以提升达成率与可预测性。
+              交付管理是 OTD 的执行中枢，负责"到货登记→异常识别→纠偏闭环"，并与 ASN/在途可视与承诺(Commit)联动以提升达成率与可预测性。
+              <span class="en-translation">Delivery management is the execution hub for OTD (On-Time Delivery), responsible for "arrival registration → exception identification → correction closed-loop", and linked with ASN/in-transit visibility and commitment to improve achievement rate and predictability.</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>Delivery 异常智能处置</li>
-              <li>基于异常类型（延误、部分到货、错发）生成处置剧本（催办/改约/替代/加急），自动派单并跟踪关闭；周/月复盘异常 Top N 根因。</li>
+              <li>Delivery 异常智能处置
+                <span class="en-translation">Intelligent handling of delivery exceptions</span>
+              </li>
+              <li>基于异常类型（延误、部分到货、错发）生成处置剧本（催办/改约/替代/加急），自动派单并跟踪关闭；周/月复盘异常 Top N 根因。
+                <span class="en-translation">Generate handling scripts (expedite/reschedule/substitute/urgent) based on exception types (delay, partial arrival, wrong shipment), automatically assign tasks and track closure; weekly/monthly review of top N root causes of exceptions.</span>
+              </li>
             </ul>
           </div>
           <div class="block-actions">
@@ -108,17 +323,23 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>业务价值</strong>
+              <strong>业务价值
+                <span class="en-translation">Business Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               ASN 管理是到货可视化的关键前置，统一承运/供应商提前发运通知口径，支撑 ETA/延迟预测与收货差异校核。
+              <span class="en-translation">ASN management is a key prerequisite for arrival visualization, unifying carrier/supplier advance shipment notification standards, supporting ETA/delay prediction and receipt discrepancy verification.</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>打通承运商 / 供应商门户 / 仓库 WMS，构建 “单据 - 物流 - 仓库事件” 统一事实表（Transit/ASN/ETA/Commit），驱动迟延预测与例外闭环。</li>
-              
+              <li>打通承运商 / 供应商门户 / 仓库 WMS，构建 "单据 - 物流 - 仓库事件" 统一事实表（Transit/ASN/ETA/Commit），驱动迟延预测与例外闭环。
+                <span class="en-translation">Integrate carrier/supplier portal/warehouse WMS to build a unified fact table for "document-logistics-warehouse events" (Transit/ASN/ETA/Commit), driving delay prediction and exception closed-loop.</span>
+              </li>
             </ul>
           </div>
           <div class="block-actions">
@@ -141,17 +362,26 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>业务价值</strong>
+              <strong>业务价值
+                <span class="en-translation">Business Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
-              RMA（退换货）确保缺陷品闭环与资金安全，需与押金/预付款规则、物流与对账联动，保持财务与实物流一致性。。
+              RMA（退换货）确保缺陷品闭环与资金安全，需与押金/预付款规则、物流与对账联动，保持财务与实物流一致性。
+              <span class="en-translation">RMA (Return Material Authorization) ensures closed-loop for defective products and fund security, requiring linkage with deposit/advance payment rules, logistics and reconciliation to maintain consistency between financial and physical flows.</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>RMA/押金一致性与对账</li>
-              <li>将 RMA 与预付款/押金规则打通，自动匹配退换/核销/对账，避免资金与物流口径不一致。</li>
+              <li>RMA/押金一致性与对账
+                <span class="en-translation">RMA/deposit consistency and reconciliation</span>
+              </li>
+              <li>将 RMA 与预付款/押金规则打通，自动匹配退换/核销/对账，避免资金与物流口径不一致。
+                <span class="en-translation">Integrate RMA with advance payment/deposit rules, automatically matching returns/write-offs/reconciliation to avoid inconsistency between financial and logistics standards.</span>
+              </li>
             </ul>
           </div>
           <div class="block-actions">
@@ -174,16 +404,23 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>业务价值</strong>
+              <strong>业务价值
+                <span class="en-translation">Business Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               SCC Commit 达成率把供应商承诺量/期与实际 GR 串接，是按周/日滚动校准供给的核心度量，直接影响异常预防与催交优先级。
+              <span class="en-translation">SCC Commit achievement rate connects supplier commitment quantity/dates with actual GR (Goods Receipt), serving as a core metric for weekly/daily rolling calibration of supply, directly impacting exception prevention and expediting priorities.</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>打通承运商 / 供应商门户 / 仓库 WMS，构建 “单据 - 物流 - 仓库事件” 统一事实表（Transit/ASN/ETA/Commit），驱动迟延预测与例外闭环。</li>
+              <li>打通承运商 / 供应商门户 / 仓库 WMS，构建 "单据 - 物流 - 仓库事件" 统一事实表（Transit/ASN/ETA/Commit），驱动迟延预测与例外闭环。
+                <span class="en-translation">Integrate carrier/supplier portal/warehouse WMS to build a unified fact table for "document-logistics-warehouse events" (Transit/ASN/ETA/Commit), driving delay prediction and exception closed-loop.</span>
+              </li>
             </ul>
           </div>
           <div class="block-actions">
@@ -206,17 +443,26 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>业务价值</strong>
+              <strong>业务价值
+                <span class="en-translation">Business Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               跨站点库存再平衡在供需错位与长交期场景下降低缺货/呆滞，通过网络视图优化调拨路径与时效，是稳供与库存效率的关键抓手。
+              <span class="en-translation">Cross-site inventory rebalancing reduces stockouts/obsolescence in supply-demand mismatch and long lead-time scenarios, optimizing transfer paths and timeliness through network views, serving as a key lever for stable supply and inventory efficiency.</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>Parts Rebalance/Buy-and-Sell 优化</li>
-              <li>构建跨区域/跨 BG 库存与需求的网络视图，优化调拨/买卖同返路径（运输+税费+时效），自动触发库存移动/结算，并跟踪财务影响。/li>
+              <li>Parts Rebalance/Buy-and-Sell 优化
+                <span class="en-translation">Parts Rebalance/Buy-and-Sell Optimization</span>
+              </li>
+              <li>构建跨区域/跨 BG 库存与需求的网络视图，优化调拨/买卖同返路径（运输+税费+时效），自动触发库存移动/结算，并跟踪财务影响。
+                <span class="en-translation">Build a network view of cross-regional/cross-BG inventory and demand, optimize transfer/buy-and-sell paths (transportation + taxes + timeliness), automatically trigger inventory movement/settlement, and track financial impact.</span>
+              </li>
             </ul>
           </div>
           <div class="block-actions">
@@ -239,19 +485,32 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>业务价值</strong>
+              <strong>业务价值
+                <span class="en-translation">Business Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               买卖同返/寄售将跨组织库存与交易结构化，便于快速周转与账实一致，需要与物流与财务联动，以降低资金与结算风险。
+              <span class="en-translation">Buy-and-sell/consignment structures cross-organizational inventory and transactions for rapid turnover and account-physical consistency, requiring linkage with logistics and finance to reduce funding and settlement risks.</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>建立寄售库存管理流程，明确所有权和责任划分</li>
-              <li>实施寄售库存盘点与对账机制，确保数据准确性</li>
-              <li>开发买卖操作标准化流程，减少交易错误和纠纷</li>
-              <li>创建寄售绩效指标，评估寄售模式的效果和效率</li>
+              <li>建立寄售库存管理流程，明确所有权和责任划分
+                <span class="en-translation">Establish consignment inventory management processes, clarify ownership and responsibility division</span>
+              </li>
+              <li>实施寄售库存盘点与对账机制，确保数据准确性
+                <span class="en-translation">Implement consignment inventory counting and reconciliation mechanisms to ensure data accuracy</span>
+              </li>
+              <li>开发买卖操作标准化流程，减少交易错误和纠纷
+                <span class="en-translation">Develop standardized buy-and-sell operation processes to reduce transaction errors and disputes</span>
+              </li>
+              <li>创建寄售绩效指标，评估寄售模式的效果和效率
+                <span class="en-translation">Create consignment performance metrics to evaluate the effectiveness and efficiency of consignment models</span>
+              </li>
             </ul>
           </div>
           <div class="block-actions">
@@ -274,19 +533,32 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>业务价值</strong>
+              <strong>业务价值
+                <span class="en-translation">Business Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               转售给经销商（Broker）作为处理呆滞/过剩的出口，需结合市场价格与物流/税务约束，缩短清理周期，减少库存占用。
+              <span class="en-translation">Reselling to brokers serves as an outlet for handling slow-moving/excess inventory, requiring consideration of market prices and logistics/tax constraints to shorten clearance cycles and reduce inventory occupancy.</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>建立经纪人评估与认证流程，确保合作伙伴可靠性</li>
-              <li>开发转售定价模型，基于市场供需智能定价</li>
-              <li>实施转售合同标准化，明确条款和责任</li>
-              <li>创建转售绩效追踪系统，监控回收率和成本效益</li>
+              <li>建立经纪人评估与认证流程，确保合作伙伴可靠性
+                <span class="en-translation">Establish broker evaluation and certification processes to ensure partner reliability</span>
+              </li>
+              <li>开发转售定价模型，基于市场供需智能定价
+                <span class="en-translation">Develop resale pricing models for intelligent pricing based on market supply and demand</span>
+              </li>
+              <li>实施转售合同标准化，明确条款和责任
+                <span class="en-translation">Implement standardized resale contracts to clarify terms and responsibilities</span>
+              </li>
+              <li>创建转售绩效追踪系统，监控回收率和成本效益
+                <span class="en-translation">Create a resale performance tracking system to monitor recovery rates and cost-effectiveness</span>
+              </li>
             </ul>
           </div>
           <div class="block-actions">
@@ -309,19 +581,32 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>业务价值</strong>
+              <strong>业务价值
+                <span class="en-translation">Business Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               库存移动管理统一调拨/移库/盘点等动作与台账，确保跨节点库存一致，是 Rebalance 与 Buy-and-Sell 落地的执行底座。
+              <span class="en-translation">Inventory movement management unifies actions such as transfers/relocations/counting with ledgers, ensuring consistent inventory across nodes, serving as the execution foundation for Rebalance and Buy-and-Sell implementations.</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>实施库存移动分类与编码标准，统一记录方式</li>
-              <li>开发移动异常检测规则，自动识别异常变动</li>
-              <li>建立移动审批工作流，控制关键库存变动</li>
-              <li>创建库存移动分析报告，支持运营优化和审计</li>
+              <li>实施库存移动分类与编码标准，统一记录方式
+                <span class="en-translation">Implement inventory movement classification and coding standards to unify recording methods</span>
+              </li>
+              <li>开发移动异常检测规则，自动识别异常变动
+                <span class="en-translation">Develop movement exception detection rules to automatically identify abnormal changes</span>
+              </li>
+              <li>建立移动审批工作流，控制关键库存变动
+                <span class="en-translation">Establish movement approval workflows to control critical inventory changes</span>
+              </li>
+              <li>创建库存移动分析报告，支持运营优化和审计
+                <span class="en-translation">Create inventory movement analysis reports to support operational optimization and auditing</span>
+              </li>
             </ul>
           </div>
           <div class="block-actions">
@@ -333,9 +618,5 @@
       </div>
     </div>
   </div>
-
-  <footer>
-    <p>采购流程分析系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
-  </footer>
 </body>
 </html>

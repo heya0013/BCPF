@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>计划协作- 供应协作流程分析</title>
+  <title>计划协作 - 供应协作流程分析 | Planning Collaboration - Supply Collaboration Process Analysis</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <style>
-    /* 新产品管理特定样式 */
-    .new-product-process .process-icon {
+    /* 计划协作特定样式 */
+    .planning-collab-process .process-icon {
       background-color: rgba(255, 255, 255, 0.2);
     }
     
@@ -32,20 +32,189 @@
       line-height: 1.6;
       margin: 0;
     }
+    
+    /* 英文翻译样式 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.25rem;
+      font-style: italic;
+      line-height: 1.4;
+    }
+    
+    .process-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .block-subtitle {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    
+    .optimization-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #2c3e50;
+    }
+    
+    .optimization-list {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .optimization-list li {
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+      .en-translation {
+        font-size: 0.8em;
+      }
+    }
+    
+    /* 页面整体样式 */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .header-section {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+      color: white;
+      border-radius: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .process-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .process-title {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .process-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      opacity: 0.9;
+    }
+    
+    .process-desc {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .section-title h2 {
+      color: #9b59b6;
+      font-size: 2rem;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 15px;
+    }
+    
+    .process-blocks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 25px;
+    }
+    
+    .process-block {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    
+    .block-header {
+      background: linear-gradient(90deg, #9b59b6 0%, #8e44ad 100%);
+      color: white;
+      padding: 20px;
+    }
+    
+    .block-title {
+      font-size: 1.4rem;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .block-body {
+      padding: 25px;
+    }
+    
+    .content-area {
+      margin-bottom: 20px;
+    }
+    
+    .block-actions {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .best-practice-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #9b59b6, #8e44ad);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .best-practice-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 30px;
+      margin-top: 50px;
+      background: #2c3e50;
+      color: white;
+    }
   </style>
 </head>
 <body>
 
   <!-- 流程标题区域 -->
-  <section class="header-section new-product-process">
+  <section class="header-section planning-collab-process">
     <div class="header-content">
       <div class="process-icon">
         <i class="fas fa-cube"></i>
       </div>
-      <h1 class="process-title">计划协作 </h1>
+      <h1 class="process-title">计划协作
+        <span class="en-translation">Planning Collaboration</span>
+      </h1>
       <div class="process-subtitle">Planning Collaboration</div>
       <div class="process-desc">
-        优化供应商协作过程中的协作效率，确保各部门无缝衔接
+        优化供应商协作过程中的协作效率，确保各部门无缝衔接，提升供应链整体响应能力与运营效率。
+        <span class="en-translation">Optimize collaboration efficiency in supplier collaboration processes, ensuring seamless coordination between departments, and enhancing overall supply chain responsiveness and operational efficiency.</span>
       </div>
     </div>
   </section>
@@ -53,7 +222,9 @@
   <!-- 关键流程块区域 -->
   <div class="container">
     <div class="section-title">
-      <h2>关键流程模块</h2>
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
     </div>
     
     <div class="process-blocks">
@@ -61,23 +232,30 @@
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
-            <i class="fas fa-map-marked-alt"></i>
+            <i class="fas fa-chart-line"></i>
             预测协作
           </div>
           <div class="block-subtitle">Forecast Collaboration</div>
         </div>
         <div class="block-body">
           <div class="core-value">
-            <div class="core-value-title">核心价值</div>
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
             <p class="core-value-content">
-              协同预测：形成共同需求基线，抑制牛鞭效应，支撑产能与物料计划。；供应承诺：把可承接能力转为交期/数量承诺，决定缺口与分配策略。；PO确认：逐项确认交期/数量，作为排产与ASN依据。；库存可视：共享在手/在途库存，支撑补货与分配决策。；异常治理：延误/短缺预警与处置，避免停线与违约。
+              协同预测：形成共同需求基线，抑制牛鞭效应，支撑产能与物料计划；供应承诺：把可承接能力转为交期/数量承诺，决定缺口与分配策略；PO确认：逐项确认交期/数量，作为排产与ASN依据；库存可视：共享在手/在途库存，支撑补货与分配决策；异常治理：延误/短缺预警与处置，避免停线与违约。
+              <span class="en-translation">Collaborative forecasting: Establish a common demand baseline to suppress the bullwhip effect and support capacity and material planning; Supply commitment: Convert capacity into delivery/quantity commitments to determine gaps and allocation strategies; PO confirmation: Item-by-item confirmation of delivery dates/quantities as the basis for scheduling and ASN; Inventory visibility: Share on-hand/in-transit inventory to support replenishment and allocation decisions; Exception management: Early warning and handling of delays/shortages to avoid line stoppages and contract breaches.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>预测-产能-承诺一致性引擎，融合CPFR与供给约束，输出可承接量与承诺建议。</li>
+              <li>预测-产能-承诺一致性引擎，融合CPFR与供给约束，输出可承接量与承诺建议。
+                <span class="en-translation">Forecast-capacity-commitment consistency engine, integrating CPFR and supply constraints to output achievable volumes and commitment recommendations.</span>
+              </li>
             </ul>
           </div>
           
@@ -93,22 +271,29 @@
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
-            <i class="fas fa-bullseye"></i>
+            <i class="fas fa-truck-loading"></i>
             预计到达时间与交付承诺协同
           </div>
           <div class="block-subtitle">ETA&Commit Synergy</div>
         </div>
         <div class="block-body">
           <div class="core-value">
-            <div class="core-value-title">核心价值</div>
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
             <p class="core-value-content">
-             供应承诺：把可承接能力转为交期/数量承诺，决定缺口与分配策略。
+              供应承诺：把可承接能力转为交期/数量承诺，决定缺口与分配策略。
+              <span class="en-translation">Supply commitment: Convert capacity into delivery/quantity commitments to determine gaps and allocation strategies.</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>预测-产能-承诺一致性引擎，融合CPFR与供给约束，输出可承接量与承诺建议。</li>  
+              <li>预测-产能-承诺一致性引擎，融合CPFR与供给约束，输出可承接量与承诺建议。
+                <span class="en-translation">Forecast-capacity-commitment consistency engine, integrating CPFR and supply constraints to output achievable volumes and commitment recommendations.</span>
+              </li>  
             </ul>
           </div>
           
@@ -124,23 +309,30 @@
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
-            <i class="fas fa-rocket"></i>
+            <i class="fas fa-exclamation-triangle"></i>
             含原因代码的订单短缺协作
           </div>
           <div class="block-subtitle">Order Shortage collaboration with reason code</div>
         </div>
         <div class="block-body">
           <div class="core-value">
-            <div class="core-value-title">核心价值</div>
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
             <p class="core-value-content">
               协同供给的关键控制点，影响OTD、短缺与库存周转。
+              <span class="en-translation">A key control point for collaborative supply, impacting OTD (On-Time Delivery), shortages, and inventory turnover.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>PCN/ECO 智能解析与PPAP触发，自动解析PCN/ECO，识别受影响料号，触发PPAP/样件复核与承诺回写。</li>             
+              <li>PCN/ECO 智能解析与PPAP触发，自动解析PCN/ECO，识别受影响料号，触发PPAP/样件复核与承诺回写。
+                <span class="en-translation">PCN/ECO intelligent parsing and PPAP triggering, automatically parsing PCN/ECO, identifying affected part numbers, triggering PPAP/sample review and commitment write-back.</span>
+              </li>             
             </ul>
           </div>
           

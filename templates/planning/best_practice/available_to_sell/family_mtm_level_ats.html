@@ -25,91 +25,196 @@
     .stat-value { font-weight:700; color:#2c7be5; font-size:1.25rem; margin-bottom:6px; }
     .stat-label { color:#5a6a7d; font-size:0.95rem; }
     .back-btn { display:inline-block; padding:10px 14px; border-radius:8px; background:#486EBC; color:#fff; text-decoration:none; margin-top:18px; }
+
+    /* 中英双语翻译样式：统一控制英文排版 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.3rem;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* 适配不同元素的翻译间距 */
+    .scenario-desc .en-translation,
+    .case-desc .en-translation,
+    .kpi-list li .en-translation {
+      margin-top: 0.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 标题类元素翻译样式 */
+    .section-title .en-translation,
+    .case-title .en-translation,
+    .scenario-title .en-translation,
+    .best-practice-subtitle .en-translation,
+    .stat-label .en-translation,
+    .stat-value .en-translation {
+      margin-top: 0.1rem;
+      font-size: 0.8em;
+      display: inline-block;
+    }
   </style>
 </head>
 <body>
   <header class="best-practice-header">
     <div class="header-content">
-      <h1 class="best-practice-title">Family MTM Level ATS（系列 / 月度层面）</h1>
-      <div class="best-practice-subtitle">系列级 ATS 口径 + 计划稳定性支持</div>
-      <p class="process-desc">本页展示如何在 Family / 系列 / 月度层面应用 AI 优化 ATS 口径与稳定性。</p>
+      <h1 class="best-practice-title">Family MTM Level ATS（系列 / 月度层面）
+        <span class="en-translation">Family MTM Level ATS (Family / Monthly Level)</span>
+      </h1>
+      <div class="best-practice-subtitle">系列级 ATS 口径 + 计划稳定性支持
+        <span class="en-translation">Family-Level ATS Caliber + Planning Stability Support</span>
+      </div>
+      <p class="process-desc">本页展示如何在 Family / 系列 / 月度层面应用 AI 优化 ATS 口径与稳定性。
+        <span class="en-translation">This page demonstrates how to apply AI to optimize ATS caliber and stability at the Family/Series/Monthly level.</span>
+      </p>
     </div>
   </header>
 
   <div class="best-practice-container">
     <!-- 1. AI 应用场景 -->
     <section class="best-practice-section">
-      <h2 class="section-title">AI 应用场景</h2>
+      <h2 class="section-title">AI 应用场景
+        <span class="en-translation">AI Application Scenarios</span>
+      </h2>
       <div class="ai-scenario-grid">
         <div class="scenario-card">
           <div class="scenario-icon"><i class="fas fa-layer-group"></i></div>
-          <h3 class="scenario-title">Family / MTM 可售口径统一</h3>
-          <p class="scenario-desc">按 Family 层级整合所有子 SKU 的可售库存口径，支持跨 SKU 缓冲协调与策略移量。</p>
+          <h3 class="scenario-title">Family / MTM 可售口径统一
+            <span class="en-translation">Unified Family/MTM Sellable Caliber</span>
+          </h3>
+          <p class="scenario-desc">按 Family 层级整合所有子 SKU 的可售库存口径，支持跨 SKU 缓冲协调与策略移量。
+            <span class="en-translation">Integrate the sellable inventory caliber of all sub-SKUs at the Family level to support cross-SKU buffer coordination and strategic volume transfer.</span>
+          </p>
         </div>
         <div class="scenario-card">
-          <div in class="scenario-icon"><i class="fas fa-project-diagram"></i></div>
-          <h3 class="scenario-title">情景仿真 + 策略实验</h3>
-          <p class="scenario-desc">在 Family 级别做促销 / 供应中断 / 产品切换情景仿真，评估对 OTIF / 波动的影响。</p>
+          <div class="scenario-icon"><i class="fas fa-project-diagram"></i></div>
+          <h3 class="scenario-title">情景仿真 + 策略实验
+            <span class="en-translation">Scenario Simulation + Strategy Experiment</span>
+          </h3>
+          <p class="scenario-desc">在 Family 级别做促销 / 供应中断 / 产品切换情景仿真，评估对 OTIF / 波动的影响。
+            <span class="en-translation">Conduct scenario simulations of promotion/supply disruption/product switching at the Family level to evaluate the impact on OTIF/volatility.</span>
+          </p>
         </div>
         <div class="scenario-card">
           <div class="scenario-icon"><i class="fas fa-chart-line"></i></div>
-          <h3 class="scenario-title">可解释仪表板辅助 S&OP / IBP</h3>
-          <p class="scenario-desc">将 ATS 预测、波动指标、XAI 解释输出可视化于 S&OP 仪表板，辅助高层做稳定化决策。</p>
+          <h3 class="scenario-title">可解释仪表板辅助 S&OP / IBP
+            <span class="en-translation">Interpretable Dashboard Assists S&OP / IBP</span>
+          </h3>
+          <p class="scenario-desc">将 ATS 预测、波动指标、XAI 解释输出可视化于 S&OP 仪表板，辅助高层做稳定化决策。
+            <span class="en-translation">Visualize ATS predictions, volatility indicators, and XAI interpretation outputs on the S&OP dashboard to assist senior management in making stabilization decisions.</span>
+          </p>
         </div>
         <div class="scenario-card">
           <div class="scenario-icon"><i class="fas fa-bolt"></i></div>
-          <h3 class="scenario-title">门限触发 + 决策回滚机制</h3>
-          <p class="scenario-desc">设置波动、库存变动等触发阈值，自动触发策略调整或回滚保护机制。</p>
+          <h3 class="scenario-title">门限触发 + 决策回滚机制
+            <span class="en-translation">Threshold Trigger + Decision Rollback Mechanism</span>
+          </h3>
+          <p class="scenario-desc">设置波动、库存变动等触发阈值，自动触发策略调整或回滚保护机制。
+            <span class="en-translation">Set trigger thresholds for volatility, inventory changes, etc., to automatically trigger strategy adjustments or rollback protection mechanisms.</span>
+          </p>
         </div>
       </div>
     </section>
 
     <!-- 2. AI 应用场景效果分析 -->
     <section class="best-practice-section">
-      <h2 class="section-title">效果分析（业务驱动视角）</h2>
+      <h2 class="section-title">效果分析（业务驱动视角）
+        <span class="en-translation">Effect Analysis (Business-Driven Perspective)</span>
+      </h2>
       <p class="case-desc">
         在系列层面整合 ATS 口径可减少因单个 SKU 波动造成的系列误差；情景仿真与策略实验能提前规避极端情形；XAI 仪表板帮助高层理解承诺变化原因，减少盲目调整。通过门限触发机制，可降低频繁策略变更带来的波动性损耗。
+        <span class="en-translation">Integrating ATS caliber at the series level can reduce series errors caused by the volatility of individual SKUs; scenario simulation and strategy experiments can avoid extreme situations in advance; the XAI dashboard helps senior management understand the reasons for commitment changes and reduce blind adjustments. Through the threshold trigger mechanism, the volatility loss caused by frequent strategy changes can be reduced.</span>
       </p>
     </section>
 
     <!-- 3. KPI 与预期提升幅度 -->
     <section class="best-practice-section">
-      <h2 class="section-title">KPI 与预期提升幅度</h2>
+      <h2 class="section-title">KPI 与预期提升幅度
+        <span class="en-translation">KPIs & Expected Improvement Range</span>
+      </h2>
       <div class="stats-grid">
-        <div class="stat-card"><div class="stat-value">OTIF 波动幅度</div><div class="stat-label">下降 10–20%</div></div>
-        <div class="stat-card"><div class="stat-value">改期率</div><div class="stat-label">下降 10–20%</div></div>
-        <div class="stat-card"><div class="stat-value">承诺一次命中率</div><div class="stat-label">提升 10–15%</div></div>
-        <div class="stat-card"><div class="stat-value">争议关闭周期 / NPS</div><div class="stat-label">缩短 / 提升 20–40%</div></div>
+        <div class="stat-card">
+          <div class="stat-value">OTIF 波动幅度
+            <span class="en-translation">OTIF Volatility Range</span>
+          </div>
+          <div class="stat-label">下降 10–20%
+            <span class="en-translation">Decrease by 10–20%</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">改期率
+            <span class="en-translation">Rescheduling Rate</span>
+          </div>
+          <div class="stat-label">下降 10–20%
+            <span class="en-translation">Decrease by 10–20%</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">承诺一次命中率
+            <span class="en-translation">One-Time Commitment Hit Rate</span>
+          </div>
+          <div class="stat-label">提升 10–15%
+            <span class="en-translation">Increase by 10–15%</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">争议关闭周期 / NPS
+            <span class="en-translation">Dispute Closure Cycle / NPS</span>
+          </div>
+          <div class="stat-label">缩短 / 提升 20–40%
+            <span class="en-translation">Shorten / Increase by 20–40%</span>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- 4. 实际行业案例 -->
     <section class="best-practice-section">
-      <h2 class="section-title">实际行业案例</h2>
+      <h2 class="section-title">实际行业案例
+        <span class="en-translation">Practical Industry Cases</span>
+      </h2>
       <div class="industry-case">
-        <h3 class="case-title">某消费电子集团：系列层面稳定化承诺</h3>
+        <h3 class="case-title">某消费电子集团：系列层面稳定化承诺
+          <span class="en-translation">A Consumer Electronics Group: Series-Level Stabilized Commitment</span>
+        </h3>
         <p class="case-desc">
           在某消费电子公司中，团队将多个 SKU 按系列整合做 ATS 口径和仿真模型，通过系列级别波动控制，将订单变更频次降低约 18%，OTIF 波动减少约 12%。  
+          <span class="en-translation">In a consumer electronics company, the team integrated multiple SKUs into ATS caliber and simulation models by series. Through series-level volatility control, the frequency of order changes was reduced by approximately 18%, and OTIF volatility was reduced by approximately 12%.</span>
         </p>
         <p class="case-desc" style="font-size:0.9rem;color:#394a5a;">
           对比上面 McKinsey 的研究，AI 驱动的库存 / 服务 /成本改善案例显示：物流成本可降 15%，库存水平可降 35%。:contentReference[oaicite:3]{index=3}
+          <span class="en-translation">Compared with McKinsey's research above, AI-driven inventory/service/cost improvement cases show that logistics costs can be reduced by 15% and inventory levels can be reduced by 35%. :contentReference[oaicite:3]{index=3}</span>
         </p>
       </div>
     </section>
 
     <div style="text-align:center; margin:20px 0;">
-      <a href="{{ url_for('available_to_sell') }}" class="back-btn"><i class="fas fa-arrow-left"></i> 返回可售库存模块</a>
+      <a href="{{ url_for('available_to_sell') }}" class="back-btn"><i class="fas fa-arrow-left"></i> 返回可售库存模块
+        <span class="en-translation">Back to Available-to-Sell Module</span>
+      </a>
     </div>
 
     <section class="best-practice-section">
-      <h2 class="section-title">参考与来源</h2>
+      <h2 class="section-title">参考与来源
+        <span class="en-translation">References & Sources</span>
+      </h2>
       <ul class="kpi-list">
-        <li>McKinsey：《Succeeding in the AI supply-chain revolution》报告论证 AI 在库存 / 服务 / 成本的提升可能性。:contentReference[oaicite:4]{index=4}</li>
-        <li>ASCM SCOR DS 指标指南，涵盖库存、供应链绩效标准指标定义。:contentReference[oaicite:5]{index=5}</li>
+        <li>McKinsey：《Succeeding in the AI supply-chain revolution》报告论证 AI 在库存 / 服务 / 成本的提升可能性。:contentReference[oaicite:4]{index=4}
+          <span class="en-translation">McKinsey: "Succeeding in the AI supply-chain revolution" report demonstrates the possibility of AI improving inventory/service/cost. :contentReference[oaicite:4]{index=4}</span>
+        </li>
+        <li>ASCM SCOR DS 指标指南，涵盖库存、供应链绩效标准指标定义。:contentReference[oaicite:5]{index=5}
+          <span class="en-translation">ASCM SCOR DS Indicator Guidelines, covering definitions of inventory and supply chain performance standard indicators. :contentReference[oaicite:5]{index=5}</span>
+        </li>
       </ul>
     </section>
   </div>
 
-  <footer><small>采购流程分析系统 © 2023–2025 | Family MTM Level ATS • 系列稳定化</small></footer>
+  <footer>
+    <small>计划流程分析系统 © 2023–2025 | Family MTM Level ATS • 系列稳定化
+      <span class="en-translation">Planning Process Analysis System © 2023–2025 | Family MTM Level ATS • Series Stabilization</span>
+    </small>
+  </footer>
 </body>
 </html>

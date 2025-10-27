@@ -6,6 +6,7 @@ from quality_bp import quality_bp
 from procurement_bp import procurement_bp
 from supplier_bp import supplier_bp
 from order_bp import order_bp
+from planning_bp import planning_bp
 
 # 创建Flask应用
 app = Flask(__name__)
@@ -15,6 +16,7 @@ app.register_blueprint(procurement_bp, url_prefix='/procurement')
 app.register_blueprint(logistics_bp, url_prefix='/logistics')
 app.register_blueprint(order_bp, url_prefix='/order')
 app.register_blueprint(supplier_bp, url_prefix='/supplier')
+app.register_blueprint(planning_bp, url_prefix='/planning') 
 
 # 主页面路由（模块卡片入口）
 @app.route('/')

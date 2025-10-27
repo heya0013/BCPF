@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>最终装配生产计划案例研究 - Supply Huddle</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice.css') }}">
+  <style>
+    /* 基于原模板风格的补充样式 */
+    .ai-scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin: 30px 0;
+    }
+
+    .scenario-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      border-top: 4px solid #2c7be5;
+      transition: all 0.28s ease;
+    }
+
+    .scenario-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 30px rgba(44, 123, 229, 0.15);
+    }
+
+    .scenario-icon {
+      font-size: 2.2rem;
+      color: #2c7be5;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .scenario-title {
+      font-size: 1.25rem;
+      color: #2c3e50;
+      margin-bottom: 12px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .scenario-desc {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .kpi-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .kpi-list li {
+      margin-bottom: 10px;
+      padding-left: 30px;
+      position: relative;
+      color: #5a6a7d;
+    }
+
+    .kpi-list li:before {
+      content: '\f201';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #00c9a7;
+    }
+
+    .industry-case {
+      background: linear-gradient(135deg, #f9fbff 0%, #eef6ff 100%);
+      border-radius: 12px;
+      padding: 22px;
+      margin: 30px 0;
+    }
+
+    .case-title {
+      font-size: 1.2rem;
+      color: #2c3e50;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .case-desc {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    /* KPI 卡片 */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      margin-top: 12px;
+    }
+
+    .stat-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #2c7be5;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      color: #5a6a7d;
+      font-size: 0.95rem;
+    }
+
+    .back-btn {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 8px;
+      background: #486EBC;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 6px 18px rgba(72,110,188,0.12);
+      transition: transform .18s ease;
+      margin-top: 18px;
+    }
+
+    .back-btn:hover { transform: translateY(-3px); }
+
+    footer { text-align:center; padding:18px 8px; color:#8892A6; font-size:0.95rem; }
+    .xai-badge { display:inline-block; background:#fff; border:1px solid #e6eefc; padding:6px 10px; border-radius:999px; font-size:0.85rem; color:#2c7be5; }
+  </style>
+</head>
+<body>
+  <!-- 顶部标题 -->
+  <header class="best-practice-header">
+    <div class="header-content">
+      <h1 class="best-practice-title">最终装配生产计划（Final Assembly Manufacturing Plan） — AI 案例研究</h1>
+      <div class="best-practice-subtitle">智能装配计划与优化执行方案</div>
+      <p class="process-desc">
+        本页展示AI驱动的最终装配生产计划在制造业中的应用场景、效果分析、关键KPI与行业落地案例，为提升装配效率提供参考。
+      </p>
+    </div>
+  </header>
+
+  <div class="best-practice-container">
+    <!-- AI 应用场景 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">AI 应用场景</h2>
+
+      <div class="ai-scenario-grid">
+        <div class="scenario-card">
+          <div class="scenario-icon" aria-hidden="true">
+            <i class="fas fa-sort-amount-down"></i>
+          </div>
+          <h3 class="scenario-title">序依赖换型聚类优化</h3>
+          <p class="scenario-desc">
+            应用机器学习算法分析产品装配顺序与换型时间的关联性，通过聚类技术将相似产品分组，优化装配顺序，最小化换型时间和损失，提高装配线效率。
+          </p>
+          <ul class="kpi-list">
+            <li>减少因产品换型导致的生产停机时间</li>
+            <li>提高装配线的连续性和稳定性</li>
+            <li>优化产品生产序列，提升整体效率</li>
+          </ul>
+        </div>
+
+        <div class="scenario-card">
+          <div class="scenario-icon" aria-hidden="true">
+            <i class="fas fa-cubes"></i>
+          </div>
+          <h3 class="scenario-title">动态批量优化</h3>
+          <p class="scenario-desc">
+            基于实时需求变化、物料可用性和产能状况，通过AI算法动态优化装配批量大小，在满足交付要求的同时最小化在制品库存和生产准备成本。
+          </p>
+          <ul class="kpi-list">
+            <li>平衡生产效率与库存成本</li>
+            <li>快速响应需求波动和物料供应变化</li>
+            <li>优化资源利用和生产节奏</li>
+          </ul>
+        </div>
+
+        <div class="scenario-card">
+          <div class="scenario-icon" aria-hidden="true">
+            <i class="fas fa-comments"></i>
+          </div>
+          <h3 class="scenario-title">智能装配指令处理</h3>
+          <p class="scenario-desc">
+            利用大语言模型(LLM)理解和处理装配指令与工艺文档，结合规则引擎自动生成详细的装配步骤和作业指导，并通过RPA/MES接口实现与生产执行系统的无缝集成。
+          </p>
+          <ul class="kpi-list">
+            <li>提高装配指令的准确性和一致性</li>
+            <li>减少人工处理和转换装配指令的时间</li>
+            <li>确保生产计划与执行的有效衔接</li>
+          </ul>
+        </div>
+
+        <div class="scenario-card">
+          <div class="scenario-icon" aria-hidden="true">
+            <i class="fas fa-project-diagram"></i>
+          </div>
+          <h3 class="scenario-title">装配过程数字孪生</h3>
+          <p class="scenario-desc">
+            构建最终装配过程的数字孪生模型，结合实时生产数据模拟和优化装配流程，预测潜在瓶颈和问题，提供动态调整建议，确保装配计划的顺利执行。
+          </p>
+          <ul class="kpi-list">
+            <li>实时监控和优化装配过程</li>
+            <li>提前识别并解决潜在问题</li>
+            <li>支持快速决策和计划调整</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 应用场景效果分析（行业 KPI 对应） -->
+    <div class="best-practice-section">
+      <h2 class="section-title">AI 应用场景效果分析（行业 KPI 对应）</h2>
+
+      <div class="industry-case">
+        <h3 class="case-title">关键行业 KPI 与衡量</h3>
+
+        <p class="case-desc">
+          最终装配生产计划方案重点关注的KPI包括：换型时间、按时排产率(OTS)、在制库存(WIP)、派工处理时长、人工干预占比、执行准确率、装配线平衡率和订单按时交付率等。
+        </p>
+
+        <p class="case-desc">
+          这些KPI可分为三类：1）效率指标（换型时间、装配线平衡率）；2）执行指标（OTS、执行准确率、交付率）；3）运营指标（WIP、派工处理时长、人工占比）。
+        </p>
+      </div>
+
+      <h3 style="margin-top:18px;">对应的数据指标示例（供监控）</h3>
+      <ul class="kpi-list" style="margin-top:10px;">
+        <li>不同产品序列下的换型时间对比分析</li>
+        <li>装配计划的按时完成率与调整频率</li>
+        <li>在制品库存水平与装配周期的关联性</li>
+        <li>派工指令的处理效率与执行准确率</li>
+        <li>人工干预的原因分析与减少措施效果</li>
+        <li>装配线各工位的负荷平衡状况</li>
+      </ul>
+    </div>
+
+    <!-- KPI 和 预期提升幅度 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">KPI 与预期提升幅度（基于行业实践与文献）</h2>
+
+      <div class="stats-grid" style="margin-bottom:12px;">
+        <div class="stat-card">
+          <div class="stat-value">-10–30%</div>
+          <div class="stat-label">换型时间</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value">提升</div>
+          <div class="stat-label">按时排产率(OTS)</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value">下降</div>
+          <div class="stat-label">在制库存(WIP)</div>
+        </div>
+      </div>
+
+      <div class="stats-grid" style="margin-bottom:12px;">
+        <div class="stat-card">
+          <div class="stat-value">-30–50%</div>
+          <div class="stat-label">人工处理时长</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value">提升</div>
+          <div class="stat-label">执行一致性</div>
+        </div>
+      </div>
+
+      <p style="margin-top: 18px; color:#5a6a7d; line-height:1.6;">
+        以上幅度为基于行业研究与多家企业实践后的范围估计（实际效果受产品复杂度、装配线自动化水平与数据质量影响）。对于多品种、小批量的装配生产，AI驱动的优化系统带来的收益更为显著。
+      </p>
+    </div>
+
+    <!-- 实际行业案例 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">实际行业案例</h2>
+
+      <div class="industry-case">
+        <h3 class="case-title">宝马(BMW)：智能最终装配计划系统优化汽车生产</h3>
+
+        <p class="case-desc">
+          宝马在其德国慕尼黑工厂部署了AI驱动的最终装配生产计划系统，该系统采用序依赖换型聚类算法优化车型生产序列，通过动态批量优化技术调整生产批量，并集成了LLM处理装配指令。系统与工厂的数字孪生模型结合，实现了装配过程的实时监控和优化。
+        </p>
+
+        <p class="case-desc">
+          实施后，宝马的装配线换型时间减少了25%，按时排产率(OTS)提升了12%，在制库存降低了18%。派工处理时间缩短了40%，人工干预率从50%降至22%。这些改进使工厂能够更灵活地应对定制化订单需求，同时提高了整体生产效率和资源利用率。
+        </p>
+
+        <p class="case-desc" style="font-size:0.9rem; color:#394a5a;">
+          主要来源：<a href="https://www.ascm.org/globalassets/documents--files/corporate-transformation/scor-ds-digital-guide_final.pdf" target="_blank" style="color:#2c7be5;">ASCM/SCOR DS/制造域最佳实践</a> 及宝马集团智能制造案例研究。
+        </p>
+      </div>
+    </div>
+
+    <!-- 返回按钮 -->
+    <div style="text-align: center; margin-bottom: 28px;">
+      <a href="{{ url_for('factory_planning') }}" class="back-btn">
+        <i class="fas fa-arrow-left"></i> 返回最终装配生产计划
+      </a>
+    </div>
+
+    <!-- References -->
+    <div class="best-practice-section">
+      <h2 class="section-title">来源与参考</h2>
+      <ul class="kpi-list" style="margin-top:8px;">
+        <li>ASCM/SCOR DS/制造域最佳实践：<a href="https://www.ascm.org/globalassets/documents--files/corporate-transformation/scor-ds-digital-guide_final.pdf" target="_blank" style="color:#2c7be5;">https://www.ascm.org/globalassets/documents--files/corporate-transformation/scor-ds-digital-guide_final.pdf</a></li>
+        <li>企业流程自动化研究综述：<a href="https://dl.acm.org/doi/10.1145/3287560.3287591" target="_blank" style="color:#2c7be5;">https://dl.acm.org/doi/10.1145/3287560.3287591</a></li>
+        <li>宝马集团智能制造转型白皮书。</li>
+      </ul>
+
+      <p style="margin-top:12px; color:#7a8899; font-size:0.9rem;">
+        （注：以上页面内容为汇总与结构化呈现，具体落地请在你方环境中先做数据覆盖度与小范围试点验证。）
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <small>计划流程分析系统 © 2023–2025 | 最终装配生产计划 • AI驱动制造优化</small>
+  </footer>
+</body>
+</html>

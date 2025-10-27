@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Available to Build (ATB) — AI案例研究</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice.css') }}">
+  <style>
+    /* 保持与原模板一致的样式 */
+    .ai-scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin: 30px 0;
+    }
+
+    .scenario-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      border-top: 4px solid #2c7be5;
+      transition: all 0.28s ease;
+    }
+
+    .scenario-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 30px rgba(44, 123, 229, 0.15);
+    }
+
+    .scenario-icon {
+      font-size: 2.2rem;
+      color: #2c7be5;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .scenario-title {
+      font-size: 1.25rem;
+      color: #2c3e50;
+      margin-bottom: 12px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .scenario-desc {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .kpi-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .kpi-list li {
+      margin-bottom: 10px;
+      padding-left: 30px;
+      position: relative;
+      color: #5a6a7d;
+    }
+
+    .kpi-list li:before {
+      content: '\f201';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #00c9a7;
+    }
+
+    .industry-case {
+      background: linear-gradient(135deg, #f9fbff 0%, #eef6ff 100%);
+      border-radius: 12px;
+      padding: 22px;
+      margin: 30px 0;
+    }
+
+    .case-title {
+      font-size: 1.2rem;
+      color: #2c3e50;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .case-desc {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      margin-top: 12px;
+    }
+
+    .stat-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #2c7be5;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      color: #5a6a7d;
+      font-size: 0.95rem;
+    }
+
+    .back-btn {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 8px;
+      background: #486EBC;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 6px 18px rgba(72,110,188,0.12);
+      transition: transform .18s ease;
+      margin-top: 18px;
+    }
+
+    .back-btn:hover { transform: translateY(-3px); }
+
+    footer { text-align:center; padding:18px 8px; color:#8892A6; font-size:0.95rem; }
+  </style>
+</head>
+<body>
+  <!-- 顶部标题 -->
+  <header class="best-practice-header">
+    <div class="header-content">
+      <h1 class="best-practice-title">Available to Build (ATB) — AI案例研究</h1>
+      <div class="best-practice-subtitle">智能生产能力规划与优化解决方案</div>
+      <p class="process-desc">
+        本页展示ATB（可用于生产的资源）管理中的AI应用场景、效果分析、关键KPI与行业落地案例。
+      </p>
+    </div>
+  </header>
+
+  <div class="best-practice-container">
+    <!-- AI 应用场景 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">AI 应用场景</h2>
+
+      <div class="ai-scenario-grid">
+        <div class="scenario-card">
+          <div class="scenario-icon" aria-hidden="true">
+            <i class="fas fa-cogs"></i>
+          </div>
+          <h3 class="scenario-title">智能约束规划与优化</h3>
+          <p class="scenario-desc">
+            结合约束规划与混合整数规划算法，构建智能生产能力规划模型。通过启发式算法解决拆单、替代物料选择和跨库调拨等复杂问题，实现资源最优配置。
+          </p>
+          <ul class="kpi-list">
+            <li>多约束条件下的生产能力精确计算</li>
+            <li>智能拆单策略与替代物料推荐</li>
+            <li>跨库资源调配的全局优化</li>
+          </ul>
+        </div>
+
+        <div class="scenario-card">
+          <div class="scenario-icon" aria-hidden="true">
+            <i class="fas fa-project-diagram"></i>
+          </div>
+          <h3 class="scenario-title">多情景仿真与决策支持</h3>
+          <p class="scenario-desc">
+            构建生产情景仿真模型，模拟不同需求波动、物料短缺和产能变化情况下的ATB变化。通过AI算法分析各情景下的最优应对策略，为决策提供数据支持。
+          </p>
+          <ul class="kpi-list">
+            <li>动态需求变化下的产能适应性分析</li>
+            <li>物料供应波动对生产的影响评估</li>
+            <li>多场景下的生产计划优化推荐</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 应用场景效果分析（行业 KPI 对应） -->
+    <div class="best-practice-section">
+      <h2 class="section-title">AI 应用场景效果分析（行业 KPI 对应）</h2>
+
+      <div class="industry-case">
+        <h3 class="case-title">关键行业 KPI 与衡量</h3>
+
+        <p class="case-desc">
+          本方案重点关注的 KPI 包括：承诺兑现率、Decommit率（承诺取消率）、订单履约率(OTIF)、平均承诺交期、加急生产成本等核心指标。
+        </p>
+
+        <p class="case-desc">
+          这些 KPI 可分为两类：1）承诺可靠性（承诺兑现率、Decommit率）；2）生产效率与客户满意度（OTIF、平均承诺交期、加急成本）。
+        </p>
+      </div>
+
+      <h3 style="margin-top:18px;">对应的数据指标示例（供监控）</h3>
+      <ul class="kpi-list" style="margin-top:10px;">
+        <li>按产品类别和生产周期划分的承诺兑现率</li>
+        <li>Decommit原因分类与频率分析</li>
+        <li>OTIF达成率的日/周/月趋势变化</li>
+        <li>平均承诺交期与实际交期的差异分析</li>
+        <li>加急生产的成本占比与原因分析</li>
+      </ul>
+    </div>
+
+    <!-- KPI 和 预期提升幅度 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">KPI 与预期提升幅度（基于行业实践与文献）</h2>
+
+      <div class="stats-grid" style="margin-bottom:12px;">
+        <div class="stat-card">
+          <div class="stat-value">-20–40%</div>
+          <div class="stat-label">Decommit率</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value">+3–8pct</div>
+          <div class="stat-label">OTIF</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value">缩短</div>
+          <div class="stat-label">平均承诺交期</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value">降低</div>
+          <div class="stat-label">加急生产成本</div>
+        </div>
+      </div>
+
+      <p style="margin-top: 18px; color:#5a6a7d; line-height:1.6;">
+        以上幅度为基于行业研究与企业实践后的范围估计（实际效果受生产复杂度、供应链稳定性与数据质量影响）。建议从标准化程度高的产品线开始试点，逐步扩展至全品类。
+      </p>
+    </div>
+
+    <!-- 实际行业案例 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">实际行业案例（示例）</h2>
+
+      <div class="industry-case">
+        <h3 class="case-title">西门子能源：AI驱动的ATB管理系统</h3>
+
+        <p class="case-desc">
+          西门子能源在其燃气轮机生产中部署了基于AI的ATB管理系统，该系统结合约束规划与混合整数规划算法，实现了生产能力的精确计算与优化配置。系统能够智能处理拆单、替代物料选择和跨库调拨等复杂场景。
+        </p>
+
+        <p class="case-desc">
+          实施后，西门子能源的Decommit率下降了32%，OTIF提升了5.8个百分点，平均承诺交期缩短了18%，加急生产成本降低了25%。多情景仿真功能使生产计划人员能够提前应对供应链波动，显著提升了生产稳定性。
+        </p>
+
+        <p class="case-desc" style="font-size:0.9rem; color:#394a5a;">
+          主要来源：Siemens Energy Manufacturing Excellence Report 2023
+          <a href="https://www.siemens-energy.com/global/en/company/manufacturing.html" target="_blank">https://www.siemens-energy.com/global/en/company/manufacturing.html</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- 返回按钮 -->
+    <div style="text-align: center; margin-bottom: 28px;">
+      <a href="{{ url_for('order_promising') }}" class="back-btn">
+        <i class="fas fa-arrow-left"></i> 返回Available to Build管理
+      </a>
+    </div>
+
+    <!-- References -->
+    <div class="best-practice-section">
+      <h2 class="section-title">来源与参考</h2>
+      <ul class="kpi-list" style="margin-top:8px;">
+        <li>McKinsey — AI驱动的供应链管理：<a href="https://www.mckinsey.com/capabilities/operations/our-insights/ai-enabled-supply-chain-management-from-planning-to-operations" target="_blank">https://www.mckinsey.com/capabilities/operations/our-insights/ai-enabled-supply-chain-management-from-planning-to-operations</a></li>
+        <li>ASCM/SCOR DS 指标与实践：<a href="https://www.ascm.org/globalassets/documents--files/corporate-transformation/scor-ds-digital-guide_final.pdf" target="_blank">https://www.ascm.org/globalassets/documents--files/corporate-transformation/scor-ds-digital-guide_final.pdf</a></li>
+        <li>全局ATP实践综述：<a href="https://dl.acm.org/doi/10.1145/3287560.3287591" target="_blank">https://dl.acm.org/doi/10.1145/3287560.3287591</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <small>计划流程分析系统 © 2023–2025 | ATB管理 • AI驱动生产优化</small>
+  </footer>
+</body>
+</html>
+    

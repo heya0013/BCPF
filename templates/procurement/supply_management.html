@@ -3,64 +3,267 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>供应管理 - 采购流程分析</title>
+  <title>供应管理 - 采购流程分析 | Supply Management - Procurement Process Analysis</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <style>
+    /* 供应管理特定样式 */
+    .supply-management .process-icon {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .key-reason-top {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 4px solid #2c7be5;
+    }
+    
+    .key-reason-header {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    
+    .key-reason-text {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    /* 英文翻译样式 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.25rem;
+      font-style: italic;
+      line-height: 1.4;
+    }
+    
+    .process-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .block-subtitle {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    
+    .optimization-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #2c3e50;
+    }
+    
+    .optimization-list {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .optimization-list li {
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+      .en-translation {
+        font-size: 0.8em;
+      }
+    }
+    
+    /* 页面整体样式 */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .header-section {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #2c7be5 0%, #0068e1 100%);
+      color: white;
+      border-radius: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .process-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .process-title {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .process-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      opacity: 0.9;
+    }
+    
+    .process-desc {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .section-title h2 {
+      color: #2c7be5;
+      font-size: 2rem;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 15px;
+    }
+    
+    .process-blocks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 25px;
+    }
+    
+    .process-block {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    
+    .block-header {
+      background: linear-gradient(90deg, #2c7be5 0%, #0068e1 100%);
+      color: white;
+      padding: 20px;
+    }
+    
+    .block-title {
+      font-size: 1.4rem;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .block-body {
+      padding: 25px;
+    }
+    
+    .content-area {
+      margin-bottom: 20px;
+    }
+    
+    .block-actions {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .best-practice-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #2c7be5, #0068e1);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .best-practice-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(44, 123, 229, 0.3);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 30px;
+      margin-top: 50px;
+      background: #2c3e50;
+      color: white;
+    }
+  </style>
 </head>
 <body>
 
   <!-- 流程标题区域 -->
-  <section class="header-section">
+  <section class="header-section supply-management">
     <div class="header-content">
       <div class="process-icon">
         <i class="fas fa-boxes"></i>
       </div>
-      <h1 class="process-title">供应管理</h1>
+      <h1 class="process-title">供应管理
+      </h1>
       <div class="process-subtitle">Supply Management</div>
       <div class="process-desc">
         优化供应链管理，确保物料及时供应并降低库存成本，提高供应链韧性。本流程涵盖供应商选择、库存控制、物流协调等关键环节，帮助企业建立高效、可靠的供应体系。
+        <span class="en-translation">Optimize supply chain management to ensure timely material supply, reduce inventory costs, and enhance supply chain resilience. This process covers key aspects such as supplier selection, inventory control, and logistics coordination, helping enterprises establish efficient and reliable supply systems.</span>
       </div>
     </div>
   </section>
 
-   <!-- 关键流程块区域 -->
+  <!-- 关键流程块区域 -->
   <div class="container">
     <div class="section-title">
-      <h2>关键流程模块</h2>
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
     </div>
     
     <div class="process-blocks">
-      <!-- 供应协调会议 -->
+      <!-- 数字化例会 -->
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
             <i class="fas fa-users"></i>
             数字化例会
+            <span class="en-translation">Digital Meeting</span>
           </div>
           <div class="block-subtitle">Supply Huddle</div>
         </div>
         <div class="block-body">
-          <p class="block-desc">
-          <!-- 添加的关键理由部分 -->
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>关键理由</strong>
+              <strong>关键理由
+                <span class="en-translation">Key Reason</span>
+              </strong>
             </div>
             <p class="key-reason-text">
-              Supply Huddle(数字化例会)把在途/库存/异常与计划偏差拉通，形成“问题清单—责任—进展”的可视闭环，是落地 S&OP 决策与推动执行的主场。
+              Supply Huddle(数字化例会)把在途/库存/异常与计划偏差拉通，形成"问题清单—责任—进展"的可视闭环，是落地 S&OP 决策与推动执行的主场。
+              <span class="en-translation">Supply Huddle (digital meeting) integrates in-transit/inventory/exceptions and plan deviations, forming a visible closed loop of "issue list-responsibility-progress", serving as the main platform for implementing S&OP decisions and driving execution.</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">供应协调会议优化建议：</div>
+            <div class="optimization-title">供应协调会议优化建议：
+              <span class="en-translation">Supply Coordination Meeting Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>数字化 Supply Huddle(问题编排)</li>
-              <li>汇聚 PO/ASN/库存/Commit/异常为一张事实表，自动生成“问题清单+责任+到期日”并驱动跨部门跟踪，例会直接消费数据与剧本。
+              <li>数字化 Supply Huddle(问题编排)
+                <span class="en-translation">Digital Supply Huddle (Issue Orchestration)</span>
+              </li>
+              <li>汇聚 PO/ASN/库存/Commit/异常为一张事实表，自动生成"问题清单+责任+到期日"并驱动跨部门跟踪，例会直接消费数据与剧本。
+                <span class="en-translation">Integrate PO/ASN/inventory/Commit/exceptions into a single fact table, automatically generate "issue list + responsibility + due date" and drive cross-departmental tracking, with meetings directly consuming data and scripts.</span>
+              </li>
             </ul>
           </div>
-          <!-- 最佳实践按钮 -->
           <div class="block-actions">
-            <a href="{{ url_for('procurement.best_practice', process='supply_management', module_name='supply_huddle') }}" 
-               class="best-practice-btn">
+            <a href="{{ url_for('procurement.best_practice', process='supply_management', module_name='supply_huddle') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -77,27 +280,32 @@
           <div class="block-subtitle">Regional Product S&OP</div>
         </div>
         <div class="block-body">
-          <p class="block-desc">
-<!-- 添加的关键理由部分 -->
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>关键理由</strong>
+              <strong>关键理由
+                <span class="en-translation">Key Reason</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               区域产品S&OP通过整合销售预测与运营规划，确保供需平衡，减少库存积压，提高资金周转率，同时增强对区域市场变化的快速响应能力。
+              <span class="en-translation">Regional Product S&OP integrates sales forecasts and operational planning to ensure supply-demand balance, reduce inventory backlog, improve capital turnover, and enhance rapid response capabilities to regional market changes.</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">区域产品S&OP优化建议:</div>
+            <div class="optimization-title">区域产品S&OP优化建议:
+              <span class="en-translation">Regional Product S&OP Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>区域 S&OP 预测与对齐</li>
-              <li>用分层时序+共识算法提升区域层面的需求/供应一致性,对齐滚动承诺并推送异常偏差(MAPE/偏差热力)。</li>
+              <li>区域 S&OP 预测与对齐
+                <span class="en-translation">Regional S&OP Forecasting and Alignment</span>
+              </li>
+              <li>用分层时序+共识算法提升区域层面的需求/供应一致性,对齐滚动承诺并推送异常偏差(MAPE/偏差热力)。
+                <span class="en-translation">Use hierarchical time series + consensus algorithms to improve demand/supply consistency at the regional level, align rolling commitments, and push exception deviations (MAPE/deviation heatmap).</span>
+              </li>
             </ul>
           </div>
-          <!-- 最佳实践按钮 -->
           <div class="block-actions">
-            <a href="{{ url_for('procurement.best_practice', process='supply_management', module_name='regional_sop') }}" 
-               class="best-practice-btn">
+            <a href="{{ url_for('procurement.best_practice', process='supply_management', module_name='regional_sop') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -114,31 +322,44 @@
           <div class="block-subtitle">ODM Direct Buy(DB) PO and Stock Audit</div>
         </div>
         <div class="block-body">
-          <p class="block-desc">
-          <!-- 添加的关键理由部分 -->
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>关键理由</strong>
+              <strong>关键理由
+                <span class="en-translation">Key Reason</span>
+              </strong>
             </div>
             <p class="key-reason-text">
-              ODM DB PO 与库存审计保障“按LT下单、按节奏备货、凭据齐全”，通过自动化抓取与比对确保计划口径、物流记录与凭证一致，降低合规与断供风险。
+              ODM DB PO 与库存审计保障"按LT下单、按节奏备货、凭据齐全"，通过自动化抓取与比对确保计划口径、物流记录与凭证一致，降低合规与断供风险。
+              <span class="en-translation">ODM DB PO and stock audit ensure "ordering according to LT, stocking according to rhythm, and complete documentation", reducing compliance and supply disruption risks through automated capture and comparison to ensure consistency between planning, logistics records, and vouchers.</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">ODM直购订单与库存审计优化建议：</div>
+            <div class="optimization-title">ODM直购订单与库存审计优化建议：
+              <span class="en-translation">ODM Direct Buy Order and Stock Audit Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>建立标准化的ODM直购订单审批流程，缩短处理时间</li>
-              <li>实施自动化订单匹配系统，减少人工操作错误</li>
-              <li>开发智能库存审计工具，实现实时库存可视化</li>
-              <li>建立供应商库存管理协作平台，提高库存透明度</li>
-              <li>实施风险预警系统，自动识别异常订单和库存变动</li>
-              <li>制定ODM供应商绩效评估体系，定期审计供应商合规性</li>
+              <li>建立标准化的ODM直购订单审批流程，缩短处理时间
+                <span class="en-translation">Establish a standardized ODM direct buy order approval process to shorten processing time</span>
+              </li>
+              <li>实施自动化订单匹配系统，减少人工操作错误
+                <span class="en-translation">Implement an automated order matching system to reduce manual operation errors</span>
+              </li>
+              <li>开发智能库存审计工具，实现实时库存可视化
+                <span class="en-translation">Develop intelligent inventory audit tools to achieve real-time inventory visualization</span>
+              </li>
+              <li>建立供应商库存管理协作平台，提高库存透明度
+                <span class="en-translation">Establish a supplier inventory management collaboration platform to improve inventory transparency</span>
+              </li>
+              <li>实施风险预警系统，自动识别异常订单和库存变动
+                <span class="en-translation">Implement a risk early warning system to automatically identify abnormal orders and inventory changes</span>
+              </li>
+              <li>制定ODM供应商绩效评估体系，定期审计供应商合规性
+                <span class="en-translation">Develop an ODM supplier performance evaluation system to regularly audit supplier compliance</span>
+              </li>
             </ul>
           </div>
-          <!-- 最佳实践按钮 -->
           <div class="block-actions">
-            <a href="{{ url_for('procurement.best_practice', process='supply_management', module_name='odm_audit') }}" 
-               class="best-practice-btn">
+            <a href="{{ url_for('procurement.best_practice', process='supply_management', module_name='odm_audit') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>

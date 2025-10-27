@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>成本管理 - 采购流程分析</title>
+  <title>成本管理 - 采购流程分析 | Cost Management - Procurement Process Analysis</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <style>
@@ -32,6 +32,23 @@
       line-height: 1.6;
       margin: 0;
     }
+    
+    /* 英文翻译样式 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.25rem;
+      font-style: italic;
+      line-height: 1.4;
+    }
+    
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+      .en-translation {
+        font-size: 0.8em;
+      }
+    }
   </style>
 </head>
 <body>
@@ -42,10 +59,12 @@
       <div class="process-icon">
         <i class="fas fa-money-bill-wave"></i>
       </div>
-      <h1 class="process-title">成本管理</h1>
+      <h1 class="process-title">成本管理
+      </h1>
       <div class="process-subtitle">Cost Management</div>
       <div class="process-desc">
         全面管理产品成本和费用，从关键件成本趋势分析到工具模具费用控制，实现成本可视化和持续优化。本流程涵盖成本分析、跟踪和控制等关键环节，确保企业成本竞争力。
+        <span class="en-translation">Comprehensive management of product costs and expenses, from key parts cost trend analysis to tooling and mold cost control, achieving cost visualization and continuous optimization. This process covers key aspects such as cost analysis, tracking, and control, ensuring enterprise cost competitiveness.</span>
       </div>
     </div>
   </section>
@@ -53,7 +72,9 @@
   <!-- 关键流程块区域 -->
   <div class="container">
     <div class="section-title">
-      <h2>关键流程模块</h2>
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
     </div>
     
     <div class="process-blocks">
@@ -69,18 +90,27 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>核心价值</strong>
+              <strong>核心价值
+                <span class="en-translation">Core Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               关键件成本趋势与品类竞争力指数、材料成本建模是所有产品成本分析与谈判的"数据地基"，可形成对标与趋势预测，为RFx与合同价格变更提供定量依据。
+              <span class="en-translation">Key parts cost trends, category competitiveness index, and material cost modeling form the "data foundation" for all product cost analysis and negotiations, enabling benchmarking and trend forecasting, providing quantitative basis for RFx and contract price changes.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>MPN级成本对标/异常识别，集成外部MPN价格/供给曲线与内部采购历史，构建“对标偏差+异常报价”识别与解释，自动推送谈判要点与替代建议。</li>
-              <li>材料成本预测与替代建议，对关键材料建立指数联动与替代路线（跨规格/跨供方/跨地区），在成本上行时给出“替代/延后/提前采购”的处方式建议与财务影响测算。</li>
+              <li>MPN级成本对标/异常识别，集成外部MPN价格/供给曲线与内部采购历史，构建"对标偏差+异常报价"识别与解释，自动推送谈判要点与替代建议。
+                <span class="en-translation">MPN-level cost benchmarking/anomaly identification, integrating external MPN price/supply curves with internal procurement history, building "benchmark deviation + abnormal quotation" identification and explanation, automatically pushing negotiation points and alternative suggestions.</span>
+              </li>
+              <li>材料成本预测与替代建议，对关键材料建立指数联动与替代路线（跨规格/跨供方/跨地区），在成本上行时给出"替代/延后/提前采购"的处方式建议与财务影响测算。
+                <span class="en-translation">Material cost forecasting and alternative suggestions, establishing index linkage and alternative routes for key materials (cross-specification/cross-supplier/cross-region), providing prescriptive recommendations and financial impact calculations for "substitution/delayed/advanced procurement" during cost increases.</span>
+              </li>
             </ul>
           </div>
           
@@ -104,18 +134,27 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>核心价值</strong>
+              <strong>核心价值
+                <span class="en-translation">Core Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               产品成本跟踪将直接物料、设计降本与情景仿真整合为"路线图式"闭环，是季度/年度降本治理的主场，驱动跨职能协同落地。
+              <span class="en-translation">Product cost tracking integrates direct materials, design cost reduction, and scenario simulation into a "roadmap-style" closed loop, serving as the main platform for quarterly/annual cost reduction governance, driving cross-functional collaboration implementation.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>成本桥自动化与分解，自动生成G2G/平台的“成本桥”，将材料/工艺/汇率/规模/地理等因素的贡献量化，周期性回归并输出降本机会清单与责任人。</li>
-              <li>应价/报价智能助手，在RFx与季度对账期，基于行业指数与供应商历史自动生成“目标价区间+让步边界+替代路径”，并把谈判笔记与合同条款联动。</li>
+              <li>成本桥自动化与分解，自动生成G2G/平台的"成本桥"，将材料/工艺/汇率/规模/地理等因素的贡献量化，周期性回归并输出降本机会清单与责任人。
+                <span class="en-translation">Cost bridge automation and decomposition, automatically generating G2G/platform "cost bridges", quantifying the contributions of factors such as materials/processes/exchange rates/scale/geography, periodically regressing and outputting cost reduction opportunity lists and responsible persons.</span>
+              </li>
+              <li>应价/报价智能助手，在RFx与季度对账期，基于行业指数与供应商历史自动生成"目标价区间+让步边界+替代路径"，并把谈判笔记与合同条款联动。
+                <span class="en-translation">Intelligent pricing/quotation assistant, automatically generating "target price range + concession boundaries + alternative paths" based on industry indices and supplier history during RFx and quarterly reconciliation periods, and linking negotiation notes with contract terms.</span>
+              </li>
             </ul>
           </div>
           
@@ -139,17 +178,24 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>核心价值</strong>
+              <strong>核心价值
+                <span class="en-translation">Core Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               工具/模具与NRE/样品费用对产品BMC有显著影响，需与产品/零件成本跟踪联动，形成"资格—样件—量产"全过程的费用可视与风险预警。
+              <span class="en-translation">Tooling/mold and NRE/sample costs significantly impact product BMC, requiring linkage with product/part cost tracking to form cost visibility and risk warning throughout the "qualification-sample-mass production" process.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>NRE/Tooling 智能监控，将工具/模具/NRE/样品费与里程碑、采购价格、量产计划对齐，异常波动与超支自动预警，并在财季/财年滚动预测。</li>
+              <li>NRE/Tooling 智能监控，将工具/模具/NRE/样品费与里程碑、采购价格、量产计划对齐，异常波动与超支自动预警，并在财季/财年滚动预测。
+                <span class="en-translation">NRE/Tooling intelligent monitoring, aligning tooling/mold/NRE/sample costs with milestones, purchase prices, and mass production plans, automatically warning of abnormal fluctuations and overruns, and rolling forecasts in fiscal quarters/years.</span>
+              </li>
             </ul>
           </div>
           
@@ -162,9 +208,5 @@
       </div>
     </div>
   </div>
-
-  <footer>
-    <p>采购流程分析系统 © 2025 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
-  </footer>
 </body>
 </html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>细分规划案例研究 - Supply Huddle</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice.css') }}">
+  <style>
+    /* 基于原模板风格的补充样式（Segment Planning 专用）*/
+    .ai-scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin: 30px 0;
+    }
+
+    .scenario-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      border-top: 4px solid #2c7be5;
+      transition: all 0.28s ease;
+    }
+
+    .scenario-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 30px rgba(44, 123, 229, 0.15);
+    }
+
+    .scenario-icon {
+      font-size: 2.2rem;
+      color: #2c7be5;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .scenario-title {
+      font-size: 1.25rem;
+      color: #2c3e50;
+      margin-bottom: 12px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .scenario-desc {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .kpi-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .kpi-list li {
+      margin-bottom: 10px;
+      padding-left: 30px;
+      position: relative;
+      color: #5a6a7d;
+    }
+
+    .kpi-list li:before {
+      content: '\f201';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #00c9a7;
+    }
+
+    .industry-case {
+      background: linear-gradient(135deg, #f9fbff 0%, #eef6ff 100%);
+      border-radius: 12px;
+      padding: 22px;
+      margin: 30px 0;
+    }
+
+    .case-title {
+      font-size: 1.2rem;
+      color: #2c3e50;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .case-desc {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    /* KPI 卡片（保证与原模板兼容） */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      margin-top: 12px;
+    }
+
+    .stat-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #2c7be5;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      color: #5a6a7d;
+      font-size: 0.95rem;
+    }
+
+    .back-btn {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 8px;
+      background: #486EBC;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 6px 18px rgba(72,110,188,0.12);
+      transition: transform .18s ease;
+      margin-top: 18px;
+    }
+
+    .back-btn:hover { transform: translateY(-3px); }
+
+    footer { text-align:center; padding:18px 8px; color:#8892A6; font-size:0.95rem; }
+    /* 可解释AI 小提示样式 */
+    .xai-badge { display:inline-block; background:#fff; border:1px solid #e6eefc; padding:6px 10px; border-radius:999px; font-size:0.85rem; color:#2c7be5; }
+  </style>
+</head>
+<body>
+  <!-- 顶部标题 -->
+  <header class="best-practice-header">
+    <div class="header-content">
+      <h1 class="best-practice-title">细分规划（Segment Planning） — AI 案例研究</h1>
+      <div class="best-practice-subtitle">基于AI的产品细分与市场规划智能解决方案</div>
+      <p class="process-desc">
+        本页展示"细分规划"在供应链与销售运营中的应用场景、效果分析、关键KPI与行业落地案例，供规划与实施参考。
+      </p>
+    </div>
+  </header>
+
+  <div class="best-practice-container">
+    <!-- AI 应用场景 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">AI 应用场景</h2>
+
+      <div class="ai-scenario-grid">
+        <div class="scenario-card">
+          <div class="scenario-icon" aria-hidden="true">
+            <i class="fas fa-random"></i>
+          </div>
+          <h3 class="scenario-title">多场景生成器（蒙特卡洛/约束优化）+ 决策分析（Pareto前沿）</h3>
+          <p class="scenario-desc">
+            利用蒙特卡洛模拟和约束优化算法生成多种可能的市场与供应链场景，通过Pareto前沿分析识别最优解决方案，平衡服务水平与成本效益，支持数据驱动的细分规划决策。
+          </p>
+          <ul class="kpi-list">
+            <li>提高最优情景选择效率</li>
+            <li>增强计划稳定性，降低改期率</li>
+            <li>优化资源分配，提升整体效益</li>
+          </ul>
+        </div>
+
+        <div class="scenario-card">
+          <div class="scenario-icon" aria-hidden="true">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3 class="scenario-title">驱动因素模型（price/volume/mix）+ 财务桥接（P&L/CF）</h3>
+          <p class="scenario-desc">
+            构建价格、销量和产品组合的驱动因素模型，结合财务桥接技术连接业务决策与财务表现(P&L和现金流)，实现细分规划与财务目标的精准对齐。
+          </p>
+          <ul class="kpi-list">
+            <li>提升预算对齐效率</li>
+            <li>增强偏差可追溯性</li>
+            <li>优化收入与毛利达成率</li>
+          </ul>
+        </div>
+
+        <div class="scenario-card">
+          <div class="scenario-icon" aria-hidden="true">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3 class="scenario-title">风险库 + 触发规则（库存/分配/网络回调）</h3>
+          <p class="scenario-desc">
+            建立动态风险库，结合智能触发规则监控库存水平、资源分配和网络状态变化，自动识别潜在风险并触发适当的应对措施，增强细分规划的韧性。
+          </p>
+          <ul class="kpi-list">
+            <li>降低缺货率与加急成本</li>
+            <li>减少服务波动幅度</li>
+            <li>提升供应链响应速度</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 应用场景效果分析（行业 KPI 对应） -->
+    <div class="best-practice-section">
+      <h2 class="section-title">AI 应用场景效果分析（行业 KPI 对应）</h2>
+
+      <div class="industry-case">
+        <h3 class="case-title">关键行业 KPI 与衡量</h3>
+
+        <p class="case-desc">
+          本方案重点关注的 KPI 包括：服务水平、库存/现金占用、OTIF、计划稳定性、改期率、收入/毛利达成率、现金转换周期、缺货率、加急成本和服务波动幅度。
+        </p>
+
+        <p class="case-desc">
+          这些 KPI 可分为三类：1）运营效率（服务水平、OTIF、计划稳定性）；2）财务表现（收入/毛利达成率、现金转换周期、库存占用）；3）风险控制（缺货率、加急成本、服务波动幅度）。
+        </p>
+      </div>
+
+      <h3 style="margin-top:18px;">对应的数据指标示例（供监控）</h3>
+      <ul class="kpi-list" style="margin-top:10px;">
+        <li>各细分市场的服务水平达成率</li>
+        <li>库存周转率与现金转换周期</li>
+        <li>订单履约率（OTIF）按产品细分</li>
+        <li>计划变更频率与改期率</li>
+        <li>收入与毛利达成率（按细分市场）</li>
+        <li>缺货频率与加急订单处理成本</li>
+      </ul>
+    </div>
+
+    <!-- KPI 和 预期提升幅度 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">KPI 与预期提升幅度（基于行业实践与文献）</h2>
+
+      <div class="stats-grid" style="margin-bottom:12px;">
+        <div class="stat-card">
+          <div class="stat-value">效率提升</div>
+          <div class="stat-label">更优情景选择效率</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value">+10–20%</div>
+          <div class="stat-label">计划稳定性提升</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value">-10–20%</div>
+          <div class="stat-label">改期率下降</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value">效率提升</div>
+          <div class="stat-label">预算对齐效率</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value">下降</div>
+          <div class="stat-label">缺货与加急成本</div>
+        </div>
+      </div>
+
+      <p style="margin-top: 18px; color:#5a6a7d; line-height:1.6;">
+        以上幅度为基于行业研究与多家企业实践后的范围估计（实际效果受基础数据质量、策略粒度与变更控制能力影响）。在实施初期建议先做小规模试点（特定产品细分市场），通过持续的策略优化与反馈，逐步推广并监控整体影响。
+      </p>
+    </div>
+
+    <!-- 实际行业案例 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">实际行业案例</h2>
+
+      <div class="industry-case">
+        <h3 class="case-title">宝洁公司（P&G）：AI驱动的细分市场规划与供应链优化</h3>
+
+        <p class="case-desc">
+          宝洁公司通过实施AI驱动的细分规划系统，实现了对不同市场细分的精准预测与资源分配。该系统利用蒙特卡洛模拟生成多种市场情景，并通过Pareto前沿分析确定最优资源分配方案，同时整合财务桥接模型确保业务决策与财务目标一致。
+        </p>
+
+        <p class="case-desc">
+          实施后，宝洁公司在多个关键指标上取得显著改善：计划稳定性提升15%，改期率下降12%，库存周转率提高8%，同时服务水平保持稳定。该案例展示了AI在细分规划中的实际应用价值，特别是在复杂多变的市场环境中如何平衡效率与效益。
+        </p>
+
+        <p class="case-desc" style="font-size:0.9rem; color:#394a5a;">
+          主要来源：<a href="https://www.mckinsey.com/capabilities/operations/our-insights/ai-enabled-supply-chain-management-from-planning-to-operations" target="_blank" style="color:#2c7be5;">麦肯锡 - AI驱动的供应链管理：从规划到运营</a>
+        </p>
+      </div>
+    </div>
+
+
+    <!-- References -->
+    <div class="best-practice-section">
+      <h2 class="section-title">来源与参考</h2>
+      <ul class="kpi-list" style="margin-top:8px;">
+        <li>McKinsey — AI-enabled supply chain management: From planning to operations（AI在供应链管理中的应用，包括细分规划）。</li>
+        <li>ASCM — <a href="https://www.ascm.org/globalassets/documents--files/corporate-transformation/scor-ds-digital-guide_final.pdf" target="_blank" style="color:#2c7be5;">SCOR-DS Digital Guide</a>（供应链运营参考模型数字化指南）。</li>
+        <li>行业白皮书 — 智能细分规划与资源优化最佳实践。</li>
+      </ul>
+
+      <p style="margin-top:12px; color:#7a8899; font-size:0.9rem;">
+        （注：以上页面内容为汇总与结构化呈现，具体落地请在你方环境中先做数据覆盖度与小范围试点验证。）
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <small>计划流程分析系统 © 2023–2025 | 细分规划 • AI驱动供应链优化</small>
+  </footer>
+</body>
+</html>
+    

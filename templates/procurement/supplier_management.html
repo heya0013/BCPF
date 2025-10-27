@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>供应商管理 - 采购流程分析</title>
+  <title>供应商管理 - 采购流程分析 | Supplier Management - Procurement Process Analysis</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <style>
@@ -32,10 +32,175 @@
       line-height: 1.6;
       margin: 0;
     }
+    
+    /* 英文翻译样式 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.25rem;
+      font-style: italic;
+      line-height: 1.4;
+    }
+    
+    .process-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .block-subtitle {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    
+    .optimization-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #2c3e50;
+    }
+    
+    .optimization-list {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .optimization-list li {
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+      .en-translation {
+        font-size: 0.8em;
+      }
+    }
+    
+    /* 页面整体样式 */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .header-section {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%);
+      color: white;
+      border-radius: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .process-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .process-title {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .process-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      opacity: 0.9;
+    }
+    
+    .process-desc {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .section-title h2 {
+      color: #8e44ad;
+      font-size: 2rem;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 15px;
+    }
+    
+    .process-blocks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 25px;
+    }
+    
+    .process-block {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    
+    .block-header {
+      background: linear-gradient(90deg, #8e44ad 0%, #9b59b6 100%);
+      color: white;
+      padding: 20px;
+    }
+    
+    .block-title {
+      font-size: 1.4rem;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .block-body {
+      padding: 25px;
+    }
+    
+    .content-area {
+      margin-bottom: 20px;
+    }
+    
+    .block-actions {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .best-practice-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #8e44ad, #9b59b6);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .best-practice-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(142, 68, 173, 0.3);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 30px;
+      margin-top: 50px;
+      background: #2c3e50;
+      color: white;
+    }
   </style>
 </head>
 <body>
-
 
   <!-- 流程标题区域 -->
   <section class="header-section supplier-process">
@@ -43,10 +208,12 @@
       <div class="process-icon">
         <i class="fas fa-handshake"></i>
       </div>
-      <h1 class="process-title">供应商管理</h1>
+      <h1 class="process-title">供应商管理
+      </h1>
       <div class="process-subtitle">Supplier Management</div>
       <div class="process-desc">
         全面管理供应商生命周期，从准入、评估到绩效管理和风险监控，建立战略供应商关系，优化供应链稳定性。本流程直接影响供应商全生命周期质量与S2P效率，是采购合规、风险与绩效的关键支点。
+        <span class="en-translation">Comprehensive management of the supplier lifecycle, from onboarding and evaluation to performance management and risk monitoring, establishing strategic supplier relationships, and optimizing supply chain stability. This process directly impacts the quality of the entire supplier lifecycle and S2P efficiency, serving as a key pivot for procurement compliance, risk, and performance.</span>
       </div>
     </div>
   </section>
@@ -54,7 +221,9 @@
   <!-- 关键流程块区域 -->
   <div class="container">
     <div class="section-title">
-      <h2>关键流程模块</h2>
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
     </div>
     
     <div class="process-blocks">
@@ -68,19 +237,24 @@
           <div class="block-subtitle">Supplier Spending Management</div>
         </div>
         <div class="block-body">
-          <div class="key-reason-top">
-            <div class="key-reason-header">
-              <strong>核心价值</strong>
+          <div class="core-value">
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
             </div>
-            <p class="key-reason-text">
+            <p class="core-value-content">
               该L4流程直接影响供应商全生命周期质量与S2P效率，是采购合规、风险与绩效的关键支点。
+              <span class="en-translation">This L4 process directly impacts the quality of the entire supplier lifecycle and S2P efficiency, serving as a key pivot for procurement compliance, risk, and performance.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>Spend智能分析, 对供应商分组Spend进行异常检测（价差/超合同/分散化），自动建议“整合/重谈/退出/开发”策略，提升SUM（Spend Under Management）。</li>
+              <li>Spend智能分析, 对供应商分组Spend进行异常检测（价差/超合同/分散化），自动建议"整合/重谈/退出/开发"策略，提升SUM（Spend Under Management）。
+                <span class="en-translation">Intelligent spend analysis, detecting anomalies in supplier group spending (price differences/over-contract/dispersion), automatically suggesting "consolidation/renegotiation/exit/development" strategies to improve SUM (Spend Under Management).</span>
+              </li>
             </ul>
           </div>
           
@@ -102,19 +276,24 @@
           <div class="block-subtitle">Supplier Onboarding</div>
         </div>
         <div class="block-body">
-          <div class="key-reason-top">
-            <div class="key-reason-header">
-              <strong>核心价值</strong>
+          <div class="core-value">
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
             </div>
-            <p class="key-reason-text">
+            <p class="core-value-content">
               供应商Onboarding是S2P生命周期的起点，负责资格合规、档案与能力核验；行业最佳实践强调"全在线化+一次通过率+合规自动审查"，其质量决定后续采购合规与交易效率。
+              <span class="en-translation">Supplier Onboarding is the starting point of the S2P lifecycle, responsible for qualification compliance,档案 and capability verification; industry best practices emphasize "full online + first-pass rate + automated compliance review", with its quality determining subsequent procurement compliance and transaction efficiency.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>进行NLP/计算机审阅，对投标/准入文件进行自动抽取、比对与红旗提示（证照有效期、合规条款、冲突条款），支撑“一次通过率”和“风险分级”。</li>
+              <li>进行NLP/计算机审阅，对投标/准入文件进行自动抽取、比对与红旗提示（证照有效期、合规条款、冲突条款），支撑"一次通过率"和"风险分级"。
+                <span class="en-translation">Conduct NLP/computer review, automatically extract, compare and flag red flags (license validity, compliance clauses, conflict clauses) for bidding/onboarding documents, supporting "first-pass rate" and "risk grading".</span>
+              </li>
             </ul>
           </div>
           
@@ -136,20 +315,27 @@
           <div class="block-subtitle">Supplier Master Data and General Profile Management</div>
         </div>
         <div class="block-body">
-          <div class="key-reason-top">
-            <div class="key-reason-header">
-              <strong>核心价值</strong>
+          <div class="core-value">
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
             </div>
-            <p class="key-reason-text">
+            <p class="core-value-content">
               主数据与通用画像（Profile）是寻源、合同、下单、绩效与风险算法的数据底座；缺失或不一致会直接拉低电子化率与对账效率，影响PO/付款准确与审计可追溯。
+              <span class="en-translation">Master data and general profiles are the data foundation for sourcing, contracts, ordering, performance and risk algorithms;缺失 or inconsistency directly reduces电子化 rate and reconciliation efficiency, affecting PO/payment accuracy and audit traceability.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li></li>
-       
+              <li>构建主数据质量仪表盘，对关键字段（供应商分类、资质、银行信息、联系人）进行完整性、准确性、时效性监控，自动生成数据清洗工单。
+                <span class="en-translation">Build a master data quality dashboard to monitor completeness, accuracy, and timeliness of key fields (supplier classification, qualifications, bank information, contacts), automatically generating data cleaning tickets.</span>
+              </li>
+              <li>建立供应商画像标签体系，基于交易历史、绩效评分、风险等级等多维度数据，自动生成供应商能力画像，支持智能寻源与风险预警。
+                <span class="en-translation">Establish a supplier profile labeling system, automatically generating supplier capability profiles based on multi-dimensional data such as transaction history, performance scores, and risk levels, supporting intelligent sourcing and risk early warning.</span>
+              </li>
             </ul>
           </div>
           
@@ -171,19 +357,24 @@
           <div class="block-subtitle">Supplier Key Performance Management</div>
         </div>
         <div class="block-body">
-          <div class="key-reason-top">
-            <div class="key-reason-header">
-              <strong>核心价值</strong>
+          <div class="core-value">
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
             </div>
-            <p class="key-reason-text">
+            <p class="core-value-content">
               供应商绩效（SPE/QBR/SBR）将时效/质量/成本/技术/服务等维度固化为周期治理闭环，是供应改善与合作深度的"操作系统"。
+              <span class="en-translation">Supplier performance (SPE/QBR/SBR) solidifies dimensions such as timeliness/quality/cost/technology/service into a periodic governance closed-loop, serving as the "operating system" for supply improvement and cooperation depth.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>自动化评分/生成式纪要，自动聚合准时率、质量不良、应价偏差、投诉等KPI，生成QBR简报与改进清单，并跟踪闭环达成率。</li>
+              <li>自动化评分/生成式纪要，自动聚合准时率、质量不良、应价偏差、投诉等KPI，生成QBR简报与改进清单，并跟踪闭环达成率。
+                <span class="en-translation">Automated scoring/generative minutes, automatically aggregating KPIs such as on-time rate, quality defects, price deviation, complaints, generating QBR briefings and improvement lists, and tracking closed-loop achievement rate.</span>
+              </li>
             </ul>
           </div>
           
@@ -205,19 +396,24 @@
           <div class="block-subtitle">Tiered Supplier Management</div>
         </div>
         <div class="block-body">
-          <div class="key-reason-top">
-            <div class="key-reason-header">
-              <strong>核心价值</strong>
+          <div class="core-value">
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</>
             </div>
-            <p class="key-reason-text">
+            <p class="core-value-content">
               分层供应商管理（含Tier-2/3可视与ECSL）扩展了可见度与杠杆，便于在短缺/中断场景进行替代与缓冲；是构建供应韧性的关键抓手。
+              <span class="en-translation">Tiered supplier management (including Tier-2/3 visibility and ECSL) expands visibility and leverage, facilitating substitution and buffering in shortage/disruption scenarios; it is a key lever for building supply resilience.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>上游可视/替代路径，以ECSL/超ECSL为种子，构建Tier-2/3图谱，基于规格兼容性与地理/交期生成替代建议，缩短断供切换时间。</li>
+              <li>上游可视/替代路径，以ECSL/超ECSL为种子，构建Tier-2/3图谱，基于规格兼容性与地理/交期生成替代建议，缩短断供切换时间。
+                <span class="en-translation">Upstream visibility/alternative paths, using ECSL/super ECSL as seeds, building Tier-2/3 maps, generating substitution recommendations based on specification compatibility and geography/lead time, shortening supply disruption切换 time.</span>
+              </li>
             </ul>
           </div>
           
@@ -239,19 +435,23 @@
           <div class="block-subtitle">Supplier Risk Management</div>
         </div>
         <div class="block-body">
-          <div class="key-reason-top">
-            <div class="key-reason-header">
-              <strong>核心价值</strong>
+          <div class="core-value">
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
             </div>
-            <p class="key-reason-text">
+            <p class="core-value-content">
               供应商风险管理通过外部（地缘/ESG/财务/网络/气候）与内部（质量/交付/投诉）数据的连续监测，形成预警与处置建议，是确保连续供给与合规的核心能力。
+              <span class="en-translation">Supplier risk management continuously monitors external (geopolitical/ESG/financial/network/climate) and internal (quality/delivery/complaints) data to form early warnings and处置 recommendations, serving as a core capability for ensuring continuous supply and compliance.</span>
             </p>
           </div>
-          
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>风险引擎/图谱，构建外部（地缘/气候/ESG/财务/网络）+内部（质量/交付/投诉）融合的连续监测引擎与图谱，输出预警与处置编排（替代、缓冲、资格加速）。</li>
+              <li>风险引擎/图谱，构建外部（地缘/气候/ESG/财务/网络）+内部（质量/交付/投诉）融合的连续监测引擎与图谱，输出预警与处置编排（替代、缓冲、资格加速）。
+                <span class="en-translation">Risk engine/knowledge graph, building an integrated continuous monitoring engine and graph combining external (geopolitical/climate/ESG/financial/network) + internal (quality/delivery/complaints) data, outputting early warnings and处置 orchestration (substitution, buffering, qualification acceleration).</span>
+              </li>
             </ul>
           </div>
           <div class="block-actions">

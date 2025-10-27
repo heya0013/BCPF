@@ -3,63 +3,264 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>执行协作 - 供应协作流程分析</title>
+  <title>执行协作 - 供应协作流程分析 | Execution Collaboration - Supply Collaboration Process Analysis</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <style>
+    /* 执行协作特定样式 */
+    .execution-collaboration .process-icon {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .key-reason-top {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 4px solid #3498db;
+    }
+    
+    .key-reason-header {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    
+    .key-reason-text {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    /* 英文翻译样式 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.25rem;
+      font-style: italic;
+      line-height: 1.4;
+    }
+    
+    .process-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .block-subtitle {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    
+    .optimization-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #2c3e50;
+    }
+    
+    .optimization-list {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .optimization-list li {
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+      .en-translation {
+        font-size: 0.8em;
+      }
+    }
+    
+    /* 页面整体样式 */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .header-section {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+      color: white;
+      border-radius: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .process-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .process-title {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .process-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      opacity: 0.9;
+    }
+    
+    .process-desc {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .section-title h2 {
+      color: #3498db;
+      font-size: 2rem;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 15px;
+    }
+    
+    .process-blocks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 25px;
+    }
+    
+    .process-block {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    
+    .block-header {
+      background: linear-gradient(90deg, #3498db 0%, #2980b9 100%);
+      color: white;
+      padding: 20px;
+    }
+    
+    .block-title {
+      font-size: 1.4rem;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .block-body {
+      padding: 25px;
+    }
+    
+    .content-area {
+      margin-bottom: 20px;
+    }
+    
+    .block-actions {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .best-practice-btn {
+      display: inline-block;
+      background: linear-gradient(90极客园deg, #3498db, #2980b9);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .best-practice-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 30px;
+      margin-top: 50px;
+      background: #2c3e50;
+      color: white;
+    }
+  </style>
 </head>
 <body>
 
-
   <!-- 流程标题区域 -->
-  <section class="header-section">
+  <section class="header-section execution-collaboration">
     <div class="header-content">
       <div class="process-icon">
         <i class="fas fa-handshake"></i>
       </div>
-      <h1 class="process-title">执行协作</h1>
+      <h1 class="process-title">执行协作
+        <span class="en-translation">Execution Collaboration</span>
+      </h1>
       <div class="process-subtitle">Execution Collaboration</div>
       <div class="process-desc">
         聚焦供应链实际落地环节，供应链参与方围绕订单履行、生产进度跟进、物流调度及异常问题（如原材料短缺）处理开展的协同配合，确保前期计划有效落地。
+        <span class="en-translation">Focusing on the practical implementation of the supply chain, supply chain participants collaborate around order fulfillment, production progress tracking, logistics scheduling, and exception handling (such as raw material shortages) to ensure effective implementation of preliminary plans.</span>
       </div>
     </div>
   </section>
 
-      <!-- 关键流程块区域 -->
+  <!-- 关键流程块区域 -->
   <div class="container">
     <div class="section-title">
-      <h2>关键流程模块</h2>
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
     </div>
+    
     <div class="process-blocks">
       <!-- 物料拉动追踪 -->
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
-            <i class="fas fa-money-check-alt"></i>
+            <i class="fas fa-boxes"></i>
             物料拉动追踪
           </div>
           <div class="block-subtitle">Material Pull Tracking</div>
         </div>
         <div class="block-body">
-          <p class="block-desc">
-          <!-- 添加的关键理由部分 -->
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>关键理由</strong>
+              <strong>关键理由
+                <span class="en-translation">Key Reason</span>
+              </strong>
             </div>
             <p class="key-reason-text">
-              PO确认：逐项确认交期/数量，作为排产与ASN依据。；VMI/寄售：按可视库存与策略补货，缓解滞后与放大。；PCN/ECO：提前评估影响与替代，控制停线与呆滞风险
+              PO确认：逐项确认交期/数量，作为排产与ASN依据；VMI/寄售：按可视库存与策略补货，缓解滞后与放大；PCN/ECO：提前评估影响与替代，控制停线与呆滞风险。
+              <span class="en-translation">PO confirmation: Confirm delivery date/quantity item by item as the basis for scheduling and ASN; VMI/Consignment: Replenish based on visible inventory and strategy to alleviate delays and amplification; PCN/ECO: Evaluate impact and alternatives in advance to control line stoppage and obsolescence risks.</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">物料拉动追踪优化建议：</div>
+            <div class="optimization-title">物料拉动追踪优化建议：
+              <span class="en-translation">Material Pull Tracking Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>质量协同→绩效闭环,把NCR/8D结案自动回写到供应商评分卡，形成持续改进。</li>
+              <li>质量协同→绩效闭环，把NCR/8D结案自动回写到供应商评分卡，形成持续改进。
+                <span class="en-translation">Quality collaboration → performance closed-loop, automatically writing back NCR/8D closure to supplier scorecards to form continuous improvement.</span>
+              </li>
             </ul>
           </div>
-          <!-- 最佳实践按钮 -->
           <div class="block-actions">
-            <a href="{{ url_for('supplier.best_practice', process='Execution', module_name='Pull_Tracking') }}" 
-               class="best-practice-btn">
+            <a href="{{ url_for('supplier.best_practice', process='Execution', module_name='Pull_Tracking') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -70,74 +271,80 @@
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
-            <i class="fas fa-money-check-alt"></i>
+            <i class="fas fa-shipping-fast"></i>
             预先发货通知（ASN）
           </div>
           <div class="block-subtitle">Advanced Shipping Notice</div>
         </div>
         <div class="block-body">
-          <p class="block-desc">
-          <!-- 添加的关键理由部分 -->
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>关键理由</strong>
+              <strong>关键理由
+                <span class="en-translation">Key Reason</span>
+              </strong>
             </div>
             <p class="key-reason-text">
-              ASN预报：提前告知到货明细与时间，提升入厂/入库接驳效率。；VMI/寄售：按可视库存与策略补货，缓解滞后与放大。；PCN/ECO：提前评估影响与替代，控制停线与呆滞风险。
+              ASN预报：提前告知到货明细与时间，提升入厂/入库接驳效率；VMI/寄售：按可视库存与策略补货，缓解滞后与放大；PCN/ECO：提前评估影响与替代，控制停线与呆滞风险。
+              <span class="en-translation">ASN forecast: Inform arrival details and time in advance to improve inbound/docking efficiency; VMI/Consignment: Replenish based on visible inventory and strategy to alleviate delays and amplification; PCN/ECO: Evaluate impact and alternatives in advance to control line stoppage and obsolescence risks.</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">ASN优化建议：</div>
+            <div class="optimization-title">ASN优化建议：
+              <span class="en-translation">ASN Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>短缺分配与加急编排, 将承诺不足→allocation→排产/ASN 的应急编排标准化与仿真。</li>
+              <li>短缺分配与加急编排，将承诺不足→allocation→排产/ASN的应急编排标准化与仿真。
+                <span class="en-translation">Shortage allocation and expedited orchestration, standardizing and simulating emergency orchestration from commitment shortage → allocation → scheduling/ASN.</span>
+              </li>
             </ul>
           </div>
-          <!-- 最佳实践按钮 -->
           <div class="block-actions">
-            <a href="{{ url_for('supplier.best_practice', process='Execution', module_name='ASN') }}" 
-               class="best-practice-btn">
+            <a href="{{ url_for('supplier.best_practice', process='Execution', module_name='ASN') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </div>
       </div>
-        
-
+      
       <!-- 退货授权（RMA） -->
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
-            <i class="fas fa-money-check-alt"></i>
+            <i class="fas fa-undo-alt"></i>
             退货授权（RMA）
           </div>
           <div class="block-subtitle">Return Merchandise Authorization</div>
         </div>
         <div class="block-body">
-          <p class="block-desc">
-          <!-- 添加的关键理由部分 -->
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>关键理由</strong>
+              <strong>关键理由
+                <span class="en-translation">Key Reason</span>
+              </strong>
             </div>
             <p class="key-reason-text">
-              PO确认：逐项确认交期/数量，作为排产与ASN依据。；质量协同（NCR/8D）：快速定责与纠正预防，降低PPM与退货。
+              PO确认：逐项确认交期/数量，作为排产与ASN依据；质量协同（NCR/8D）：快速定责与纠正预防，降低PPM与退货。
+              <span class="en-translation">PO confirmation: Confirm delivery date/quantity item by item as the basis for scheduling and ASN; Quality collaboration (NCR/8D): Quickly determine responsibility and implement corrective/preventive actions to reduce PPM and returns.</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">RMA优化建议：</div>
+            <div class="optimization-title">RMA优化建议：
+              <span class="en-translation">RMA Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>短缺分配与加急编排, 将承诺不足→allocation→排产/ASN 的应急编排标准化与仿真。</li>
+              <li>短缺分配与加急编排，将承诺不足→allocation→排产/ASN的应急编排标准化与仿真。
+                <span class="en-translation">Shortage allocation and expedited orchestration, standardizing and simulating emergency orchestration from commitment shortage → allocation → scheduling/ASN.</span>
+              </li>
             </ul>
           </div>
-          <!-- 最佳实践按钮 -->
           <div class="block-actions">
-            <a href="{{ url_for('supplier.best_practice', process='Execution', module_name='RMA') }}" 
-               class="best-practice-btn">
+            <a href="{{ url_for('supplier.best_practice', process='Execution', module_name='RMA') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </div>
       </div>
     </div>
+  </div>
 </body>
 </html>

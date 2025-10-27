@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>采购申请与采购订单管理</title>
+  <title>采购申请与采购订单管理 | Purchase Requisition and Purchase Order Management</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <style>
@@ -69,10 +69,145 @@
       margin: 0;
       font-size: 1.1rem;
     }
+    
+    /* 英文翻译样式 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.25rem;
+      font-style: italic;
+      line-height: 1.4;
+    }
+    
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+      .en-translation {
+        font-size: 0.8em;
+      }
+    }
+    
+    /* 页面整体样式 */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .header-section {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #2c7be5 0%, #0068e1 100%);
+      color: white;
+      border-radius: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .process-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .process-title {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .process-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      opacity: 0.9;
+    }
+    
+    .process-desc {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .section-title h2 {
+      color: #2c7be5;
+      font-size: 2rem;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 15px;
+    }
+    
+    .process-blocks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 25px;
+    }
+    
+    .process-block {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    
+    .block-header {
+      background: linear-gradient(90deg, #2c7be5 0%, #0068e1 100%);
+      color: white;
+      padding: 20px;
+    }
+    
+    .block-title {
+      font-size: 1.4rem;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .block-body {
+      padding: 25px;
+    }
+    
+    .block-actions {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .best-practice-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #00c9a7, #2c7be5);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .best-practice-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(44, 123, 229, 0.3);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 30px;
+      margin-top: 50px;
+      background: #2c3e50;
+      color: white;
+    }
   </style>
 </head>
 <body>
-
 
   <!-- 流程标题区域 -->
   <section class="header-section">
@@ -80,10 +215,12 @@
       <div class="process-icon">
         <i class="fas fa-file-purchase"></i>
       </div>
-      <h1 class="process-title">采购申请与采购订单管理</h1>
+      <h1 class="process-title">采购申请与采购订单管理
+      </h1>
       <div class="process-subtitle">PR and PO Management</div>
       <div class="process-desc">
         优化采购申请和订单处理流程，提高审批效率，缩短采购周期，降低合规风险。本流程涵盖PR创建、PO生成、审批工作流等关键环节，确保采购流程高效、规范。
+        <span class="en-translation">Optimize purchase requisition and order processing workflows, improve approval efficiency, shorten procurement cycles, and reduce compliance risks. This process covers key aspects such as PR creation, PO generation, and approval workflows, ensuring efficient and standardized procurement processes.</span>
       </div>
     </div>
   </section>
@@ -91,7 +228,9 @@
   <!-- 关键流程块区域 -->
   <div class="container">
     <div class="section-title">
-      <h2>关键流程模块</h2>
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
     </div>
     
     <div class="process-blocks">
@@ -107,18 +246,29 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>核心价值</strong>
+              <strong>核心价值
+                <span class="en-translation">Core Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
-              PO管理贯穿“请购→下单→收货→对账”的执行主线，是交付达成率、发票准确度与库存周转的核心抓手；行业最佳实践强调异常闭环（延期/欠交/价格不一致）与端到端可追溯。
+              PO管理贯穿"请购→下单→收货→对账"的执行主线，是交付达成率、发票准确度与库存周转的核心抓手；行业最佳实践强调异常闭环（延期/欠交/价格不一致）与端到端可追溯。
+              <span class="en-translation">PO management runs through the execution chain of "requisition → ordering → receipt → reconciliation", serving as the core driver for delivery achievement rate, invoice accuracy, and inventory turnover; industry best practices emphasize closed-loop exception handling (delays/shortages/price discrepancies) and end-to-end traceability.</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>异常预测/智能催交<li>
-              <li>构建PO异常预测模型（延期/欠交/价格不一致），自动触发催交/改约/替代建议，并生成异常解释与影响评估。</li>
-              <li>按规则从预测/补货/合同触发PO草案，自动填充主数据与条款并路由审批；异常项（缺字段/价差/黑名单）自动拦截。</li>
+              <li>异常预测/智能催交
+                <span class="en-translation">Exception Prediction/Intelligent Expediting</span>
+              </li>
+              <li>构建PO异常预测模型（延期/欠交/价格不一致），自动触发催交/改约/替代建议，并生成异常解释与影响评估。
+                <span class="en-translation">Build PO exception prediction models (delays/shortages/price discrepancies), automatically trigger expediting/rescheduling/substitution recommendations, and generate exception explanations and impact assessments.</span>
+              </li>
+              <li>按规则从预测/补货/合同触发PO草案，自动填充主数据与条款并路由审批；异常项（缺字段/价差/黑名单）自动拦截。
+                <span class="en-translation">Trigger PO drafts from forecasts/replenishment/contracts based on rules, automatically populate master data and terms, and route for approval; automatically intercept exceptions (missing fields/price differences/blacklist).</span>
+              </li>
             </ul>
           </div>
           <div class="block-actions">
@@ -141,16 +291,23 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>核心价值</strong>
+              <strong>核心价值
+                <span class="en-translation">Core Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               采购主数据（物料/供应商/地点/价格条件等）是PR/PO/收货/发票的单据口径与校验基座；高质量主数据可显著降低价格/品类/地点错误导致的返工与争议。
+              <span class="en-translation">Purchasing master data (materials/suppliers/locations/price terms, etc.) forms the basis for document standards and validation of PR/PO/receipt/invoice; high-quality master data significantly reduces rework and disputes caused by price/category/location errors.</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>建立“主数据质量仪表盘”（必填/唯一/一致/时效），对影响PR/PO的关键字段（价格条件、地点、供应商代码、税率）做自动校验与修复工单。</li>
+              <li>建立"主数据质量仪表盘"（必填/唯一/一致/时效），对影响PR/PO的关键字段（价格条件、地点、供应商代码、税率）做自动校验与修复工单。
+                <span class="en-translation">Establish a "master data quality dashboard" (mandatory/unique/consistent/timely), perform automatic validation and create repair tickets for key fields affecting PR/PO (price terms, locations, supplier codes, tax rates).</span>
+              </li>
             </ul>
           </div>
           <div class="block-actions">
@@ -173,16 +330,23 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>核心价值</strong>
+              <strong>核心价值
+                <span class="en-translation">Core Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               Buy Ahead（提前备料/预占LOI）在供需紧张或长交期场景下平衡风险与资金占用，需与预测/交期/库存策略联动，避免积压与呆滞。
+              <span class="en-translation">Buy Ahead (advance material preparation/pre-allocation LOI) balances risks and capital occupation in tight supply-demand or long lead-time scenarios, requiring linkage with forecasts/lead times/inventory strategies to avoid backlog and obsolescence.</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>将供需预测、交期、价格趋势与资金成本纳入目标函数，给出 Buy Ahead 额度/周期/覆盖对象建议，并跟踪实际收益与库存影响。</li>
+              <li>将供需预测、交期、价格趋势与资金成本纳入目标函数，给出 Buy Ahead 额度/周期/覆盖对象建议，并跟踪实际收益与库存影响。
+                <span class="en-translation">Incorporate supply-demand forecasts, lead times, price trends, and capital costs into the objective function to provide Buy Ahead quota/cycle/coverage recommendations, and track actual benefits and inventory impact.</span>
+              </li>
             </ul>
           </div>
           <div class="block-actions">
@@ -194,9 +358,5 @@
       </div>
     </div>
   </div>
-
-  <footer>
-    <p>采购流程分析系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
-  </footer>
 </body>
 </html>

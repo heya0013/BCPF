@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>复杂性管理 - 采购流程分析</title>
+  <title>复杂性管理 - 计划流程分析</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <style>
@@ -41,6 +41,28 @@
     .complexity-process .best-practice-btn {
       background: linear-gradient(90deg, #8e44ad, #3498db);
     }
+
+    /* 中英双语翻译样式：统一控制英文排版 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.3rem;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* 适配列表项翻译的间距 */
+    .optimization-list li .en-translation {
+      margin-top: 0.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 导航按钮翻译样式 */
+    .nav-btn .en-translation {
+      margin-top: 0.1rem;
+      font-size: 0.8em;
+    }
   </style>
 </head>
 <body>
@@ -48,10 +70,18 @@
   <nav class="navbar">
     <div class="nav-container">
       <div class="nav-buttons">
-        <a href="supplier_management.html" class="nav-btn">供应商管理</a>
-        <a href="source_management.html" class="nav-btn">寻源管理</a>
-        <a href="new_product_management.html" class="nav-btn">新产品管理</a>
-        <a href="cost_management.html" class="nav-btn">成本控制</a>
+        <a href="supplier_management.html" class="nav-btn">供应商管理
+          <span class="en-translation">Supplier Management</span>
+        </a>
+        <a href="source_management.html" class="nav-btn">寻源管理
+          <span class="en-translation">Sourcing Management</span>
+        </a>
+        <a href="new_product_management.html" class="nav-btn">新产品管理
+          <span class="en-translation">New Product Management</span>
+        </a>
+        <a href="cost_management.html" class="nav-btn">成本控制
+          <span class="en-translation">Cost Control</span>
+        </a>
       </div>
     </div>
   </nav>
@@ -62,10 +92,13 @@
       <div class="process-icon">
         <i class="fas fa-project-diagram"></i>
       </div>
-      <h1 class="process-title">可售库存</h1>
+      <h1 class="process-title">可售库存
+      </h1>
       <div class="process-subtitle">ATS (Available To Sell)</div>
       <div class="process-desc">
         可售库存ATS指企业当前能直接卖给客户的商品数量。其核心价值在于通过动态管理库存（总库存减去已订单锁定等不可售部分），确保销售渠道显示真实库存，从而有效避免超卖缺货，提升订单履约能力。
+        <span class="en-translation">Available To Sell (ATS) refers to the quantity of goods that an enterprise can directly sell to customers currently.</span> 
+        <span class="en-translation">Its core value lies in dynamically managing inventory (total inventory minus unsellable parts such as order-locked inventory) to ensure that sales channels display real inventory, thereby effectively avoiding overselling and stockouts and improving order fulfillment capabilities.</span>
       </div>
     </div>
   </section>
@@ -73,7 +106,9 @@
   <!-- 关键流程块区域 -->
   <div class="container">
     <div class="section-title">
-      <h2>关键流程模块</h2>
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
     </div>
     
     <div class="process-blocks">
@@ -88,23 +123,36 @@
         </div>
         <div class="block-body">
           <div class="core-value">
-            <div class="core-value-title">关键理由</div>
+            <div class="core-value-title">关键理由
+              <span class="en-translation">Key Reasons</span>
+            </div>
             <p class="core-value-content">
-              统一暴露可售可得量，将库存、在途、锁库与分配状态汇合，避免重复承诺，支撑跨渠道的实时可用性。；Itemgroup/CV维度的ATS实现族群级聚合视角，便于按照产品系列或配置族进行策略分配与可视化。
+              统一暴露可售可得量，将库存、在途、锁库与分配状态汇合，避免重复承诺，支撑跨渠道的实时可用性。
+              <span class="en-translation">Unify the exposure of available sellable quantity, integrate inventory, in-transit, locked inventory, and allocation status to avoid duplicate commitments and support real-time availability across channels.</span>
+              ；Itemgroup/CV维度的ATS实现族群级聚合视角，便于按照产品系列或配置族进行策略分配与可视化。
+              <span class="en-translation">ATS at the Itemgroup/CV dimension enables a group-level aggregated perspective, facilitating strategic allocation and visualization by product series or configuration families.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
             <ul class="optimization-list">
-              <li>建设ATS主数据与口径治理：统一库存状态枚举（在手/质检/在途/锁定/预约/分配）、暴露策略与时点规则</li>
-              <li>基于对时点库存与在途的短期预测（短缺风险、到货偏差）+ 规则/优化策略，动态生成多时点ATS曲线</li>
-              <li>提供‘Why/Why Not/Next Best’可售解释：为何此时不可售、下一个可售时点、需要哪些解锁动作（替代、转仓、替代料）</li>
+              <li>建设ATS主数据与口径治理：统一库存状态枚举（在手/质检/在途/锁定/预约/分配）、暴露策略与时点规则
+                <span class="en-translation">Establish ATS master data and caliber governance: unify inventory status enumeration (on-hand/quality inspection/in-transit/locked/reserved/allocated), exposure strategies, and timing rules</span>
+              </li>
+              <li>基于对时点库存与在途的短期预测（短缺风险、到货偏差）+ 规则/优化策略，动态生成多时点ATS曲线
+                <span class="en-translation">Dynamically generate multi-time-point ATS curves based on short-term forecasts of time-point inventory and in-transit (shortage risks, arrival deviations) + rules/optimization strategies</span>
+              </li>
+              <li>提供‘Why/Why Not/Next Best’可售解释：为何此时不可售、下一个可售时点、需要哪些解锁动作（替代、转仓、替代料）
+                <span class="en-translation">Provide "Why/Why Not/Next Best" sellability explanations: why it is unsellable at this time, the next sellable time point, and what unlocking actions are needed (substitution, warehouse transfer, alternative materials)</span>
+              </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='available_to_sell', module_name='cv_itemgroup_ats') }}" class="best-practice-btn">
+            <a href="{{ url_for('planning.best_practice', process='available_to_sell', module_name='cv_itemgroup_ats') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -122,22 +170,33 @@
         </div>
         <div class="block-body">
           <div class="core-value">
-            <div class="core-value-title">关键理由</div>
+            <div class="core-value-title">关键理由
+              <span class="en-translation">Key Reasons</span>
+            </div>
             <p class="core-value-content">
-              统一暴露可售可得量，将库存、在途、锁库与分配状态汇合，避免重复承诺，支撑跨渠道的实时可用性。；Itemgroup/CV维度的ATS实现族群级聚合视角，便于按照产品系列或配置族进行策略分配与可视化。
+              统一暴露可售可得量，将库存、在途、锁库与分配状态汇合，避免重复承诺，支撑跨渠道的实时可用性。
+              <span class="en-translation">Unify the exposure of available sellable quantity, integrate inventory, in-transit, locked inventory, and allocation status to avoid duplicate commitments and support real-time availability across channels.</span>
+              ；Itemgroup/CV维度的ATS实现族群级聚合视角，便于按照产品系列或配置族进行策略分配与可视化。
+              <span class="en-translation">ATS at the Itemgroup/CV dimension enables a group-level aggregated perspective, facilitating strategic allocation and visualization by product series or configuration families.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
             <ul class="optimization-list">
-              <li>基于对时点库存与在途的短期预测（短缺风险、到货偏差）+ 规则/优化策略，动态生成多时点ATS曲线</li>
-              <li>与Allocation/Reservation/CTB/DRP/ATP建立双向同步与门禁：锁库与配额即时扣减；CTB通过批次入池；跨库位暴露差异化策略</li>
+              <li>基于对时点库存与在途的短期预测（短缺风险、到货偏差）+ 规则/优化策略，动态生成多时点ATS曲线
+                <span class="en-translation">Dynamically generate multi-time-point ATS curves based on short-term forecasts of time-point inventory and in-transit (shortage risks, arrival deviations) + rules/optimization strategies</span>
+              </li>
+              <li>与Allocation/Reservation/CTB/DRP/ATP建立双向同步与门禁：锁库与配额即时扣减；CTB通过批次入池；跨库位暴露差异化策略
+                <span class="en-translation">Establish two-way synchronization and access control with Allocation/Reservation/CTB/DRP/ATP: real-time deduction of locked inventory and quotas; CTB entry into the pool by batch; exposure of differentiated strategies across warehouses</span>
+              </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='available_to_sell', module_name='excess_stock_ats') }}" class="best-practice-btn">
+            <a href="{{ url_for('planning.best_practice', process='available_to_sell', module_name='excess_stock_ats') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -155,23 +214,36 @@
         </div>
         <div class="block-body">
           <div class="core-value">
-            <div class="core-value-title">关键理由</div>
+            <div class="core-value-title">关键理由
+              <span class="en-translation">Key Reasons</span>
+            </div>
             <p class="core-value-content">
-              统一暴露可售可得量，将库存、在途、锁库与分配状态汇合，避免重复承诺，支撑跨渠道的实时可用性。；Itemgroup/CV维度的ATS实现族群级聚合视角，便于按照产品系列或配置族进行策略分配与可视化。
+              统一暴露可售可得量，将库存、在途、锁库与分配状态汇合，避免重复承诺，支撑跨渠道的实时可用性。
+              <span class="en-translation">Unify the exposure of available sellable quantity, integrate inventory, in-transit, locked inventory, and allocation status to avoid duplicate commitments and support real-time availability across channels.</span>
+              ；Itemgroup/CV维度的ATS实现族群级聚合视角，便于按照产品系列或配置族进行策略分配与可视化。
+              <span class="en-translation">ATS at the Itemgroup/CV dimension enables a group-level aggregated perspective, facilitating strategic allocation and visualization by product series or configuration families.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
             <ul class="optimization-list">
-              <li>建设ATS主数据与口径治理：统一库存状态枚举（在手/质检/在途/锁定/预约/分配）、暴露策略与时点规则</li>
-              <li>基于对时点库存与在途的短期预测（短缺风险、到货偏差）+ 规则/优化策略，动态生成多时点ATS曲线</li>
-              <li>与Allocation/Reservation/CTB/DRP/ATP建立双向同步与门禁：锁库与配额即时扣减；CTB通过批次入池；跨库位暴露差异化策略</li>
+              <li>建设ATS主数据与口径治理：统一库存状态枚举（在手/质检/在途/锁定/预约/分配）、暴露策略与时点规则
+                <span class="en-translation">Establish ATS master data and caliber governance: unify inventory status enumeration (on-hand/quality inspection/in-transit/locked/reserved/allocated), exposure strategies, and timing rules</span>
+              </li>
+              <li>基于对时点库存与在途的短期预测（短缺风险、到货偏差）+ 规则/优化策略，动态生成多时点ATS曲线
+                <span class="en-translation">Dynamically generate multi-time-point ATS curves based on short-term forecasts of time-point inventory and in-transit (shortage risks, arrival deviations) + rules/optimization strategies</span>
+              </li>
+              <li>与Allocation/Reservation/CTB/DRP/ATP建立双向同步与门禁：锁库与配额即时扣减；CTB通过批次入池；跨库位暴露差异化策略
+                <span class="en-translation">Establish two-way synchronization and access control with Allocation/Reservation/CTB/DRP/ATP: real-time deduction of locked inventory and quotas; CTB entry into the pool by batch; exposure of differentiated strategies across warehouses</span>
+              </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='available_to_sell', module_name='family_mtm_level_ats') }}" 
+            <a href="{{ url_for('planning.best_practice', process='available_to_sell', module_name='family_mtm_level_ats') }}" 
               class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
@@ -182,7 +254,13 @@
   </div>
 
   <footer>
-    <p>采购流程分析系统 © 2025 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
+    <p>计划流程分析系统 © 2025 
+      <span class="en-translation">Planning Process Analysis System © 2025</span>
+      | 企业计划优化解决方案 
+      <span class="en-translation">Enterprise Planning Optimization Solutions</span>
+      | 提升效率 • 降低成本 • 优化供应链
+      <span class="en-translation">Improve Efficiency • Reduce Costs • Optimize Supply Chain</span>
+    </p>
   </footer>
 </body>
 </html>

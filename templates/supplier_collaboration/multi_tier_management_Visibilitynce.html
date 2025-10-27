@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>多层级供应链管理与可视性- 供应协作流程分析</title>
+  <title>多层级供应链管理与可视性 - 供应协作流程分析 | Multi-Tier Supply Management & Visibility - Supply Collaboration Process Analysis</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <style>
-    /* 新产品管理特定样式 */
-    .new-product-process .process-icon {
+    /* 多层级供应链管理特定样式 */
+    .multi-tier-process .process-icon {
       background-color: rgba(255, 255, 255, 0.2);
     }
     
@@ -32,20 +32,192 @@
       line-height: 1.6;
       margin: 0;
     }
+    
+    /* 英文翻译样式 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.25rem;
+      font-style: italic;
+      line-height: 1.4;
+    }
+    
+    .process-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .block-subtitle {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    
+    .optimization-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #2c3e50;
+    }
+    
+    .optimization-list {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .optimization-list li {
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+      .en-translation {
+        font-size: 0.8em;
+      }
+      
+      .optimization-list li {
+        font-size: 0.9rem;
+      }
+    }
+    
+    /* 页面整体样式 */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .header-section {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+      color: white;
+      border-radius: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .process-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .process-title {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .process-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      opacity: 0.9;
+    }
+    
+    .process-desc {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .section-title h2 {
+      color: #9b59b6;
+      font-size: 2rem;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 15px;
+    }
+    
+    .process-blocks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 25px;
+    }
+    
+    .process-block {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    
+    .block-header {
+      background: linear-gradient(90deg, #9b59b6 0%, #8e44ad 100%);
+      color: white;
+      padding: 20px;
+    }
+    
+    .block-title {
+      font-size: 1.4rem;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .block-body {
+      padding: 25px;
+    }
+    
+    .content-area {
+      margin-bottom: 20px;
+    }
+    
+    .block-actions {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .best-practice-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #9b59b6, #8e44ad);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .best-practice-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 30px;
+      margin-top: 50px;
+      background: #2c3e50;
+      color: white;
+    }
   </style>
 </head>
 <body>
 
   <!-- 流程标题区域 -->
-  <section class="header-section new-product-process">
+  <section class="header-section multi-tier-process">
     <div class="header-content">
       <div class="process-icon">
         <i class="fas fa-cube"></i>
       </div>
-      <h1 class="process-title">多层级供应链管理与可视性 </h1>
+      <h1 class="process-title">多层级供应链管理与可视性
+      </h1>
       <div class="process-subtitle">Multi-Tier Supply Management & Visibility</div>
       <div class="process-desc">
-        管理全链条供应商层级并实时追踪状态，规避上游信息断层。
+        管理全链条供应商层级并实时追踪状态，规避上游信息断层，确保供应链透明度和韧性。
+        <span class="en-translation">Manage the entire supplier hierarchy and track status in real-time to avoid upstream information gaps, ensuring supply chain transparency and resilience.</span>
       </div>
     </div>
   </section>
@@ -53,7 +225,9 @@
   <!-- 关键流程块区域 -->
   <div class="container">
     <div class="section-title">
-      <h2>关键流程模块</h2>
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
     </div>
     
     <div class="process-blocks">
@@ -61,24 +235,33 @@
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
-            <i class="fas fa-map-marked-alt"></i>
+            <i class="fas fa-database"></i>
             主数据管理
           </div>
-          <div class="block-subtitle">Master data management</div>
+          <div class="block-subtitle">Master Data Management</div>
         </div>
         <div class="block-body">
           <div class="core-value">
-            <div class="core-value-title">核心价值</div>
+            <div class="core极客园-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
             <p class="core-value-content">
-              协同预测：形成共同需求基线，抑制牛鞭效应，支撑产能/物料。；异常治理：避免停线与违约。
+              协同预测：形成共同需求基线，抑制牛鞭效应，支撑产能/物料；异常治理：避免停线与违约。
+              <span class="en-translation">Collaborative forecasting: Form a common demand baseline to suppress the bullwhip effect and support capacity/materials; Exception governance: Avoid line stoppages and contract breaches.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>主数据治理（报表+质量规则），建立料号/供应商/地址/Incoterms等主数据校验与变更流程，异常自动报警。</li>
-              <li>PCN/ECO影响分析（数据分析+NLP），解析PCN文档，映射BOM与替代，量化影响并输出变更排程建议。</li>
+              <li>主数据治理（报表+质量规则），建立料号/供应商/地址/Incoterms等主数据校验与变更流程，异常自动报警。
+                <span class="en-translation">Master data governance (reports + quality rules), establish validation and change processes for master data such as part numbers/suppliers/addresses/Incoterms, with automatic alerts for anomalies.</span>
+              </li>
+              <li>PCN/ECO影响分析（数据分析+NLP），解析PCN文档，映射BOM与替代，量化影响并输出变更排程建议。
+                <span class="en-translation">PCN/ECO impact analysis (data analysis + NLP), parse PCN documents, map BOM and alternatives, quantify impacts and output change scheduling recommendations.</span>
+              </li>
             </ul>
           </div>
           
@@ -89,6 +272,7 @@
           </div>
         </div>
       </div>  
+      
       <!-- Smart DOS -->
       <div class="process-block">
         <div class="block-header">
@@ -99,25 +283,50 @@
         </div>
         <div class="block-body">
           <div class="core-value">
-            <div class="core-value-title">核心价值</div>
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
             <p class="core-value-content">
-             协同预测：形成共同需求基线，抑制牛鞭效应，支撑产能/物料。；PO确认：逐项确认作为排产与ASN依据，影响OTD。
+              协同预测：形成共同需求基线，抑制牛鞭效应，支撑产能/物料；PO确认：逐项确认作为排产与ASN依据，影响OTD。
+              <span class="en-translation">Collaborative forecasting: Form a common demand baseline to suppress the bullwhip effect and support capacity/materials; PO confirmation: Item-by-item confirmation as the basis for scheduling and ASN, impacting OTD.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>自动抓取未回签PO，邮件/门户/EDI多通道催办并回写交期/数量变更。</li>
-              <li>自动向供方收集RoHS/REACH/冲突矿产等证书并校验有效期，失效前预警。</li>
-              <li>自动校验ASN与PO/装箱单一致性，并触发收货预约与月台排程。</li>
-              <li>聚合预测偏差、承诺违约、运输异常等因素，做归因和优先级建议。</li>
-              <li>利用历史运输、不同时段与清关口径，预测ETA并识别异常轨迹。</li>
-              <li>统一OTD/PPM/响应、承诺命中、ASN准确、缺口与分配执行的多维看板。</li>
-              <li>监控事务成功率/延迟/重发率，自动定位异常交易/伙伴。</li>
-              <li>供方在线自助更新承诺、上传证书、登记变更，RPA校验并入库。。</li>
-              <li>对接采购/计划/质量邮件与SRM文档，支持自然语言查询承诺、ASN、PCN状态。</li>
-              <li>EDI/API健康监控（报表+告警），监控事务成功率/延迟/重发率，自动定位异常交易/伙伴。<li>   
+              <li>自动抓取未回签PO，邮件/门户/EDI多通道催办并回写交期/数量变更。
+                <span class="en-translation">Automatically capture unsigned POs, follow up via email/portal/EDI multiple channels, and write back delivery date/quantity changes.</span>
+              </li>
+              <li>自动向供方收集RoHS/REACH/冲突矿产等证书并校验有效期，失效前预警。
+                <span class="en-translation">Automatically collect certificates such as RoHS/REACH/conflict minerals from suppliers and validate validity, with alerts before expiration.</span>
+              </li>
+              <li>自动校验ASN与PO/装箱单一致性，并触发收货预约与月台排程。
+                <span class="en-translation">Automatically verify consistency between ASN and PO/packing lists, and trigger receiving appointments and dock scheduling.</span>
+              </li>
+              <li>聚合预测偏差、承诺违约、运输异常等因素，做归因和优先级建议。
+                <span class="en-translation">Aggregate factors such as forecast deviations, commitment breaches, and transportation exceptions for attribution and priority recommendations.</span>
+              </li>
+              <li>利用历史运输、不同时段与清关口径，预测ETA并识别异常轨迹。
+                <span class="en-translation">Use historical transportation, different time periods, and customs clearance standards to predict ETA and identify abnormal trajectories.</span>
+              </li>
+              <li>统一OTD/PPM/响应、承诺命中、ASN准确、缺口与分配执行的多维看板。
+                <span class="en-translation">Unified multi-dimensional dashboard for OTD/PPM/response, commitment hit rate, ASN accuracy, gaps, and allocation execution.</span>
+              </li>
+              <li>监控事务成功率/延迟/重发率，自动定位异常交易/伙伴。
+                <span class="en-translation">Monitor transaction success rate/delay/retry rate, automatically locate abnormal transactions/partners.</span>
+              </li>
+              <li>供方在线自助更新承诺、上传证书、登记变更，RPA校验并入库。
+                <span class="en-translation">Suppliers self-service online updates to commitments, upload certificates, register changes, with RPA validation and storage.</span>
+              </li>
+              <li>对接采购/计划/质量邮件与SRM文档，支持自然语言查询承诺、ASN、PCN状态。
+                <span class="en-translation">Integrate procurement/planning/quality emails and SRM documents, support natural language queries for commitments, ASN, PCN status.</span>
+              </li>
+              <li>EDI/API健康监控（报表+告警），监控事务成功率/延迟/重发率，自动定位异常交易/伙伴。
+                <span class="en-translation">EDI/API health monitoring (reports + alerts), monitor transaction success rate/delay/retry rate, automatically locate abnormal transactions/partners.</span>
+              </li>
             </ul>
           </div>
           
@@ -133,25 +342,33 @@
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
-            <i class="fas fa-rocket"></i>
+            <i class="fas fa-exchange-alt"></i>
             跨站点再平衡
           </div>
           <div class="block-subtitle">Cross Site Rebalance</div>
         </div>
         <div class="block-body">
           <div class="core-value">
-            <div class="core-value-title">核心价值</div>
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
             <p class="core-value-content">
-              PO确认：逐项确认作为排产与ASN依据，影响OTD。；供应风险：地缘/财务/灾害等提前缓释。
+              PO确认：逐项确认作为排产与ASN依据，影响OTD；供应风险：地缘/财务/灾害等提前缓释。
+              <span class="en-translation">PO confirmation: Item-by-item confirmation as the basis for scheduling and ASN, impacting OTD; Supply risk: Early mitigation of geopolitical/financial/disaster risks.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>融合协同预测、产能/物料约束与历史履约，输出承诺与分配建议。</li>
-              <li>统一 OTD/PPM/ 响应、承诺命中、ASN 准确、缺口与分配执行的多维看板（中的 “缺口与分配执行” 维度）</li>
-              
+              <li>融合协同预测、产能/物料约束与历史履约，输出承诺与分配建议。
+                <span class="en-translation">Integrate collaborative forecasting, capacity/material constraints, and historical fulfillment to output commitment and allocation recommendations.</span>
+              </li>
+              <li>统一 OTD/PPM/响应、承诺命中、ASN准确、缺口与分配执行的多维看板（中的"缺口与分配执行"维度）
+                <span class="en-translation">Unified multi-dimensional dashboard for OTD/PPM/response, commitment hit rate, ASN accuracy, gaps, and allocation execution (including the "gap and allocation execution" dimension).</span>
+              </li>
             </ul>
           </div>
           

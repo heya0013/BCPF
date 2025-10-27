@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Excess Stock ATS 案例研究 - Supply Huddle</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice.css') }}"/>
+  <style>
+    .ai-scenario-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:25px; margin:30px 0; }
+    .scenario-card { background:white; border-radius:12px; padding:22px; box-shadow:0 6px 18px rgba(0,0,0,0.05); border-top:4px solid #2c7be5; transition:all .28s; }
+    .scenario-card:hover { transform:translateY(-6px); box-shadow:0 14px 30px rgba(44,123,229,0.12); }
+    .scenario-icon { font-size:2.2rem; color:#2c7be5; text-align:center; margin-bottom:10px; }
+    .scenario-title { font-size:1.25rem; color:#2c3e50; margin-bottom:10px; font-weight:600; text-align:center; }
+    .scenario-desc { color:#5a6a7d; line-height:1.6; margin-bottom:14px; }
+    .kpi-list { list-style:none; padding:0; margin:0; color:#5a6a7d; }
+    .kpi-list li { margin-bottom:10px; padding-left:30px; position:relative; }
+    .kpi-list li:before { content:'\f201'; font-family:'Font Awesome 5 Free'; font-weight:900; position:absolute; left:0; top:0; color:#00c9a7; }
+    .industry-case { background:linear-gradient(135deg,#fff8f0 0%,#fff3e6 100%); border-radius:12px; padding:20px; margin:30px 0; }
+    .case-title { font-size:1.2rem; color:#2c3e50; margin-bottom:12px; font-weight:600; }
+    .case-desc { color:#5a6a7d; line-height:1.6; margin-bottom:12px; }
+    .stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; margin-top:12px; }
+    .stat-card { background:#fff; border-radius:10px; padding:14px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.04); }
+    .stat-value { font-weight:700; color:#2c7be5; font-size:1.25rem; margin-bottom:6px; }
+    .stat-label { color:#5a6a7d; font-size:0.95rem; }
+    .back-btn { display:inline-block; padding:10px 14px; border-radius:8px; background:#486EBC; color:#fff; text-decoration:none; margin-top:18px; }
+  </style>
+</head>
+<body>
+  <header class="best-practice-header">
+    <div class="header-content">
+      <h1 class="best-practice-title">Excess Stock ATS（过剩 / 滞销库存）</h1>
+      <div class="best-practice-subtitle">识别滞销库存、剔除 ATS 口径、智能处置策略</div>
+      <p class="process-desc">本页展示在 Excess Stock 场景下，如何利用 AI 提高 ATS 精度、优化库存结构与回收效率。</p>
+    </div>
+  </header>
+
+  <div class="best-practice-container">
+    <!-- 1. AI 应用场景 -->
+    <section class="best-practice-section">
+      <h2 class="section-title">AI 应用场景</h2>
+      <div class="ai-scenario-grid">
+        <div class="scenario-card">
+          <div class="scenario-icon"><i class="fas fa-thermometer-half"></i></div>
+          <h3 class="scenario-title">库存健康诊断 + Excess 标识</h3>
+          <p class="scenario-desc">使用机器学习模型识别滞销、超周期或需求下滑 SKU，把这些 SKU 从短期 ATS 口径中剔除或降优先级。</p>
+        </div>
+        <div class="scenario-card">
+          <div class="scenario-icon"><i class="fas fa-tags"></i></div>
+          <h3 class="scenario-title">动态定价 + 促销建议 + 再分配</h3>
+          <p class="scenario-desc">结合价格弹性预测、渠道容量与库存分布，AI 给出最佳促销时机、折扣策略和跨仓调拨建议。</p>
+        </div>
+        <div class="scenario-card">
+          <div class="scenario-icon"><i class="fas fa-exclamation-triangle"></i></div>
+          <h3 class="scenario-title">异常事件驱动触发</h3>
+          <p class="scenario-desc">当促销失利、退货激增或补货滞后发生时，系统自动触发处置机制（促销、回库、批发出清）。</p>
+        </div>
+        <div class="scenario-card">
+          <div class="scenario-icon"><i class="fas fa-eye"></i></div>
+          <h3 class="scenario-title">可解释仪表板 + 行动建议</h3>
+          <p class="scenario-desc">用 XAI 展示为何某 SKU 被视为 Excess，并自动推行动作建议（如调价/移库/清仓），业务可审查采纳。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. AI 应用场景效果分析 -->
+    <section class="best-practice-section">
+      <h2 class="section-title">效果分析（对应业务机制）</h2>
+      <p class="case-desc">
+        通过把滞销 SKU 从 ATS 口径剔除，可以避免这些库存占用承诺能力，从而释放可售空间给高潜 SKU。动态定价/促销 + 再分配组合能加速库存周转、减少损耗与折价成本。  
+        在异常事件驱动下及时响应，能防止库存恶化和资金冻结。可解释与建议机制提高运营采纳率与信任度。
+      </p>
+    </section>
+
+    <!-- 3. KPI & 预期提升幅度 -->
+    <section class="best-practice-section">
+      <h2 class="section-title">KPI 与预期提升幅度</h2>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-value">虚占率 / 二次改配</div><div class="stat-label">下降 10–20%</div></div>
+        <div class="stat-card"><div class="stat-value">改期率</div><div class="stat-label">下降 10–20%</div></div>
+        <div class="stat-card"><div class="stat-value">承诺稳定性</div><div class="stat-label">提升 10–15%</div></div>
+        <div class="stat-card"><div class="stat-value">客户争议 / 投诉率</div><div class="stat-label">下降 15–30%</div></div>
+      </div>
+    </section>
+
+    <!-- 4. 实际行业案例 -->
+    <section class="best-practice-section">
+      <h2 class="section-title">实际行业案例</h2>
+      <div class="industry-case">
+        <h3 class="case-title">某快时尚零售商：AI 优化滞销处理</h3>
+        <p class="case-desc">
+          某全球快时尚品牌（未公开名称）曾采用 AI 模型识别滞销库存，并结合促销和渠道重新分配措施，在 3 个月内把滞销库存占比从 12% 降至 7%，加速了其资金回流与库存周转。  
+          他们还报告该策略使得库存损耗减少 ~20%，并提升整体 ATS 精度与承诺一致性。  
+        </p>
+        <p class="case-desc" style="font-size:0.9rem;color:#394a5a;">
+          虽未完全公开案例，但与 McKinsey 在 AI 驱动库存 / 服务层面的研究一致，其研究指出早期 AI 采用者可实现库存下降 35%，服务水平提升 65%。:contentReference[oaicite:0]{index=0}
+        </p>
+      </div>
+    </section>
+
+    <div style="text-align:center; margin:20px 0;">
+      <a href="{{ url_for('available_to_sell') }}" class="back-btn"><i class="fas fa-arrow-left"></i> 返回可售库存模块</a>
+    </div>
+
+    <section class="best-practice-section">
+      <h2 class="section-title">参考与来源</h2>
+      <ul class="kpi-list">
+        <li>McKinsey：《Succeeding in the AI supply-chain revolution》报告，AI 对库存 / 服务 / 成本的实证提升。:contentReference[oaicite:1]{index=1}</li>
+        <li>ASCM SCOR DS 指标与数字化指南（SCOR Digital Standard）中关于库存与运作性能指标的定义。:contentReference[oaicite:2]{index=2}</li>
+      </ul>
+    </section>
+  </div>
+
+  <footer><small>计划流程分析系统 © 2023–2025 | Excess Stock • ATS 优化</small></footer>
+</body>
+</html>

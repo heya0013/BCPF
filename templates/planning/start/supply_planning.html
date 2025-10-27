@@ -41,6 +41,29 @@
     .complexity-process .best-practice-btn {
       background: linear-gradient(90deg, #8e44ad, #3498db);
     }
+
+    /* 中英双语翻译样式：统一控制英文排版 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.3rem;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* 适配列表项翻译的间距 */
+    .optimization-list li .en-translation {
+      margin-top: 0.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 关键理由标题翻译样式 */
+    .core-value-title .en-translation {
+      margin-top: 0.1rem;
+      font-size: 0.8em;
+      display: inline-block;
+    }
   </style>
 </head>
 <body>
@@ -54,6 +77,7 @@
       <div class="process-subtitle">Supply Planning</div>
       <div class="process-desc">
         综合考虑需求预测、库存水平与生产能力，制定最优供应方案，保障物料及时到位并提升供应链整体效率。
+        <span class="en-translation">Comprehensively consider demand forecasting, inventory levels and production capacity, formulate optimal supply plans, ensure timely delivery of materials and improve the overall efficiency of the supply chain.</span>
       </div>
     </div>
   </section>
@@ -61,7 +85,9 @@
   <!-- 关键流程块区域 -->
   <div class="container">
     <div class="section-title">
-      <h2>关键流程模块</h2>
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
     </div>
     
     <div class="process-blocks">
@@ -76,21 +102,31 @@
         </div>
         <div class="block-body">
           <div class="core-value">
-            <div class="core-value-title">关键理由</div>
+            <div class="core-value-title">关键理由
+              <span class="en-translation">Key Reason</span>
+            </div>
             <p class="core-value-content">
               CTB 连接物料齐套与可制造性，是供应计划到工厂排产的关键关口；可提前发现短缺/替代需求并驱动优先级分配，直接影响OTIF与完美订单率（SCOR）。
+              <span class="en-translation">CTB connects material readiness and manufacturability, serving as a key gateway from supply planning to factory scheduling; it can identify shortage/substitution needs in advance and drive priority allocation, directly affecting OTIF (On Time In Full) and perfect order rate (SCOR).</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
             <ul class="optimization-list">
-              <li>将 CTB 自动化（齐套计算+替代建议+短缺优先级），与工厂排产/出货计划闭环。</li>
-              <li>构建可解释的 Allocation 引擎（客户/渠道/利润/服务等级），与 ATS/ATP/CTB 联动。</li>
+              <li>将 CTB 自动化（齐套计算+替代建议+短缺优先级），与工厂排产/出货计划闭环。
+                <span class="en-translation">Automate CTB (readiness calculation + substitution suggestions + shortage priority) and form a closed loop with factory scheduling/shipment planning.</span>
+              </li>
+              <li>构建可解释的 Allocation 引擎（客户/渠道/利润/服务等级），与 ATS/ATP/CTB 联动。
+                <span class="en-translation">Build an interpretable Allocation engine (customer/channel/profit/service level) and link it with ATS/ATP/CTB.</span>
+              </li>
+            </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='supply_palnning', module_name='ctb') }}" class="best-practice-btn">
+            <a href="{{ url_for('planning.best_practice', process='supply_planning', module_name='ctb') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -108,23 +144,34 @@
         </div>
         <div class="block-body">
           <div class="core-value">
-            <div class="core-value-title">关键理由</div>
+            <div class="core-value-title">关键理由
+              <span class="en-translation">Key Reason</span>
+            </div>
             <p class="core-value-content">
-              Supply Planning Analytics 作为例外管理中枢，聚合跨 BG/GEO/Site 的供需偏差、短缺与约束，支持根因分析与闭环；是“One Plan”可视化与治理的抓手。；供应计划是统一平衡需求、产能、物料与网络约束的核心引擎，决定计划可执行性与后续承诺的稳定性。
+              Supply Planning Analytics 作为例外管理中枢，聚合跨 BG/GEO/Site 的供需偏差、短缺与约束，支持根因分析与闭环；是“One Plan”可视化与治理的抓手。供应计划是统一平衡需求、产能、物料与网络约束的核心引擎，决定计划可执行性与后续承诺的稳定性。
+              <span class="en-translation">As the exception management hub, Supply Planning Analytics aggregates supply-demand deviations, shortages and constraints across BG/GEO/Site, supports root cause analysis and closed-loop management; it is a tool for "One Plan" visualization and governance.Supply planning is the core engine for uniformly balancing demand, capacity, materials and network constraints, determining the executability of plans and the stability of subsequent commitments.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
             <ul class="optimization-list">
-              <li>引入约束优化与情景仿真，将物料/产能/网络约束内生到供需平衡，输出多方案与代价函数。</li>
-              <li>将消费/售罄（POS/电商）与价格/活动等外部因子引入供给端的计划假设，缩短信息回路。</li>
-              <li>建设 Supply Planning Analytics 中台，统一例外、根因、行动建议与闭环追踪，支持 One Plan 版本治理。</li>
+              <li>引入约束优化与情景仿真，将物料/产能/网络约束内生到供需平衡，输出多方案与代价函数。
+                <span class="en-translation">Introduce constraint optimization and scenario simulation, integrate material/capacity/network constraints into supply-demand balance, and output multiple plans and cost functions.</span>
+              </li>
+              <li>将消费/售罄（POS/电商）与价格/活动等外部因子引入供给端的计划假设，缩短信息回路。
+                <span class="en-translation">Incorporate external factors such as consumption/sales (POS/e-commerce) and price/promotions into the planning assumptions of the supply side to shorten the information loop.</span>
+              </li>
+              <li>建设 Supply Planning Analytics 中台，统一例外、根因、行动建议与闭环追踪，支持 One Plan 版本治理。
+                <span class="en-translation">Build a Supply Planning Analytics platform to unify exceptions, root causes, action suggestions and closed-loop tracking, supporting One Plan version governance.</span>
+              </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='supply_palnning', module_name='supply_planning_analytics') }}" class="best-practice-btn">
+            <a href="{{ url_for('planning.best_practice', process='supply_planning', module_name='supply_planning_analytics') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -142,22 +189,31 @@
         </div>
         <div class="block-body">
           <div class="core-value">
-            <div class="core-value-title">关键理由</div>
+            <div class="core-value-title">关键理由
+              <span class="en-translation">Key Reason</span>
+            </div>
             <p class="core-value-content">
               该流程在供应计划链条中承担关键的协调或校核职责，对计划可执行性与客户承诺具有直接影响。
+              <span class="en-translation">This process undertakes key coordination or verification responsibilities in the supply planning chain, and has a direct impact on plan executability and customer commitments.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
             <ul class="optimization-list">
-              <li>构建可解释的 Allocation 引擎（客户/渠道/利润/服务等级），与 ATS/ATP/CTB 联动。</li>
-              <li>引入约束优化与情景仿真，将物料/产能/网络约束内生到供需平衡，输出多方案与代价函数。</li>
+              <li>构建可解释的 Allocation 引擎（客户/渠道/利润/服务等级），与 ATS/ATP/CTB 联动。
+                <span class="en-translation">Build an interpretable Allocation engine (customer/channel/profit/service level) and link it with ATS/ATP/CTB.</span>
+              </li>
+              <li>引入约束优化与情景仿真，将物料/产能/网络约束内生到供需平衡，输出多方案与代价函数。
+                <span class="en-translation">Introduce constraint optimization and scenario simulation, integrate material/capacity/network constraints into supply-demand balance, and output multiple plans and cost functions.</span>
+              </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='supply_palnning', module_name='central_order_plan') }}" 
+            <a href="{{ url_for('planning.best_practice', process='supply_planning', module_name='central_order_plan') }}" 
               class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
@@ -167,8 +223,10 @@
     </div>
   </div>
 
-  <footer>
-    <p>采购流程分析系统 © 2025 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
+<footer>
+    <p>计划流程分析导航系统 © 2023  | 企业计划优化解决方案 | 提升效率 • 降低成本 • 优化供应链
+    <span class="en-translation">Planning Process Analysis Navigation System © 2023|Enterprise Planning Optimization Solutions|Improve Efficiency • Reduce Costs • Optimize Supply Chain</span>   
+    </p>
   </footer>
 </body>
 </html>

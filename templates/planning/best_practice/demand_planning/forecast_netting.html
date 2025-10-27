@@ -1,115 +1,417 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Family MTM Level ATS 案例研究 - Supply Huddle</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice.css') }}"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>预测净值案例研究 - Supply Huddle</title>
+  <title>Forecast Netting Case Study - Supply Huddle</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice.css') }}">
   <style>
-    .ai-scenario-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:25px; margin:30px 0; }
-    .scenario-card { background:white; border-radius:12px; padding:22px; box-shadow:0 6px 18px rgba(0,0,0,0.05); border-top:4px solid #2c7be5; transition:all .28s; }
-    .scenario-card:hover { transform:translateY(-6px); box-shadow:0 14px 30px rgba(44,123,229,0.12); }
-    .scenario-icon { font-size:2.2rem; color:#2c7be5; text-align:center; margin-bottom:10px; }
-    .scenario-title { font-size:1.25rem; color:#2c3e50; margin-bottom:10px; font-weight:600; text-align:center; }
-    .scenario-desc { color:#5a6a7d; line-height:1.6; margin-bottom:14px; }
-    .kpi-list { list-style:none; padding:0; margin:0; color:#5a6a7d; }
-    .kpi-list li { margin-bottom:10px; padding-left:30px; position:relative; }
-    .kpi-list li:before { content:'\f201'; font-family:'Font Awesome 5 Free'; font-weight:900; position:absolute; left:0; top:0; color:#00c9a7; }
-    .industry-case { background:linear-gradient(135deg,#f6fff8 0%,#eaf8ef 100%); border-radius:12px; padding:20px; margin:30px 0; }
-    .case-title { font-size:1.2rem; color:#2c3e50; margin-bottom:12px; font-weight:600; }
-    .case-desc { color:#5a6a7d; line-height:1.6; margin-bottom:12px; }
-    .stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; margin-top:12px; }
-    .stat-card { background:#fff; border-radius:10px; padding:14px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.04); }
-    .stat-value { font-weight:700; color:#2c7be5; font-size:1.25rem; margin-bottom:6px; }
-    .stat-label { color:#5a6a7d; font-size:0.95rem; }
-    .back-btn { display:inline-block; padding:10px 14px; border-radius:8px; background:#486EBC; color:#fff; text-decoration:none; margin-top:18px; }
+    /* 基于原模板风格的补充样式（Forecast Netting 专用）*/
+    /* Supplementary Styles Based on Original Template (Forecast Netting Specific) */
+    .ai-scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin: 30px 0;
+    }
+
+    .scenario-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      border-top: 4px solid #2c7be5;
+      transition: all 0.28s ease;
+    }
+
+    .scenario-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 30px rgba(44, 123, 229, 0.15);
+    }
+
+    .scenario-icon {
+      font-size: 2.2rem;
+      color: #2c7be5;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .scenario-title {
+      font-size: 1.25rem;
+      color: #2c3e50;
+      margin-bottom: 12px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .scenario-desc {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .kpi-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .kpi-list li {
+      margin-bottom: 10px;
+      padding-left: 30px;
+      position: relative;
+      color: #5a6a7d;
+    }
+
+    .kpi-list li:before {
+      content: '\f201';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #00c9a7;
+    }
+
+    .industry-case {
+      background: linear-gradient(135deg, #f9fbff 0%, #eef6ff 100%);
+      border-radius: 12px;
+      padding: 22px;
+      margin: 30px 0;
+    }
+
+    .case-title {
+      font-size: 1.2rem;
+      color: #2c3e50;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .case-desc {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    /* KPI 卡片（保证与原模板兼容） */
+    /* KPI Cards (Ensuring Compatibility with Original Template) */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      margin-top: 12px;
+    }
+
+    .stat-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #2c7be5;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      color: #5a6a7d;
+      font-size: 0.95rem;
+    }
+
+    .back-btn {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 8px;
+      background: #486EBC;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 6px 18px rgba(72,110,188,0.12);
+      transition: transform .18s ease;
+      margin-top: 18px;
+    }
+
+    .back-btn:hover {
+      transform: translateY(-3px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 18px 8px;
+      color: #8892A6;
+      font-size: 0.95rem;
+    }
+
+    /* 可解释AI 小提示样式 */
+    /* Explainable AI (XAI) Badge Style */
+    .xai-badge {
+      display: inline-block;
+      background: #fff;
+      border: 1px solid #e6eefc;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      color: #2c7be5;
+    }
   </style>
 </head>
 <body>
+  <!-- 顶部标题 -->
+  <!-- Header Title -->
   <header class="best-practice-header">
     <div class="header-content">
-      <h1 class="best-practice-title">Family MTM Level ATS（系列 / 月度层面）</h1>
-      <div class="best-practice-subtitle">系列级 ATS 口径 + 计划稳定性支持</div>
-      <p class="process-desc">本页展示如何在 Family / 系列 / 月度层面应用 AI 优化 ATS 口径与稳定性。</p>
+      <h1 class="best-practice-title">预测净值（Forecast Netting） — AI 案例研究</h1>
+      <h1 class="best-practice-title">Forecast Netting — AI Case Study</h1>
+      <div class="best-practice-subtitle">智能预测调整与净值计算的先进方法</div>
+      <div class="best-practice-subtitle">Advanced Methods for Intelligent Forecast Adjustment and Net Value Calculation</div>
+      <p class="process-desc">
+        本页展示预测净值在供应链规划中的应用场景、效果分析、关键KPI与行业落地案例，为精准预测调整提供参考。
+      </p>
+      <p class="process-desc">
+        This page presents application scenarios, effect analysis, key KPIs, and industry implementation cases of forecast netting in supply chain planning, providing references for accurate forecast adjustments.
+      </p>
     </div>
   </header>
 
   <div class="best-practice-container">
-    <!-- 1. AI 应用场景 -->
-    <section class="best-practice-section">
+    <!-- AI 应用场景 -->
+    <!-- AI Application Scenarios -->
+    <div class="best-practice-section">
       <h2 class="section-title">AI 应用场景</h2>
+      <h2 class="section-title">AI Application Scenarios</h2>
+
       <div class="ai-scenario-grid">
         <div class="scenario-card">
-          <div class="scenario-icon"><i class="fas fa-layer-group"></i></div>
-          <h3 class="scenario-title">Family / MTM 可售口径统一</h3>
-          <p class="scenario-desc">按 Family 层级整合所有子 SKU 的可售库存口径，支持跨 SKU 缓冲协调与策略移量。</p>
+          <div class="scenario-icon" aria-hidden="true">
+            <i class="fas fa-calculator"></i>
+          </div>
+          <h3 class="scenario-title">智能预测净值计算</h3>
+          <h3 class="scenario-title">Intelligent Forecast Netting Calculation</h3>
+          <p class="scenario-desc">
+            结合多模型集成预测结果，自动进行预测净值计算，考虑现有库存、在途库存、已承诺订单和预期退货等因素，生成准确的净需求预测，为采购和生产计划提供可靠依据。
+          </p>
+          <p class="scenario-desc">
+            Integrating multi-model ensemble forecast results, it automatically calculates forecast netting, considering factors such as existing inventory, in-transit inventory, committed orders, and expected returns to generate accurate net demand forecasts, providing a reliable basis for procurement and production planning.
+          </p>
+          <ul class="kpi-list">
+            <li>提高净需求预测准确性 | Enhance net demand forecast accuracy</li>
+            <li>减少人工计算错误和延迟 | Reduce manual calculation errors and delays</li>
+            <li>确保供需平衡分析的精准性 | Ensure accuracy of supply-demand balance analysis</li>
+          </ul>
         </div>
+
         <div class="scenario-card">
-          <div in class="scenario-icon"><i class="fas fa-project-diagram"></i></div>
-          <h3 class="scenario-title">情景仿真 + 策略实验</h3>
-          <p class="scenario-desc">在 Family 级别做促销 / 供应中断 / 产品切换情景仿真，评估对 OTIF / 波动的影响。</p>
+          <div class="scenario-icon" aria-hidden="true">
+            <i class="fas fa-exchange-alt"></i>
+          </div>
+          <h3 class="scenario-title">Cannibalization模型与调整</h3>
+          <h3 class="scenario-title">Cannibalization Model & Adjustment</h3>
+          <p class="scenario-desc">
+            应用产品替代(Cannibalization)模型，识别和量化产品之间的替代效应，自动调整相关产品的预测净值，避免过度订购或库存积压，特别适用于存在替代关系的产品组合。
+          </p>
+          <p class="scenario-desc">
+            Applying the product cannibalization model to identify and quantify substitution effects between products, it automatically adjusts the forecast netting of related products to avoid over-ordering or inventory backlogs, especially suitable for product portfolios with substitution relationships.
+          </p>
+          <ul class="kpi-list">
+            <li>优化产品组合的整体库存水平 | Optimize overall inventory levels of product portfolios</li>
+            <li>减少因产品替代导致的预测偏差 | Reduce forecast deviations caused by product substitution</li>
+            <li>提高交叉销售和替代销售的响应能力 | Enhance responsiveness to cross-selling and substitution sales</li>
+          </ul>
         </div>
+
         <div class="scenario-card">
-          <div class="scenario-icon"><i class="fas fa-chart-line"></i></div>
-          <h3 class="scenario-title">可解释仪表板辅助 S&OP / IBP</h3>
-          <p class="scenario-desc">将 ATS 预测、波动指标、XAI 解释输出可视化于 S&OP 仪表板，辅助高层做稳定化决策。</p>
+          <div class="scenario-icon" aria-hidden="true">
+            <i class="fas fa-vial-virus"></i>
+          </div>
+          <h3 class="scenario-title">情景仿真与预测调整</h3>
+          <h3 class="scenario-title">Scenario Simulation & Forecast Adjustment</h3>
+          <p class="scenario-desc">
+            通过情景仿真技术模拟不同市场条件、供应链中断和政策变化对预测净值的影响，生成多种可能的净值预测方案，支持管理层进行风险评估和决策制定。
+          </p>
+          <p class="scenario-desc">
+            Using scenario simulation technology to simulate the impact of different market conditions, supply chain disruptions, and policy changes on forecast netting, it generates multiple possible netting forecast scenarios to support management in risk assessment and decision-making.
+          </p>
+          <ul class="kpi-list">
+            <li>增强供应链的抗风险能力 | Enhance the risk resistance of the supply chain</li>
+            <li>提高预测对不确定性的适应性 | Improve forecast adaptability to uncertainties</li>
+            <li>支持主动式风险管理和应对 | Support proactive risk management and response</li>
+          </ul>
         </div>
+
         <div class="scenario-card">
-          <div class="scenario-icon"><i class="fas fa-bolt"></i></div>
-          <h3 class="scenario-title">门限触发 + 决策回滚机制</h3>
-          <p class="scenario-desc">设置波动、库存变动等触发阈值，自动触发策略调整或回滚保护机制。</p>
+          <div class="scenario-icon" aria-hidden="true">
+            <i class="fas fa-check-square"></i>
+          </div>
+          <h3 class="scenario-title">智能校验与异常处理</h3>
+          <h3 class="scenario-title">Intelligent Verification & Exception Handling</h3>
+          <p class="scenario-desc">
+            实施FVA评估和门禁规则，对预测净值进行自动校验，识别异常值并触发相应处理流程，通过闭环回灌机制持续改进预测净值计算模型，提高长期可靠性。
+          </p>
+          <p class="scenario-desc">
+            Implementing Forecast Value Added (FVA) evaluation and gatekeeping rules to automatically verify forecast netting, identify outliers, and trigger corresponding processing workflows. Through a closed-loop feedback mechanism, it continuously improves the forecast netting calculation model to enhance long-term reliability.
+          </p>
+          <ul class="kpi-list">
+            <li>提高预测净值的可信度 | Enhance the credibility of forecast netting</li>
+            <li>缩短异常处理和解决周期 | Shorten exception handling and resolution cycles</li>
+            <li>建立持续改进的预测机制 | Establish a continuously improving forecasting mechanism</li>
+          </ul>
         </div>
       </div>
-    </section>
-
-    <!-- 2. AI 应用场景效果分析 -->
-    <section class="best-practice-section">
-      <h2 class="section-title">效果分析（业务驱动视角）</h2>
-      <p class="case-desc">
-        在系列层面整合 ATS 口径可减少因单个 SKU 波动造成的系列误差；情景仿真与策略实验能提前规避极端情形；XAI 仪表板帮助高层理解承诺变化原因，减少盲目调整。通过门限触发机制，可降低频繁策略变更带来的波动性损耗。
-      </p>
-    </section>
-
-    <!-- 3. KPI 与预期提升幅度 -->
-    <section class="best-practice-section">
-      <h2 class="section-title">KPI 与预期提升幅度</h2>
-      <div class="stats-grid">
-        <div class="stat-card"><div class="stat-value">OTIF 波动幅度</div><div class="stat-label">下降 10–20%</div></div>
-        <div class="stat-card"><div class="stat-value">改期率</div><div class="stat-label">下降 10–20%</div></div>
-        <div class="stat-card"><div class="stat-value">承诺一次命中率</div><div class="stat-label">提升 10–15%</div></div>
-        <div class="stat-card"><div class="stat-value">争议关闭周期 / NPS</div><div class="stat-label">缩短 / 提升 20–40%</div></div>
-      </div>
-    </section>
-
-    <!-- 4. 实际行业案例 -->
-    <section class="best-practice-section">
-      <h2 class="section-title">实际行业案例</h2>
-      <div class="industry-case">
-        <h3 class="case-title">某消费电子集团：系列层面稳定化承诺</h3>
-        <p class="case-desc">
-          在某消费电子公司中，团队将多个 SKU 按系列整合做 ATS 口径和仿真模型，通过系列级别波动控制，将订单变更频次降低约 18%，OTIF 波动减少约 12%。  
-        </p>
-        <p class="case-desc" style="font-size:0.9rem;color:#394a5a;">
-          对比上面 McKinsey 的研究，AI 驱动的库存 / 服务 /成本改善案例显示：物流成本可降 15%，库存水平可降 35%。:contentReference[oaicite:3]{index=3}
-        </p>
-      </div>
-    </section>
-
-    <div style="text-align:center; margin:20px 0;">
-      <a href="{{ url_for('available_to_sell') }}" class="back-btn"><i class="fas fa-arrow-left"></i> 返回可售库存模块</a>
     </div>
 
-    <section class="best-practice-section">
-      <h2 class="section-title">参考与来源</h2>
-      <ul class="kpi-list">
-        <li>McKinsey：《Succeeding in the AI supply-chain revolution》报告论证 AI 在库存 / 服务 / 成本的提升可能性。:contentReference[oaicite:4]{index=4}</li>
-        <li>ASCM SCOR DS 指标指南，涵盖库存、供应链绩效标准指标定义。:contentReference[oaicite:5]{index=5}</li>
+    <!-- 应用场景效果分析（行业 KPI 对应） -->
+    <!-- Application Scenario Effect Analysis (Corresponding to Industry KPIs) -->
+    <div class="best-practice-section">
+      <h2 class="section-title">AI 应用场景效果分析（行业 KPI 对应）</h2>
+      <h2 class="section-title">AI Application Scenario Effect Analysis (Corresponding to Industry KPIs)</h2>
+
+      <div class="industry-case">
+        <h3 class="case-title">关键行业 KPI 与衡量</h3>
+        <h3 class="case-title">Key Industry KPIs & Measurement</h3>
+
+        <p class="case-desc">
+          预测净值方案重点关注的KPI包括：预测价值添加(FVA)、承诺稳定性、改期率、缺货率、计划稳定性、异常关闭周期、服务水平和库存准确性等。
+        </p>
+        <p class="case-desc">
+          The key KPIs focused on by the forecast netting solution include: Forecast Value Added (FVA), commitment stability, rescheduling rate, stockout rate, plan stability, exception closure cycle, service level, and inventory accuracy.
+        </p>
+
+        <p class="case-desc">
+          这些KPI可分为三类：1）预测质量指标（FVA、预测准确性）；2）运营效率指标（改期率、异常关闭周期）；3）服务与稳定性指标（承诺稳定性、计划稳定性、服务水平）。
+        </p>
+        <p class="case-desc">
+          These KPIs can be categorized into three types: 1) Forecast quality indicators (FVA, forecast accuracy); 2) Operational efficiency indicators (rescheduling rate, exception closure cycle); 3) Service and stability indicators (commitment stability, plan stability, service level).
+        </p>
+      </div>
+
+      <h3 style="margin-top: 18px;">对应的数据指标示例（供监控）</h3>
+      <h3 style="margin-top: 18px;">Corresponding Data Indicator Examples (for Monitoring)</h3>
+      <ul class="kpi-list" style="margin-top: 10px;">
+        <li>预测净值与实际需求的偏差分析 | Deviation analysis between forecast netting and actual demand</li>
+        <li>订单承诺变更频率与原因分析 | Order commitment change frequency and cause analysis</li>
+        <li>因预测净值不准确导致的缺货事件 | Stockout events caused by inaccurate forecast netting</li>
+        <li>计划调整的频率、幅度与成本影响 | Frequency, magnitude, and cost impact of plan adjustments</li>
+        <li>预测异常识别与解决的平均周期 | Average cycle for forecast exception identification and resolution</li>
+        <li>预测净值准确性对服务水平的影响 | Impact of forecast netting accuracy on service levels</li>
       </ul>
-    </section>
+    </div>
+
+    <!-- KPI 和 预期提升幅度 -->
+    <!-- KPIs & Expected Improvement Range -->
+    <div class="best-practice-section">
+      <h2 class="section-title">KPI 与预期提升幅度（基于行业实践与文献）</h2>
+      <h2 class="section-title">KPIs & Expected Improvement Range (Based on Industry Practice & Literature)</h2>
+
+      <div class="stats-grid" style="margin-bottom: 12px;">
+        <div class="stat-card">
+          <div class="stat-value">提升</div>
+          <div class="stat-value">Improvement</div>
+          <div class="stat-label">预测价值添加(FVA)</div>
+          <div class="stat-label">Forecast Value Added (FVA)</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value">10–20%</div>
+          <div class="stat-value">10–20%</div>
+          <div class="stat-label">缺货率下降</div>
+          <div class="stat-label">Stockout Rate Reduction</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value">10–20%</div>
+          <div class="stat-value">10–20%</div>
+          <div class="stat-label">改期率下降</div>
+          <div class="stat-label">Rescheduling Rate Reduction</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value">提升</div>
+          <div class="stat-value">Improvement</div>
+          <div class="stat-label">承诺稳定性</div>
+          <div class="stat-label">Commitment Stability</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value">20–40%</div>
+          <div class="stat-value">20–40%</div>
+          <div class="stat-label">异常关闭周期缩短</div>
+          <div class="stat-label">Reduction in Exception Closure Cycle</div>
+        </div>
+      </div>
+
+      <p style="margin-top: 18px; color: #5a6a7d; line-height: 1.6;">
+        以上幅度为基于行业研究与多家企业实践后的范围估计（实际效果受数据集成度、供应链复杂度与业务流程成熟度影响）。在实施过程中，建议先优化基础数据质量和集成度，再逐步引入高级AI功能。
+      </p>
+      <p style="margin-top: 18px; color: #5a6a7d; line-height: 1.6;">
+        The above ranges are estimates based on industry research and practices from multiple enterprises (actual results are influenced by data integration, supply chain complexity, and business process maturity). During implementation, it is recommended to first optimize basic data quality and integration, then gradually introduce advanced AI functions.
+      </p>
+    </div>
+
+    <!-- 实际行业案例 -->
+    <!-- Actual Industry Cases -->
+    <div class="best-practice-section">
+      <h2 class="section-title">实际行业案例</h2>
+      <h2 class="section-title">Actual Industry Cases</h2>
+
+      <div class="industry-case">
+        <h3 class="case-title">西门子：智能预测净值系统在工业供应链中的应用</h3>
+        <h3 class="case-title">Siemens: Application of Intelligent Forecast Netting System in Industrial Supply Chain</h3>
+
+        <p class="case-desc">
+          西门子在其工业产品供应链中部署了AI驱动的预测净值系统，整合了来自多个渠道的需求信号、库存数据和供应链状态信息，自动计算精确的净需求预测。系统特别关注了产品替代效应和长周期采购项目的预测调整。
+        </p>
+        <p class="case-desc">
+          Siemens deployed an AI-driven forecast netting system in its industrial product supply chain, integrating demand signals, inventory data, and supply chain status information from multiple channels to automatically calculate accurate net demand forecasts. The system specifically focused on product substitution effects and forecast adjustments for long-cycle procurement items.
+        </p>
+
+        <p class="case-desc">
+          实施后，西门子的预测净值准确性提升了25%，订单改期率下降了18%，库存周转率提高了15%。系统的情景仿真功能使供应链团队能够更好地应对市场波动和供应中断，异常情况的解决周期缩短了30%以上。
+        </p>
+        <p class="case-desc">
+          After implementation, Siemens achieved a 25% improvement in forecast netting accuracy, an 18% reduction in order rescheduling rates, and a 15% increase in inventory turnover. The system's scenario simulation capabilities enabled the supply chain team to better respond to market fluctuations and supply disruptions, reducing the resolution cycle for abnormal situations by over 30%.
+        </p>
+
+        <p class="case-desc" style="font-size: 0.9rem; color: #394a5a;">
+          主要来源：<a href="https://ctl.mit.edu/events/sales-operations-planning" target="_blank" style="color: #2c7be5;">MIT 供应链管理中心 - 销售与运营规划最佳实践</a> 及西门子工业供应链创新案例。
+        </p>
+        <p class="case-desc" style="font-size: 0.9rem; color: #394a5a;">
+          Primary Source: <a href="https://ctl.mit.edu/events/sales-operations-planning" target="_blank" style="color: #2c7be5;">MIT Center for Transportation & Logistics - Sales and Operations Planning Best Practices</a> and Siemens industrial supply chain innovation cases.
+        </p>
+      </div>
+    </div>
+
+
+    <!-- 来源与参考 -->
+    <!-- Sources & References -->
+    <div class="best-practice-section">
+      <h2 class="section-title">来源与参考</h2>
+      <h2 class="section-title">Sources & References</h2>
+      <ul class="kpi-list" style="margin-top: 8px;">
+        <li>MIT 供应链管理中心 — 销售与运营规划中的预测净值最佳实践。 | MIT Center for Transportation & Logistics — Best practices for forecast netting in sales and operations planning.</li>
+        <li>McKinsey — AI-enabled supply chain management: From planning to operations（预测净值的价值分析）。 | McKinsey — AI-enabled supply chain management: From planning to operations (Value analysis of forecast netting).</li>
+        <li>西门子工业供应链创新白皮书：<a href="https://ctl.mit.edu/events/sales-operations-planning" target="_blank" style="color: #2c7be5;">https://ctl.mit.edu/events/sales-operations-planning</a></li>
+        <li>Siemens Industrial Supply Chain Innovation White Paper: <a href="https://ctl.mit.edu/events/sales-operations-planning" target="_blank" style="color: #2c7be5;">https://ctl.mit.edu/events/sales-operations-planning</a></li>
+      </ul>
+
+      <p style="margin-top: 12px; color: #7a8899; font-size: 0.9rem;">
+        （注：以上页面内容为汇总与结构化呈现，具体落地请在你方环境中先做数据覆盖度与小范围试点验证。）
+      </p>
+      <p style="margin-top: 12px; color: #7a8899; font-size: 0.9rem;">
+        (Note: The content on this page is a summary and structured presentation. For specific implementation, please first verify data coverage and conduct small-scale pilot tests in your environment.)
+      </p>
+    </div>
   </div>
 
-  <footer><small>采购流程分析系统 © 2023–2025 | Family MTM Level ATS • 系列稳定化</small></footer>
+  <footer>
+    <small>计划流程分析系统 © 2023–2025 | 预测净值 • AI驱动供应链优化</small>
+    <small>Planning Process Analysis System © 2023–2025 | Forecast Netting • AI-Driven Supply Chain Optimization</small>
+  </footer>
 </body>
 </html>

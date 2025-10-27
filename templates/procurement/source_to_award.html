@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>寻源到授标流程 - 采购流程分析</title>
+  <title>寻源到授标流程 - 采购流程分析 | Source to Award Process - Procurement Process Analysis</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <style>
-    /* Source to Award特定样式 */
+    /* 寻源到授标流程特定样式 */
     .sourcing-process .process-icon {
       background-color: rgba(255, 255, 255, 0.2);
     }
@@ -32,6 +32,172 @@
       line-height: 1.6;
       margin: 0;
     }
+    
+    /* 英文翻译样式 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.25rem;
+      font-style: italic;
+      line-height: 1.4;
+    }
+    
+    .process-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .block-subtitle {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    
+    .optimization-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #2c3e50;
+    }
+    
+    .optimization-list {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .optimization-list li {
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+      .en-translation {
+        font-size: 0.8em;
+      }
+    }
+    
+    /* 页面整体样式 */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .header-section {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #00c9a7 0%, #00a79d 100%);
+      color: white;
+      border-radius: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .process-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .process-title {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .process-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      opacity: 0.9;
+    }
+    
+    .process-desc {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .section-title h2 {
+      color: #00c9a7;
+      font-size: 2rem;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 15px;
+    }
+    
+    .process-blocks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 25px;
+    }
+    
+    .process-block {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    
+    .block-header {
+      background: linear-gradient(90deg, #00c9a7 0%, #00a79d 100%);
+      color: white;
+      padding: 20px;
+    }
+    
+    .block-title {
+      font-size: 1.4rem;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .block-body {
+      padding: 25px;
+    }
+    
+    .content-area {
+      margin-bottom: 20px;
+    }
+    
+    .block-actions {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .best-practice-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #00c9a7, #00a79d);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .best-practice-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 201, 167, 0.3);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 30px;
+      margin-top: 50px;
+      background: #2c3e50;
+      color: white;
+    }
   </style>
 </head>
 <body>
@@ -42,10 +208,12 @@
       <div class="process-icon">
         <i class="fas fa-award"></i>
       </div>
-      <h1 class="process-title">寻源到授标流程</h1>
+      <h1 class="process-title">寻源到授标流程
+      </h1>
       <div class="process-subtitle">Source to Award</div>
       <div class="process-desc">
         从需求识别到供应商选择的完整流程，确保采购活动高效、合规且最大化价值。本流程涵盖RFQ管理、本地寻源、授权管理及寻源策略制定等关键环节。
+        <span class="en-translation">A complete process from demand identification to supplier selection, ensuring efficient, compliant, and value-maximizing procurement activities. This process covers key aspects such as RFQ management, local sourcing, authorization management, and sourcing strategy development.</span>
       </div>
     </div>
   </section>
@@ -53,7 +221,9 @@
   <!-- 关键流程块区域 -->
   <div class="container">
     <div class="section-title">
-      <h2>关键流程模块</h2>
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
     </div>
     
     <div class="process-blocks">
@@ -67,19 +237,24 @@
           <div class="block-subtitle">Requests for Quotation (RFQ) Management</div>
         </div>
         <div class="block-body">
-          <div class="key-reason-top">
-            <div class="key-reason-header">
-              <strong>核心价值</strong>
+          <div class="core-value">
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
             </div>
-            <p class="key-reason-text">
+            <p class="core-value-content">
               RFQ/招标管理是"从需求到授标"的核心执行环节，直接影响命中率、采购周期与价格发现效率；行业常以平台化与算法择优（评分/加权）提升透明度与合规性。
+              <span class="en-translation">RFQ/bidding management is the core execution link in the "demand to award" process, directly impacting hit rate, procurement cycle, and price discovery efficiency; the industry often uses platformization and algorithmic optimization (scoring/weighting) to enhance transparency and compliance.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>RFx自动化/评分模型，建立多维评分（价格/交期/质量/风险/ESG）与权重可配置模型，自动汇总评标并生成授标建议与解释。</li>
+              <li>RFx自动化/评分模型，建立多维评分（价格/交期/质量/风险/ESG）与权重可配置模型，自动汇总评标并生成授标建议与解释。
+                <span class="en-translation">RFx automation/scoring model, establish a multi-dimensional scoring (price/delivery/quality/risk/ESG) and configurable weighting model, automatically summarize bids and generate award recommendations and explanations.</span>
+              </li>
             </ul>
           </div>
           
@@ -101,19 +276,24 @@
           <div class="block-subtitle">Local Source</div>
         </div>
         <div class="block-body">
-          <div class="key-reason-top">
-            <div class="key-reason-header">
-              <strong>核心价值</strong>
+          <div class="core-value">
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
             </div>
-            <p class="key-reason-text">
+            <p class="core-value-content">
               本地化/Local Source 兼顾关税、交付时效、ESG与政策要求，是在关键市场快速响应与韧性建设的重要抓手；需要与全局策略/资格规则协同。
+              <span class="en-translation">Localization/Local Source balances tariffs, delivery timeliness, ESG, and policy requirements, serving as a key lever for rapid response and resilience building in critical markets; requires coordination with global strategies/qualification rules.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>本地化寻源加速，以本地税则/交期/资质为特征构建本地化候选库与优先级，自动生成本地化方案与财务影响测算。</li>
+              <li>本地化寻源加速，以本地税则/交期/资质为特征构建本地化候选库与优先级，自动生成本地化方案与财务影响测算。
+                <span class="en-translation">Local sourcing acceleration, build a localized candidate database and priority based on local tax rules/delivery/qualifications, automatically generate localization solutions and financial impact calculations.</span>
+              </li>
             </ul>
           </div>
           
@@ -135,19 +315,24 @@
           <div class="block-subtitle">Delegation and Internal Self-Assessment Management</div>
         </div>
         <div class="block-body">
-          <div class="key-reason-top">
-            <div class="key-reason-header">
-              <strong>核心价值</strong>
+          <div class="core-value">
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
             </div>
-            <p class="key-reason-text">
+            <p class="core-value-content">
               DOA授权与内部自评保障流程与授标合规、权责清晰，可显著降低审计/舞弊风险，并提升审批效率与一致性。
+              <span class="en-translation">DOA authorization and internal self-assessment ensure process and award compliance, clear responsibilities, significantly reducing audit/fraud risks, and improving approval efficiency and consistency.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>将DOA与流程节点绑定，异常越权与红旗自动预警；自评报告由生成式AI自动撰写并分派整改。</li>
+              <li>将DOA与流程节点绑定，异常越权与红旗自动预警；自评报告由生成式AI自动撰写并分派整改。
+                <span class="en-translation">Bind DOA with process nodes, automatically warn of abnormal overstepping and red flags; self-assessment reports are automatically written by generative AI and assigned for rectification.</span>
+              </li>
             </ul>
           </div>
           
@@ -169,19 +354,24 @@
           <div class="block-subtitle">Sourcing Strategy Management</div>
         </div>
         <div class="block-body">
-          <div class="key-reason-top">
-            <div class="key-reason-header">
-              <strong>核心价值</strong>
+          <div class="core-value">
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
             </div>
-            <p class="key-reason-text">
+            <p class="core-value-content">
               类目/品类寻源策略（多源、份额、授标规则）提供RFx的"方法-边界-阈值"，是成本、交期、风险与合规的上游设计，决定授标质量与稳定性。
+              <span class="en-translation">Category sourcing strategies (multi-source, share, award rules) provide the "method-boundary-threshold" for RFx, serving as the upstream design for cost, delivery, risk, and compliance, determining award quality and stability.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>将授标结果与执行数据（量/价/履约）回流，自动校准品类策略的多源份额与阈值。</li>
+              <li>将授标结果与执行数据（量/价/履约）回流，自动校准品类策略的多源份额与阈值。
+                <span class="en-translation">Feed back award results and execution data (volume/price/performance) to automatically calibrate multi-source shares and thresholds for category strategies.</span>
+              </li>
             </ul>
           </div>
           

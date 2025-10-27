@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>供应绩效管理- 供应协作流程分析</title>
+  <title>供应绩效管理 - 供应协作流程分析 | Supply Performance Management - Supply Collaboration Process Analysis</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <style>
-    /* 新产品管理特定样式 */
-    .new-product-process .process-icon {
+    /* 供应绩效管理特定样式 */
+    .supply-performance .process-icon {
       background-color: rgba(255, 255, 255, 0.2);
     }
     
@@ -32,20 +32,189 @@
       line-height: 1.6;
       margin: 0;
     }
+    
+    /* 英文翻译样式 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.25rem;
+      font-style: italic;
+      line-height: 1.4;
+    }
+    
+    .process-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .block-subtitle {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    
+    .optimization-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #2c3e50;
+    }
+    
+    .optimization-list {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .optimization-list li {
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+      .en-translation {
+        font-size: 0.8em;
+      }
+    }
+    
+    /* 页面整体样式 */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .header-section {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+      color: white;
+      border-radius: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .process-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .process-title {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .process-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      opacity: 0.9;
+    }
+    
+    .process-desc {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .section-title h2 {
+      color: #9b59b6;
+      font-size: 2rem;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 15px;
+    }
+    
+    .process-blocks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 25px;
+    }
+    
+    .process-block {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    
+    .block-header {
+      background: linear-gradient(90deg, #9b59b6 0%, #8e44ad 100%);
+      color: white;
+      padding: 20px;
+    }
+    
+    .block-title {
+      font-size: 1.4rem;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .block-body {
+      padding: 25px;
+    }
+    
+    .content-area {
+      margin-bottom: 20px;
+    }
+    
+    .block-actions {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .best-practice-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #9b59b6, #8e44ad);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .best-practice-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 30px;
+      margin-top: 50px;
+      background: #2c3e50;
+      color: white;
+    }
   </style>
 </head>
 <body>
 
   <!-- 流程标题区域 -->
-  <section class="header-section new-product-process">
+  <section class="header-section supply-performance">
     <div class="header-content">
       <div class="process-icon">
         <i class="fas fa-cube"></i>
       </div>
-      <h1 class="process-title">供应绩效管理</h1>
-      <div class="process-subtitle">Planning Collaboration</div>
+      <h1 class="process-title">供应绩效管理
+        <span class="en-translation">Supply Performance Management</span>
+      </h1>
+      <div class="process-subtitle">Supply Performance Management</div>
       <div class="process-desc">
         优化供应商协作过程中的协作效率，确保各部门无缝衔接
+        <span class="en-translation">Optimize collaboration efficiency in the supplier collaboration process, ensuring seamless connectivity between departments.</span>
       </div>
     </div>
   </section>
@@ -53,7 +222,9 @@
   <!-- 关键流程块区域 -->
   <div class="container">
     <div class="section-title">
-      <h2>关键流程模块</h2>
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
     </div>
     
     <div class="process-blocks">
@@ -61,30 +232,51 @@
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
-            <i class="fas fa-map-marked-alt"></i>
+            <i class="fas fa-chart-line"></i>
             供应商绩效跟踪
           </div>
           <div class="block-subtitle">Supplier Performance Tracking</div>
         </div>
         <div class="block-body">
           <div class="core-value">
-            <div class="core-value-title">核心价值</div>
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
             <p class="core-value-content">
               PO确认：逐项确认作为排产与ASN依据，影响OTD。；质量协同：NCR/8D迅速闭环，降低PPM与退货。；绩效：用OTD/PPM/响应等指标驱动改进。
+              <span class="en-translation">PO confirmation: Item-by-item confirmation as the basis for scheduling and ASN, impacting OTD (On-Time Delivery). Quality collaboration: Rapid closure of NCR/8D, reducing PPM (Parts Per Million) and returns. Performance: Drive improvement using metrics such as OTD, PPM, and response time.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>融合Tier-2/3供方在手/在途与产能约束，构建供给可视与缺口预警。</li>
-              <li>自动从门户/邮件/表格抓取下级供方库存与出货计划，规范化入库。</li>
-              <li>对未回传的可视数据/ASN/承诺自动催办并聚合异常清单。</li>
-              <li>将预测偏差、欠料、产能瓶颈、在途延误进行归因并生成整改单。</li>
-              <li>结合路线、关务、气象与承运商历史，预测ETA并报警异常。</li>
-              <li>展示分层BOM、Tier供方风险、在途/在手、预警与整改状态。</li>
-              <li>打通供应商↔料号↔BOM层级的映射关系与变更记录，统一口径。</li>
-              <li>监控各Tier数据交换成功率/延迟/重发率，定位问题伙伴与交易。</li>
+              <li>融合Tier-2/3供方在手/在途与产能约束，构建供给可视与缺口预警。
+                <span class="en-translation">Integrate Tier-2/3 suppliers' on-hand/in-transit inventory and capacity constraints to build supply visibility and gap early warning.</span>
+              </li>
+              <li>自动从门户/邮件/表格抓取下级供方库存与出货计划，规范化入库。
+                <span class="en-translation">Automatically capture subordinate suppliers' inventory and shipment plans from portals/emails/spreadsheets, and standardize入库.</span>
+              </li>
+              <li>对未回传的可视数据/ASN/承诺自动催办并聚合异常清单。
+                <span class="en-translation">Automatically follow up on unreported visual data/ASN/commitments and aggregate exception lists.</span>
+              </li>
+              <li>将预测偏差、欠料、产能瓶颈、在途延误进行归因并生成整改单。
+                <span class="en-translation">Attribute forecast deviations, material shortages, capacity bottlenecks, and in-transit delays, and generate corrective action orders.</span>
+              </li>
+              <li>结合路线、关务、气象与承运商历史，预测ETA并报警异常。
+                <span class="en-translation">Predict ETA (Estimated Time of Arrival) and alert anomalies by integrating routes, customs, weather, and carrier history.</span>
+              </li>
+              <li>展示分层BOM、Tier供方风险、在途/在手、预警与整改状态。
+                <span class="en-translation">Display layered BOM, Tier supplier risks, in-transit/on-hand status, warnings, and corrective action status.</span>
+              </li>
+              <li>打通供应商↔料号↔BOM层级的映射关系与变更记录，统一口径。
+                <span class="en-translation">Connect supplier↔part number↔BOM level mapping relationships and change records to unify standards.</span>
+              </li>
+              <li>监控各Tier数据交换成功率/延迟/重发率，定位问题伙伴与交易。
+                <span class="en-translation">Monitor data exchange success rate/delay/retry rate across Tiers to identify problematic partners and transactions.</span>
+              </li>
             </ul>
           </div>
           
@@ -100,29 +292,50 @@
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
-            <i class="fas fa-bullseye"></i>
+            <i class="fas fa-tools"></i>
             ODM 工装样件跟踪
           </div>
-          <div class="block-subtitle">ODM OTS Tracking（</div>
+          <div class="block-subtitle">ODM OTS Tracking (Off-Tool Sample)</div>
         </div>
         <div class="block-body">
           <div class="core-value">
-            <div class="core-value-title">核心价值</div>
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
             <p class="core-value-content">
              PO确认：逐项确认作为排产与ASN依据，影响OTD。
+             <span class="en-translation">PO confirmation: Item-by-item confirmation as the basis for scheduling and ASN, impacting OTD (On-Time Delivery).</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>融合Tier-2/3供方在手/在途与产能约束，构建供给可视与缺口预警。</li>
-              <li>自动从门户/邮件/表格抓取下级供方库存与出货计划，规范化入库。</li>
-              <li>对未回传的可视数据/ASN/承诺自动催办并聚合异常清单。</li>
-              <li>将预测偏差、欠料、产能瓶颈、在途延误进行归因并生成整改单。</li>
-              <li>结合路线、关务、气象与承运商历史，预测ETA并报警异常。</li>
-              <li>展示分层BOM、Tier供方风险、在途/在手、预警与整改状态。</li>
-              <li>打通供应商↔料号↔BOM层级的映射关系与变更记录，统一口径。</li>
-              <li>监控各Tier数据交换成功率/延迟/重发率，定位问题伙伴与交易。</li>
+              <li>融合Tier-2/3供方在手/在途与产能约束，构建供给可视与缺口预警。
+                <span class="en-translation">Integrate Tier-2/3 suppliers' on-hand/in-transit inventory and capacity constraints to build supply visibility and gap early warning.</span>
+              </li>
+              <li>自动从门户/邮件/表格抓取下级供方库存与出货计划，规范化入库。
+                <span class="en-translation">Automatically capture subordinate suppliers' inventory and shipment plans from portals/emails/spreadsheets, and standardize入库.</span>
+              </li>
+              <li>对未回传的可视数据/ASN/承诺自动催办并聚合异常清单。
+                <span class="en-translation">Automatically follow up on unreported visual data/ASN/commitments and aggregate exception lists.</span>
+              </li>
+              <li>将预测偏差、欠料、产能瓶颈、在途延误进行归因并生成整改单。
+                <span class="en-translation">Attribute forecast deviations, material shortages, capacity bottlenecks, and in-transit delays, and generate corrective action orders.</span>
+              </li>
+              <li>结合路线、关务、气象与承运商历史，预测ETA并报警异常。
+                <span class="en-translation">Predict ETA (Estimated Time of Arrival) and alert anomalies by integrating routes, customs, weather, and carrier history.</span>
+              </li>
+              <li>展示分层BOM、Tier供方风险、在途/在手、预警与整改状态。
+                <span class="en-translation">Display layered BOM, Tier supplier risks, in-transit/on-hand status, warnings, and corrective action status.</span>
+              </li>
+              <li>打通供应商↔料号↔BOM层级的映射关系与变更记录，统一口径。
+                <span class="en-translation">Connect supplier↔part number↔BOM level mapping relationships and change records to unify standards.</span>
+              </li>
+              <li>监控各Tier数据交换成功率/延迟/重发率，定位问题伙伴与交易。
+                <span class="en-translation">Monitor data exchange success rate/delay/retry rate across Tiers to identify problematic partners and transactions.</span>
+              </li>
             </ul>
           </div>
           

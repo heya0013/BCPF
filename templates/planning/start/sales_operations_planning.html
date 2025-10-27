@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>寻源管理 - 采购流程分析</title>
+  <title>寻源管理 - 计划流程分析</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <style>
@@ -32,6 +32,35 @@
       line-height: 1.6;
       margin: 0;
     }
+
+    /* 中英双语翻译样式：统一控制英文排版 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.3rem;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* 适配列表项翻译的间距 */
+    .optimization-list li .en-translation {
+      margin-top: 0.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 导航按钮翻译样式 */
+    .nav-btn .en-translation {
+      margin-top: 0.1rem;
+      font-size: 0.8em;
+    }
+
+    /* 核心价值标题翻译样式 */
+    .core-value-title .en-translation {
+      margin-top: 0.1rem;
+      font-size: 0.8em;
+      display: inline-block;
+    }
   </style>
 </head>
 <body>
@@ -39,10 +68,18 @@
   <nav class="navbar">
     <div class="nav-container">  
       <div class="nav-buttons">
-        <a href="supplier_management.html" class="nav-btn">供应商管理</a>
-        <a href="source_to_award.html" class="nav-btn">寻源到授标</a>
-        <a href="contract_management.html" class="nav-btn">合同管理</a>
-        <a href="cost_management.html" class="nav-btn">成本控制</a>
+        <a href="supplier_management.html" class="nav-btn">供应商管理
+          <span class="en-translation">Supplier Management</span>
+        </a>
+        <a href="source_to_award.html" class="nav-btn">寻源到授标
+          <span class="en-translation">Source to Award</span>
+        </a>
+        <a href="contract_management.html" class="nav-btn">合同管理
+          <span class="en-translation">Contract Management</span>
+        </a>
+        <a href="cost_management.html" class="nav-btn">成本控制
+          <span class="en-translation">Cost Control</span>
+        </a>
       </div>
     </div>
   </nav>
@@ -57,6 +94,7 @@
       <div class="process-subtitle">S&OP</div>
       <div class="process-desc">
         全面管理寻源流程，从需求分析到风险监控，确保供应连续性、成本优化和合规性。本流程涵盖计划分析、变更管理、寻源指导和风险管理等关键环节。
+        <span class="en-translation">Comprehensively manage the sourcing process, from demand analysis to risk monitoring, to ensure supply continuity, cost optimization and compliance. This process covers key links such as plan analysis, change management, sourcing guidance and risk management.</span>
       </div>
     </div>
   </section>
@@ -64,7 +102,9 @@
   <!-- 关键流程块区域 -->
   <div class="container">
     <div class="section-title">
-      <h2>关键流程模块</h2>
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
     </div>
     
     <div class="process-blocks">
@@ -79,24 +119,37 @@
         </div>
         <div class="block-body">
           <div class="core-value">
-            <div class="core-value-title">核心价值</div>
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
             <p class="core-value-content">
               S&OP/IBP 通过月度例会实现需求、供给与财务三结合的滚动共识，是One Plan与策略变更的最高门禁。
+              <span class="en-translation">S&OP/IBP achieves rolling consensus integrating demand, supply and finance through monthly meetings, and is the top gateway for One Plan and strategy changes.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
             <ul class="optimization-list">
-              <li>构建情景优化与多目标权衡（服务水平 / 现金 / 利润），自动生成候选情景并量化代价函数，支持会议“一键对比”</li>
-              <li>建设 Financial Reconciliation 模块，将量化计划自动映射至收入/毛利/现金流，并校验单位经济与预算对齐</li>
-              <li>用AI生成议题与纪要（异常 → 议题 → 决策），自动分配Owner与截止日期，并追踪闭环状态</li>
-              <li>构建风险登记与对冲库（供应中断、物流拥堵、需求暴增），情景触发自动回调政策与缓冲</li>
+              <li>构建情景优化与多目标权衡（服务水平 / 现金 / 利润），自动生成候选情景并量化代价函数，支持会议“一键对比”
+                <span class="en-translation">Build scenario optimization and multi-objective trade-off (service level / cash / profit), automatically generate candidate scenarios and quantify the cost function, supporting "one-click comparison" in meetings</span>
+              </li>
+              <li>建设 Financial Reconciliation 模块，将量化计划自动映射至收入/毛利/现金流，并校验单位经济与预算对齐
+                <span class="en-translation">Build a Financial Reconciliation module to automatically map quantitative plans to revenue/gross profit/cash flow, and verify the alignment of unit economy with budget</span>
+              </li>
+              <li>用AI生成议题与纪要（异常 → 议题 → 决策），自动分配Owner与截止日期，并追踪闭环状态
+                <span class="en-translation">Use AI to generate topics and minutes (abnormality → topic → decision), automatically assign owners and deadlines, and track the closed-loop status</span>
+              </li>
+              <li>构建风险登记与对冲库（供应中断、物流拥堵、需求暴增），情景触发自动回调政策与缓冲
+                <span class="en-translation">Build a risk registration and hedging library (supply interruption, logistics congestion, surge in demand), and trigger automatic callback policies and buffers based on scenarios</span>
+              </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='source_management', module_name='source_plan_bom') }}" class="best-practice-btn">
+            <a href="{{ url_for('planning.best_practice', process='sales_operations_planning', module_name='segment_planning') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -114,24 +167,37 @@
         </div>
         <div class="block-body">
           <div class="core-value">
-            <div class="core-value-title">核心价值</div>
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
             <p class="core-value-content">
               S&OP/IBP 通过月度例会实现需求、供给与财务三结合的滚动共识，是One Plan与策略变更的最高门禁。
+              <span class="en-translation">S&OP/IBP achieves rolling consensus integrating demand, supply and finance through monthly meetings, and is the top gateway for One Plan and strategy changes.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
             <ul class="optimization-list">
-              <li>构建情景优化与多目标权衡，聚合区域层级的场景对比与跨品类/跨区域的多目标权衡</li>
-              <li>建设 Financial Reconciliation 模块，进行区域层级财务对账，保证整体预算、现金流与财务目标一致</li>
-              <li>用AI生成区域S&OP会议议题与纪要，聚合跨职能异常，形成决策闭环</li>
-              <li>构建风险登记与对冲库，区域层面协调风险对冲策略，触发跨区域或跨产品的缓冲动作</li>
+              <li>构建情景优化与多目标权衡，聚合区域层级的场景对比与跨品类/跨区域的多目标权衡
+                <span class="en-translation">Build scenario optimization and multi-objective trade-off, aggregating scenario comparisons at the regional level and multi-objective trade-offs across categories/regions</span>
+              </li>
+              <li>建设 Financial Reconciliation 模块，进行区域层级财务对账，保证整体预算、现金流与财务目标一致
+                <span class="en-translation">Build a Financial Reconciliation module to conduct financial reconciliation at the regional level, ensuring consistency of overall budget, cash flow and financial goals</span>
+              </li>
+              <li>用AI生成区域S&OP会议议题与纪要，聚合跨职能异常，形成决策闭环
+                <span class="en-translation">Use AI to generate topics and minutes for regional S&OP meetings, aggregate cross-functional abnormalities, and form a decision-making closed loop</span>
+              </li>
+              <li>构建风险登记与对冲库，区域层面协调风险对冲策略，触发跨区域或跨产品的缓冲动作
+                <span class="en-translation">Build a risk registration and hedging library, coordinate risk hedging strategies at the regional level, and trigger buffer actions across regions or products</span>
+              </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='source_management', module_name='pcr_management') }}" class="best-practice-btn">
+            <a href="{{ url_for('planning.best_practice', process='sales_operations_planning', module_name='regional_product_s_op') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -139,9 +205,5 @@
       </div>     
     </div>
   </div>
-
-  <footer>
-    <p>采购流程分析系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
-  </footer>
 </body>
 </html>

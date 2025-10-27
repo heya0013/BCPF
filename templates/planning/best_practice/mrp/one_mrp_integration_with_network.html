@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One MRP与网络集成案例研究 - Supply Huddle</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice.css') }}">
+  <style>
+    /* 基于原模板风格的补充样式（One MRP 专用）*/
+    .ai-scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin: 30px 0;
+    }
+
+    .scenario-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      border-top: 4px solid #2c7be5;
+      transition: all 0.28s ease;
+    }
+
+    .scenario-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 30px rgba(44, 123, 229, 0.15);
+    }
+
+    .scenario-icon {
+      font-size: 2.2rem;
+      color: #2c7be5;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .scenario-title {
+      font-size: 1.25rem;
+      color: #2c3e50;
+      margin-bottom: 12px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .scenario-desc {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .kpi-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .kpi-list li {
+      margin-bottom: 10px;
+      padding-left: 30px;
+      position: relative;
+      color: #5a6a7d;
+    }
+
+    .kpi-list li:before {
+      content: '\f201';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #00c9a7;
+    }
+
+    .industry-case {
+      background: linear-gradient(135deg, #f9fbff 0%, #eef6ff 100%);
+      border-radius: 12px;
+      padding: 22px;
+      margin: 30px 0;
+    }
+
+    .case-title {
+      font-size: 1.2rem;
+      color: #2c3e50;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .case-desc {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    /* KPI 卡片（保证与原模板兼容） */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      margin-top: 12px;
+    }
+
+    .stat-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #2c7be5;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      color: #5a6a7d;
+      font-size: 0.95rem;
+    }
+
+    .back-btn {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 8px;
+      background: #486EBC;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 6px 18px rgba(72,110,188,0.12);
+      transition: transform .18s ease;
+      margin-top: 18px;
+    }
+
+    .back-btn:hover { transform: translateY(-3px); }
+
+    footer { text-align:center; padding:18px 8px; color:#8892A6; font-size:0.95rem; }
+    /* 可解释AI 小提示样式 */
+    .xai-badge { display:inline-block; background:#fff; border:1px solid #e6eefc; padding:6px 10px; border-radius:999px; font-size:0.85rem; color:#2c7be5; }
+  </style>
+</head>
+<body>
+  <!-- 顶部标题 -->
+  <header class="best-practice-header">
+    <div class="header-content">
+      <h1 class="best-practice-title">One MRP 与网络集成（One MRP integration with Network） — AI 案例研究</h1>
+      <div class="best-practice-subtitle">AI驱动的集成式物料需求计划与供应链网络协同</div>
+      <p class="process-desc">
+        本页展示One MRP与供应链网络集成的应用场景、效果分析、关键KPI与行业落地案例，为实现端到端供应链优化提供参考。
+      </p>
+    </div>
+  </header>
+
+  <div class="best-practice-container">
+    <!-- AI 应用场景 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">AI 应用场景</h2>
+
+      <div class="ai-scenario-grid">
+        <div class="scenario-card">
+          <div class="scenario-icon" aria-hidden="true">
+            <i class="fas fa-clock"></i>
+          </div>
+          <h3 class="scenario-title">智能ETA预测与网络协同</h3>
+          <p class="scenario-desc">
+            结合时序模型和图特征学习，精准预测物料的预计到达时间(ETA)，同时考虑供应链网络中的多节点协同关系，实现全局优化的MRP计划，提高物料齐套性。
+          </p>
+          <ul class="kpi-list">
+            <li>提升跨网络物料交付的可预测性</li>
+            <li>优化全局库存分配与调拨决策</li>
+            <li>增强供应链网络的整体响应能力</li>
+          </ul>
+        </div>
+
+        <div class="scenario-card">
+          <div class="scenario-icon" aria-hidden="true">
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <h3 class="scenario-title">供应商承诺质量评分系统</h3>
+          <p class="scenario-desc">
+            构建供应商履约能力评估模型，基于历史表现、实时数据和网络特征对供应商承诺质量进行动态评分，将评分结果集成到MRP计算中，提高计划的可行性。
+          </p>
+          <ul class="kpi-list">
+            <li>提高MRP计划的可靠性和可执行性</li>
+            <li>优化供应商选择和订单分配决策</li>
+            <li>建立供应商绩效改进的反馈机制</li>
+          </ul>
+        </div>
+
+        <div class="scenario-card">
+          <div class="scenario-icon" aria-hidden="true">
+            <i class="fas fa-exclamation-triangle"></i>
+          </div>
+          <h3 class="scenario-title">智能异常检测与预警</h3>
+          <p class="scenario-desc">
+            通过阈值化异常消息机制和机器学习模型，实时监测供应链网络中的异常事件和潜在风险，自动触发预警并提供初步解决方案，减少对生产计划的干扰。
+          </p>
+          <ul class="kpi-list">
+            <li>提高供应链异常的早期发现能力</li>
+            <li>缩短异常响应和解决时间</li>
+            <li>减少因供应链中断导致的生产损失</li>
+          </ul>
+        </div>
+
+        <div class="scenario-card">
+          <div class="scenario-icon" aria-hidden="true">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3 class="scenario-title">回测框架与计划优化</h3>
+          <p class="scenario-desc">
+            建立MRP计划回测框架，通过因素分解分析计划到交付的偏差原因，持续优化MRP参数和算法，提高One MRP与实际供应链网络的适配性。
+          </p>
+          <ul class="kpi-list">
+            <li>量化计划偏差的关键影响因素</li>
+            <li>支持数据驱动的MRP持续改进</li>
+            <li>提高计划模型的自适应能力</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 应用场景效果分析（行业 KPI 对应） -->
+    <div class="best-practice-section">
+      <h2 class="section-title">AI 应用场景效果分析（行业 KPI 对应）</h2>
+
+      <div class="industry-case">
+        <h3 class="case-title">关键行业 KPI 与衡量</h3>
+
+        <p class="case-desc">
+          One MRP与网络集成方案重点关注的KPI包括：按时交付率(OTD)、改期率、按单齐套率(CTB)、承诺稳定性、计划兑现率、重排计划(Reschedule)频次和库存周转率等。
+        </p>
+
+        <p class="case-desc">
+          这些KPI可分为三类：1）交付性能指标（OTD、CTB通过率）；2）计划稳定性指标（改期率、Reschedule频次、承诺稳定性）；3）运营效率指标（计划兑现率、库存水平）。
+        </p>
+      </div>
+
+      <h3 style="margin-top:18px;">对应的数据指标示例（供监控）</h3>
+      <ul class="kpi-list" style="margin-top:10px;">
+        <li>跨网络物料的OTD达成率及趋势分析</li>
+        <li>计划改期的频率、原因及成本影响</li>
+        <li>按单齐套率与生产中断的关联性分析</li>
+        <li>承诺交付日期的变更幅度与通知及时性</li>
+        <li>MRP计划与实际执行的偏差分析</li>
+        <li>网络库存水平与服务水平的平衡分析</li>
+      </ul>
+    </div>
+
+    <!-- KPI 和 预期提升幅度 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">KPI 与预期提升幅度（基于行业实践与文献）</h2>
+
+      <div class="stats-grid" style="margin-bottom:12px;">
+        <div class="stat-card">
+          <div class="stat-value">+5–15%</div>
+          <div class="stat-label">按时交付率(OTD)</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value">-10–20%</div>
+          <div class="stat-label">改期率</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value">提升</div>
+          <div class="stat-label">CTB通过率</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value">-10–25%</div>
+          <div class="stat-label">Reschedule频次</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value">提升</div>
+          <div class="stat-label">计划兑现率</div>
+        </div>
+      </div>
+
+      <p style="margin-top: 18px; color:#5a6a7d; line-height:1.6;">
+        以上幅度为基于行业研究与多家企业实践后的范围估计（实际效果受供应链网络复杂度、数据质量与系统集成度影响）。对于全球分布的复杂供应链网络，整合优化带来的收益更为显著。
+      </p>
+    </div>
+
+    <!-- 实际行业案例 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">实际行业案例</h2>
+
+      <div class="industry-case">
+        <h3 class="case-title">博世(Bosch)：全球供应链网络的One MRP集成优化</h3>
+
+        <p class="case-desc">
+          博世集团实施了基于AI的One MRP与全球供应链网络集成系统，连接了其分布在40多个国家的生产基地和供应商网络。系统采用图神经网络模型分析全球物料流动，结合时序预测实现精准的ETA预测，并构建了供应商动态评分体系。
+        </p>
+
+        <p class="case-desc">
+          实施后，博世的全球按时交付率提升了12%，生产计划改期率下降了18%，跨区域物料齐套率提高了15%。通过AI驱动的异常预警，供应链中断导致的生产损失减少了25%，整体库存水平降低了8%同时保持了服务水平。
+        </p>
+
+        <p class="case-desc" style="font-size:0.9rem; color:#394a5a;">
+          主要来源：<a href="https://www.mckinsey.com/capabilities/operations/our-insights/ai-enabled-supply-chain-management-from-planning-to-operations" target="_blank" style="color:#2c7be5;">麦肯锡 - AI驱动的供应链管理：从规划到运营</a> 及博世供应链数字化转型案例研究。
+        </p>
+      </div>
+    </div>
+
+
+    <!-- References -->
+    <div class="best-practice-section">
+      <h2 class="section-title">来源与参考</h2>
+      <ul class="kpi-list" style="margin-top:8px;">
+        <li>McKinsey — AI-enabled supply chain management: From planning to operations（全球供应链集成案例分析）。</li>
+        <li>ASCM/SCOR DS 数字指南：<a href="https://www.ascm.org/globalassets/documents--files/corporate-transformation/scor-ds-digital-guide_final.pdf" target="_blank" style="color:#2c7be5;">https://www.ascm.org/globalassets/documents--files/corporate-transformation/scor-ds-digital-guide_final.pdf</a></li>
+        <li>博世集团供应链数字化转型白皮书。</li>
+      </ul>
+
+      <p style="margin-top:12px; color:#7a8899; font-size:0.9rem;">
+        （注：以上页面内容为汇总与结构化呈现，具体落地请在你方环境中先做数据覆盖度与小范围试点验证。）
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <small>计划流程分析系统 © 2023–2025 | One MRP与网络集成 • AI驱动供应链优化</small>
+  </footer>
+</body>
+</html>

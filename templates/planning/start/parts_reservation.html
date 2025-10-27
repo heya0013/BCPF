@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>寻源到授标流程 - 采购流程分析</title>
+  <title>寻源到授标流程 - 计划流程分析</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <style>
@@ -32,6 +32,35 @@
       line-height: 1.6;
       margin: 0;
     }
+
+    /* 中英双语翻译样式：统一控制英文排版 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.3rem;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* 适配列表项翻译的间距 */
+    .optimization-list li .en-translation {
+      margin-top: 0.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 导航按钮翻译样式 */
+    .nav-btn .en-translation {
+      margin-top: 0.1rem;
+      font-size: 0.8em;
+    }
+
+    /* 核心价值标题翻译样式 */
+    .key-reason-header .en-translation {
+      margin-top: 0.1rem;
+      font-size: 0.8em;
+      display: inline-block;
+    }
   </style>
 </head>
 <body>
@@ -39,10 +68,18 @@
   <nav class="navbar">
     <div class="nav-container">
       <div class="nav-buttons">
-        <a href="supplier_management.html" class="nav-btn">供应商管理</a>
-        <a href="execution_collaboration.html" class="nav-btn">采购执行</a>
-        <a href="contract_management.html" class="nav-btn">合同管理</a>
-        <a href="cost_management.html" class="nav-btn">成本控制</a>
+        <a href="supplier_management.html" class="nav-btn">供应商管理
+          <span class="en-translation">Supplier Management</span>
+        </a>
+        <a href="execution_collaboration.html" class="nav-btn">计划执行
+          <span class="en-translation">Plan Execution</span>
+        </a>
+        <a href="contract_management.html" class="nav-btn">合同管理
+          <span class="en-translation">Contract Management</span>
+        </a>
+        <a href="cost_management.html" class="nav-btn">成本控制
+          <span class="en-translation">Cost Control</span>
+        </a>
       </div>
     </div>
   </nav>
@@ -57,6 +94,7 @@
       <div class="process-subtitle">Parts Reservation</div>
       <div class="process-desc">
         在库存或生产计划中提前锁定关键部件，保障优先订单与紧急需求的及时交付，降低生产延误与供应冲突风险。
+        <span class="en-translation">Lock key parts in advance in inventory or production plans to ensure timely delivery of priority orders and urgent needs, and reduce the risks of production delays and supply conflicts.</span>
       </div>
     </div>
   </section>
@@ -64,7 +102,9 @@
   <!-- 关键流程块区域 -->
   <div class="container">
     <div class="section-title">
-      <h2>关键流程模块</h2>
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
     </div>
     
     <div class="process-blocks">
@@ -80,25 +120,38 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>核心价值</strong>
+              <strong>核心价值
+                <span class="en-translation">Core Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               Reservation/锁库直接改变可分配/可售池，是避免重复承诺与保障高优先级履约的关键执行抓手。
+              <span class="en-translation">Reservation/warehouse locking directly changes the allocable/sellable pool, and is a key execution tool to avoid duplicate commitments and ensure high-priority fulfillment.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
             <ul class="optimization-list">
-              <li>建立‘软/硬锁+TTL’的策略引擎：按客户等级/渠道/促销/NPI设时效与额度，避免长期占用与虚占。</li>
-              <li>用AI识别过度锁库/囤货/低转化锁库，自动提醒并触发回收审批。</li>
-              <li>与ATS/ATP/DRP/MRP/MES实现事件驱动双向同步，提供‘Why/Why Not/Next Best’解释。</li>
-              <li>建立锁库FVA/效应评估：锁库→承诺→履约→现金，量化正负效应并回调策略参数。</li>
+              <li>建立‘软/硬锁+TTL’的策略引擎：按客户等级/渠道/促销/NPI设时效与额度，避免长期占用与虚占。
+                <span class="en-translation">Establish a strategy engine of "soft/hard lock + TTL": set time limits and quotas according to customer level/channel/promotion/NPI to avoid long-term occupation and false occupation.</span>
+              </li>
+              <li>用AI识别过度锁库/囤货/低转化锁库，自动提醒并触发回收审批。
+                <span class="en-translation">Use AI to identify excessive warehouse locking/stockpiling/low-conversion warehouse locking, and automatically remind and trigger recovery approval.</span>
+              </li>
+              <li>与ATS/ATP/DRP/MRP/MES实现事件驱动双向同步，提供‘Why/Why Not/Next Best’解释。
+                <span class="en-translation">Realize event-driven two-way synchronization with ATS/ATP/DRP/MRP/MES, and provide "Why/Why Not/Next Best" explanations.</span>
+              </li>
+              <li>建立锁库FVA/效应评估：锁库→承诺→履约→现金，量化正负效应并回调策略参数。
+                <span class="en-translation">Establish warehouse locking FVA/effect evaluation: warehouse locking → commitment → fulfillment → cash, quantify positive and negative effects and adjust strategy parameters back.</span>
+              </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='source_to_award', module_name='rfq_management') }}" class="best-practice-btn">
+            <a href="{{ url_for('planning.best_practice', process='parts_reservation', module_name='parts_reservation') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -106,9 +159,5 @@
       </div>
     </div>
   </div>
-
-  <footer>
-    <p>计划流程分析系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
-  </footer>
 </body>
 </html>

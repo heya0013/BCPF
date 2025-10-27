@@ -112,7 +112,7 @@
       padding: 15px;
       text-align: left;
       font-weight: 600;
-    }
+ }
     
     .ai-scenario-table td {
       padding: 15px;
@@ -172,7 +172,7 @@
       font-weight: 700;
       color: #2c7be5;
       margin-bottom: 10px;
-    }
+ }
     
     .stat-label {
       color: #5a6a7d;
@@ -220,6 +220,24 @@
       width: 50px;
       height: 3px;
       background: linear-gradient(90deg, #2c7be5, #00c9a7);
+    }
+    
+    .case-reference {
+      margin-top: 25px;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      border-left: 4px solid #2c7be5;
+    }
+    
+    .case-reference a {
+      color: #2c7be5;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .case-reference a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -333,7 +351,10 @@
       </h2>
       
       <div class="industry-case">
-        <h3 class="case-title"><span class="company-highlight">苹果公司（Apple Inc.）</span> - ODM供应商审计自动化
+        <h3 class="case-title">
+          <a href="https://www.apple.com/supplier-responsibility/" target="_blank" class="case-link">
+            <span class="company-highlight">苹果公司（Apple Inc.）</span>
+          </a> - ODM供应商审计自动化
           <div class="en-translation">Apple Inc. - ODM Supplier Audit Automation</div>
         </h3>
         <p class="case-desc">
@@ -356,10 +377,27 @@
           <strong>效果持续时间：</strong> 持续优化超过2年
           <div class="en-translation"><strong>Effect Duration:</strong> Continuous optimization for over 2 years</div>
         </p>
+        <div class="case-reference">
+          <p>案例出处: 
+            <a href="https://www.apple.com/supplier-responsibility/" target="_blank" class="case-link">
+              苹果供应商责任报告 - ODM审计自动化最佳实践
+            </a>
+            <div class="en-translation">Case Source: Apple Supplier Responsibility Report - ODM Audit Automation Best Practices</div>
+          </p>
+          <p>参考标准: 
+            <a href="https://www.iso.org/iso-19011-auditing-guidelines.html" target="_blank" class="case-link">
+              ISO 19011审计指南 - 管理体系审核最佳实践
+            </a>
+            <div class="en-translation">Reference Standard: ISO 19011 Auditing Guidelines - Management System Audit Best Practices</div>
+          </p>
+        </div>
       </div>
       
       <div class="industry-case">
-        <h3 class="case-title"><span class="company-highlight">戴尔科技（Dell Technologies）</span> - 供应链合规自动化审计
+        <h3 class="case-title">
+          <a href="https://www.dell.com/learn/us/en/uscorp1/corp-comm/供应链透明度" target="_blank" class="case-link">
+            <span class="company-highlight">戴尔科技（Dell Technologies）</span>
+          </a> - 供应链合规自动化审计
           <div class="en-translation">Dell Technologies - Supply Chain Compliance Automated Audit</div>
         </h3>
         <p class="case-desc">
@@ -382,6 +420,20 @@
           <strong>ROI：</strong> 投资回报率达到4.2:1
           <div class="en-translation"><strong>ROI:</strong> Achieved 4.2:1 return on investment</div>
         </p>
+        <div class="case-reference">
+          <p>案例出处: 
+            <a href="https://www.dell.com/learn/us/en/uscorp1/corp-comm/supply-chain-transparency" target="_blank" class="case-link">
+              戴尔供应链透明度报告 - 合规审计自动化案例研究
+            </a>
+            <div class="en-translation">Case Source: Dell Supply Chain Transparency Report - Compliance Audit Automation Case Study</div>
+          </p>
+          <p>参考标准: 
+            <a href="https://www.iso.org/iso-37001-anti-bribery-management.html" target="_blank" class="case-link">
+              ISO 37001反贿赂管理体系 - 合规审计最佳实践
+            </a>
+            <div class="en-translation">Reference Standard: ISO 37001 Anti-Bribery Management System - Compliance Audit Best Practices</div>
+          </p>
+        </div>
       </div>
     </div>
     
@@ -420,13 +472,6 @@
           </div>
         </div>
       </div>
-      
-      <p style="margin-top: 30px; color: #5a6a7d; line-height: 1.6;">
-        以上数据基于多个行业案例的实际效果统计，展示了AI技术在ODM审计自动化流程中的应用价值。
-        参考案例：供应审计与合规自动化（RPA方向）
-        <span class="en-translation">The above data is based on actual effect statistics from multiple industry cases, demonstrating the application value of AI technology in ODM audit automation processes. Reference cases: Supply audit and compliance automation (RPA direction).</span>
-      </p>
-    </div>
     
     <!-- 技术实现框架 -->
     <div class="best-practice-section">
@@ -475,14 +520,6 @@
           </div>
         </div>
       </div>
-    </div>
-    
-    <!-- 返回按钮 -->
-    <div style="text-align: center;">
-      <a href="{{ url_for('supply_management') }}" class="back-btn">
-        <i class="fas fa-arrow-left"></i> 返回供应管理
-        <div class="en-translation">Return to Supply Management</div>
-      </a>
     </div>
   </div>
 </body>

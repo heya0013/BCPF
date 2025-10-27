@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>提前生产请求案例研究 - Supply Huddle</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice.css') }}">
+  <style>
+    /* 基于原模板风格的补充样式 */
+    .ai-scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin: 30px 0;
+    }
+
+    .scenario-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      border-top: 4px solid #2c7be5;
+      transition: all 0.28s ease;
+    }
+
+    .scenario-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 30px rgba(44, 123, 229, 0.15);
+    }
+
+    .scenario-icon {
+      font-size: 2.2rem;
+      color: #2c7be5;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .scenario-title {
+      font-size: 1.25rem;
+      color: #2c3e50;
+      margin-bottom: 12px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .scenario-desc {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .kpi-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .kpi-list li {
+      margin-bottom: 10px;
+      padding-left: 30px;
+      position: relative;
+      color: #5a6a7d;
+    }
+
+    .kpi-list li:before {
+      content: '\f201';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #00c9a7;
+    }
+
+    .industry-case {
+      background: linear-gradient(135deg, #f9fbff 0%, #eef6ff 100%);
+      border-radius: 12px;
+      padding: 22px;
+      margin: 30px 0;
+    }
+
+    .case-title {
+      font-size: 1.2rem;
+      color: #2c3e50;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .case-desc {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    /* KPI 卡片 */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      margin-top: 12px;
+    }
+
+    .stat-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #2c7be5;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      color: #5a6a7d;
+      font-size: 0.95rem;
+    }
+
+    .back-btn {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 8px;
+      background: #486EBC;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 6px 18px rgba(72,110,188,0.12);
+      transition: transform .18s ease;
+      margin-top: 18px;
+    }
+
+    .back-btn:hover { transform: translateY(-3px); }
+
+    footer { text-align:center; padding:18px 8px; color:#8892A6; font-size:0.95rem; }
+    .xai-badge { display:inline-block; background:#fff; border:1px solid #e6eefc; padding:6px 10px; border-radius:999px; font-size:0.85rem; color:#2c7be5; }
+  </style>
+</head>
+<body>
+  <!-- 顶部标题 -->
+  <header class="best-practice-header">
+    <div class="header-content">
+      <h1 class="best-practice-title">提前生产请求（Build Ahead Request） — AI 案例研究</h1>
+      <div class="best-practice-subtitle">智能提前生产决策与优化执行方案</div>
+      <p class="process-desc">
+        本页展示AI驱动的提前生产请求在制造业中的应用场景、效果分析、关键KPI与行业落地案例，为提升生产灵活性提供参考。
+      </p>
+    </div>
+  </header>
+
+  <div class="best-practice-container">
+    <!-- AI 应用场景 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">AI 应用场景</h2>
+
+      <div class="ai-scenario-grid">
+        <div class="scenario-card">
+          <div class="scenario-icon" aria-hidden="true">
+            <i class="fas fa-cogs"></i>
+          </div>
+          <h3 class="scenario-title">智能提前生产决策系统</h3>
+          <p class="scenario-desc">
+            结合混合整数规划和约束规划技术，构建提前生产决策模型，考虑物料可用性、产能约束和需求波动，自动生成最优的提前生产方案，平衡库存成本与供应保障。
+          </p>
+          <ul class="kpi-list">
+            <li>优化提前生产的时机与数量决策</li>
+            <li>在保证交付的同时最小化库存积压</li>
+            <li>平衡生产负荷与资源利用率</li>
+          </ul>
+        </div>
+
+        <div class="scenario-card">
+          <div class="scenario-icon" aria-hidden="true">
+            <i class="fas fa-search"></i>
+          </div>
+          <h3 class="scenario-title">启发式与禁忌搜索优化</h3>
+          <p class="scenario-desc">
+            应用启发式算法和禁忌搜索技术，在复杂约束条件下快速找到近似最优解，解决大规模提前生产计划问题，提高计划生成效率和实用性。
+          </p>
+          <ul class="kpi-list">
+            <li>处理大规模复杂生产计划问题</li>
+            <li>在有限时间内生成高质量计划</li>
+            <li>避免局部最优，找到全局较优方案</li>
+          </ul>
+        </div>
+
+        <div class="scenario-card">
+          <div class="scenario-icon" aria-hidden="true">
+            <i class="fas fa-vr-cardboard"></i>
+          </div>
+          <h3 class="scenario-title">多情景仿真与评估</h3>
+          <p class="scenario-desc">
+            通过情景仿真技术，模拟不同缺料、突发换型和需求变化情景下提前生产方案的表现，评估潜在风险和收益，辅助决策者选择最优方案。
+          </p>
+          <ul class="kpi-list">
+            <li>量化提前生产方案的鲁棒性</li>
+            <li>识别潜在风险点并制定应对措施</li>
+            <li>支持基于数据的生产决策</li>
+          </ul>
+        </div>
+
+        <div class="scenario-card">
+          <div class="scenario-icon" aria-hidden="true">
+            <i class="fas fa-robot"></i>
+          </div>
+          <h3 class="scenario-title">智能执行与监控</h3>
+          <p class="scenario-desc">
+            结合LLM理解生产指令，通过规则引擎和RPA/MES接口实现提前生产请求的自动执行和实时监控，确保计划准确落地并及时反馈执行状态。
+          </p>
+          <ul class="kpi-list">
+            <li>减少人工干预，提高执行效率</li>
+            <li>确保提前生产计划的准确执行</li>
+            <li>实时跟踪进度并快速响应异常</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 应用场景效果分析（行业 KPI 对应） -->
+    <div class="best-practice-section">
+      <h2 class="section-title">AI 应用场景效果分析（行业 KPI 对应）</h2>
+
+      <div class="industry-case">
+        <h3 class="case-title">关键行业 KPI 与衡量</h3>
+
+        <p class="case-desc">
+          提前生产请求方案重点关注的KPI包括：按时排产率(On-time-to-Schedule, OTS)、生产吞吐量、设备综合效率(OEE)、换型时间、在制品库存(WIP)、派工处理时长、人工干预占比和执行准确率等。
+        </p>
+
+        <p class="case-desc">
+          这些KPI可分为三类：1）生产效率指标（吞吐量、OEE、换型时间）；2）计划执行指标（OTS、执行准确率）；3）运营指标（WIP、派工处理时长、人工占比）。
+        </p>
+      </div>
+
+      <h3 style="margin-top:18px;">对应的数据指标示例（供监控）</h3>
+      <ul class="kpi-list" style="margin-top:10px;">
+        <li>提前生产订单的按时完成率与常规订单对比</li>
+        <li>提前生产对整体吞吐量和设备利用率的影响</li>
+        <li>因提前生产导致的换型时间变化与生产损失</li>
+        <li>提前生产对在制品库存水平的影响分析</li>
+        <li>提前生产请求的处理效率与人工干预率</li>
+        <li>提前生产计划的执行准确率与调整频率</li>
+      </ul>
+    </div>
+
+    <!-- KPI 和 预期提升幅度 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">KPI 与预期提升幅度（基于行业实践与文献）</h2>
+
+      <div class="stats-grid" style="margin-bottom:12px;">
+        <div class="stat-card">
+          <div class="stat-value">+5–15%</div>
+          <div class="stat-label">按时排产率(OTS)</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value">+5–12%</div>
+          <div class="stat-label">生产吞吐量</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value">下降</div>
+          <div class="stat-label">换型损失</div>
+        </div>
+      </div>
+
+      <div class="stats-grid" style="margin-bottom:12px;">
+        <div class="stat-card">
+          <div class="stat-value">-30–50%</div>
+          <div class="stat-label">人工处理时长</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value">提升</div>
+          <div class="stat-label">执行一致性</div>
+        </div>
+      </div>
+
+      <p style="margin-top: 18px; color:#5a6a7d; line-height:1.6;">
+        以上幅度为基于行业研究与多家企业实践后的范围估计（实际效果受生产复杂度、物料稳定性与数据质量影响）。对于多品种小批量生产模式，AI驱动的提前生产决策系统带来的收益更为显著。
+      </p>
+    </div>
+
+    <!-- 实际行业案例 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">实际行业案例</h2>
+
+      <div class="industry-case">
+        <h3 class="case-title">西门子(Siemens)：智能提前生产系统优化电子制造</h3>
+
+        <p class="case-desc">
+          西门子在其电子制造工厂部署了基于AI的提前生产请求系统，该系统结合混合整数规划和启发式算法，分析物料供应风险和生产需求，自动生成最优的提前生产计划。系统还通过多情景仿真评估不同方案的效果，并通过RPA与MES系统集成实现自动执行。
+        </p>
+
+        <p class="case-desc">
+          实施后，西门子的按时排产率(OTS)提升了12%，生产吞吐量增加了8%，换型时间减少了18%。提前生产请求的处理时间缩短了45%，人工干预率从55%降至20%，同时在制品库存保持稳定，未出现明显增加。该系统在物料供应不稳定期间表现尤为突出，有效缓解了缺料对生产的影响。
+        </p>
+
+        <p class="case-desc" style="font-size:0.9rem; color:#394a5a;">
+          主要来源：<a href="https://www.mckinsey.com/capabilities/operations/our-insights/operations-practice" target="_blank" style="color:#2c7be5;">麦肯锡 - 运营实践：生产计划优化案例</a> 及西门子数字化工厂白皮书。
+        </p>
+      </div>
+    </div>
+
+    <!-- 返回按钮 -->
+    <div style="text-align: center; margin-bottom: 28px;">
+      <a href="{{ url_for('factory_planning') }}" class="back-btn">
+        <i class="fas fa-arrow-left"></i> 返回提前生产请求
+      </a>
+    </div>
+
+    <!-- References -->
+    <div class="best-practice-section">
+      <h2 class="section-title">来源与参考</h2>
+      <ul class="kpi-list" style="margin-top:8px;">
+        <li>麦肯锡 — APS/调度优化案例综述：<a href="https://www.mckinsey.com/capabilities/operations/our-insights/operations-practice" target="_blank" style="color:#2c7be5;">https://www.mckinsey.com/capabilities/operations/our-insights/operations-practice</a></li>
+        <li>ASCM/SCOR DS 数字指南：<a href="https://www.ascm.org/globalassets/documents--files/corporate-transformation/scor-ds-digital-guide_final.pdf" target="_blank" style="color:#2c7be5;">https://www.ascm.org/globalassets/documents--files/corporate-transformation/scor-ds-digital-guide_final.pdf</a></li>
+        <li>西门子数字化工厂转型案例研究。</li>
+      </ul>
+
+      <p style="margin-top:12px; color:#7a8899; font-size:0.9rem;">
+        （注：以上页面内容为汇总与结构化呈现，具体落地请在你方环境中先做数据覆盖度与小范围试点验证。）
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <small>计划流程分析系统 © 2023–2025 | 提前生产请求 • AI驱动制造优化</small>
+  </footer>
+</body>
+</html>

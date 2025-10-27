@@ -3,19 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>执行协作 - 采购流程分析</title>
+  <title>执行协作 - 计划流程分析</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <style>
+    /* 中英双语翻译样式：统一控制英文排版 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.3rem;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* 适配列表项翻译的间距 */
+    .optimization-list li .en-translation {
+      margin-top: 0.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 导航按钮翻译样式 */
+    .nav-btn .en-translation {
+      margin-top: 0.1rem;
+      font-size: 0.8em;
+    }
+
+    /* 核心价值标题翻译样式 */
+    .key-reason-header .en-translation {
+      margin-top: 0.1rem;
+      font-size: 0.8em;
+      display: inline-block;
+    }
+  </style>
 </head>
 <body>
   <!-- 顶部导航栏 -->
   <nav class="navbar">
     <div class="nav-container">
       <div class="nav-buttons">
-        <button class="nav-btn">供应商管理</button>
-        <button class="nav-btn">采购执行</button>
-        <button class="nav-btn">合同管理</button>
-        <button class="nav-btn">成本控制</button>
+        <button class="nav-btn">供应商管理
+          <span class="en-translation">Supplier Management</span>
+        </button>
+        <button class="nav-btn">计划执行
+          <span class="en-translation">Plan Execution</span>
+        </button>
+        <button class="nav-btn">合同管理
+          <span class="en-translation">Contract Management</span>
+        </button>
+        <button class="nav-btn">成本控制
+          <span class="en-translation">Cost Control</span>
+        </button>
       </div>
     </div>
   </nav>
@@ -29,7 +67,9 @@
       <h1 class="process-title">工厂计划</h1>
       <div class="process-subtitle">Factory Planning</div>
       <div class="process-desc">
-        优化采购执行过程中的协作效率，确保各部门无缝衔接，提升整体采购效率。本流程涵盖物料追踪、订单承诺、发货通知等关键环节，帮助企业实现高效协同的采购执行。
+        优化计划执行过程中的协作效率，确保各部门无缝衔接，提升整体计划效率。本流程涵盖物料追踪、订单承诺、发货通知等关键环节，帮助企业实现高效协同的计划执行。
+        <span class="en-translation">Optimize collaboration efficiency during plan execution, ensure seamless connection between departments, and improve overall planning efficiency.</span> 
+        <span class="en-translation">This process covers key links such as material tracking, order promising, and shipment notification to help enterprises achieve efficient and collaborative plan execution.</span>
       </div>
     </div>
   </section>
@@ -37,7 +77,9 @@
   <!-- 关键流程块区域 -->
   <div class="container">
     <div class="section-title">
-      <h2>关键流程模块</h2>
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
     </div>
     
     <div class="process-blocks">
@@ -53,20 +95,27 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>核心价值</strong>
+              <strong>核心价值
+                <span class="en-translation">Core Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               排程与MES派工/工单下达的准实时联动，保障计划→执行闭环与达成可视。
+              <span class="en-translation">Near-real-time linkage between scheduling and MES work assignment/work order release, ensuring closed-loop planning→execution and visible achievement.</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
             <ul class="optimization-list">
-              <li>用LLM/规则对派工与异常进行智能分流，自动合并/去噪并下发低风险指令（Release/Reschedule/换线提醒）</li>
+              <li>用LLM/规则对派工与异常进行智能分流，自动合并/去噪并下发低风险指令（Release/Reschedule/换线提醒）
+                <span class="en-translation">Use LLM/rules for intelligent diversion of work assignments and abnormalities, automatically merge/denoise, and issue low-risk instructions (Release/Reschedule/line change reminder)</span>
+              </li>
             </ul>
           </div>
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='pr_po_management', module_name='master_data') }}" class="best-practice-btn">
+            <a href="{{ url_for('planning.best_practice', process='factory_planning', module_name='build_ahead_request') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -85,21 +134,30 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>核心价值</strong>
+              <strong>核心价值
+                <span class="en-translation">Core Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               该流程决定车间层的节奏与可执行性，对交付与成本具有决定性影响。
+              <span class="en-translation">This process determines the rhythm and executability of the workshop level and has a decisive impact on delivery and costs.</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
             <ul class="optimization-list">
-              <li>构建有限能力排程（APS/FCS）优化器，考虑瓶颈、换型、班次、物料齐套与优先级，多目标（OTS/吞吐/换型损失）</li>
-              <li>建设车间数字孪生与达成看板，实时跟踪瓶颈、WIP与排程偏差，触发自动重排</li>
+              <li>构建有限能力排程（APS/FCS）优化器，考虑瓶颈、换型、班次、物料齐套与优先级，多目标（OTS/吞吐/换型损失）
+                <span class="en-translation">Build a finite capacity scheduling (APS/FCS) optimizer that considers bottlenecks, model changes, shifts, material readiness and priorities, with multiple objectives (OTS/throughput/model change loss)</span>
+              </li>
+              <li>建设车间数字孪生与达成看板，实时跟踪瓶颈、WIP与排程偏差，触发自动重排
+                <span class="en-translation">Build a workshop digital twin and achievement dashboard to track bottlenecks, WIP and scheduling deviations in real time and trigger automatic rescheduling</span>
+              </li>
             </ul>
           </div>
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='pr_po_management', module_name='master_data') }}" class="best-practice-btn">
+            <a href="{{ url_for('planning.best_practice', process='factory_planning', module_name='site_capacity_planning') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -118,23 +176,36 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>核心价值</strong>
+              <strong>核心价值
+                <span class="en-translation">Core Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
              该流程决定车间层的节奏与可执行性，对交付与成本具有决定性影响。
+             <span class="en-translation">This process determines the rhythm and executability of the workshop level and has a decisive impact on delivery and costs.</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
             <ul class="optimization-list">
-              <li>构建有限能力排程（APS/FCS）优化器，考虑瓶颈、换型、班次、物料齐套与优先级，多目标（OTS/吞吐/换型损失）</li>
-              <li>建设车间数字孪生与达成看板，实时跟踪瓶颈、WIP与排程偏差，触发自动重排</li>
-              <li>对序依赖换型进行聚类排程与批量策略优化，平衡OTS与库存/在制</li>
-              <li>用LLM/规则对派工与异常进行智能分流，自动合并/去噪并下发低风险指令（Release/Reschedule/换线提醒）</li>
+              <li>构建有限能力排程（APS/FCS）优化器，考虑瓶颈、换型、班次、物料齐套与优先级，多目标（OTS/吞吐/换型损失）
+                <span class="en-translation">Build a finite capacity scheduling (APS/FCS) optimizer that considers bottlenecks, model changes, shifts, material readiness and priorities, with multiple objectives (OTS/throughput/model change loss)</span>
+              </li>
+              <li>建设车间数字孪生与达成看板，实时跟踪瓶颈、WIP与排程偏差，触发自动重排
+                <span class="en-translation">Build a workshop digital twin and achievement dashboard to track bottlenecks, WIP and scheduling deviations in real time and trigger automatic rescheduling</span>
+              </li>
+              <li>对序依赖换型进行聚类排程与批量策略优化，平衡OTS与库存/在制
+                <span class="en-translation">Optimize cluster scheduling and batch strategy for sequence-dependent model changes to balance OTS and inventory/WIP</span>
+              </li>
+              <li>用LLM/规则对派工与异常进行智能分流，自动合并/去噪并下发低风险指令（Release/Reschedule/换线提醒）
+                <span class="en-translation">Use LLM/rules for intelligent diversion of work assignments and abnormalities, automatically merge/denoise, and issue low-risk instructions (Release/Reschedule/line change reminder)</span>
+              </li>
             </ul>
           </div>
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='pr_po_management', module_name='master_data') }}" class="best-practice-btn">
+            <a href="{{ url_for('planning.best_practice', process='factory_planning', module_name='final_assembly_manufacturing_plan') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -144,7 +215,13 @@
   </div>
 
   <footer>
-    <p>采购流程分析系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
+    <p>计划流程分析系统 © 2023 
+      <span class="en-translation">Planning Process Analysis System © 2023</span>
+      | 企业计划优化解决方案 
+      <span class="en-translation">Enterprise Planning Optimization Solutions</span>
+      | 提升效率 • 降低成本 • 优化供应链
+      <span class="en-translation">Improve Efficiency • Reduce Costs • Optimize Supply Chain</span>
+    </p>
   </footer>
 </body>
 </html>

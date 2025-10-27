@@ -6,16 +6,54 @@
   <title>网络规划</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <!-- 中英双语翻译样式：统一控制英文排版 -->
+  <style>
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.3rem;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* 适配列表项翻译的间距 */
+    .optimization-list li .en-translation {
+      margin-top: 0.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 导航按钮翻译样式 */
+    .nav-btn .en-translation {
+      margin-top: 0.1rem;
+      font-size: 0.8em;
+    }
+
+    /* 业务价值标题翻译样式 */
+    .key-reason-header .en-translation {
+      margin-top: 0.1rem;
+      font-size: 0.8em;
+      display: inline-block;
+    }
+  </style>
 </head>
 <body>
   <!-- 顶部导航栏 -->
   <nav class="navbar">
     <div class="nav-container">
       <div class="nav-buttons">
-        <a href="supplier_management.html" class="nav-btn">供应商管理</a>
-        <a href="execution_collaboration.html" class="nav-btn">采购执行</a>
-        <a href="contract_management.html" class="nav-btn">合同管理</a>
-        <a href="cost_management.html" class="nav-btn">成本控制</a>
+        <a href="supplier_management.html" class="nav-btn">供应商管理
+          <span class="en-translation">Supplier Management</span>
+        </a>
+        <a href="execution_collaboration.html" class="nav-btn">计划执行
+          <span class="en-translation">Plan Execution</span>
+        </a>
+        <a href="contract_management.html" class="nav-btn">合同管理
+          <span class="en-translation">Contract Management</span>
+        </a>
+        <a href="cost_management.html" class="nav-btn">成本控制
+          <span class="en-translation">Cost Control</span>
+        </a>
       </div>
     </div>
   </nav>
@@ -27,9 +65,10 @@
         <i class="fas fa-truck-loading"></i>
       </div>
       <h1 class="process-title">网络规划</h1>
-      <div class="process-subtitle">network planning</div>
+      <div class="process-subtitle">Network Planning</div>
       <div class="process-desc">
         其核心目标是构建一个高效、敏捷且成本最优的物流网络，以提升客户服务水平，同时平衡运输、仓储和库存持有总成本，增强供应链的整体韧性。
+        <span class="en-translation">Its core goal is to build an efficient, agile, and cost-optimal logistics network to improve customer service levels, while balancing the total costs of transportation, warehousing, and inventory holding, and enhancing the overall resilience of the supply chain.</span>
       </div>
     </div>
   </section>
@@ -37,7 +76,9 @@
   <!-- 关键流程块区域 -->
   <div class="container">
     <div class="section-title">
-      <h2>关键流程模块</h2>
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
     </div>
     <div class="process-blocks">
       <!-- ODM赋能 -->
@@ -52,36 +93,48 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>业务价值</strong>
+              <strong>业务价值
+                <span class="en-translation">Business Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               ODM/EMS Enablement 保证外协制造网络与自有网络口径一致，涵盖BOM/锁定/出货规则与在途对账，降低信息时延。
+              <span class="en-translation">ODM/EMS Enablement ensures that the external manufacturing network is consistent with the internal network in terms of standards, covering BOM/locking/shipment rules and in-transit reconciliation, and reducing information latency.</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
             <ul class="optimization-list">
-              <li>建立DRP/Deployment优化器，联合库存定位、运输时效与通道能力，按多目标（服务水平/总成本/现金占用）求解部署波次与路径。</li>
-              <li>建设在途与通道能力可视化（Lane Monitor），结合ETA预测，提前暴露拥堵与偏差并重算部署。</li>
-              <li>固化网络定位与延迟配置策略（Postponement/Cross-dock），将S&OP政策落地为DRP规则。</li>
-              <li>推进 ODM/EMS Enablement：对齐BOM/锁定/出货窗口与在途对账，减少口径分裂与信息时延。</li>
+              <li>建立DRP/Deployment优化器，联合库存定位、运输时效与通道能力，按多目标（服务水平/总成本/现金占用）求解部署波次与路径。
+                <span class="en-translation">Establish a DRP/Deployment optimizer that combines inventory positioning, transportation timeliness, and channel capacity, and solves deployment waves and paths based on multi-objectives (service level/total cost/cash occupation).</span>
+              </li>
+              <li>建设在途与通道能力可视化（Lane Monitor），结合ETA预测，提前暴露拥堵与偏差并重算部署。
+                <span class="en-translation">Build in-transit and channel capacity visualization (Lane Monitor), combine ETA forecasting to expose congestion and deviations in advance and recalculate deployment.</span>
+              </li>
+              <li>固化网络定位与延迟配置策略（Postponement/Cross-dock），将S&OP政策落地为DRP规则。
+                <span class="en-translation">Solidify network positioning and delay configuration strategies (Postponement/Cross-dock), and implement S&OP policies into DRP rules.</span>
+              </li>
+              <li>推进 ODM/EMS Enablement：对齐BOM/锁定/出货窗口与在途对账，减少口径分裂与信息时延。
+                <span class="en-translation">Promote ODM/EMS Enablement: align BOM/locking/shipment windows with in-transit reconciliation to reduce standard fragmentation and information latency.</span>
+              </li>
             </ul>
           </div>
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='po_delivery', module_name='inbound_visibility') }}" class="best-practice-btn">
+            <a href="{{ url_for('planning.best_practice', process='network_planning', module_name='odm_enablement') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </div>
       </div>
-    
-     
-
     </div>
   </div>
 
   <footer>
-    <p>采购流程分析系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
-  </footer>
+  <p>计划流程分析导航系统 © 2023  | 企业计划优化解决方案 | 提升效率 • 降低成本 • 优化供应链
+    <span class="en-translation">Planning Process Analysis Navigation System © 2023|Enterprise Planning Optimization Solutions|Improve Efficiency • Reduce Costs • Optimize Supply Chain</span>   
+  </p>
+</footer>
 </body>
 </html>

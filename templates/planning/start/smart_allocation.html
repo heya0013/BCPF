@@ -3,9 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>供应管理 - 采购流程分析</title>
+  <title>供应管理 - 计划流程分析</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <!-- 中英双语翻译样式：统一控制英文排版 -->
+  <style>
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.3rem;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* 适配列表项翻译的间距 */
+    .optimization-list li .en-translation {
+      margin-top: 0.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 导航按钮翻译样式 */
+    .nav-btn .en-translation {
+      margin-top: 0.1rem;
+      font-size: 0.8em;
+    }
+
+    /* 关键理由标题翻译样式 */
+    .key-reason-header .en-translation {
+      margin-top: 0.1rem;
+      font-size: 0.8em;
+      display: inline-block;
+    }
+  </style>
 </head>
 <body>
 
@@ -13,14 +43,22 @@
   <nav class="navbar">
     <div class="nav-container">
       <div class="nav-buttons">
-        <button class="nav-btn">供应商管理</button>
-        <button class="nav-btn">采购执行</button>
-        <button class="nav-btn">合同管理</button>
-        <button class="nav-btn">成本控制</button>
+        <button class="nav-btn">供应商管理
+          <span class="en-translation">Supplier Management</span>
+        </button>
+        <button class="nav-btn">计划执行
+          <span class="en-translation">Plan Execution</span>
+        </button>
+        <button class="nav-btn">合同管理
+          <span class="en-translation">Contract Management</span>
+        </button>
+        <button class="nav-btn">成本控制
+          <span class="en-translation">Cost Control</span>
+        </button>
       </div>
     </div>
   </nav>
-·
+
   <!-- 流程标题区域 -->
   <section class="header-section">
     <div class="header-content">
@@ -31,6 +69,7 @@
       <div class="process-subtitle">Smart Allocation</div>
       <div class="process-desc">
         通过融合规则、约束优化与机器学习的智能分配引擎，实现资源在供应、生产与需求端的高效匹配。该流程能够在多目标下（如服务水平、成本、利润）动态优化分配方案，提升计划灵活性和执行准确性。其核心环节包括分配策略设定、实时数据分析、自动决策与结果反馈，帮助企业在复杂环境中做出最优分配决策，平衡效率与韧性，构建敏捷、可持续的运营体系。
+        <span class="en-translation">Through an intelligent allocation engine that integrates rules, constraint optimization, and machine learning, it achieves efficient matching of resources across supply, production, and demand sides. This process can dynamically optimize allocation plans under multiple objectives (such as service level, cost, profit), improving planning flexibility and execution accuracy. Its core links include allocation strategy setting, real-time data analysis, automatic decision-making, and result feedback, helping enterprises make optimal allocation decisions in complex environments, balance efficiency and resilience, and build an agile and sustainable operation system.</span>
       </div>
     </div>
   </section>
@@ -38,7 +77,9 @@
    <!-- 关键流程块区域 -->
   <div class="container">
     <div class="section-title">
-      <h2>关键流程模块</h2>
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
     </div>
     
     <div class="process-blocks">
@@ -56,24 +97,37 @@
           <!-- 添加的关键理由部分 -->
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>关键理由</strong>
+              <strong>关键理由
+                <span class="en-translation">Key Reason</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               将稀缺资源按客户/渠道/服务等级与价值优先级进行最优分配，直接影响高价值客户履约与OTIF；与ATS/ATP/CTB/DRP联动以减少改配并稳定首次承诺。
+              <span class="en-translation">Optimal allocation of scarce resources according to customer/channel/service level and value priority directly affects the fulfillment and OTIF (On Time In Full) of high-value customers; linkage with ATS/ATP/CTB/DRP to reduce reallocation and stabilize initial commitments.</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
             <ul class="optimization-list">
-              <li>构建可解释的分配优化器（多目标：服务等级/利润/违约成本/战略客户），支持策略参数与学习权重在线调优。</li>
-              <li>建立‘策略参数中心’：客户分层/渠道优先级/合同SLA/利润贡献等主数据标准，贯通 ATS/ATP/CTB/DRP。</li>
-              <li>对内外提供‘Why/Why Not/Next Best’的分配解释与替代建议，支撑销售与客户沟通。</li>
-              <li>将分配策略纳入 S&OP 门禁：异常阈值触发‘策略变更评审’，并做AB实验与回溯评估。</li>
+              <li>构建可解释的分配优化器（多目标：服务等级/利润/违约成本/战略客户），支持策略参数与学习权重在线调优。
+                <span class="en-translation">Build an interpretable allocation optimizer (multi-objective: service level/profit/default cost/strategic customers), supporting online tuning of strategy parameters and learning weights.</span>
+              </li>
+              <li>建立‘策略参数中心’：客户分层/渠道优先级/合同SLA/利润贡献等主数据标准，贯通 ATS/ATP/CTB/DRP。
+                <span class="en-translation">Establish a "strategy parameter center": master data standards such as customer stratification/channel priority/contract SLA/profit contribution, connecting ATS/ATP/CTB/DRP.</span>
+              </li>
+              <li>对内外提供‘Why/Why Not/Next Best’的分配解释与替代建议，支撑销售与客户沟通。
+                <span class="en-translation">Provide internal and external allocation explanations and alternative suggestions of "Why/Why Not/Next Best" to support sales and customer communication.</span>
+              </li>
+              <li>将分配策略纳入 S&OP 门禁：异常阈值触发‘策略变更评审’，并做AB实验与回溯评估。
+                <span class="en-translation">Incorporate allocation strategies into S&OP gatekeeping: abnormal thresholds trigger "strategy change review", and conduct AB tests and retrospective evaluations.</span>
+              </li>
             </ul>
           </div>
           <!-- 最佳实践按钮 -->
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='smart_allocation', module_name='smart_allocation') }}" 
+            <a href="{{ url_for('planning.best_practice', process='smart_allocation', module_name='smart_allocation') }}" 
                class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
@@ -85,8 +139,10 @@
     </div>
   </div>
 
-  <footer>
-    <p>采购流程分析系统 © 2025 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
+    <footer>
+    <p>计划流程分析导航系统 © 2023  | 企业计划优化解决方案 | 提升效率 • 降低成本 • 优化供应链
+    <span class="en-translation">Planning Process Analysis Navigation System © 2023|Enterprise Planning Optimization Solutions|Improve Efficiency • Reduce Costs • Optimize Supply Chain</span>   
+    </p>
   </footer>
 </body>
 </html>

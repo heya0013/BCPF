@@ -3,11 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<<< Updated upstream:templates/procurement/index.html
-  <title>采购流程分析导航 | Procurement Process Analysis</title>
-========
   <title>计划流程分析导航</title>
->>>>>>>> Stashed changes:Planning/start/index.html
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
@@ -259,365 +255,279 @@
 <body>
   <div class="container">
     <header>
-<<<<<<<< Updated upstream:templates/procurement/index.html
-      <h1>采购流程分析导航
-        <div class="en-translation">Procurement Process Analysis Navigation</div>
-      </h1>
-      <p class="subtitle">探索各个采购流程的分析与优化建议，点击卡片查看详细内容。我们提供全面的采购流程优化方案，帮助企业提升效率、降低成本。
-        <span class="en-translation">Explore analysis and optimization suggestions for each procurement process. Click on cards for details. We provide comprehensive procurement process optimization solutions to help enterprises improve efficiency and reduce costs.</span>
+      <h1>Planning process analysis navigation<br>计划流程分析导航</h1>
+      <p class="subtitle">探索各个计划流程的分析与优化建议，点击卡片查看详细内容。我们提供全面的计划流程优化方案，帮助企业提升效率、降低成本。
+        <span class="en-translation">Explore analysis and optimization suggestions for various planning processes. Click on the cards to view detailed content. We provide comprehensive planning process optimization solutions to help enterprises enhance efficiency and reduce costs.</span>
       </p>
-========
-      <h1>计划流程分析导航</h1>
-      <p class="subtitle">探索各个计划流程的分析与优化建议，点击卡片查看详细内容。我们提供全面的计划流程优化方案，帮助企业提升效率、降低成本。</p>
->>>>>>>> Stashed changes:Planning/start/index.html
     </header>
 
-    <div class="cards-container">
-      <!-- 1供应计划 -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">
-            <i class="fas fa-handshake"></i>
-            供应计划
-          </div>
-<<<<<<<< Updated upstream:templates/procurement/index.html
-          <div class="card-en-title">Execution Collaboration</div>
-        </div>
-        <div class="card-body">
-          <p class="card-desc">优化采购执行过程中的协作效率，确保各部门无缝衔接，提升整体采购效率。
-            <span class="en-translation">Optimize collaboration efficiency in the procurement execution process, ensure seamless coordination between departments, and improve overall procurement efficiency.</span>
-          </p>
-          <a href="{{ url_for('execution_collaboration') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i>
-            <div class="en-translation">View Suggestions</div>
-          </a>
-========
-          <div class="card-subtitle">Supply Planning</div>
-        </div>
-        <div class="card-body">
-          <p class="card-desc">基于需求和库存状况，制定原材料或成品的采购与生产计划，以确保供应满足需求。</p>
-          <a href="{{ url_for('supply_planning') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
->>>>>>>> Stashed changes:Planning/start/index.html
-        </div>
+<div class="cards-container">
+  <!-- 1供应计划 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">
+        <i class="fas fa-handshake"></i>
+        供应计划
       </div>
-
-      <!-- 2智能分配 -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">
-            <i class="fas fa-boxes"></i>
-            智能分配
-          </div>
-<<<<<<<< Updated upstream:templates/procurement/index.html
-          <div class="card-en-title">Supply Management</div>
-        </div>
-        <div class="card-body">
-          <p class="card-desc">优化供应链管理，确保物料及时供应并降低库存成本，提高供应链韧性。
-            <span class="en-translation">Optimize supply chain management, ensure timely material supply, reduce inventory costs, and improve supply chain resilience.</span>
-          </p>
-          <a href="{{ url_for('supply_management') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i>
-            <div class="en-translation">View Suggestions</div>
-          </a>
-========
-          <div class="card-subtitle">Smart Allocation</div>
-        </div>
-        <div class="card-body">
-          <p class="card-desc">利用算法和实时数据，将有限的库存或资源智能地分配给优先级最高的渠道、订单或客户。</p>
-          <a href="{{ url_for('smart_allocation') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
->>>>>>>> Stashed changes:Planning/start/index.html
-        </div>
-      </div>
-
-      <!-- 3可售库存 -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">
-            <i class="fas fa-file-invoice-dollar"></i>
-            可售库存
-          </div>
-<<<<<<<< Updated upstream:templates/procurement/index.html
-          <div class="card-en-title">Payments, Reconcile and Rebate</div>
-        </div>
-        <div class="card-body">
-          <p class="card-desc">优化付款流程，提高对账效率，最大化返利收益，减少财务风险。
-            <span class="en-translation">Optimize payment processes, improve reconciliation efficiency, maximize rebate benefits, and reduce financial risks.</span>
-          </p>
-          <a href="{{ url_for('payments_reconcile_rebate') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i>
-            <div class="en-translation">View Suggestions</div>
-          </a>
-========
-          <div class="card-subtitle">ATS (Available To Sell)</div>
-        </div>
-        <div class="card-body">
-          <p class="card-desc">实时监控并可承诺给客户的物理库存，是履行订单和实现销售收入的最直接资产。</p>
-          <a href="{{ url_for('available_to_sell') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
->>>>>>>> Stashed changes:Planning/start/index.html
-        </div>
-      </div>
-
-      <!-- 4库存计划 -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">
-            <i class="fas fa-file-invoice-dollar"></i>
-            库存计划
-          </div>
-          <div class="card-subtitle">Inventory Planning</div>
-        </div>
-        <div class="card-body">
-          <p class="card-desc">通过科学预测与动态调整，优化库存结构与水平，确保供需平衡，降低资金占用和缺货风险，提升整体运营效率。</p>
-          <a href="{{ url_for('inventory_planning') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <!-- 网络规划 -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">
-            <i class="fas fa-truck-loading"></i>
-             网络规划
-          </div>
-<<<<<<<< Updated upstream:templates/procurement/index.html
-          <div class="card-en-title">PO Delivery and Parts Rebalance</div>
-        </div>
-        <div class="card-body">
-          <p class="card-desc">优化订单交付流程，实现零部件库存的智能再平衡，减少库存积压。
-            <span class="en-translation">Optimize order delivery processes, achieve intelligent rebalancing of parts inventory, and reduce inventory backlog.</span>
-          </p>
-          <a href="{{ url_for('po_delivery_parts_rebalance') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i>
-            <div class="en-translation">View Suggestions</div>
-          </a>
-========
-          <div class="card-subtitle">Network Planning</div>
-        </div>
-        <div class="card-body">
-          <p class="card-desc">持续优化供应链物理网络，以构建一个兼具韧性、效率与成本效益的供应链骨架。</p>
-          <a href="{{ url_for('network_planning') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
->>>>>>>> Stashed changes:Planning/start/index.html
-        </div>
-      </div>
-
-      <!-- 销售与运营计划 -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">
-            <i class="fas fa-file-purchase"></i>
-            销售与运营计划
-          </div>
-<<<<<<<< Updated upstream:templates/procurement/index.html
-          <div class="card-en-title">PR and PO Management</div>
-        </div>
-        <div class="card-body">
-          <p class="card-desc">优化采购申请和订单处理流程，提高审批效率，缩短采购周期。
-            <span class="en-translation">Optimize purchase requisition and order processing workflows, improve approval efficiency, and shorten procurement cycles.</span>
-          </p>
-          <a href="{{ url_for('pr_po_management') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i>
-            <div class="en-translation">View Suggestions</div>
-          </a>
-========
-          <div class="card-subtitle">S&OP</div>
-        </div>
-        <div class="card-body">
-          <p class="card-desc">通过跨部门协同会议，将市场需求、财务目标与运营能力对齐，制定统一的中期作战计划，指导企业高效运营。</p>
-          <a href="{{ url_for('sales_operations_planning') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
->>>>>>>> Stashed changes:Planning/start/index.html
-        </div>
-      </div>
-
-      <!-- 需求计划 -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">
-            <i class="fas fa-file-contract"></i>
-            需求计划
-          </div>
-<<<<<<<< Updated upstream:templates/procurement/index.html
-          <div class="card-en-title">Contract Management</div>
-        </div>
-        <div class="card-body">
-          <p class="card-desc">优化合同生命周期管理，降低合规风险，确保合同条款有效执行。
-            <span class="en-translation">Optimize contract lifecycle management, reduce compliance risks, and ensure effective execution of contract terms.</span>
-          </p>
-          <a href="{{ url_for('contract_management') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i>
-            <div class="en-translation">View Suggestions</div>
-          </a>
-========
-          <div class="card-subtitle">Demand Planning</div>
-        </div>
-        <div class="card-body">
-          <p class="card-desc">运用统计模型与市场洞察，生成最精准的需求预测，为整个供应链的协同运作提供唯一的、可信的数据基础。</p>
-          <a href="{{ url_for('demand_planning') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
->>>>>>>> Stashed changes:Planning/start/index.html
-        </div>
-      </div>
-
-      <!-- 物料需求计划-->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">
-            <i class="fas fa-gavel"></i>
-            物料需求计划
-          </div>
-          <div class="card-en-title">Source to Award</div>
-        </div>
-        <div class="card-body">
-          <p class="card-desc">优化招投标流程，提高授标效率与质量，确保公平公正的供应商选择。
-            <span class="en-translation">Optimize bidding processes, improve award efficiency and quality, and ensure fair and impartial supplier selection.</span>
-          </p>
-          <a href="{{ url_for('source_to_award') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i>
-            <div class="en-translation">View Suggestions</div>
-          </a>
-========
-          <div class="card-subtitle">MRP</div>
-        </div>
-        <div class="card-body">
-          <p class="card-desc">优化招投标流程，提高授标效率与质量，确保公平公正的供应商选择。</p>
-          <a href="{{ url_for('mrp') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
->>>>>>>> Stashed changes:Planning/start/index.html
-        </div>
-      </div>
-
-      <!-- 工厂计划 -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">
-            <i class="fas fa-address-card"></i>
-            工厂计划
-          </div>
-<<<<<<<< Updated upstream:templates/procurement/index.html
-          <div class="card-en-title">Supplier Management</div>
-        </div>
-        <div class="card-body">
-          <p class="card-desc">优化供应商评估、选择与管理流程，建立战略合作关系，降低供应风险。
-            <span class="en-translation">Optimize supplier evaluation, selection, and management processes, establish strategic partnerships, and reduce supply risks.</span>
-          </p>
-          <a href="{{ url_for('supplier_management') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i>
-            <div class="en-translation">View Suggestions</div>
-          </a>
-========
-          <div class="card-subtitle">Factory Planning</div>
-        </div>
-        <div class="card-body">
-          <p class="card-desc">优化供应商评估、选择与管理流程，建立战略合作关系，降低供应风险。</p>
-          <a href="{{ url_for('factory_planning') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
->>>>>>>> Stashed changes:Planning/start/index.html
-        </div>
-      </div>
-
-      <!-- 10部件预留 -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">
-            <i class="fas fa-chart-line"></i>
-            部件预留
-          </div>
-<<<<<<<< Updated upstream:templates/procurement/index.html
-          <div class="card-en-title">Cost Management</div>
-        </div>
-        <div class="card-body">
-          <p class="card-desc">优化采购成本结构，实现成本节约与价值最大化，提升企业盈利能力。
-            <span class="en-translation">Optimize procurement cost structure, achieve cost savings and value maximization, and enhance corporate profitability.</span>
-          </p>
-          <a href="{{ url_for('cost_management') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i>
-            <div class="en-translation">View Suggestions</div>
-          </a>
-========
-          <div class="card-subtitle">Parts Reservation</div>
-        </div>
-        <div class="card-body">
-          <p class="card-desc">优化采购成本结构，实现成本节约与价值最大化，提升企业盈利能力。</p>
-          <a href="{{ url_for('parts_reservation') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
->>>>>>>> Stashed changes:Planning/start/index.html
-        </div>
-      </div>
-
-      <!-- 11过渡计划 -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">
-            <i class="fas fa-search"></i>
-            过渡计划
-          </div>
-<<<<<<<< Updated upstream:templates/procurement/index.html
-          <div class="card-en-title">Source Management</div>
-        </div>
-        <div class="card-body">
-          <p class="card-desc">优化采购来源策略，降低供应风险，提高采购质量，确保供应链多元化。
-            <span class="en-translation">Optimize sourcing strategies, reduce supply risks, improve procurement quality, and ensure supply chain diversification.</span>
-          </p>
-          <a href="{{ url_for('source_management') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i>
-            <div class="en-translation">View Suggestions</div>
-          </a>
-========
-          <div class="card-subtitle">Transition Planning</div>
-        </div>
-        <div class="card-body">
-          <p class="card-desc">优化采购来源策略，降低供应风险，提高采购质量，确保供应链多元化。</p>
-          <a href="{{ url_for('transition_planning') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
->>>>>>>> Stashed changes:Planning/start/index.html
-        </div>
-      </div>
-
-      <!-- 12负债管理 -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">
-            <i class="fas fa-cube"></i>
-            负债管理
-          </div>
-<<<<<<<< Updated upstream:templates/procurement/index.html
-          <div class="card-en-title">New Product Management</div>
-        </div>
-        <div class="card-body">
-          <p class="card-desc">优化新产品引入流程，缩短上市时间，降低风险，确保新产品成功推出。
-            <span class="en-translation">Optimize new product introduction processes, shorten time-to-market, reduce risks, and ensure successful product launches.</span>
-          </p>
-          <a href="{{ url_for('new_product_management') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i>
-            <div class="en-translation">View Suggestions</div>
-          </a>
-========
-          <div class="card-subtitle">Liability Management</div>
-        </div>
-        <div class="card-body">
-          <p class="card-desc">优化新产品引入流程，缩短上市时间，降低风险，确保新产品成功推出。</p>
-          <a href="{{ url_for('liability_management') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
->>>>>>>> Stashed changes:Planning/start/index.html
-        </div>
-      </div>
-
-      <!-- 13订单承诺 -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">
-            <i class="fas fa-project-diagram"></i>
-            订单承诺
-          </div>
-<<<<<<<< Updated upstream:templates/procurement/index.html
-          <div class="card-en-title">Complexity Management</div>
-        </div>
-        <div class="card-body">
-          <p class="card-desc">简化采购流程复杂性，提高效率，降低管理成本，优化资源配置。
-            <span class="en-translation">Simplify procurement process complexity, improve efficiency, reduce management costs, and optimize resource allocation.</span>
-          </p>
-          <a href="{{ url_for('complexity_management') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i>
-            <div class="en-translation">View Suggestions</div>
-          </a>
-        </div>
-      </div>
+      <div class="card-subtitle">Supply Planning</div>
     </div>
-========
-          <div class="card-subtitle">Order Promising</div>
-        </div>
-        <div class="card-body">
-          <p class="card-desc">简化采购流程复杂性，提高效率，降低管理成本，优化资源配置。</p>
-          <a href="{{ url_for('order_promising') }}" class="card-link">查看建议 <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
+    <div class="card-body">
+      <p class="card-desc">基于需求和库存状况，制定原材料或成品的计划与生产计划，以确保供应满足需求。
+        <span class="en-translation">Based on demand and inventory status, develop plans for raw materials or finished products and production schedules to ensure supply meets demand.</span>
+      </p>
+      <a href="{{ url_for('planning.supply_planning') }}" class="card-link">查看建议
+        <span class="en-translation">View Suggestions</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
     </div>
-
-    <footer>
-      <p>计划流程分析导航系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
-    </footer>
->>>>>>>> Stashed changes:Planning/start/index.html
   </div>
+
+  <!-- 2智能分配 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">
+        <i class="fas fa-boxes"></i>
+        智能分配
+      </div>
+      <div class="card-subtitle">Smart Allocation</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">利用算法和实时数据，将有限的库存或资源智能地分配给优先级最高的渠道、订单或客户。
+        <span class="en-translation">Using algorithms and real-time data, intelligently allocate limited inventory or resources to channels, orders, or customers with the highest priority.</span>
+      </p>
+      <a href="{{ url_for('planning.smart_allocation') }}" class="card-link">查看建议
+        <span class="en-translation">View Suggestions</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- 3可售库存 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">
+        <i class="fas fa-file-invoice-dollar"></i>
+        可售库存
+      </div>
+      <div class="card-subtitle">ATS (Available To Sell)</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">实时监控并可承诺给客户的物理库存，是履行订单和实现销售收入的最直接资产。
+        <span class="en-translation">Physically available inventory that is monitored in real-time and can be committed to customers, serving as the most direct asset for fulfilling orders and generating sales revenue.</span>
+      </p>
+      <a href="{{ url_for('planning.available_to_sell') }}" class="card-link">查看建议
+        <span class="en-translation">View Suggestions</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- 4库存计划 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">
+        <i class="fas fa-file-invoice-dollar"></i>
+        库存计划
+      </div>
+      <div class="card-subtitle">Inventory Planning</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">通过科学预测与动态调整，优化库存结构与水平，确保供需平衡，降低资金占用和缺货风险，提升整体运营效率。
+        <span class="en-translation">Through scientific forecasting and dynamic adjustments, optimize inventory structure and levels to ensure supply-demand balance, reduce capital occupation and stockout risks, and improve overall operational efficiency.</span>
+      </p>
+      <a href="{{ url_for('planning.inventory_planning') }}" class="card-link">查看建议
+        <span class="en-translation">View Suggestions</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- 网络规划 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">
+        <i class="fas fa-truck-loading"></i>
+         网络规划
+      </div>
+      <div class="card-subtitle">Network Planning</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">持续优化供应链物理网络，以构建一个兼具韧性、效率与成本效益的供应链骨架。
+        <span class="en-translation">Continuously optimize the physical supply chain network to build a supply chain framework that integrates resilience, efficiency, and cost-effectiveness.</span>
+      </p>
+      <a href="{{ url_for('planning.network_planning') }}" class="card-link">查看建议
+        <span class="en-translation">View Suggestions</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- 销售与运营计划 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">
+        <i class="fas fa-file-purchase"></i>
+        销售与运营计划
+      </div>
+      <div class="card-subtitle">S&OP (Sales and Operations Planning)</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">通过跨部门协同会议，将市场需求、财务目标与运营能力对齐，制定统一的中期作战计划，指导企业高效运营。
+        <span class="en-translation">Through cross-departmental collaborative meetings, align market demand, financial goals, and operational capabilities to develop a unified medium-term action plan and guide the enterprise's efficient operations.</span>
+      </p>
+      <a href="{{ url_for('planning.sales_operations_planning') }}" class="card-link">查看建议
+        <span class="en-translation">View Suggestions</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- 需求计划 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">
+        <i class="fas fa-file-contract"></i>
+        需求计划
+      </div>
+      <div class="card-subtitle">Demand Planning</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">运用统计模型与市场洞察，生成最精准的需求预测，为整个供应链的协同运作提供唯一的、可信的数据基础。
+        <span class="en-translation">Using statistical models and market insights to generate the most accurate demand forecasts, providing a unique and reliable data foundation for the collaborative operation of the entire supply chain.</span>
+      </p>
+      <a href="{{ url_for('planning.demand_planning') }}" class="card-link">查看建议
+        <span class="en-translation">View Suggestions</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- 物料需求计划-->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">
+        <i class="fas fa-gavel"></i>
+        物料需求计划
+      </div>
+      <div class="card-subtitle">MRP (Material Requirements Planning)</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">优化招投标流程，提高授标效率与质量，确保公平公正的供应商选择。
+        <span class="en-translation">Optimize the bidding and tendering process, improve the efficiency and quality of bid awarding, and ensure fair and impartial supplier selection.</span>
+      </p>
+      <a href="{{ url_for('planning.mrp') }}" class="card-link">查看建议
+        <span class="en-translation">View Suggestions</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- 工厂计划 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">
+        <i class="fas fa-address-card"></i>
+        工厂计划
+      </div>
+      <div class="card-subtitle">Factory Planning</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">优化供应商评估、选择与管理流程，建立战略合作关系，降低供应风险。
+        <span class="en-translation">Optimize the supplier evaluation, selection, and management process, establish strategic cooperative relationships, and reduce supply risks.</span>
+      </p>
+      <a href="{{ url_for('planning.factory_planning') }}" class="card-link">查看建议
+        <span class="en-translation">View Suggestions</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- 10部件预留 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">
+        <i class="fas fa-chart-line"></i>
+        部件预留
+      </div>
+      <div class="card-subtitle">Parts Reservation</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">优化计划成本结构，实现成本节约与价值最大化，提升企业盈利能力。
+        <span class="en-translation">Optimize the planned cost structure, achieve cost savings and maximum value, and enhance the enterprise's profitability.</span>
+      </p>
+      <a href="{{ url_for('planning.parts_reservation') }}" class="card-link">查看建议
+        <span class="en-translation">View Suggestions</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- 11过渡计划 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">
+        <i class="fas fa-search"></i>
+        过渡计划
+      </div>
+      <div class="card-subtitle">Transition Planning</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">优化计划来源策略，降低供应风险，提高计划质量，确保供应链多元化。
+        <span class="en-translation">Optimize the planned source strategy, reduce supply risks, improve plan quality, and ensure supply chain diversification.</span>
+      </p>
+      <a href="{{ url_for('planning.transition_planning') }}" class="card-link">查看建议
+        <span class="en-translation">View Suggestions</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- 12负债管理 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">
+        <i class="fas fa-cube"></i>
+        负债管理
+      </div>
+      <div class="card-subtitle">Liability Management</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">优化新产品引入流程，缩短上市时间，降低风险，确保新产品成功推出。
+        <span class="en-translation">Optimize the new product introduction process, shorten time-to-market, reduce risks, and ensure the successful launch of new products.</span>
+      </p>
+      <a href="{{ url_for('planning.liability_management') }}" class="card-link">查看建议
+        <span class="en-translation">View Suggestions</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- 13订单承诺 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">
+        <i class="fas fa-project-diagram"></i>
+        订单承诺
+      </div>
+      <div class="card-subtitle">Order Promising</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">简化计划流程复杂性，提高效率，降低管理成本，优化资源配置。
+        <span class="en-translation">Simplify the complexity of the planning process, improve efficiency, reduce management costs, and optimize resource allocation.</span>
+      </p>
+      <a href="{{ url_for('planning.order_promising') }}" class="card-link">查看建议
+        <span class="en-translation">View Suggestions</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>计划流程分析导航系统 © 2023  | 企业计划优化解决方案 | 提升效率 • 降低成本 • 优化供应链
+    <span class="en-translation">Planning Process Analysis Navigation System © 2023|Enterprise Planning Optimization Solutions|Improve Efficiency • Reduce Costs • Optimize Supply Chain</span>   
+  </p>
+</footer>
+</div>
 </body>
 </html>

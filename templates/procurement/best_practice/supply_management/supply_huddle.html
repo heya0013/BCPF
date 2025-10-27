@@ -1,420 +1,357 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI案例总结 - Supply Huddle</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice.css') }}">
-  <style>
-    /* AI案例总结特定样式补充 */
-    .ai-scenario-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-      margin: 30px 0;
-    }
-    
-    .scenario-card {
-      background: white;
-      border-radius: 12px;
-      padding: 25px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      border-top: 4px solid #2c7be5;
-      transition: all 0.3s ease;
-    }
-    
-    .scenario-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(44, 123, 229, 0.2);
-    }
-    
-    .scenario-icon {
-      font-size: 2.5rem;
-      color: #2c7be5;
-      margin-bottom: 15px;
-      text-align: center;
-    }
-    
-    .scenario-title {
-      font-size: 1.4rem;
-      color: #2c3e50;
-      margin-bottom: 15px;
-      font-weight: 600;
-      text-align: center;
-    }
-    
-    .scenario-desc {
-      color: #5a6a7d;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-    
-    .kpi-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    
-    .kpi-list li {
-      margin-bottom: 12px;
-      padding-left: 30px;
-      position: relative;
-      color: #5a6a7d;
-    }
-    
-    .kpi-list li:before {
-      content: '\f201';
-      font-family: 'Font Awesome 5 Free';
-      font-weight: 900;
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: #00c9a7;
-    }
-    
-    .industry-case {
-      background: linear-gradient(135deg, #f0f5ff 0%, #e6f0ff 100%);
-      border-radius: 12px;
-      padding: 25px;
-      margin: 30px 0;
-    }
-    
-    .case-title {
-      font-size: 1.4rem;
-      color: #2c3e50;
-      margin-bottom: 15px;
-      font-weight: 600;
-    }
-    
-    .case-desc {
-      color: #5a6a7d;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-    
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin: 30px 0;
-    }
-    
-    .stat-card {
-      background: white;
-      border-radius: 12px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-    
-    .stat-value {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #2c7be5;
-      margin-bottom: 10px;
-    }
-    
-    .stat-label {
-      color: #5a6a7d;
-      font-size: 1rem;
-    }
-    
-    .back-btn {
-      display: inline-block;
-      background: #2c7be5;
-      color: white;
-      padding: 12px 25px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      margin-top: 20px;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(44, 123, 229, 0.3);
-    }
-    
-    .back-btn:hover {
-      background: #1a5276;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(44, 123, 229, 0.4);
-    }
-    
-    /* 新增翻译样式 */
-    .en-translation {
-      font-size: 0.85em;
-      color: #666;
-      display: block;
-      margin-top: 0.25rem;
-      font-style: italic;
-    }
-    
-    .section-title {
-      position: relative;
-      padding-bottom: 10px;
-    }
-    
-    .section-title:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 50px;
-      height: 3px;
-      background: linear-gradient(90deg, #2c7be5, #00c9a7);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI案例总结 - Supply Huddle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice1.css') }}">
+    <style>
+        /* 补充样式 */
+        .en-translation {
+            font-size: 0.8em;
+            color: #666;
+            display: block;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+
+        .ai-scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        /* 页面特定样式 */
+        .header-section {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #00c9a7 0%, #00a79d 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .process-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .process-title {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .process-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        
+        .process-desc {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .content-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .content-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 4px solid #00c9a7;
+        }
+        
+        .card-title {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .card-content {
+            color: #5a6a7d;
+        }
+        
+        .kpi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .kpi-table th, .kpi-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .kpi-table th {
+            background-color: #f1f5f9;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .case-study {
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 20px;
+            border-left: 4px solid #00c9a7;
+        }
+        
+        .case-title {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .case-content {
+            color: #5a6a7d;
+            margin-bottom: 15px;
+        }
+        
+        .best-practice-btn {
+            display: inline-block;
+            background: linear-gradient(90deg, #00c9a7, #00a79d);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            background: #2c3e50;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-  <!-- 顶部标题区域 -->
-  <header class="best-practice-header">
-    <div class="header-content">
-      <h1 class="best-practice-title">AI案例总结
-        <div class="en-translation">AI Case Study Summary</div>
-      </h1>
-      <div class="best-practice-subtitle">Supply Huddle AI应用效果分析
-        <div class="en-translation">Supply Huddle AI Application Effectiveness Analysis</div>
-      </div>
-      <p class="process-desc">
-        展示AI技术在Supply Huddle流程中的实际应用案例和效果评估，为企业数字化转型提供参考。
-        <span class="en-translation">Showcasing practical application cases and effectiveness evaluation of AI in Supply Huddle processes, providing reference for enterprise digital transformation.</span>
-      </p>
-    </div>
-  </header>
+    <!-- 流程标题区域 -->
+    <section class="header-section">
+        <div class="header-content">
+            <div class="process-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <h1 class="process-title">Supply Huddle AI案例总结
+                <span class="en-translation">Supply Huddle AI Case Summary</span>
+            </h1>
+            <div class="process-subtitle">AI-Driven Supply Chain Collaboration Platform</div>
+            <div class="process-desc">
+                通过AI技术优化供应链协作会议，实现异常快速响应、跨部门高效协同和会议效率显著提升。
+                <span class="en-translation">Optimizing supply chain collaboration meetings through AI technology to achieve rapid exception response, efficient cross-departmental collaboration, and significant meeting efficiency improvement.</span>
+            </div>
+        </div>
+    </section>
 
-  <!-- 主要内容区域 -->
-  <div class="best-practice-container">
-    <!-- AI应用场景 -->
-    <div class="best-practice-section">
-      <h2 class="section-title">AI应用场景
-        <div class="en-translation">AI Application Scenarios</div>
-      </h2>
-      
-      <div class="ai-scenario-grid">
-        <div class="scenario-card">
-          <div class="scenario-icon">
-            <i class="fas fa-project-diagram"></i>
-          </div>
-          <h3 class="scenario-title">事件融合与异常检测
-            <div class="en-translation">Event Fusion and Anomaly Detection</div>
-          </h3>
-          <p class="scenario-desc">
-            整合多源供应链数据，通过机器学习算法自动识别异常模式，
-            提前预警潜在供应风险，实现从被动响应到主动预防的转变。
-            <span class="en-translation">Integrating multi-source supply chain data, using machine learning algorithms to automatically identify anomaly patterns, providing early warnings of potential supply risks, achieving a shift from passive response to active prevention.</span>
-          </p>
-          <ul class="kpi-list">
-            <li>异常检测准确率提升至92%
-              <div class="en-translation">Anomaly detection accuracy increased to 92%</div>
-            </li>
-            <li>风险预警时间提前3-5天
-              <div class="en-translation">Risk warning time advanced by 3-5 days</div>
-            </li>
-            <li>误报率降低40%
-              <div class="en-translation">False positive rate reduced by 40%</div>
-            </li>
-          </ul>
-        </div>
+    <div class="container">
+        <!-- AI应用场景 -->
+        <section class="content-section">
+            <h2 class="content-title">AI应用场景
+                <span class="en-translation">AI Application Scenarios</span>
+            </h2>
+            
+            <div class="ai-scenario-grid">
+                <div class="content-card">
+                    <h3 class="card-title">事件融合模型
+                        <span class="en-translation">Event Fusion Model</span>
+                    </h3>
+                    <p class="card-content">
+                        整合多源供应链数据（库存、运输、生产等），构建统一的事件视图，实现供应链状态的全面感知。
+                        <span class="en-translation">Integrating multi-source supply chain data (inventory, transportation, production, etc.) to build a unified event view and achieve comprehensive perception of supply chain status.</span>
+                    </p>
+                </div>
+                
+                <div class="content-card">
+                    <h3 class="card-title">异常检测
+                        <span class="en-translation">Anomaly Detection</span>
+                    </h3>
+                    <p class="card-content">
+                        利用机器学习算法实时识别供应链异常情况，提前预警潜在风险，缩短问题响应时间。
+                        <span class="en-translation">Using machine learning algorithms to identify supply chain anomalies in real time, providing early warnings of potential risks, and shortening problem response time.</span>
+                    </p>
+                </div>
+                
+                <div class="content-card">
+                    <h3 class="card-title">LLM会议纪要/行动清单生成
+                        <span class="en-translation">LLM Meeting Minutes/Action List Generation</span>
+                    </h3>
+                    <p class="card-content">
+                        基于大语言模型自动生成会议纪要和行动清单，确保会议成果有效跟踪和执行。
+                        <span class="en-translation">Automatically generating meeting minutes and action lists based on large language models to ensure effective tracking and execution of meeting outcomes.</span>
+                    </p>
+                </div>
+            </div>
+        </section>
         
-        <div class="scenario-card">
-          <div class="scenario-icon">
-            <i class="fas fa-language"></i>
-          </div>
-          <h3 class="scenario-title">智能会议管理
-            <div class="en-translation">Intelligent Meeting Management</div>
-          </h3>
-          <p class="scenario-desc">
-            利用自然语言处理技术自动生成会议纪要、行动清单和决策要点，
-            减少人工记录时间，确保信息准确性和一致性。
-            <span class="en-translation">Using natural language processing technology to automatically generate meeting minutes, action lists, and decision points, reducing manual recording time, ensuring information accuracy and consistency.</span>
-          </p>
-          <ul class="kpi-list">
-            <li>会议记录时间减少70%
-              <div class="en-translation">Meeting recording time reduced by 70%</div>
-            </li>
-            <li>行动项跟踪准确率95%
-              <div class="en-translation">Action item tracking accuracy 95%</div>
-            </li>
-            <li>信息一致性提升80%
-              <div class="en-translation">Information consistency improved by 80%</div>
-            </li>
-          </ul>
-        </div>
+        <!-- AI应用场景效果分析 -->
+        <section class="content-section">
+            <h2 class="content-title">AI应用场景效果分析
+                <span class="en-translation">AI Application Effect Analysis</span>
+            </h2>
+            
+            <p>通过实施AI驱动的Supply Huddle解决方案，企业能够实现以下关键改进：</p>
+            <span class="en-translation">By implementing AI-driven Supply Huddle solutions, enterprises can achieve the following key improvements:</span>
+            
+            <div class="ai-scenario-grid">
+                <div class="content-card">
+                    <h3 class="card-title">异常响应效率提升
+                        <span class="en-translation">Exception Response Efficiency Improvement</span>
+                    </h3>
+                    <p class="card-content">
+                        AI异常检测系统能够实时识别问题并自动分配责任人，大幅缩短异常关闭周期。
+                        <span class="en-translation">AI anomaly detection systems can identify problems in real time and automatically assign responsible persons, significantly shortening the exception closure cycle.</span>
+                    </p>
+                </div>
+                
+                <div class="content-card">
+                    <h3 class="card-title">跨部门协作优化
+                        <span class="en-translation">Cross-departmental Collaboration Optimization</span>
+                    </h3>
+                    <p class="card-content">
+                        事件融合模型打破部门信息孤岛，实现供应链全链路可视化，加速跨部门决策流程。
+                        <span class="en-translation">Event fusion models break down departmental information silos, achieve end-to-end supply chain visibility, and accelerate cross-departmental decision-making processes.</span>
+                    </p>
+                </div>
+                
+                <div class="content-card">
+                    <h3 class="card-title">会议效率显著提升
+                        <span class="en-translation">Significant Meeting Efficiency Improvement</span>
+                    </h3>
+                    <p class="card-content">
+                        AI自动生成会议纪要和行动清单，减少人工记录时间，确保会议成果有效落实。
+                        <span class="en-translation">AI automatically generates meeting minutes and action lists, reducing manual recording time and ensuring effective implementation of meeting outcomes.</span>
+                    </p>
+                </div>
+            </div>
+        </section>
         
-        <div class="scenario-card">
-          <div class="scenario-icon">
-            <i class="fas fa-chart-line"></i>
-          </div>
-          <h3 class="scenario-title">预测分析与决策支持
-            <div class="en-translation">Predictive Analysis and Decision Support</div>
-          </h3>
-          <p class="scenario-desc">
-            基于历史数据和实时信息，提供数据驱动的决策建议，
-            优化资源分配和风险缓解策略，提高供应链响应灵活性。
-            <span class="en-translation">Based on historical data and real-time information, providing data-driven decision suggestions, optimizing resource allocation and risk mitigation strategies, improving supply chain response flexibility.</span>
-          </p>
-          <ul class="kpi-list">
-            <li>决策速度提升50%
-              <div class="en-translation">Decision speed improved by 50%</div>
-            </li>
-            <li>资源利用率优化25%
-              <div class="en-translation">Resource utilization optimized by 25%</div>
-            </li>
-            <li>供应链韧性提升35%
-              <div class="en-translation">Supply chain resilience improved by 35%</div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    
-    <!-- 行业案例 -->
-    <div class="best-practice-section">
-      <h2 class="section-title">实际行业案例
-        <div class="en-translation">Real Industry Cases</div>
-      </h2>
-      
-      <div class="industry-case">
-        <h3 class="case-title">全球电子制造企业供应链协调优化
-          <div class="en-translation">Global Electronics Manufacturer Supply Chain Coordination Optimization</div>
-        </h3>
-        <p class="case-desc">
-          某全球领先的电子制造企业在5个生产基地实施Supply Huddle AI解决方案，
-          通过事件融合模型和智能会议管理，实现了供应链协调的数字化转型。
-          <span class="en-translation">A global leading electronics manufacturer implemented Supply Huddle AI solution across 5 production bases, achieving digital transformation of supply chain coordination through event fusion models and intelligent meeting management.</span>
-        </p>
-        <p class="case-desc">
-          该企业通过AI技术实现了供应链异常的早期检测和自动分类，
-          减少了人工干预需求，提高了问题解决效率和质量。实施后，
-          企业成功将异常处理周期缩短了22%，会议准备时间减少了65%，
-          跨部门协作效率提升了38%。
-          <span class="en-translation">The company achieved early detection and automatic classification of supply chain anomalies through AI technology, reducing manual intervention requirements, improving problem-solving efficiency and quality. After implementation, the company successfully reduced anomaly handling cycle by 22%, meeting preparation time by 65%, and cross-department collaboration efficiency by 38%.</span>
-        </p>
-      </div>
-      
-      <div class="industry-case">
-        <h3 class="case-title">零售行业供应链可视化与协调
-          <div class="en-translation">Retail Industry Supply Chain Visualization and Coordination</div>
-        </h3>
-        <p class="case-desc">
-          某大型零售企业利用AI技术优化Supply Huddle流程，
-          实现了供应链数据的实时可视化和智能决策支持。
-          <span class="en-translation">A large retail company used AI technology to optimize Supply Huddle processes, achieving real-time visualization of supply chain data and intelligent decision support.</span>
-        </p>
-        <p class="case-desc">
-          通过AI驱动的预测分析和异常检测，该企业能够更准确地预测需求变化，
-          优化库存水平，提高供应链响应速度和客户满意度。项目实施后，
-          库存周转率提升了30%，缺货率降低了45%，决策准确性提高了85%。
-          <span class="en-translation">Through AI-driven predictive analysis and anomaly detection, the company can more accurately predict demand changes, optimize inventory levels, and improve supply chain response speed and customer satisfaction. After project implementation, inventory turnover rate increased by 30%, out-of-stock rate decreased by 45%, and decision accuracy improved by 85%.</span>
-        </p>
-      </div>
-    </div>
-    
-    <!-- KPI和预期提升幅度 -->
-    <div class="best-practice-section">
-      <h2 class="section-title">KPI和预期提升幅度
-        <div class="en-translation">KPI and Expected Improvement Range</div>
-      </h2>
-      
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-value">15-25%</div>
-          <div class="stat-label">异常关闭周期缩短
-            <div class="en-translation">Anomaly Closure Cycle Reduction</div>
-          </div>
-        </div>
+        <!-- KPI和预期提升幅度 -->
+        <section class="content-section">
+            <h2 class="content-title">KPI和预期提升幅度
+                <span class="en-translation">KPIs and Expected Improvement</span>
+            </h2>
+            
+            <table class="kpi-table">
+                <thead>
+                    <tr>
+                        <th>KPI指标
+                            <span class="en-translation">KPI Metric</span>
+                        </th>
+                        <th>当前水平
+                            <span class="en-translation">Current Level</span>
+                        </th>
+                        <th>预期提升幅度
+                            <span class="en-translation">Expected Improvement</span>
+                        </th>
+                        <th>AI贡献
+                            <span class="en-translation">AI Contribution</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>异常关闭周期
+                            <span class="en-translation">Exception Closure Cycle</span>
+                        </td>
+                        <td>5-7天
+                            <span class="en-translation">5-7 days</span>
+                        </td>
+                        <td>-15% to -25%
+                            <span class="en-translation">-15% to -25%</span>
+                        </td>
+                        <td>实时异常检测与自动分配
+                            <span class="en-translation">Real-time anomaly detection and automatic assignment</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>跨部门响应时长
+                            <span class="en-translation">Cross-departmental Response Time</span>
+                        </td>
+                        <td>2-3天
+                            <span class="en-translation">2-3 days</span>
+                        </td>
+                        <td>-20% to -30%
+                            <span class="en-translation">-20% to -30%</span>
+                        </td>
+                        <td>事件融合模型打破信息孤岛
+                            <span class="en-translation">Event fusion model breaks down information silos</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>会议准备工时
+                            <span class="en-translation">Meeting Preparation Time</span>
+                        </td>
+                        <td>4-6小时/会议
+                            <span class="en-translation">4-6 hours/meeting</span>
+                        </td>
+                        <td>-50% to -70%
+                            <span class="en-translation">-50% to -70%</span>
+                        </td>
+                        <td>LLM自动生成会议材料
+                            <span class="en-translation">LLM automatically generates meeting materials</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
         
-        <div class="stat-card">
-          <div class="stat-value">50-70%</div>
-          <div class="stat-label">会议准备工时减少
-            <div class="en-translation">Meeting Preparation Hours Reduction</div>
-          </div>
-        </div>
-        
-        <div class="stat-card">
-          <div class="stat-value">30-40%</div>
-          <div class="stat-label">跨部门响应时长缩短
-            <div class="en-translation">Cross-department Response Time Reduction</div>
-          </div>
-        </div>
-        
-        <div class="stat-card">
-          <div class="stat-value">85%</div>
-          <div class="stat-label">决策准确性提升
-            <div class="en-translation">Decision Accuracy Improvement</div>
-          </div>
-        </div>
-      </div>
-      
-      <p style="margin-top: 30px; color: #5a6a7d; line-height: 1.6;">
-        以上数据基于多个行业案例的实际效果统计，展示了AI技术在Supply Huddle流程中的应用价值。
-        企业可以根据自身情况设定合理的预期目标，并通过分阶段实施逐步实现这些改进。
-        <span class="en-translation">The above data is based on actual effect statistics from multiple industry cases, demonstrating the application value of AI technology in Supply Huddle processes. Enterprises can set reasonable expected goals according to their own situations and gradually achieve these improvements through phased implementation.</span>
-      </p>
-    </div>
-    
-    <!-- 技术实现 -->
-    <div class="best-practice-section">
-      <h2 class="section-title">技术实现框架
-        <div class="en-translation">Technical Implementation Framework</div>
-      </h2>
-      
-      <div class="stats-grid">
-        <div class="stat-card">
-          <i class="fas fa-database"></i>
-          <div class="stat-value">数据集成
-            <div class="en-translation">Data Integration</div>
-          </div>
-          <div class="stat-label">多源数据融合与处理
-            <div class="en-translation">Multi-source Data Fusion and Processing</div>
-          </div>
-        </div>
-        
-        <div class="stat-card">
-          <i class="fas fa-brain"></i>
-          <div class="stat-value">机器学习
-            <div class="en-translation">Machine Learning</div>
-          </div>
-          <div class="stat-label">异常检测与预测分析
-            <div class="en-translation">Anomaly Detection and Predictive Analysis</div>
-          </div>
-        </div>
-        
-        <div class="stat-card">
-          <i class="fas fa-language"></i>
-          <div class="stat-value">NLP
-            <div class="en-translation">Natural Language Processing</div>
-          </div>
-          <div class="stat-label">自然语言处理
-            <div class="en-translation">Natural Language Processing</div>
-          </div>
-        </div>
-        
-        <div class="stat-card">
-          <i class="fas fa-chart-bar"></i>
-          <div class="stat-value">可视化
-            <div class="en-translation">Visualization</div>
-          </div>
-          <div class="stat-label">数据可视化与决策支持
-            <div class="en-translation">Data Visualization and Decision Support</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- 返回按钮 -->
-    <div style="text-align: center;">
-      <a href="{{ url_for('supply_management') }}" class="back-btn">
-        <i class="fas fa-arrow-left"></i> 返回供应管理
-        <div class="en-translation">Return to Supply Management</div>
-      </a>
-    </div>
-  </div>
+        <!-- 实际行业案例 -->
+        <section class="content-section">
+            <h2 class="content-title">实际行业案例
+                <span class="en-translation">Real Industry Case</span>
+            </h2>
+            
+            <div class="case-study">
+                <h3 class="case-title">神州控股科捷供应链协作平台案例
+                    <span class="en-translation">Digital China Kejie Supply Chain Collaboration Platform Case</span>
+                </h3>
+                
+                <p class="case-content">
+                    神州控股科捷在其昆山旗舰仓实施了AI驱动的供应链协作平台，通过事件融合模型和异常检测技术，显著提升了供应链例会的效率和效果。
+                    <span class="en-translation">Digital China Kejie implemented an AI-driven supply chain collaboration platform at its Kunshan flagship warehouse, significantly improving the efficiency and effectiveness of supply chain meetings through event fusion models and anomaly detection technologies.</span>
+                </p>
+                
+                <p class="case-content">
+                    <strong>实施效果：</strong>异常关闭周期缩短22%，跨部门响应时间减少28%，会议准备时间降低65%。
+                    <span class="en-translation"><strong>Implementation results:</strong> Exception closure cycle shortened by 22%, cross-departmental response time reduced by 28%, and meeting preparation time decreased by 65%.</span>
+                </p>
 
-  <footer>
-    <p>采购流程分析系统 © 2023 | AI驱动供应链优化解决方案 | 提升效率 • 降低风险 • 优化供应
-      <div class="en-translation">Procurement Process Analysis System © 2023 | AI-Driven Supply Chain Optimization Solution | Improve Efficiency • Reduce Risk • Optimize Supply</div>
-    </p>
-  </footer>
-</body>
-</html>
+                <p class="case-content">
+                    <strong>案例出处：</strong>基于神州控股科捷的"AI for Process"实践，该平台通过数字化看板实现供应链全链路可视化，AI算法实时监控各环节状态并自动预警异常。
+                    <span class="en-translation"><strong>Case source:</strong> Based on Digital China Kejie's "AI for Process" practice, this platform achieves end-to-end supply chain visibility through digital dashboards, with AI algorithms monitoring the status of each link in real time and automatically warning of anomalies.</span>
+                </p>
+        
+                <div class="case-actions">
+                  <a href="https://www.apqc.org/resource-library/resource-collection/supply-chain-collaboration-best-practices" class="best-practice-btn" target="_blank">
+                    查看完整案例研究 <i class="fas fa-external-link-alt"></i>
+                    <span class="en-translation">View Full Case Study</span>
+                  </a>
+                </div>             
+                <p class="case-content">
+                    <strong>关键技术：</strong>采用AI事件融合模型整合多源数据，实时异常检测系统自动预警问题，LLM技术自动生成会议纪要和行动清单。
+                    <span class="en-translation"><strong>Key technologies:</strong> Using AI event fusion models to integrate multi-source data, real-time anomaly detection systems to automatically warn of problems, and LLM technology to automatically generate meeting minutes and action lists.</span>
+                </p>
+            </div>
+        </section>
+      

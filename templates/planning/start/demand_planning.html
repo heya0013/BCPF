@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>成本管理 - 采购流程分析</title>
+  <title>成本管理 - 计划流程分析</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <style>
@@ -32,6 +32,29 @@
       line-height: 1.6;
       margin: 0;
     }
+
+    /* 中英双语翻译样式：统一控制英文排版 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.3rem;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* 适配列表项翻译的间距 */
+    .optimization-list li .en-translation {
+      margin-top: 0.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 核心价值标题翻译样式 */
+    .key-reason-header .en-translation {
+      margin-top: 0.1rem;
+      font-size: 0.8em;
+      display: inline-block;
+    }
   </style>
 </head>
 <body>
@@ -45,7 +68,8 @@
       <h1 class="process-title">需求计划</h1>
       <div class="process-subtitle">Demand Planning</div>
       <div class="process-desc">
-        基于历史数据与市场趋势进行需求预测，提升计划准确性，帮助企业实现生产、采购与销售的协同，降低不确定性与波动风险。
+        基于历史数据与市场趋势进行需求预测，提升计划准确性，帮助企业实现生产、计划与销售的协同，降低不确定性与波动风险。
+        <span class="en-translation">Conduct demand forecasting based on historical data and market trends to improve planning accuracy, help enterprises achieve collaboration between production, planning, and sales, and reduce uncertainty and fluctuation risks.</span>
       </div>
     </div>
   </section>
@@ -53,7 +77,9 @@
   <!-- 关键流程块区域 -->
   <div class="container">
     <div class="section-title">
-      <h2>关键流程模块</h2>
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
     </div>
     
     <div class="process-blocks">
@@ -69,24 +95,37 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>核心价值</strong>
+              <strong>核心价值
+                <span class="en-translation">Core Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
-              基线预测提供供给与库存策略的量化底座，需支持分层汇总一致性与偏差治理（MAPE/WAPE/Bias/FVA）。"数据地基"，可形成对标与趋势预测，为RFx与合同价格变更提供定量依据。
+              基线预测提供供给与库存策略的量化底座，需支持分层汇总一致性与偏差治理（MAPE/WAPE/Bias/FVA）。
+              <span class="en-translation">Baseline forecasting provides a quantitative foundation for supply and inventory strategies, requiring support for hierarchical aggregation consistency and deviation management (MAPE/WAPE/Bias/FVA).</span>
+              "数据地基"，可形成对标与趋势预测，为RFx与合同价格变更提供定量依据。
+              <span class="en-translation">As a "data foundation", it can form benchmarking and trend forecasting, providing quantitative basis for RFx and contract price changes.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
             <ul class="optimization-list">
-              <li>建立多模型融合的分层可解释预测（统计+ML+因果），结合Demand Sensing与促销/价格弹性建模</li>
-              <li>以类比法+相似度检索+外部先行指标（搜索/媒体）构建NPI冷启动预测与替换链路管理</li>
-              <li>严格执行FVA评估与偏差门禁，并将预测与S&OP/One Plan联动打通</li>
+              <li>建立多模型融合的分层可解释预测（统计+ML+因果），结合Demand Sensing与促销/价格弹性建模
+                <span class="en-translation">Establish hierarchical interpretable forecasting with multi-model integration (statistics + ML + causality), combined with Demand Sensing and promotion/price elasticity modeling</span>
+              </li>
+              <li>以类比法+相似度检索+外部先行指标（搜索/媒体）构建NPI冷启动预测与替换链路管理
+                <span class="en-translation">Construct NPI cold-start forecasting and replacement link management using analogy method + similarity retrieval + external leading indicators (search/media)</span>
+              </li>
+              <li>严格执行FVA评估与偏差门禁，并将预测与S&OP/One Plan联动打通
+                <span class="en-translation">Strictly implement FVA evaluation and deviation access control, and connect forecasting with S&OP/One Plan</span>
+              </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='demand_planning', module_name='ltf') }}" class="best-practice-btn">
+            <a href="{{ url_for('planning.best_practice', process='demand_planning', module_name='ltf') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -105,25 +144,40 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>核心价值</strong>
+              <strong>核心价值
+                <span class="en-translation">Core Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
-              该流程直接决定供需平衡的质量与稳定性，是端到端计划的起点。"路线图式"闭环，是季度/年度降本治理的主场，驱动跨职能协同落地。
+              该流程直接决定供需平衡的质量与稳定性，是端到端计划的起点。
+              <span class="en-translation">This process directly determines the quality and stability of supply-demand balance and is the starting point of end-to-end planning.</span>
+              "路线图式"闭环，是季度/年度降本治理的主场，驱动跨职能协同落地。
+              <span class="en-translation">As a "roadmap-style" closed loop, it is the main venue for quarterly/annual cost reduction management and drives the implementation of cross-functional collaboration.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
             <ul class="optimization-list">
-              <li>建立多模型融合的分层可解释预测（统计+ML+因果），结合Demand Sensing与促销/价格弹性建模</li>
-              <li>建设促销提升、价格弹性与互相蚕食模型，联动分配与网络部署的资源预置</li>
-              <li>以类比法+相似度检索+外部先行指标（搜索/媒体）构建NPI冷启动预测与替换链路管理</li>
-              <li>严格执行FVA评估与偏差门禁，并将预测与S&OP/One Plan联动打通</li>
+              <li>建立多模型融合的分层可解释预测（统计+ML+因果），结合Demand Sensing与促销/价格弹性建模
+                <span class="en-translation">Establish hierarchical interpretable forecasting with multi-model integration (statistics + ML + causality), combined with Demand Sensing and promotion/price elasticity modeling</span>
+              </li>
+              <li>建设促销提升、价格弹性与互相蚕食模型，联动分配与网络部署的资源预置
+                <span class="en-translation">Build promotion enhancement, price elasticity, and cannibalization models, and link resource pre-deployment for allocation and network deployment</span>
+              </li>
+              <li>以类比法+相似度检索+外部先行指标（搜索/媒体）构建NPI冷启动预测与替换链路管理
+                <span class="en-translation">Construct NPI cold-start forecasting and replacement link management using analogy method + similarity retrieval + external leading indicators (search/media)</span>
+              </li>
+              <li>严格执行FVA评估与偏差门禁，并将预测与S&OP/One Plan联动打通
+                <span class="en-translation">Strictly implement FVA evaluation and deviation access control, and connect forecasting with S&OP/One Plan</span>
+              </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='demand_planning', module_name='segment_product_ltf') }}" class="best-practice-btn">
+            <a href="{{ url_for('planning.best_practice', process='demand_planning', module_name='segment_product_ltf') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -142,23 +196,34 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>核心价值</strong>
+              <strong>核心价值
+                <span class="en-translation">Core Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
-              基线预测提供供给与库存策略的量化底座，需支持分层汇总一致性与偏差治理（MAPE/WAPE/Bias/FVA）。；Demand Sensing 利用短期外部信号（POS/网页/在途）实时纠偏，提高短期承诺稳定性。
+              基线预测提供供给与库存策略的量化底座，需支持分层汇总一致性与偏差治理（MAPE/WAPE/Bias/FVA）。
+              <span class="en-translation">Baseline forecasting provides a quantitative foundation for supply and inventory strategies, requiring support for hierarchical aggregation consistency and deviation management (MAPE/WAPE/Bias/FVA).</span>
+              ；Demand Sensing 利用短期外部信号（POS/网页/在途）实时纠偏，提高短期承诺稳定性。
+              <span class="en-translation">Demand Sensing uses short-term external signals (POS/web/in-transit) for real-time correction to improve short-term commitment stability.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
             <ul class="optimization-list">
-              <li>引入POS/网页/渠道库存与在途等高频数据，做Nowcast纠偏与突发识别，驱动ATS与承诺稳定</li>
-              <li>严格执行FVA评估与偏差门禁，并将预测与S&OP/One Plan联动打通</li>
+              <li>引入POS/网页/渠道库存与在途等高频数据，做Nowcast纠偏与突发识别，驱动ATS与承诺稳定
+                <span class="en-translation">Introduce high-frequency data such as POS/web/channel inventory and in-transit, conduct Nowcast correction and emergency identification, and drive ATS and commitment stability</span>
+              </li>
+              <li>严格执行FVA评估与偏差门禁，并将预测与S&OP/One Plan联动打通
+                <span class="en-translation">Strictly implement FVA evaluation and deviation access control, and connect forecasting with S&OP/One Plan</span>
+              </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='demand_planning', module_name='forecast_netting') }}" class="best-practice-btn">
+            <a href="{{ url_for('planning.best_practice', process='demand_planning', module_name='forecast_netting') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -168,7 +233,13 @@
   </div>
 
   <footer>
-    <p>采购流程分析系统 © 2025 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
+    <p>计划流程分析系统 © 2025 
+      <span class="en-translation">Planning Process Analysis System © 2025</span>
+      | 企业计划优化解决方案 
+      <span class="en-translation">Enterprise Planning Optimization Solutions</span>
+      | 提升效率 • 降低成本 • 优化供应链
+      <span class="en-translation">Improve Efficiency • Reduce Costs • Optimize Supply Chain</span>
+    </p>
   </footer>
 </body>
 </html>

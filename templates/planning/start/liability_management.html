@@ -32,6 +32,35 @@
       line-height: 1.6;
       margin: 0;
     }
+
+    /* 中英双语翻译样式：统一控制英文排版 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.3rem;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* 适配列表项翻译的间距 */
+    .optimization-list li .en-translation {
+      margin-top: 0.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 导航按钮翻译样式 */
+    .nav-btn .en-translation {
+      margin-top: 0.1rem;
+      font-size: 0.8em;
+    }
+
+    /* 核心价值标题翻译样式 */
+    .core-value-title .en-translation {
+      margin-top: 0.1rem;
+      font-size: 0.8em;
+      display: inline-block;
+    }
   </style>
 </head>
 <body>
@@ -39,10 +68,18 @@
   <nav class="navbar">
     <div class="nav-container">
       <div class="nav-buttons">
-        <a href="supplier_management.html" class="nav-btn">供应商管理</a>
-        <a href="source_management.html" class="nav-btn">寻源管理</a>
-        <a href="contract_management.html" class="nav-btn">合同管理</a>
-        <a href="cost_management.html" class="nav-btn">成本控制</a>
+        <a href="supplier_management.html" class="nav-btn">供应商管理
+          <span class="en-translation">Supplier Management</span>
+        </a>
+        <a href="source_management.html" class="nav-btn">寻源管理
+          <span class="en-translation">Sourcing Management</span>
+        </a>
+        <a href="contract_management.html" class="nav-btn">合同管理
+          <span class="en-translation">Contract Management</span>
+        </a>
+        <a href="cost_management.html" class="nav-btn">成本控制
+          <span class="en-translation">Cost Control</span>
+        </a>
       </div>
     </div>
   </nav>
@@ -57,6 +94,7 @@
       <div class="process-subtitle">Liability Management</div>
       <div class="process-desc">
         在产品迭代或生产切换过程中，制定资源与产能的过渡方案，确保新旧产品平稳衔接，减少停工、浪费与供应链波动。
+        <span class="en-translation">During product iteration or production switching, formulate transition plans for resources and production capacity to ensure smooth connection between old and new products, and reduce downtime, waste, and supply chain fluctuations.</span>
       </div>
     </div>
   </section>
@@ -64,7 +102,9 @@
   <!-- 关键流程块区域 -->
   <div class="container">
     <div class="section-title">
-      <h2>关键流程模块</h2>
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
     </div>
     
     <div class="process-blocks">
@@ -79,24 +119,37 @@
         </div>
         <div class="block-body">
           <div class="core-value">
-            <div class="core-value-title">核心价值</div>
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
             <p class="core-value-content">
               MWD/减值计提与冲回确保财务真实性，要求与库存/需求/转产策略联动，避免过计或漏计。
+              <span class="en-translation">MWD/impairment provision and reversal ensure financial authenticity, requiring linkage with inventory/demand/production transfer strategies to avoid over-accrual or under-accrual.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
             <ul class="optimization-list">
-              <li>基于SKU×区域×通道建立责任金与E&O暴露预测，驱动S&OP红线与处置优先级。</li>
-              <li>对不同通道/区域做价格-销量响应建模与清仓路径优化，平衡回收率与速度。</li>
-              <li>自动解析NCNR/MOQ/价保/回购条款，结合在途与需求偏差给出‘最小责任金’谈判建议。</li>
-              <li>构建计划→财务桥接，自动计提/冲回MWD并给出差异解释，提升透明度与合规。</li>
+              <li>基于SKU×区域×通道建立责任金与E&O暴露预测，驱动S&OP红线与处置优先级。
+                <span class="en-translation">Establish liability funds and E&O exposure forecasts based on SKU × region × channel to drive S&OP red lines and disposal priorities.</span>
+              </li>
+              <li>对不同通道/区域做价格-销量响应建模与清仓路径优化，平衡回收率与速度。
+                <span class="en-translation">Conduct price-sales response modeling and clearance path optimization for different channels/regions to balance recovery rate and speed.</span>
+              </li>
+              <li>自动解析NCNR/MOQ/价保/回购条款，结合在途与需求偏差给出‘最小责任金’谈判建议。
+                <span class="en-translation">Automatically parse NCNR/MOQ/price protection/buyback clauses, and provide "minimum liability fund" negotiation suggestions combined with in-transit and demand deviations.</span>
+              </li>
+              <li>构建计划→财务桥接，自动计提/冲回MWD并给出差异解释，提升透明度与合规。
+                <span class="en-translation">Build a planning→finance bridge, automatically accrue/reverse MWD and provide difference explanations to improve transparency and compliance.</span>
+              </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='new_product_management', module_name='source_plan') }}" class="best-practice-btn">
+            <a href="{{ url_for('planning.best_practice', process='liability_management', module_name='mwd_e2e_management') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -106,7 +159,9 @@
   </div>
 
   <footer>
-    <p>采购流程分析系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
-  </footer>
+  <p>计划流程分析导航系统 © 2023  | 企业计划优化解决方案 | 提升效率 • 降低成本 • 优化供应链
+    <span class="en-translation">Planning Process Analysis Navigation System © 2023|Enterprise Planning Optimization Solutions|Improve Efficiency • Reduce Costs • Optimize Supply Chain</span>   
+  </p>
+</footer>
 </body>
 </html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Central Order Plan 案例研究 - Supply Huddle</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice.css') }}"/>
+  <style>
+    .ai-scenario-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:25px; margin:30px 0; }
+    .scenario-card { background:white; border-radius:12px; padding:22px; box-shadow:0 6px 18px rgba(0,0,0,0.05); border-top:4px solid #2c7be5; transition:all .28s; }
+    .scenario-card:hover { transform:translateY(-6px); box-shadow:0 14px 30px rgba(44,123,229,0.12); }
+    .scenario-icon { font-size:2.2rem; color:#2c7be5; text-align:center; margin-bottom:10px; }
+    .scenario-title { font-size:1.25rem; color:#2c3e50; margin-bottom:10px; font-weight:600; text-align:center; }
+    .scenario-desc { color:#5a6a7d; line-height:1.6; margin-bottom:14px; }
+    .kpi-list { list-style:none; padding:0; margin:0; color:#5a6a7d; }
+    .kpi-list li { margin-bottom:10px; padding-left:30px; position:relative; }
+    .kpi-list li:before { content:'\f201'; font-family:'Font Awesome 5 Free'; font-weight:900; position:absolute; left:0; top:0; color:#00c9a7; }
+    .industry-case { background:linear-gradient(135deg,#f3f9f9 0%,#e8f4f4 100%); border-radius:12px; padding:20px; margin:30px 0; }
+    .case-title { font-size:1.2rem; color:#2c3e50; margin-bottom:12px; font-weight:600; }
+    .case-desc { color:#5a6a7d; line-height:1.6; margin-bottom:12px; }
+    .stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; margin-top:12px; }
+    .stat-card { background:#fff; border-radius:10px; padding:14px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.04); }
+    .stat-value { font-weight:700; color:#2c7be5; font-size:1.25rem; margin-bottom:6px; }
+    .stat-label { color:#5a6a7d; font-size:0.95rem; }
+    .back-btn { display:inline-block; padding:10px 14px; border-radius:8px; background:#486EBC; color:#fff; text-decoration:none; margin-top:18px; }
+  </style>
+</head>
+<body>
+  <header class="best-practice-header">
+    <div class="header-content">
+      <h1 class="best-practice-title">Central Order Plan 案例研究</h1>
+      <div class="best-practice-subtitle">规则 + ML 分配优化 + 异常推荐</div>
+      <p class="process-desc">本页展示中央订单计划模块如何通过 AI 优化订单/分配、提升履约率与效率。</p>
+    </div>
+  </header>
+
+  <div class="best-practice-container">
+    <!-- 1. AI 应用场景 -->
+    <section class="best-practice-section">
+      <h2 class="section-title">AI 应用场景</h2>
+      <div class="ai-scenario-grid">
+        <div class="scenario-card">
+          <div class="scenario-icon"><i class="fas fa-cogs"></i></div>
+          <h3 class="scenario-title">规则 + ML 结合的订单分配优化</h3>
+          <p class="scenario-desc">在中央计划层，AI 根据规则与 ML 模型对订单进行分配优化（如优先客户、物流成本、库存位置）。</p>
+        </div>
+        <div class="scenario-card">
+          <div class="scenario-icon"><i class="fas fa-exclamation-circle"></i></div>
+          <h3 class="scenario-title">异常检测 + 根因解释 + 行动推荐</h3>
+          <p class="scenario-desc">当订单执行中出现偏差、供应异常或配送中断时，系统触发根因分析并推荐纠偏策略。</p>
+        </div>
+        <div class="scenario-card">
+          <div class="scenario-icon"><i class="fas fa-project-diagram"></i></div>
+          <h3 class="scenario-title">约束求解 + 情景规划</h3>
+          <p class="scenario-desc">在中央计划中使用情景规划模拟不同需求与供应压力下的最优方案路径。</p>
+        </div>
+        <div class="scenario-card">
+          <div class="scenario-icon"><i class="fas fa-chart-line"></i></div>
+          <h3 class="scenario-title">Demand Sensing + 供给协同 加持</h3>
+          <p class="scenario-desc">引入 Demand Sensing 模型增强订单计划输入，与供应计划协同作用提高整体精度。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 效果分析 -->
+    <section class="best-practice-section">
+      <h2 class="section-title">效果分析（机制视角）</h2>
+      <p class="case-desc">规则 + ML 分配使订单分配更智能；异常检测 + 推荐能够快速纠偏；情景规划提高对突发波动的弹性；Demand Sensing 输入增强进一步降低预测误差，从而提升执行端的稳定性与履约率。</p>
+    </section>
+
+    <!-- 3. KPI 与预期提升幅度 -->
+    <section class="best-practice-section">
+      <h2 class="section-title">KPI 与预期提升幅度</h2>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-value">首次承诺命中率 / OTIF</div><div class="stat-label">提升 5–15%</div></div>
+        <div class="stat-card"><div class="stat-value">改期率</div><div class="stat-label">下降 10–20%</div></div>
+        <div class="stat-card"><div class="stat-value">优先客户履约率</div><div class="stat-label">提升 5–15%</div></div>
+        <div class="stat-card"><div class="stat-value">加急成本 / 短缺关闭周期</div><div class="stat-label">下降 5–15% / 缩短 20–30%</div></div>
+      </div>
+    </section>
+
+    <!-- 4. 实际行业案例 -->
+    <section class="best-practice-section">
+      <h2 class="section-title">实际行业案例</h2>
+      <div class="industry-case">
+        <h3 class="case-title">McKinsey AI 供应链早期采用者</h3>
+        <p class="case-desc">McKinsey 的研究指出：早期采用 AI 的供应链可实现库存下降 35%、服务水平提升 65%、物流成本下降 15%。这些整体改善正是多个模块（预测 / 分配 / 异常响应）共同作用的结果。</p>
+        <p class="case-desc" style="font-size:0.9rem;color:#394a5a;">来源：McKinsey “Succeeding in the AI supply-chain revolution” 报告 :contentReference[oaicite:12]{index=12}</p>
+      </div>
+    </section>
+
+    <div style="text-align:center; margin:20px 0;">
+      <a href="{{ url_for('supply_planning') }}" class="back-btn"><i class="fas fa-arrow-left"></i> 返回供应计划</a>
+    </div>
+
+    <section class="best-practice-section">
+      <h2 class="section-title">参考与来源</h2>
+      <ul class="kpi-list">
+        <li>McKinsey：AI 供应链早期采用者改善库存 / 服务 / 成本 数据 :contentReference[oaicite:13]{index=13}</li>
+        <li>Gartner：需求规划 / 输入增强 对预测准确性的提升 :contentReference[oaicite:14]{index=14}</li>
+        <li>McKinsey 报告 “Harnessing the power of AI in distribution operations” 关于库存与物流改善数据 :contentReference[oaicite:15]{index=15}</li>
+      </ul>
+    </section>
+  </div>
+
+  <footer><small>计划流程分析系统 © 2023–2025 | Central Order Plan • 订单分配优化</small></footer>
+</body>
+</html>

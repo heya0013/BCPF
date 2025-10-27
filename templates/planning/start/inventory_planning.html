@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>合同管理 - 采购流程分析</title>
+  <title>合同管理 - 计划流程分析</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <style>
@@ -32,6 +32,35 @@
       line-height: 1.6;
       margin: 0;
     }
+
+    /* 中英双语翻译样式：统一控制英文排版 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.3rem;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* 适配列表项翻译的间距 */
+    .optimization-list li .en-translation {
+      margin-top: 0.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 导航按钮翻译样式 */
+    .nav-btn .en-translation {
+      margin-top: 0.1rem;
+      font-size: 0.8em;
+    }
+
+    /* 核心价值标题翻译样式 */
+    .key-reason-header .en-translation {
+      margin-top: 0.1rem;
+      font-size: 0.8em;
+      display: inline-block;
+    }
   </style>
 </head>
 <body>
@@ -39,10 +68,18 @@
   <nav class="navbar">
     <div class="nav-container">
       <div class="nav-buttons">
-        <a href="supplier_management.html" class="nav-btn">供应商管理</a>
-        <a href="execution_collaboration.html" class="nav-btn">采购执行</a>
-        <a href="contract_management.html" class="nav-btn active">合同管理</a>
-        <a href="cost_management.html" class="nav-btn">成本控制</a>
+        <a href="supplier_management.html" class="nav-btn">供应商管理
+          <span class="en-translation">Supplier Management</span>
+        </a>
+        <a href="execution_collaboration.html" class="nav-btn">计划执行
+          <span class="en-translation">Plan Execution</span>
+        </a>
+        <a href="contract_management.html" class="nav-btn active">合同管理
+          <span class="en-translation">Contract Management</span>
+        </a>
+        <a href="cost_management.html" class="nav-btn">成本控制
+          <span class="en-translation">Cost Control</span>
+        </a>
       </div>
     </div>
   </nav>
@@ -57,6 +94,7 @@
       <div class="process-subtitle">Inventory Planning</div>
       <div class="process-desc">
         通过科学预测与动态调整，优化库存结构与水平，确保供需平衡，降低资金占用和缺货风险，提升整体运营效率。
+        <span class="en-translation">Through scientific forecasting and dynamic adjustment, optimize inventory structure and level, ensure supply-demand balance, reduce capital occupation and stockout risks, and improve overall operational efficiency.</span>
       </div>
     </div>
   </section>
@@ -64,7 +102,9 @@
   <!-- 关键流程块区域 -->
   <div class="container">
     <div class="section-title">
-      <h2>关键流程模块</h2>
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
     </div>
     
     <div class="process-blocks">
@@ -80,24 +120,35 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>核心价值</strong>
+              <strong>核心价值
+                <span class="en-translation">Core Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               E&O 识别与处置仿真可提前暴露责任金风险与消化路径，避免库存继续沉淀并侵蚀利润。
+              <span class="en-translation">E&O identification and disposal simulation can expose liability fund risks and digestion paths in advance, preventing further inventory accumulation and profit erosion.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
             <ul class="optimization-list">
-              <li>引入 MEIO 与动态安全库存（需求/交期不确定性驱动），按服务等级与现金目标做多目标优化</li>
-              <li>制定 E&O 识别与处置策略（降价、替代、转仓、回料）并建立仿真评估，实现“最小责任金”路径</li>
-              <li>建设库存参数中台与可视化监控（服务水平、DOS/Turns、E&O、缺货），联动异常 → 议题 → 回灌闭环</li>
+              <li>引入 MEIO 与动态安全库存（需求/交期不确定性驱动），按服务等级与现金目标做多目标优化
+                <span class="en-translation">Introduce MEIO and dynamic safety stock (driven by demand/delivery uncertainty), and conduct multi-objective optimization based on service level and cash targets</span>
+              </li>
+              <li>制定 E&O 识别与处置策略（降价、替代、转仓、回料）并建立仿真评估，实现“最小责任金”路径
+                <span class="en-translation">Formulate E&O identification and disposal strategies (price reduction, substitution, warehouse transfer, material return) and establish simulation evaluation to achieve the "minimum liability fund" path</span>
+              </li>
+              <li>建设库存参数中台与可视化监控（服务水平、DOS/Turns、E&O、缺货），联动异常 → 议题 → 回灌闭环
+                <span class="en-translation">Build an inventory parameter center and visual monitoring (service level, DOS/Turns, E&O, stockout), and link the closed loop of abnormality → issue → feedback</span>
+              </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='inventory_planning', module_name='e&o_reserve_consumption_simulation') }}" class="best-practice-btn">
+            <a href="{{ url_for('planning.best_practice', process='inventory_planning', module_name='e_o_reserve_consumption_simulation') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -116,24 +167,35 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>核心价值</strong>
+              <strong>核心价值
+                <span class="en-translation">Core Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               该流程对库存缓冲、服务等级与现金占用有直接决定作用，是供需计划落地的关键中枢。
+              <span class="en-translation">This process directly determines inventory buffer, service level and cash occupation, and is a key core for the implementation of supply-demand planning.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
             <ul class="optimization-list">
-              <li>部署短期 ETA 预测与短缺异常检测，将供给端不确定性实时注入库存参数与ATS阈值</li>
-              <li>制定 E&O 识别与处置策略（降价、替代、转仓、回料）并建立仿真评估，实现“最小责任金”路径</li>
-              <li>建设库存参数中台与可视化监控（服务水平、DOS/Turns、E&O、缺货），联动异常 → 议题 → 回灌闭环</li>
+              <li>部署短期 ETA 预测与短缺异常检测，将供给端不确定性实时注入库存参数与ATS阈值
+                <span class="en-translation">Deploy short-term ETA forecasting and shortage abnormality detection, and inject supply-side uncertainty into inventory parameters and ATS thresholds in real time</span>
+              </li>
+              <li>制定 E&O 识别与处置策略（降价、替代、转仓、回料）并建立仿真评估，实现“最小责任金”路径
+                <span class="en-translation">Formulate E&O identification and disposal strategies (price reduction, substitution, warehouse transfer, material return) and establish simulation evaluation to achieve the "minimum liability fund" path</span>
+              </li>
+              <li>建设库存参数中台与可视化监控（服务水平、DOS/Turns、E&O、缺货），联动异常 → 议题 → 回灌闭环
+                <span class="en-translation">Build an inventory parameter center and visual monitoring (service level, DOS/Turns, E&O, stockout), and link the closed loop of abnormality → issue → feedback</span>
+              </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='inventory_planning', module_name='in-house_aging_stock_management') }}" class="best-practice-btn">
+            <a href="{{ url_for('planning.best_practice', process='inventory_planning', module_name='in_house_aging_stock_management') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -152,24 +214,35 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>核心价值</strong>
+              <strong>核心价值
+                <span class="en-translation">Core Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               该流程对库存缓冲、服务等级与现金占用有直接决定作用，是供需计划落地的关键中枢。
+              <span class="en-translation">This process directly determines inventory buffer, service level and cash occupation, and is a key core for the implementation of supply-demand planning.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
             <ul class="optimization-list">
-              <li>部署短期 ETA 预测与短缺异常检测，将供给端不确定性实时注入库存参数与ATS阈值</li>
-              <li>制定 E&O 识别与处置策略（降价、替代、转仓、回料）并建立仿真评估，实现“最小责任金”路径</li>
-              <li>建设库存参数中台与可视化监控（服务水平、DOS/Turns、E&O、缺货），联动异常 → 议题 → 回灌闭环</li>
+              <li>部署短期 ETA 预测与短缺异常检测，将供给端不确定性实时注入库存参数与ATS阈值
+                <span class="en-translation">Deploy short-term ETA forecasting and shortage abnormality detection, and inject supply-side uncertainty into inventory parameters and ATS thresholds in real time</span>
+              </li>
+              <li>制定 E&O 识别与处置策略（降价、替代、转仓、回料）并建立仿真评估，实现“最小责任金”路径
+                <span class="en-translation">Formulate E&O identification and disposal strategies (price reduction, substitution, warehouse transfer, material return) and establish simulation evaluation to achieve the "minimum liability fund" path</span>
+              </li>
+              <li>建设库存参数中台与可视化监控（服务水平、DOS/Turns、E&O、缺货），联动异常 → 议题 → 回灌闭环
+                <span class="en-translation">Build an inventory parameter center and visual monitoring (service level, DOS/Turns, E&O, stockout), and link the closed loop of abnormality → issue → feedback</span>
+              </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='inventory_planning', module_name='odm_aging_stock_management') }}" class="best-practice-btn">
+            <a href="{{ url_for('planning.best_practice', process='inventory_planning', module_name='odm_aging_stock_management') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -179,7 +252,9 @@
   </div>
 
   <footer>
-    <p>采购流程分析系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
-  </footer>
+  <p>计划流程分析导航系统 © 2023  | 企业计划优化解决方案 | 提升效率 • 降低成本 • 优化供应链
+    <span class="en-translation">Planning Process Analysis Navigation System © 2023|Enterprise Planning Optimization Solutions|Improve Efficiency • Reduce Costs • Optimize Supply Chain</span>   
+  </p>
+</footer>
 </body>
 </html>

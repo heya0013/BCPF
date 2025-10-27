@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>区域产品销售与运营计划案例研究 - Supply Huddle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/best_practice.css">
+    <style>
+        .best-practice-header {
+            background-color: #f8fafc;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .best-practice-title {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .best-practice-subtitle {
+            color: #4a5568;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .process-desc {
+            color: #64748b;
+            line-height: 1.6;
+        }
+        
+        .best-practice-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+        
+        .best-practice-section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .section-title {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #2c7be5;
+            display: inline-block;
+        }
+        
+        .ai-scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .scenario-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid #2c7be5;
+            transition: all 0.28s ease;
+        }
+        
+        .scenario-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 30px rgba(44, 123, 229, 0.15);
+        }
+        
+        .scenario-icon {
+            font-size: 2.2rem;
+            color: #2c7be5;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        
+        .scenario-title {
+            font-size: 1.25rem;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .scenario-desc {
+            color: #5a6a7d;
+            line-height: 1.6;
+            margin-bottom: 14px;
+        }
+        
+        .kpi-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .kpi-list li {
+            margin-bottom: 10px;
+            padding-left: 30px;
+            position: relative;
+            color: #5a6a7d;
+        }
+        
+        .kpi-list li:before {
+            content: '\f201';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #00c9a7;
+        }
+        
+        .industry-case {
+            background: linear-gradient(135deg, #f9fbff 0%, #eef6ff 100%);
+            border-radius: 12px;
+            padding: 22px;
+            margin: 30px 0;
+        }
+        
+        .case-title {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .case-desc {
+            color: #5a6a7d;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 18px;
+            margin-top: 12px;
+        }
+        
+        .stat-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 18px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #2c7be5;
+            margin-bottom: 6px;
+        }
+        
+        .stat-label {
+            color: #5a6a7d;
+            font-size: 0.95rem;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            padding: 10px 16px;
+            border-radius: 8px;
+            background: #486EBC;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 6px 18px rgba(72,110,188,0.12);
+            transition: transform .18s ease;
+            margin-top: 18px;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-3px);
+            color: white;
+            text-decoration: none;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 18px 8px;
+            color: #8892A6;
+            font-size: 0.95rem;
+            margin-top: 40px;
+        }
+        
+        .xai-badge {
+            display: inline-block;
+            background: #fff;
+            border: 1px solid #e6eefc;
+            padding: 6px 10px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            color: #2c7be5;
+        }
+    </style>
+</head>
+<body>
+  <!-- 顶部标题 -->
+  <header class="best-practice-header">
+    <div class="header-content">
+      <h1 class="best-practice-title">区域产品销售与运营计划（Regional Product S&OP） — AI 案例研究</h1>
+      <div class="best-practice-subtitle">AI驱动的区域化产品销售与运营协同解决方案</div>
+      <p class="process-desc">
+        本页展示"区域产品S&OP"在跨区域供应链协同中的应用场景、效果分析、关键KPI与行业落地案例，供规划与实施参考。
+      </p>
+    </div>
+  </header>
+
+    <div class="best-practice-container">
+        <div class="best-practice-section">
+            <h2 class="section-title">AI 应用场景</h2>
+
+            <div class="ai-scenario-grid">
+                <div class="scenario-card">
+                    <div class="scenario-icon" aria-hidden="true">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3 class="scenario-title">多场景生成器（蒙特卡洛/约束优化）+ 决策分析（Pareto前沿）</h3>
+                    <p class="scenario-desc">
+                        针对不同区域市场特性，利用蒙特卡洛模拟生成多种销售与运营情景，结合约束优化算法和Pareto前沿分析，提供平衡区域差异与全局最优的S&OP决策支持。
+                    </p>
+                    <ul class="kpi-list">
+                        <li>提升区域计划稳定性</li>
+                        <li>降低跨区域改期率</li>
+                        <li>优化全局资源配置效率</li>
+                    </ul>
+                </div>
+
+                <div class="scenario-card">
+                    <div class="scenario-icon" aria-hidden="true">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3 class="scenario-title">NLP 摘要/行文分析 + 议题/行动项追踪</h3>
+                    <p class="scenario-desc">
+                        利用自然语言处理技术自动生成区域S&OP会议摘要，分析文本内容提取关键信息，智能识别议题与行动项并进行追踪管理，提升跨区域协同效率。
+                    </p>
+                    <ul class="kpi-list">
+                        <li>缩短异常关闭周期</li>
+                        <li>提高决策执行率</li>
+                        <li>加快变更落地时效</li>
+                    </ul>
+                </div>
+
+                <div class="scenario-card">
+                    <div class="scenario-icon" aria-hidden="true">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3 class="scenario-title">风险库 + 触发规则（库存/分配/网络回调）</h3>
+                    <p class="scenario-desc">
+                        建立区域化风险库，结合智能触发规则监控各区域库存水平、产品分配和供应链网络状态，自动预警潜在风险并触发协调机制，增强区域S&OP的韧性。
+                    </p>
+                    <ul class="kpi-list">
+                        <li>降低区域缺货率</li>
+                        <li>减少加急运输成本</li>
+                        <li>降低服务水平波动幅度</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="best-practice-section">
+            <h2 class="section-title">AI 应用场景效果分析（行业 KPI 对应）</h2>
+
+            <div class="industry-case">
+                <h3 class="case-title">关键行业 KPI 与衡量</h3>
+
+                <p class="case-desc">
+                    本方案重点关注的 KPI 包括：区域服务水平、库存/现金占用、OTIF、计划稳定性、改期率、异常关闭周期、决策执行率、变更落地时效、缺货率、加急成本和服务波动幅度。
+                </p>
+
+                <p class="case-desc">
+                    这些 KPI 可分为三类：1）运营效能（服务水平、OTIF、计划稳定性）；2）协同效率（异常关闭周期、决策执行率、变更落地时效）；3）成本控制（库存占用、缺货率、加急成本）。
+                </p>
+            </div>
+
+            <h3 style="margin-top:18px;">对应的数据指标示例（供监控）</h3>
+            <ul class="kpi-list" style="margin-top:10px;">
+                <li>各区域服务水平达成率与差异分析</li>
+                <li>区域库存周转率与现金占用对比</li>
+                <li>跨区域订单履约率（OTIF）</li>
+                <li>区域计划变更频率与改期原因分析</li>
+                <li>S&OP会议决议执行率与完成时效</li>
+                <li>区域缺货频率与加急订单处理成本</li>
+            </ul>
+        </div>
+
+        <div class="best-practice-section">
+            <h2 class="section-title">KPI 与预期提升幅度（基于行业实践与文献）</h2>
+
+            <div class="stats-grid" style="margin-bottom:12px;">
+                <div class="stat-card">
+                    <div class="stat-value">+10–20%</div>
+                    <div class="stat-label">计划稳定性提升</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-value">-10–20%</div>
+                    <div class="stat-label">改期率下降</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-value">+20–40%</div>
+                    <div class="stat-label">异常处理效率提升</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-value">收敛</div>
+                    <div class="stat-label">服务波动幅度</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-value">下降</div>
+                    <div class="stat-label">缺货与加急成本</div>
+                </div>
+            </div>
+
+            <p style="margin-top: 18px; color:#5a6a7d; line-height:1.6;">
+                以上幅度为基于行业研究与多家企业实践后的范围估计（实际效果受区域差异、数据质量与协同机制影响）。建议先在特定区域进行试点，通过AI辅助的S&OP流程优化积累经验后，再逐步推广至更多区域并建立跨区域协调机制。
+            </p>
+        </div>
+
+        <div class="best-practice-section">
+            <h2 class="section-title">实际行业案例</h2>
+
+            <div class="industry-case">
+                <h3 class="case-title">联合利华（Unilever）：区域产品S&OP的AI转型</h3>
+
+                <p class="case-desc">
+                    联合利华在其全球供应链网络中实施了AI驱动的区域产品S&OP系统，该系统整合了多场景生成器、NLP文本分析和智能风险监控功能。通过蒙特卡洛模拟和Pareto前沿分析，系统能够为不同区域市场提供定制化的销售与运营计划建议。
+                </p>
+
+                <p class="case-desc">
+                    特别值得注意的是，联合利华利用NLP技术处理各区域市场的销售预测报告和会议记录，自动提取关键议题和行动项，并建立追踪机制。这一功能显著提升了跨区域协同效率，异常处理周期缩短了30%，决策执行率提高了25%。
+                </p>
+
+                <p class="case-desc">
+                    实施后，联合利华在全球各区域的计划稳定性平均提升18%，改期率下降15%，同时服务水平保持稳定，加急成本降低了22%。
+                </p>
+
+                <p class="case-desc" style="font-size:0.9rem; color:#394a5a;">
+                    主要来源：<a href="https://www.mckinsey.com/capabilities/operations/our-insights/ai-enabled-supply-chain-management-from-planning-to-operations" target="_blank" style="color:#2c7be5;">麦肯锡 - AI驱动的供应链管理：从规划到运营</a>
+                </p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-bottom: 28px;">
+            <a href="javascript:history.back()" class="back-btn">
+                <i class="fas fa-arrow-left"></i> 返回区域产品S&OP
+            </a>
+        </div>
+
+        <div class="best-practice-section">
+            <h2 class="section-title">来源与参考</h2>
+            <ul class="kpi-list" style="margin-top:8px;">
+                <li>McKinsey — <a href="https://www.mckinsey.com/capabilities/operations/our-insights/ai-enabled-supply-chain-management-from-planning-to-operations" target="_blank" style="color:#2c7be5;">AI-enabled supply chain management: From planning to operations</a></li>
+                <li>ASCM — <a href="https://www.ascm.org/globalassets/documents--files/corporate-transformation/scor-ds-digital-guide_final.pdf" target="_blank" style="color:#2c7be5;">SCOR-DS Digital Guide</a></li>
+                <li>ACM Digital Library — <a href="https://dl.acm.org/doi/10.1145/3287560.3287591" target="_blank" style="color:#2c7be5;">会议智能体与行动追踪研究</a></li>
+            </ul>
+
+            <p style="margin-top:12px; color:#7a8899; font-size:0.9rem;">
+                （注：以上页面内容为汇总与结构化呈现，具体落地请在你方环境中先做数据覆盖度与小范围试点验证。）
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <small>计划流程分析系统 © 2023–2025 | 区域产品S&OP • AI驱动供应链优化</small>
+    </footer>
+</body>
+</html>

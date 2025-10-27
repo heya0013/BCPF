@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>合同管理 - 采购流程分析</title>
+  <title>合同管理 - 采购流程分析 | Contract Management - Procurement Process Analysis</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <style>
@@ -32,20 +32,201 @@
       line-height: 1.6;
       margin: 0;
     }
+    
+    /* 英文翻译样式 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.25rem;
+      font-style: italic;
+      line-height: 1.4;
+    }
+    
+    .process-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .block-subtitle {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    
+    .optimization-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #2c3e50;
+    }
+    
+    .optimization-list {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .optimization-list li {
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+      .en-translation {
+        font-size: 0.8em;
+      }
+    }
+    
+    /* 页面整体样式 */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .header-section {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #2c7be5 0%, #0068e1 100%);
+      color: white;
+      border-radius: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .process-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .process-title {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .process-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      opacity: 0.9;
+    }
+    
+    .process-desc {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .section-title h2 {
+      color: #2c7be5;
+      font-size: 2rem;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 15px;
+    }
+    
+    .process-blocks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 25px;
+    }
+    
+    .process-block {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    
+    .block-header {
+      background: linear-gradient(90deg, #2c7be5 0%, #0068e1 100%);
+      color: white;
+      padding: 20px;
+    }
+    
+    .block-title {
+      font-size: 1.4rem;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .block-body {
+      padding: 25px;
+    }
+    
+    .key-reason-top {
+      margin-bottom: 20px;
+    }
+    
+    .key-reason-header {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+    
+    .content-area {
+      margin-bottom: 20px;
+    }
+    
+    .block-actions {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .best-practice-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #2c7be5 0%, #0068e1 100%);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .best-practice-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(44, 123, 229, 0.3);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 30px;
+      margin-top: 50px;
+      background: #2c3e50;
+      color: white;
+    }
   </style>
 </head>
 <body>
 
   <!-- 流程标题区域 -->
-  <section class="header-section">
+  <section class="header-section contract-process">
     <div class="header-content">
       <div class="process-icon">
         <i class="fas fa-file-contract"></i>
       </div>
-      <h1 class="process-title">合同管理</h1>
-      <div class="process-subtitle">Contract Management</div>
+      <h1 class="process-title">合同管理
+        <span class="en-translation">Contract Management</span>
+      </h1>
+      <div class="process-subtitle">全面管理采购合同生命周期
+        <span class="en-translation">Comprehensive Procurement Contract Lifecycle Management</span>
+      </div>
       <div class="process-desc">
         全面管理采购合同生命周期，从起草、审批到执行和监控，确保合规性、降低风险并最大化合同价值。本流程涵盖价格管理、长期协议、法律合规等关键环节。
+        <span class="en-translation">Comprehensive management of the procurement contract lifecycle, from drafting, approval to execution and monitoring, ensuring compliance, reducing risks, and maximizing contract value. This process covers key aspects such as price management, long-term agreements, and legal compliance.</span>
       </div>
     </div>
   </section>
@@ -53,7 +234,9 @@
   <!-- 关键流程块区域 -->
   <div class="container">
     <div class="section-title">
-      <h2>关键流程模块</h2>
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
     </div>
     
     <div class="process-blocks">
@@ -69,17 +252,24 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>核心价值</strong>
+              <strong>核心价值
+                <span class="en-translation">Core Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               返利/Buy-and-Sell等条款的核算与结算联动发票/对账，若未系统化易造成节约漏斗与财务风险，需要规则与自动化校核。
+              <span class="en-translation">The accounting and settlement of rebates/Buy-and-Sell terms linked to invoices/reconciliation, if not systematized, can easily lead to savings leakage and financial risks, requiring rules and automated verification.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>返利/Buy-and-Sell 结算自动化, 将返利与买卖同返参数化（阈值、期间、计算口径），与销量/PO/发票联动自动结算与对账，减少争议与漏算。</li>
+              <li>返利/Buy-and-Sell 结算自动化, 将返利与买卖同返参数化（阈值、期间、计算口径），与销量/PO/发票联动自动结算与对账，减少争议与漏算。
+                <span class="en-translation">Automate rebate/Buy-and-Sell settlement, parameterize rebates and buy-sell-back (thresholds, periods, calculation methods), link with sales/PO/invoices for automatic settlement and reconciliation, reducing disputes and calculation omissions.</span>
+              </li>
             </ul>
           </div>
           
@@ -94,7 +284,7 @@
       <!-- Long Term Agreement and Continuity of Supply Management -->
       <div class="process-block">
         <div class="block-header">
-          <div class="block-title">
+          <div class class="block-title">
             <i class="fas fa-handshake"></i>
             长期协议与供应连续性管理
           </div>
@@ -103,17 +293,24 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>核心价值</strong>
+              <strong>核心价值
+                <span class="en-translation">Core Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               合同起草-红线-审批-签署（CLM）固化合规/条款/定价，缩短周期并减少遗漏，是S2P向下游PO/付款联动的中枢。
+              <span class="en-translation">Contract drafting-redline-approval-signing (CLM) solidifies compliance/terms/pricing, shortens cycles and reduces omissions, serving as the central hub for S2P downstream PO/payment linkage.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>义务与SLA智能跟踪, 从合同抽取义务/SLA/里程碑并落地到任务与预警（含罚则、回款、保险等），与PO/收货/发票/绩效联动形成闭环。</li>
+              <li>义务与SLA智能跟踪, 从合同抽取义务/SLA/里程碑并落地到任务与预警（含罚则、回款、保险等），与PO/收货/发票/绩效联动形成闭环。
+                <span class="en-translation">Intelligent tracking of obligations and SLAs, extracting obligations/SLAs/milestones from contracts and implementing them into tasks and alerts (including penalties, payments, insurance, etc.), linking with PO/receipt/invoice/performance to form a closed loop.</span>
+              </li>
             </ul>
           </div>
           
@@ -137,17 +334,24 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>核心价值</strong>
+              <strong>核心价值
+                <span class="en-translation">Core Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               价格与条款（COS/LTA/Rate/Price Tape）维护确保"合同价→系统价"的一致性，控制价格合规与漏损，是预算/对账/节约计算的基础。
+              <span class="en-translation">Maintenance of prices and terms (COS/LTA/Rate/Price Tape) ensures consistency between 'contract price → system price', controls price compliance and leakage, and serves as the foundation for budget/reconciliation/savings calculation.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>价格条款→系统价同步, 将合同中的价格/费率（COS/LTA/Price Tape）自动结构化并同步到ERP/采购系统，建立“合同价→下单价→发票价”的一致性校验与偏差预警。</li>
+              <li>价格条款→系统价同步, 将合同中的价格/费率（COS/LTA/Price Tape）自动结构化并同步到ERP/采购系统，建立"合同价→下单价→发票价"的一致性校验与偏差预警。
+                <span class="en-translation">Synchronize price terms → system prices, automatically structure and synchronize prices/rates (COS/LTA/Price Tape) from contracts to ERP/procurement systems, establishing consistency checks and deviation alerts for 'contract price → order price → invoice price'.</span>
+              </li>
             </ul>
           </div>
           
@@ -171,16 +375,23 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>核心价值</strong>
+              <strong>核心价值
+                <span class="en-translation">Core Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
-              合同义务/合规（Obligation/SLA/Penalty）跟踪与预警可降低违约与争议，提升履约质量并闭环到绩效与寻源策略。。
+              合同义务/合规（Obligation/SLA/Penalty）跟踪与预警可降低违约与争议，提升履约质量并闭环到绩效与寻源策略。
+              <span class="en-translation">Tracking and alerting of contract obligations/compliance (Obligation/SLA/Penalty) can reduce breaches and disputes, improve fulfillment quality, and close the loop to performance and sourcing strategies.</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>NLP条款抽取/风险评分, 对合同/附件/报价/补充协议进行条款抽取、差异比对与风险评分（红线/例外/缺失），自动生成审阅意见与让步建议，并与条款库/Playbook联动。</li>
+              <li>NLP条款抽取/风险评分, 对合同/附件/报价/补充协议进行条款抽取、差异比对与风险评分（红线/例外/缺失），自动生成审阅意见与让步建议，并与条款库/Playbook联动。
+                <span class="en-translation">NLP clause extraction/risk scoring, extract clauses from contracts/attachments/quotations/supplemental agreements, perform difference comparison and risk scoring (redlines/exceptions/missing items), automatically generate review comments and concession suggestions, and link with clause library/Playbook.</span>
+              </li>
             </ul>
           </div>
           
@@ -204,19 +415,25 @@
         <div class="block-body">
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>核心价值</strong>
+              <strong>核心价值
+                <span class="en-translation">Core Value</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               合同模板/条款库与谈判指引（Playbook）定义合规边界与让步策略，是提高谈判效率与降低法律/商业风险的关键前置，亦支撑条款AI风险评分与自动审阅。
+              <span class="en-translation">Contract templates/clause libraries and negotiation guidance (Playbook) define compliance boundaries and concession strategies, serving as key prerequisites for improving negotiation efficiency and reducing legal/business risks, and also supporting AI risk scoring and automated review of clauses.</span>
             </p>
           </div>
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>谈判智能与红线助手, 基于历史成交/争议/履约与条款风险画像，给出“让步边界/替代条款/相机条款”建议，并在红线过程中实时提示。</li>
+              <li>谈判智能与红线助手, 基于历史成交/争议/履约与条款风险画像，给出"让步边界/替代条款/相机条款"建议，并在红线过程中实时提示。
+                <span class="en-translation">Negotiation intelligence and redline assistant, based on historical deals/disputes/performance and clause risk profiles, provide suggestions for 'concession boundaries/alternative clauses/contingency clauses', and offer real-time prompts during the redline process.</span>
+              </li>
             </ul>
           </div>
-          
           <div class="block-actions">
             <a href="{{ url_for('procurement.best_practice', process='contract_management', module_name='legal_contract') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
@@ -226,9 +443,5 @@
       </div>
     </div>
   </div>
-
-  <footer>
-    <p>采购流程分析系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
-  </footer>
 </body>
 </html>

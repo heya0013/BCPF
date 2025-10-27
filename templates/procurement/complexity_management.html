@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>复杂性管理 - 采购流程分析</title>
+  <title>复杂性管理 - 采购流程分析 | Complexity Management - Procurement Process Analysis</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <style>
@@ -41,6 +41,49 @@
     .complexity-process .best-practice-btn {
       background: linear-gradient(90deg, #8e44ad, #3498db);
     }
+    
+    /* 英文翻译样式 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.25rem;
+      font-style: italic;
+      line-height: 1.4;
+    }
+    
+    .process-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .block-subtitle {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    
+    .optimization-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #2c3e50;
+    }
+    
+    .optimization-list {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .optimization-list li {
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+      .en-translation {
+        font-size: 0.8em;
+      }
+    }
   </style>
 </head>
 <body>
@@ -50,10 +93,15 @@
       <div class="process-icon">
         <i class="fas fa-project-diagram"></i>
       </div>
-      <h1 class="process-title">复杂性管理</h1>
-      <div class="process-subtitle">Complexity Management</div>
+      <h1 class="process-title">复杂性管理
+        <span class="en-translation">Complexity Management</span>
+      </h1>
+      <div class="process-subtitle">优化产品组合和品类管理，降低复杂性，提高标准化水平
+        <span class="en-translation">Optimize product portfolio and category management, reduce complexity, improve standardization</span>
+      </div>
       <div class="process-desc">
         优化产品组合和品类管理，降低复杂性，提高标准化水平，增强供应链效率和成本竞争力。本流程涵盖代际跟踪、产品复杂性管理和品类标准化等关键环节。
+        <span class="en-translation">Optimize product portfolio and category management, reduce complexity, improve standardization, enhance supply chain efficiency and cost competitiveness. This process covers key aspects such as generation tracking, product complexity management, and category standardization.</span>
       </div>
     </div>
   </section>
@@ -61,7 +109,9 @@
   <!-- 关键流程块区域 -->
   <div class="container">
     <div class="section-title">
-      <h2>关键流程模块</h2>
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
     </div>
     
     <div class="process-blocks">
@@ -76,16 +126,23 @@
         </div>
         <div class="block-body">
           <div class="core-value">
-            <div class="core-value-title">核心价值</div>
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
             <p class="core-value-content">
               围绕代际（G2G）与SBB的微复杂度与预测闭环跟踪，直接影响BOM标准化、共用率、报价与G2G成本桥，并反哺源头寻源（Source Plan）。在行业最佳实践中，复杂度与标准化被视为寻源与成本优化的前置乘数，平台化的一体化数据贯通可显著提升端到端效率。
+              <span class="en-translation">Closed-loop tracking of micro-complexity and predictions around Generation to Generation (G2G) and SBB directly impacts BOM standardization, commonality rate, quotation, and G2G cost bridging, and feeds back to source planning. In industry best practices, complexity and standardization are considered pre-multipliers for sourcing and cost optimization, and platform-based integrated data connectivity can significantly improve end-to-end efficiency.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>将G2G/SBB轨迹（规格变化、数量、命中率、资格/费用）统一到可视化看板，生成式AI自动撰写“复杂度-成本/供给”周报/季度洞察与建议行动清单。</li>
+              <li>将G2G/SBB轨迹（规格变化、数量、命中率、资格/费用）统一到可视化看板，生成式AI自动撰写"复杂度-成本/供给"周报/季度洞察与建议行动清单。
+                <span class="en-translation">Unify G2G/SBB trajectories (spec changes, quantities, hit rates, qualifications/costs) into a visual dashboard, with generative AI automatically creating weekly/quarterly "complexity-cost/supply" insights and recommended action lists.</span>
+              </li>
             </ul>
           </div>
           
@@ -108,17 +165,26 @@
         </div>
         <div class="block-body">
           <div class="core-value">
-            <div class="core-value-title">核心价值</div>
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
             <p class="core-value-content">
               以MLQ、PCBA/SPEC计数等维度管理"按产品的复杂度"，是控制长尾、提升共用率与降低库存负担的源头抓手；RFQ体量与议价能力亦受其约束，因此属于寻源与成本管理的关键前置。
+              <span class="en-translation">Managing "complexity by product" through dimensions such as MLQ and PCBA/SPEC count is a fundamental approach to controlling long-tail items, improving commonality rates, and reducing inventory burden; RFQ volume and bargaining power are also constrained by it, making it a key prerequisite for sourcing and cost management.</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>把MLQ与库存/交付/价格预测联动，形成MLQ阈值的智能推荐与审批编排（异常闸口+解释），并与RFQ/Source Plan规则一致性校验。</li>
-              <li>以MLQ、SPEC/PCBA计数、长尾分布、资格费用等特征训练“复杂度→成本/交付”的弹性模型，输出削减复杂度的处方式建议（对标件、替代件、量价阈值）。</li>
+              <li>把MLQ与库存/交付/价格预测联动，形成MLQ阈值的智能推荐与审批编排（异常闸口+解释），并与RFQ/Source Plan规则一致性校验。
+                <span class="en-translation">Link MLQ with inventory/delivery/price predictions to form intelligent recommendations and approval workflows for MLQ thresholds (exception gates + explanations), and perform consistency checks with RFQ/Source Plan rules.</span>
+              </li>
+              <li>以MLQ、SPEC/PCBA计数、长尾分布、资格费用等特征训练"复杂度→成本/交付"的弹性模型，输出削减复杂度的处方式建议（对标件、替代件、量价阈值）。
+                <span class="en-translation">Train an elastic model of "complexity → cost/delivery" using features such as MLQ, SPEC/PCBA counts, long-tail distribution, and qualification fees, outputting prescriptive recommendations for complexity reduction (benchmark parts, alternative parts, volume-price thresholds).</span>
+              </li>
             </ul>
           </div>
           
@@ -141,16 +207,23 @@
         </div>
         <div class="block-body">
           <div class="core-value">
-            <div class="core-value-title">核心价值</div>
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
             <p class="core-value-content">
               面向品类的复杂度度量与规格标准化（Spec Pool）可形成体量集中与共用化，最大化捆绑议价与供应韧性，是端到端S2P中"标准化→寻源→价格/交付"的关键衔接点。
+              <span class="en-translation">Category-oriented complexity measurement and specification standardization (Spec Pool) can achieve volume concentration and commonality, maximizing bundled bargaining and supply resilience, serving as a key connection point in the end-to-end S2P process from "standardization → sourcing → price/delivery".</span>
             </p>
           </div>
           
           <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>构建“规格-物料-BOM-品类-供应商”的知识图谱，结合NLP解析SPEC/SBB/MLQ说明，自动识别共用化机会与复杂度驱动因素，形成Spec Pool与共性清单。</li>
+              <li>构建"规格-物料-BOM-品类-供应商"的知识图谱，结合NLP解析SPEC/SBB/MLQ说明，自动识别共用化机会与复杂度驱动因素，形成Spec Pool与共性清单。
+                <span class="en-translation">Build a knowledge graph of "specification-material-BOM-category-supplier", combine with NLP to parse SPEC/SBB/MLQ descriptions, automatically identify commonality opportunities and complexity drivers, and form Spec Pool and commonality lists.</span>
+              </li>
             </ul>
           </div>
           
@@ -163,9 +236,5 @@
       </div>
     </div>
   </div>
-
-  <footer>
-    <p>采购流程分析系统 © 2025 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
-  </footer>
 </body>
 </html>

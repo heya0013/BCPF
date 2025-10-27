@@ -3,23 +3,217 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>付款、对账与返利</title>
+  <title>付款、对账与返利 - 采购流程分析 | Payments, Reconciliation and Rebate - Procurement Process Analysis</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <style>
+    /* 付款、对账与返利特定样式 */
+    .payment-process .process-icon {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .key-reason-top {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 4px solid #27ae60;
+    }
+    
+    .key-reason-header {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    
+    .key-reason-text {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    /* 英文翻译样式 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.25rem;
+      font-style: italic;
+      line-height: 1.4;
+    }
+    
+    .process-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .block-subtitle {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    
+    .optimization-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #2c3e50;
+    }
+    
+    .optimization-list {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .optimization-list li {
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+      .en-translation {
+        font-size: 0.8em;
+      }
+    }
+    
+    /* 页面整体样式 */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .header-section {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+      color: white;
+      border-radius: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .process-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .process-title {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .process-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      opacity: 0.9;
+    }
+    
+    .process-desc {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .section-title h2 {
+      color: #27ae60;
+      font-size: 2rem;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 15px;
+    }
+    
+    .process-blocks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 25px;
+    }
+    
+    .process-block {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    
+    .block-header {
+      background: linear-gradient(90deg, #27ae60 0%, #229954 100%);
+      color: white;
+      padding: 20px;
+    }
+    
+    .block-title {
+      font-size: 1.4rem;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .block-body {
+      padding: 25px;
+    }
+    
+    .content-area {
+      margin-bottom: 20px;
+    }
+    
+    .block-actions {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .best-practice-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #27ae60 0%, #229954 100%);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .best-practice-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 30px;
+      margin-top: 50px;
+      background: #2c3e50;
+      color: white;
+    }
+  </style>
 </head>
 <body>
 
-
   <!-- 流程标题区域 -->
-  <section class="header-section">
+  <section class="header-section payment-process">
     <div class="header-content">
       <div class="process-icon">
         <i class="fas fa-file-invoice-dollar"></i>
       </div>
-      <h1 class="process-title">付款、对账与返利</h1>
+      <h1 class="process-title">付款、对账与返利
+      </h1>
       <div class="process-subtitle">Payments, Reconcile and Rebate</div>
       <div class="process-desc">
         优化付款流程，提高对账效率，最大化返利收益。本流程涵盖付款审批、对账差异处理、返利计算与发放等关键环节，帮助企业实现财务流程的高效管理。
+        <span class="en-translation">Optimize payment processes, improve reconciliation efficiency, and maximize rebate benefits. This process covers key aspects such as payment approval, reconciliation discrepancy handling, rebate calculation and distribution, helping enterprises achieve efficient management of financial processes.</span>
       </div>
     </div>
   </section>
@@ -27,8 +221,11 @@
   <!-- 关键流程块区域 -->
   <div class="container">
     <div class="section-title">
-      <h2>关键流程模块</h2>
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
     </div>
+    
     <div class="process-blocks">
       <!-- 付款管理 -->
       <div class="process-block">
@@ -40,36 +237,39 @@
           <div class="block-subtitle">Payment Management</div>
         </div>
         <div class="block-body">
-          <p class="block-desc">
-          <!-- 添加的关键理由部分 -->
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>关键理由</strong>
+              <strong>关键理由
+                <span class="en-translation">Key Reason</span>
+              </strong>
             </div>
             <p class="key-reason-text">
-              付款管理是“合同价→下单价→发票价”一致性的最终守门，涵盖常规付款、仅发票付款、预付款/加急、冻结/释放等，直接影响供应关系与财务准确。
+              付款管理是"合同价→下单价→发票价"一致性的最终守门，涵盖常规付款、仅发票付款、预付款/加急、冻结/释放等，直接影响供应关系与财务准确。
+              <span class="en-translation">Payment management is the final gatekeeper for the consistency of "contract price → order price → invoice price", covering regular payments, invoice-only payments, advance payments/expedited payments, freeze/release, etc., directly impacting supply relationships and financial accuracy.</span>
             </p>
           </div>
+          
           <div class="content-area">
-            <div class="optimization-title">付款管理优化建议：</div>
+            <div class="optimization-title">付款管理优化建议：
+              <span class="en-translation">Payment Management Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>发票-收货-合同价一致性引擎</li>
-              <li>从合同抽取价目与条款，联动PO/GR/IV实现三单匹配(3-way match)与差异解释，自动触发暂停/更正/补付。
-              <li>加急/冻结-释放 智能管控
-              <li>识别高风险/关键供应场景下的加急与冻结/释放请求，给出风险-现金流-合规的综合评分与审批建议，并生成审计轨迹。
+              <li>发票-收货-合同价一致性引擎，从合同抽取价目与条款，联动PO/GR/IV实现三单匹配(3-way match)与差异解释，自动触发暂停/更正/补付。
+                <span class="en-translation">Invoice-receipt-contract price consistency engine, extracting price lists and terms from contracts, linking PO/GR/IV to achieve three-way matching and discrepancy explanation, automatically triggering suspension/correction/supplementary payment.</span>
+              </li>
+              <li>加急/冻结-释放 智能管控，识别高风险/关键供应场景下的加急与冻结/释放请求，给出风险-现金流-合规的综合评分与审批建议，并生成审计轨迹。
+                <span class="en-translation">Intelligent control of expedited/freeze-release, identifying expedited and freeze/release requests in high-risk/critical supply scenarios, providing comprehensive risk-cash flow-compliance scoring and approval recommendations, and generating audit trails.</span>
+              </li>
             </ul>
           </div>
-          <!-- 最佳实践按钮 -->
+          
           <div class="block-actions">
-            <a href="{{ url_for('procurement.best_practice', process='PRR', module_name='Payment_Management') }}" 
-               class="best-practice-btn">
+            <a href="{{ url_for('procurement.best_practice', process='PRR', module_name='Payment_Management') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </div>
       </div>
-        
-          
       
       <!-- 对账管理 -->
       <div class="process-block">
@@ -81,32 +281,37 @@
           <div class="block-subtitle">Recon Management</div>
         </div>
         <div class="block-body">
-          <p class="block-desc">
-          <!-- 添加的关键理由部分 -->
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>关键理由</strong>
+              <strong>关键理由
+                <span class="en-translation">Key Reason</span>
+              </strong>
             </div>
             <p class="key-reason-text">
               对账管理（Recon）串接 Parts/ODM/EMS 的应付与交付实绩，是发现价差/量差/时间差的主战场，并向上游 PO/合同/主数据反哺修正。
+              <span class="en-translation">Reconciliation management (Recon) connects payables and delivery performance of Parts/ODM/EMS, serving as the main battlefield for discovering price/quantity/time differences, and feeding corrections back to upstream PO/contracts/master data.</span>
             </p>
           </div>
+          
           <div class="content-area">
-            <div class="optimization-title">对账管理优化建议：</div>
+            <div class="optimization-title">对账管理优化建议：
+              <span class="en-translation">Reconciliation Management Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>Recon 智能分解与闭环</li>
-              <li>对 Parts/ODM/EMS 的价差/量差/时间差进行分解归因（合同/主数据/收货/发票），生成纠偏任务与责任闭环。
+              <li>Recon 智能分解与闭环，对 Parts/ODM/EMS 的价差/量差/时间差进行分解归因（合同/主数据/收货/发票），生成纠偏任务与责任闭环。
+                <span class="en-translation">Intelligent decomposition and closed-loop of Recon, decomposing and attributing price/quantity/time differences of Parts/ODM/EMS (contract/master data/receipt/invoice), generating correction tasks and responsibility closed-loop.</span>
+              </li>
             </ul>
           </div>
-          <!-- 最佳实践按钮 -->
+          
           <div class="block-actions">
-            <a href="{{ url_for('procurement.best_practice', process='PRR', module_name='Recon_Management') }}" 
-               class="best-practice-btn">
+            <a href="{{ url_for('procurement.best_practice', process='PRR', module_name='Recon_Management') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </div>
       </div>
+      
       <!-- 返利管理 -->
       <div class="process-block">
         <div class="block-header">
@@ -117,27 +322,31 @@
           <div class="block-subtitle">Rebate Management</div>
         </div>
         <div class="block-body">
-          <p class="block-desc">
-            <!-- 添加的关键理由部分 -->
           <div class="key-reason-top">
             <div class="key-reason-header">
-              <strong>关键理由</strong>
+              <strong>关键理由
+                <span class="en-translation">Key Reason</span>
+              </strong>
             </div>
             <p class="key-reason-text">
-              返利管理通过参数化规则（阈值/期间/口径）核算与结算，若不系统化易造成漏算与争议，需与发票/对账自动核验闭环。。
+              返利管理通过参数化规则（阈值/期间/口径）核算与结算，若不系统化易造成漏算与争议，需与发票/对账自动核验闭环。
+              <span class="en-translation">Rebate management calculates and settles through parameterized rules (thresholds/periods/caliber), and if not systematized, it can easily lead to omissions and disputes, requiring automatic verification and closed-loop with invoices/reconciliation.</span>
             </p>
           </div>
+          
           <div class="content-area">
-            <div class="optimization-title">对账管理优化建议：</div>
+            <div class="optimization-title">返利管理优化建议：
+              <span class="en-translation">Rebate Management Optimization Recommendations:</span>
+            </div>
             <ul class="optimization-list">
-              <li>返利规则参数化与自动结算</li>
-              <li>将阈值/期间/梯度/基数口径参数化，自动核算返利并与发票/对账联动生成结算条目与应付/应收。
+              <li>返利规则参数化与自动结算，将阈值/期间/梯度/基数口径参数化，自动核算返利并与发票/对账联动生成结算条目与应付/应收。
+                <span class="en-translation">Parameterization and automatic settlement of rebate rules, parameterizing thresholds/periods/gradients/base calibers, automatically calculating rebates and linking with invoices/reconciliation to generate settlement entries and payables/receivables.</span>
+              </li>
             </ul>
           </div>
-          <!-- 最佳实践按钮 -->
+          
           <div class="block-actions">
-            <a href="{{ url_for('procurement.best_practice', process='PRR', module_name='Rebate_Management') }}" 
-               class="best-practice-btn">
+            <a href="{{ url_for('procurement.best_practice', process='PRR', module_name='Rebate_Management') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -145,10 +354,5 @@
       </div>
     </div>
   </div>
-</div>
-
-  <footer>
-    <p>采购流程分析系统 © 2023 | 企业采购优化解决方案 | 提升效率 • 降低成本 • 优化供应链</p>
-  </footer>
 </body>
 </html>
