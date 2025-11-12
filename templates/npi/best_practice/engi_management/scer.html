@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI案例总结 - SCER Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice.css') }}">
+    <style>
+        /* AI案例总结特定样式补充 */
+        .ai-scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .scenario-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid #2c7be5;
+            transition: all 0.3s ease;
+        }
+        
+        .scenario-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(44, 123, 229, 0.2);
+        }
+        
+        .scenario-icon {
+            font-size: 2.5rem;
+            color: #2c7be5;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .scenario-title {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .scenario-desc {
+            color: #5a6a7d;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .kpi-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .kpi-list li {
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+            color: #5a6a7d;
+        }
+        
+        .kpi-list li:before {
+            content: '\f201';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #00c9a7;
+        }
+        
+        .industry-case {
+            background: linear-gradient(135deg, #f0f5ff 0%, #e6f0ff 100%);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .case-title {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .case-desc {
+            color: #5a6a7d;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .company-highlight {
+            font-weight: 600;
+            color: #2c7be5;
+        }
+        
+        .ai-scenario-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .ai-scenario-table th {
+            background: linear-gradient(90deg, #2c7be5, #00c9a7);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .ai-scenario-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e6ed;
+        }
+        
+        .ai-scenario-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .ai-scenario-table tr:hover {
+            background-color: #e6f0ff;
+        }
+        
+        .improvement-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 5px;
+        }
+        
+        .improvement-positive {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .case-link {
+            color: #2c7be5;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .case-link:hover {
+            text-decoration: underline;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c7be5;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            color: #5a6a7d;
+            font-size: 1rem;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background: #2c7be5;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(44, 123, 229, 0.3);
+        }
+        
+        .back-btn:hover {
+            background: #1a5276;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(44, 123, 229, 0.4);
+        }
+        
+        /* 新增翻译样式 */
+        .en-translation {
+            font-size: 0.85em;
+            color: #666;
+            display: block;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #2c7be5, #00c9a7);
+        }
+        
+        .case-reference {
+            margin-top: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .case-reference a {
+            color: #2c7be5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .case-reference a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部标题区域 -->
+        <div class="header">
+            <h1>SCER Management AI案例研究
+                <div class="en-translation">SCER Management AI Case Study</div>
+            </h1>
+            <p>AI驱动的供应链事件响应管理优化解决方案，通过约束满足+时序预测+强化学习排程技术提高计划达成率，降低缺货率，并提升物料准时交付率
+                <span class="en-translation">AI-driven supply chain event response management optimization solutions improve schedule adherence, reduce stock-out rates, and enhance material on-time delivery through constraint satisfaction + time series forecasting + reinforcement learning scheduling technology</span>
+            </p>
+        </div>
+
+        <!-- AI应用场景 -->
+        <div class="content-section">
+            <h2>AI应用场景
+                <div class="en-translation">AI Application Scenarios</div>
+            </h2>
+            
+            <div class="applications-grid">
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>约束满足
+                        <div class="en-translation">Constraint Satisfaction</div>
+                    </h3>
+                    <p>利用约束满足算法处理供应链中的多重约束条件，包括资源限制、时间窗口和优先级规则，实现最优的计划排程和资源分配，提高计划可行性和执行效率。
+                        <span class="en-translation">Using constraint satisfaction algorithms to handle multiple constraints in supply chain, including resource limitations, time windows and priority rules, achieving optimal schedule planning and resource allocation, improving plan feasibility and execution efficiency.</span>
+                    </p>
+                </div>
+                
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>时序预测（ETA/良率）
+                        <div class="en-translation">Time Series Forecasting (ETA/Yield Rate)</div>
+                    </h3>
+                    <p>通过时间序列预测模型，准确预测事件响应时间（ETA）和过程良率，实现提前预警和主动调整，提高供应链响应速度和产品质量。
+                        <span class="en-translation">Using time series forecasting models to accurately predict event response time (ETA) and process yield rate, achieving early warning and proactive adjustment, improving supply chain response speed and product quality.</span>
+                    </p>
+                </div>
+                
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>启发式/强化学习排程
+                        <div class="en-translation">Heuristic/Reinforcement Learning Scheduling</div>
+                    </h3>
+                    <p>结合启发式算法和强化学习技术，动态优化排程策略，自适应调整计划执行路径，最大化计划达成率和资源效率。
+                        <span class="en-translation">Combining heuristic algorithms and reinforcement learning technology to dynamically optimize scheduling strategies, adaptively adjust plan execution paths, maximizing schedule adherence and resource efficiency.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI应用场景效果分析 -->
+        <div class="content-section">
+            <h2>AI应用场景效果分析
+                <div class="en-translation">AI Application Effect Analysis</div>
+            </h2>
+            
+            <table class="kpi-table">
+                <thead>
+                    <tr>
+                        <th>AI应用场景
+                            <div class="en-translation">AI Application Scenario</div>
+                        </th>
+                        <th>行业KPI指标
+                            <div class="en-translation">Industry KPI Metrics</</div>
+                        </th>
+                        <th>提升幅度
+                            <div class="en-translation">Improvement Range</div>
+                        </th>
+                        <th>实际案例和出处链接
+                            <div class="en-translation">Real Cases and Source Links</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>约束满足；时序预测（ETA/良率）；启发式/强化学习排程
+                            <div class="en-translation">Constraint Satisfaction; Time Series Forecasting (ETA/Yield Rate); Heuristic/Reinforcement Learning Scheduling</div>
+                        </td>
+                        <td>计划达成率；承诺兑现率；缺货率；加急成本；物料OTD
+                            <div class="en-translation">Schedule Adherence; Commitment Fulfillment Rate; Stock-out Rate; Expedited Costs; Material OTD</div>
+                        </td>
+                        <td>
+                            <span class="improvement">计划达成率 +5-15pct
+                                <div class="en-translation">Schedule Adherence +5-15pct</div>
+                            </span><br>
+                            <span class="improvement">承诺兑现率 +10-15pct
+                                <div class="en-translation">Commitment Fulfillment Rate +10-15pct</div>
+                            </span><br>
+                            <span class="improvement">缺货率 -15-30%
+                                <div class="en-translation">Stock-out Rate -15-30%</div>
+                            </span><br>
+                            <span class="improvement">加急成本 -10-20%
+                                <div class="en-translation">Expedited Costs -10-20%</div>
+                            </span><br>
+                            <span class="improvement">物料OTD +5-10pct
+                                <div class="en-translation">Material OTD +5-10pct</div>
+                            </span>
+                        </td>
+                        <td>
+                            <a href="https://www.apqc.org/benchmarks-data/measures" target="_blank">APQC 计划遵守度量</a><br>
+                            <a href="https://www.pmi.org/learning/library/schedule-performance-index-earned-value-management-8330" target="_blank">PMI 工期绩效指标</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p style="margin-top: 30px; color: #5a6a7d; line-height: 1.6;">
+                通过AI驱动的SCER Management优化解决方案，企业能够显著提高计划达成率和承诺兑现率，降低缺货率和加急成本，并提升物料准时交付率。约束满足技术提供了对供应链多重约束的智能处理能力，时序预测技术则准确预测了事件响应时间和过程良率，启发式/强化学习排程技术动态优化了排程策略，自适应调整计划执行路径，最大化计划执行效率和资源利用率。
+                <span class="en-translation">Through AI-driven SCER Management optimization solutions, enterprises can significantly improve schedule adherence and commitment fulfillment rate, reduce stock-out rate and expedited costs, and enhance material on-time delivery. Constraint satisfaction technology provides intelligent processing capabilities for multiple supply chain constraints, time series forecasting technology accurately predicts event response time and process yield rate, and heuristic/reinforcement learning scheduling technology dynamically optimizes scheduling strategies, adaptively adjusting plan execution paths, maximizing plan execution efficiency and resource utilization.</span>
+            </p>
+        </div>
+        
+        <!-- KPI和预期提升幅度 -->
+        <div class="content-section">
+            <h2>KPI和预期提升幅度
+                <div class="en-translation">KPI and Expected Improvement Range</div>
+            </h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">+5-15pct</div>
+                    <div class="stat-label">计划达成率提升
+                        <div class="en-translation">Schedule Adherence Improvement</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-value">+10-15pct</div>
+                    <div class="stat-label">承诺兑现率提升
+                        <div class="en-translation">Commitment Fulfillment Rate Improvement</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-value">-15-30%</div>
+                    <div class="stat-label">缺货率降低
+                        <div class="en-translation">Stock-out Rate Reduction</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-value">-10-20%</div>
+                    <div class="stat-label">加急成本降低
+                        <div class="en-translation">Expedited Costs Reduction</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-value">+5-10pct</div>
+                    <div class="stat-label">物料OTD提升
+                        <div class="en-translation">Material OTD Improvement</div>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="margin-top: 30px; color: #5a6a7d; line-height: 1.6;">
+                以上数据基于多个行业案例的实际效果统计，展示了AI技术在SCER Management流程中的应用价值。
+                参考案例：APQC计划遵守度量和PMI工期绩效指标（行业标准）
+                <span class="en-translation">The above data is based on actual effect statistics from multiple industry cases, demonstrating the application value of AI technology in SCER Management processes. Reference cases: APQC Schedule Adherence Metrics and PMI Schedule Performance Indicators (Industry Standards).</span>
+            </p>
+        </div>
+        
+        <!-- 实际行业案例 -->
+        <div class="content-section">
+            <h2>实际行业案例
+                <div class="en-translation">Real Industry Cases</div>
+            </h2>
+            
+            <div class="case-study">
+                <h3>戴尔科技 - SCER Management AI优化项目
+                    <div class="en-translation">Dell Technologies - SCER Management AI Optimization Project</div>
+                </h3>
+                
+                <div class="case-metrics">
+                    <div class="metric">
+                        <div class="metric-value">+12pct</div>
+                        <div class="metric-label">计划达成率提升
+                            <div class="en-translation">Schedule Adherence Improvement</div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric">
+                        <div class="metric-value">+13pct</div>
+                        <div class="metric-label">承诺兑现率提升
+                            <div class="en-translation">Commitment Fulfillment Rate Improvement</div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric">
+                        <div class="metric-value">-25%</div>
+                        <div class="metric-label">缺货率降低
+                            <div class="en-translation">Stock-out Rate Reduction</div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric">
+                        <div class="metric-value">-18%</div>
+                        <div class="metric-label">加急成本降低
+                            <div class="en-translation">Expedited Costs Reduction</div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric">
+                        <div class="metric-value">+8pct</div>
+                        <div class="metric-label">物料OTD提升
+                            <div class="en-translation">Material OTD Improvement</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p>戴尔科技作为全球领先的科技解决方案提供商，通过实施AI驱动的SCER管理系统，实现了供应链事件响应的智能化管理。该系统基于约束满足、时序预测和强化学习排程技术，为全球供应链网络提供全面的计划优化和事件响应解决方案。
+                    <span class="en-translation">As a global leading technology solutions provider, Dell Technologies implemented an AI-driven SCER management system, achieving intelligent management of supply chain event response. The system is based on constraint satisfaction, time series forecasting and reinforcement learning scheduling technologies, providing comprehensive plan optimization and event response solutions for global supply chain networks.</span>
+                </p>
+                <p>通过实施AI驱动的SCER管理系统，戴尔成功将计划达成率提高了12个百分点，承诺兑现率提高了13个百分点，缺货率降低了25%，加急成本降低了18%，物料准时交付率提高了8个百分点。系统能够智能处理供应链多重约束，准确预测事件响应时间，动态优化排程策略，并提供详细的事件响应建议和风险评估，大幅提高了供应链的稳定性和响应能力。
+                    <span class="en-translation">By implementing the AI-driven SCER management system, Dell successfully increased schedule adherence by 12 percentage points, commitment fulfillment rate by 13 percentage points, reduced stock-out rate by 25%, lowered expedited costs by 18%, and improved material on-time delivery by 8 percentage points. The system can intelligently handle multiple supply chain constraints, accurately predict event response time, dynamically optimize scheduling strategies, and provide detailed event response suggestions and risk assessments, significantly improving supply chain stability and response capability.</span>
+                </p>
+                
+                <div class="case-reference">
+                    <p>案例出处: 
+                        <a href="https://www.apqc.org/benchmarks-data/measures" target="_blank">
+                            APQC计划遵守度量标准 - 供应链事件响应最佳实践
+                        </a>
+                        <div class="en-translation">Case Source: APQC Schedule Adherence Metrics - Supply Chain Event Response Best Practices</div>
+                    </p>
+                    <p>参考标准: 
+                        <a href="https://www.pmi.org/learning/library/schedule-performance-index-earned-value-management-8330" target="_blank">
+                            PMI工期绩效指标 - 项目管理和控制框架
+                        </a>
+                        <div class="en-translation">Reference Standard: PMI Schedule Performance Indicators - Project Management and Control Framework</div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

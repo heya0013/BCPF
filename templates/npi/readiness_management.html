@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新产品就绪管理流程分析 | NP Readiness Management Process Analysis</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <style>
+    /* 全局样式 */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* 标题区域样式 */
+    .header-section {
+      background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+      color: white;
+      padding: 40px 20px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    
+    .process-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .process-title {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .process-subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 15px;
+    }
+    
+    .process-desc {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .en-translation {
+      display: block;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-top: 5px;
+      font-style: italic;
+    }
+    
+    /* 内容区域样式 */
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .section-title h2 {
+      font-size: 2rem;
+      color: #2c3e50;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 15px;
+      display: inline-block;
+    }
+    
+    .process-blocks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 25px;
+    }
+    
+    .process-block {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .process-block:hover {
+      transform: translateY(-5px);
+    }
+    
+    .block-header {
+      background: linear-gradient(135deg, #9b59b6 0%, #3498db 100%);
+      color: white;
+      padding: 20px;
+    }
+    
+    .block-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .block-subtitle {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+    
+    .block-body {
+      padding: 20px;
+    }
+    
+    .core-value {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 4px solid #9b59b6;
+    }
+    
+    .core-value-title {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    
+    .core-value-content {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    .content-area {
+      margin: 20px 0;
+    }
+    
+    .optimization-title {
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+    
+    .optimization-list {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .optimization-list li {
+      margin-bottom: 10px;
+      color: #5a6a7d;
+    }
+    
+    .block-actions {
+      text-align: right;
+      margin-top: 20px;
+    }
+    
+    .best-practice-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .best-practice-btn:hover {
+      opacity: 0.9;
+      transform: translateX(5px);
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .process-blocks {
+        grid-template-columns: 1fr;
+      }
+      
+      .process-title {
+        font-size: 2rem;
+      }
+      
+      .block-title {
+        font-size: 1.2rem;
+      }
+    }
+    
+    /* 新产品管理特定样式 */
+    .new-product-process .process-icon {
+      background-color: rgba(255, 255, 255, 0.2);
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 流程标题区域 -->
+    <section class="header-section new-product-process">
+      <div class="header-content">
+        <div class="process-icon">
+          <i class="fas fa-cube"></i>
+        </div>
+        <h1 class="process-title">新产品就绪管理
+          <span class="en-translation">NP Readiness Management</span>
+        </h1>
+        <div class="process-desc">
+          统筹新产品量产前各项准备工作，核查推进并管控风险，确保满足量产条件。
+          <span class="en-translation">Coordinate preparatory work for new products before mass production, verify progress and control risks to meet mass production requirements.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 关键流程块区域 -->
+    <div class="section-title">
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
+    </div>
+    
+    <div class="process-blocks">
+      <!-- 试产、爬坡及量产启动管理-->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-map-marked-alt"></i>
+            试产、爬坡及量产启动管理
+            <span class="en-translation">Pilot&Ramp&Launch Management</span>
+          </div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
+            <p class="core-value-content">
+              定义样机/试产/量产前阶段的就绪标准与验证证据口径，确保阶段退出具备客观依据。
+              <span class="en-translation">Define the readiness criteria and specifications for verification evidence for the prototype, pilot production and pre-mass production stages to ensure that the stage exit is supported by objective evidence.</span>
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
+            <ul class="optimization-list">
+              <li>建立工序 / 设备 / 班次 / 良率 / 切换的产能模型与情景仿真，输出放量窗口与约束解耦策略。
+                <span class="en-translation">Build capacity model & scenario simulation (process/equipment/shift/yield/changeover), output ramp-up window & constraint decoupling strategy.</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('npi.best_practice', process='readi_management', module_name='pilot') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 技术认可，首件检验与样品认可管理-->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-bullseye"></i>
+            技术认可，首件检验与样品认可管理
+            <span class="en-translation">TA_FAI_SA Management</span>
+          </div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
+            <p class="core-value-content">
+              明确首件/初件报告的样本、量测与证据结构，作为批准的重要依据。
+              <span class="en-translation">Clarify the sample information, measurement details and evidence structure of the first article report, which shall serve as an important basis for approval.</span>
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
+            <ul class="optimization-list">
+              <li>将控制计划、FMEA 交付物结构化与机读化，执行完整性、版本映射校验。
+                <span class="en-translation">Structure and digitize deliverables such as Control Plan and FMEA, and perform integrity and version mapping verification.</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('npi.best_practice', process='readi_management', module_name='fai') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 海外工厂赋能-->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-map-marked-alt"></i>
+            海外工厂赋能
+          </div>
+          <div class="block-subtitle">Oversea Factory Enablement</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值</div>
+            <p class="core-value-content">
+              形成规则、度量与证据的标准体系，确保过程一致、结果可比、全程可审计。
+              <span class="en-translation">Establish a standardized system of rules, metrics and evidence to ensure process consistency, result comparability and full-process auditability.</span>
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>构建可维护的 DFx 规则库，配套海外工厂落地培训，实现对 BOM / 图纸 / 工艺的标准化静态检查。
+                <span class="en-translation">Establish a maintainable DFx rule library, provide supporting landing training for overseas factories, and realize standardized static inspections on BOM/drawings/processes.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('npi.best_practice', process='readi_management', module_name='oversea') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>  
+      
+      <!-- 生产需求评审-->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-map-marked-alt"></i>
+            生产需求评审
+          </div>
+          <div class="block-subtitle">Build Request review</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值</div>
+            <p class="core-value-content">
+              建立量产在管零部件清单与状态编码（合格/待定/替代/停用等），确保BOM覆盖与物料可用性的判定口径一致。
+              <span class="en-translation">Establish a managed parts list and status codes (qualified/pending/alternative/discontinued, etc.) for mass production to ensure consistent judgment criteria for BOM coverage and material availability.</span>
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>自动抽取变更影响的零部件、工艺与文件，生成影响清单与同步任务，监控 PPAP/PSO/BOM 冻结一致性。
+                <span class="en-translation">Automatically extract components, processes and documents affected by changes, generate impact lists and synchronization tasks, and monitor the freeze consistency of PPAP/PSO/BOM.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('npi.best_practice', process='readi_management', module_name='build_request') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div> 
+
+       <!-- 供应链产品变更清单管理-->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-map-marked-alt"></i>
+            供应链产品变更清单管理
+          </div>
+          <div class="block-subtitle">SC PCL Management</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值</div>
+            <p class="core-value-content">
+              形成规则、度量与证据的标准体系，确保过程一致、结果可比、全程可审计。
+              <span class="en-translation">Establish a standardized system of rules, metrics and evidence to ensure process consistency, result comparability and full-process auditability.</span>
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>自动抽取变更影响的零部件、工艺与文件，生成影响清单与同步任务，监控 PPAP/PSO/BOM 冻结一致性。
+                <span class="en-translation">Automatically extract components, processes and documents affected by changes, generate impact lists and synchronization tasks, and monitor the freeze consistency of PPAP/PSO/BOM.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('npi.best_practice', process='readi_management', module_name='scpcl') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+</body>
+</html>

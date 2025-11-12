@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>最佳实践 - {{ process_name }} - {{ module_name }}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: "Microsoft YaHei", sans-serif;
+      background: #f4f6f8;
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 800px;
+      width: 100%;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+    
+    .header {
+      background: linear-gradient(90deg, #2c7be5, #00c9a7);
+      color: white;
+      padding: 40px;
+      text-align: center;
+    }
+    
+    .header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+    
+    .header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    .content {
+      padding: 40px;
+      text-align: center;
+    }
+    
+    .icon {
+      font-size: 4rem;
+      color: #2c7be5;
+      margin-bottom: 20px;
+    }
+    
+    .message {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: #5a6a7d;
+    }
+    
+    .back-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #2c7be5, #00c9a7);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(44, 123, 229, 0.3);
+    }
+    
+    .back-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 7px 20px rgba(44, 123, 229, 0.4);
+    }
+    
+    .back-btn i {
+      margin-right: 8px;
+    }
+    
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: #7b8a9b;
+      font-size: 0.9rem;
+      border-top: 1px solid #e0e6ed;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>{{ module_name }} 最佳实践</h1>
+      <p>流程: {{ process_name }}</p>
+    </div>
+    
+    <div class="content">
+      <div class="icon">
+        <i class="fas fa-tools"></i>
+      </div>
+      
+      <p class="message">
+        该模块的最佳实践内容尚未完成，我们的团队正在努力开发中。
+      </p>
+      <p class="message">
+        请稍后再来查看，或联系系统管理员获取更多信息
+      </p>
+      
+      <a href="{{ url_for('supply_management') }}" class="back-btn">
+        <i class="fas fa-arrow-left"></i> 返回供应管理
+      </a>
+    </div>
+    
+    <div class="footer">
+      <p>采购流程分析系统 © 2023 | 企业采购优化解决方案</p>
+    </div>
+  </div>
+</body>
+</html>

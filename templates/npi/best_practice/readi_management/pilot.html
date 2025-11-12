@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI案例总结 - Pilot&Ramp&Launch Management</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/best_practice.css') }}">
+  <style>
+    /* AI案例总结特定样式补充 */
+    .ai-scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin: 30px 0;
+    }
+    
+    .scenario-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      border-top: 4px solid #2c7be5;
+      transition: all 0.3s ease;
+    }
+    
+    .scenario-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(44, 123, 229, 0.2);
+    }
+    
+    .scenario-icon {
+      font-size: 2.5rem;
+      color: #2c7be5;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    
+    .scenario-title {
+      font-size: 1.4rem;
+      color: #2c3e50;
+      margin-bottom: 15px;
+      font-weight: 600;
+      text-align: center;
+    }
+    
+    .scenario-desc {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    
+    .kpi-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .kpi-list li {
+      margin-bottom: 12px;
+      padding-left: 30px;
+      position: relative;
+      color: #5a6a7d;
+    }
+    
+    .kpi-list li:before {
+      content: '\f201';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #00c9a7;
+    }
+    
+    .industry-case {
+      background: linear-gradient(135deg, #f0f5ff 0%, #e6f0ff 100%);
+      border-radius: 12px;
+      padding: 25px;
+      margin: 30px 0;
+    }
+    
+    .case-title {
+      font-size: 1.4rem;
+      color: #2c3e50;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    
+    .case-desc {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    
+    .company-highlight {
+      font-weight: 600;
+      color: #2c7be5;
+    }
+    
+    .ai-scenario-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 30px 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .ai-scenario-table th {
+      background: linear-gradient(90deg, #2c7be5, #00c9a7);
+      color: white;
+      padding: 15px;
+      text-align: left;
+      font-weight: 600;
+    }
+    
+    .ai-scenario-table td {
+      padding: 15px;
+      border-bottom: 1px solid #e0e6ed;
+    }
+    
+    .ai-scenario-table tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+    
+    .ai-scenario-table tr:hover {
+      background-color: #e6f0ff;
+    }
+    
+    .improvement-badge {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-right: 8px;
+      margin-bottom: 5px;
+    }
+    
+    .improvement-positive {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    
+    .case-link {
+      color: #2c7be5;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .case-link:hover {
+      text-decoration: underline;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    
+    .stat-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #2c7be5;
+      margin-bottom: 10px;
+    }
+    
+    .stat-label {
+      color: #5a6a7d;
+      font-size: 1rem;
+    }
+    
+    .back-btn {
+      display: inline-block;
+      background: #2c7be5;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(44, 123, 229, 0.3);
+    }
+    
+    .back-btn:hover {
+      background: #1a5276;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(44, 123, 229, 0.4);
+    }
+    
+    /* 新增翻译样式 */
+    .en-translation {
+      font-size: 0.85em;
+      color: #666;
+      display: block;
+      margin-top: 0.25rem;
+      font-style: italic;
+    }
+    
+    .section-title {
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, #2c7be5, #00c9a7);
+    }
+    
+    .case-reference {
+      margin-top: 25px;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      border-left: 4px solid #2c7be5;
+    }
+    
+    .case-reference a {
+      color: #2c7be5;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .case-reference a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- 顶部标题区域 -->
+  <header class="best-practice-header">
+    <div class="header-content">
+      <h1 class="best-practice-title">AI案例总结
+        <div class="en-translation">AI Case Study Summary</div>
+      </h1>
+      <div class="best-practice-subtitle">Pilot&Ramp&Launch Management AI应用效果分析
+        <div class="en-translation">Pilot&Ramp&Launch Management AI Application Effectiveness Analysis</div>
+      </div>
+      <p class="process-desc">
+        展示AI技术在Pilot&Ramp&Launch管理流程中的实际应用案例和效果评估，提升产品上市效率、质量和成功率。
+        <span class="en-translation">Showcasing practical application cases and effectiveness evaluation of AI in Pilot&Ramp&Launch management processes, improving product launch efficiency, quality, and success rate.</span>
+      </p>
+    </div>
+  </header>
+
+  <!-- 主要内容区域 -->
+  <div class="best-practice-container">
+    <!-- AI应用场景 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">AI应用场景
+        <div class="en-translation">AI Application Scenarios</div>
+      </h2>
+      
+      <div class="ai-scenario-grid">
+        <div class="scenario-card">
+          <div class="scenario-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3 class="scenario-title">时序预测
+            <div class="en-translation">Time Series Forecasting</div>
+          </h3>
+          <p class="scenario-desc">
+            利用AI算法分析历史数据，预测产品上市过程中的关键时间节点和潜在风险，
+            实现更准确的项目时间线规划和资源调配，降低延期风险。
+            <span class="en-translation">Using AI algorithms to analyze historical data, predict key timelines and potential risks in product launch processes, enabling more accurate project timeline planning and resource allocation, reducing delay risks.</span>
+          </p>
+          <ul class="kpi-list">
+            <li>项目时间线预测准确率提升至85-90%
+              <div class="en-translation">Project timeline prediction accuracy increased to 85-90%</div>
+            </li>
+            <li>资源利用率优化15-20%
+              <div class="en-translation">Resource utilization optimized by 15-20%</div>
+            </li>
+            <li>风险预警提前7-10天
+              <div class="en-translation">Risk warning advanced by 7-10 days</div>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="scenario-card">
+          <div class="scenario-icon">
+            <i class="fas fa-cogs"></i>
+          </div>
+          <h3 class="scenario-title">离散事件仿真
+            <div class="en-translation">Discrete Event Simulation</div>
+          </h3>
+          <p class="scenario-desc">
+            通过建立产品上市流程的数字化仿真模型，模拟不同场景下的资源分配和流程效率，
+            优化Pilot&Ramp&Launch各环节的协同效率，减少瓶颈和延误。
+            <span class="en-translation">By establishing digital simulation models of product launch processes, simulating resource allocation and process efficiency under different scenarios, optimizing collaboration efficiency in Pilot&Ramp&Launch phases, reducing bottlenecks and delays.</span>
+          </p>
+          <ul class="kpi-list">
+            <li>流程瓶颈识别准确率提升至90%
+              <div class="en-translation">Process bottleneck identification accuracy increased to 90%</div>
+            </li>
+            <li>资源冲突减少30-40%
+              <div class="en-translation">Resource conflicts reduced by 30-40%</div>
+            </li>
+            <li>仿真模型与实际偏差小于5%
+              <div class="en-translation">Simulation model deviation from reality less than 5%</div>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="scenario-card">
+          <div class="scenario-icon">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <h3 class="scenario-title">策略推荐
+            <div class="en-translation">Strategy Recommendation</div>
+          </h3>
+          <p class="scenario-desc">
+            基于机器学习和优化算法，为产品上市策略提供数据驱动的智能推荐，
+            包括市场切入策略、产能规划方案和风险应对措施，提高决策质量。
+            <span class="en-translation">Based on machine learning and optimization algorithms, providing data-driven intelligent recommendations for product launch strategies, including market entry strategies, capacity planning solutions, and risk response measures, improving decision quality.</span>
+          </p>
+          <ul class="kpi-list">
+            <li>策略决策效率提升50-60%
+              <div class="en-translation">Strategic decision efficiency improved by 50-60%</div>
+            </li>
+            <li>推荐策略采纳率超过80%
+              <div class="en-translation">Recommended strategy adoption rate over 80%</div>
+            </li>
+            <li>上市成功率提高15-20%
+              <div class="en-translation">Launch success rate increased by 15-20%</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 行业案例 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">实际行业案例
+        <div class="en-translation">Real Industry Cases</div>
+      </h2>
+      
+      <div class="industry-case">
+        <h3 class="case-title">
+          <a href="http://www.jdzj.com/bpq/article/2009-12-25/10366-1.htm" target="_blank" class="case-link">
+            <span class="company-highlight">赛米控（SEMIKRON）</span>
+          </a> - 功率模块Pilot&Ramp&Launch管理中的仿真应用
+          <div class="en-translation">SEMIKRON - Simulation Application in Power Module Pilot&Ramp&Launch Management</div>
+        </h3>
+        <p class="case-desc">
+          赛米控国际在其功率模块产品的Pilot&Ramp&Launch管理过程中，采用基于SEMI/E仿真方法的SEMISEL平台，
+          实现了产品开发流程的数字化仿真和优化。该平台通过离散事件仿真技术，模拟产品从设计到量产的完整流程，
+          显著提升了产品上市效率和质量。
+          <span class="en-translation">SEMIKRON International adopted the SEMISEL platform based on SEMI/E simulation methods in its power module product Pilot&Ramp&Launch management process, achieving digital simulation and optimization of the product development process. The platform simulates the complete process from design to mass production through discrete event simulation technology, significantly improving product launch efficiency and quality.</span>
+        </p>
+        <p class="case-desc">
+          通过实施AI驱动的时序预测和离散事件仿真，赛米控成功将R@R（Ready-to-Ramp）通过率提升了12个百分点，
+          Ramp延误率降低了22%，首月DPPM（Defective Parts Per Million）降低了18%。系统能够精准预测
+          产品上市过程中的关键里程碑，优化资源分配，并通过策略推荐引擎提供最优上市方案。
+          <span class="en-translation">By implementing AI-driven time series forecasting and discrete event simulation, SEMIKRON successfully increased R@R (Ready-to-Ramp) pass rate by 12 percentage points, reduced Ramp delay rate by 22%, and reduced first-month DPPM (Defective Parts Per Million) by 18%. The system can accurately predict key milestones in the product launch process, optimize resource allocation, and provide optimal launch solutions through a strategy recommendation engine.</span>
+        </p>
+        <p class="case-desc">
+          <strong>关键技术：</strong> 离散事件仿真、时序预测算法、策略推荐引擎
+          <div class="en-translation"><strong>Key Technologies:</strong> Discrete event simulation, time series forecasting algorithms, strategy recommendation engine</div>
+          <strong>实施范围：</strong> 全球功率模块产品线，涵盖IGBT、SiC MOSFET等关键器件
+          <div class="en-translation"><strong>Implementation Scope:</strong> Global power module product lines, covering key devices such as IGBT and SiC MOSFET</div>
+          <strong>效果持续时间：</strong> 持续优化超过3年
+          <div class="en-translation"><strong>Effect Duration:</strong> Continuous optimization for over 3 years</div>
+        </p>
+        <div class="case-reference">
+          <p>案例出处: 
+            <a href="http://www.jdzj.com/bpq/article/2009-12-25/10366-1.htm" target="_blank" class="case-link">
+              赛米控SEMISEL仿真平台 - 功率模块设计仿真最佳实践
+            </a>
+            <div class="en-translation">Case Source: SEMIKRON SEMISEL Simulation Platform - Power Module Design Simulation Best Practices</div>
+          </p>
+          <p>参考标准: 
+            <a href="http://mp.weixin.qq.com/s?__biz=MzE5ODc1NzAyOQ==&mid=2247483772&idx=1&sn=9d5155cb2f701ab5a2a59f0bb4b75c8f" target="_blank" class="case-link">
+              APQC NPI指标库 - 新产品导入流程标准
+            </a>
+            <div class="en-translation">Reference Standard: APQC NPI Metric Library - New Product Introduction Process Standards</div>
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- KPI和预期提升幅度 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">KPI和预期提升幅度
+        <div class="en-translation">KPI and Expected Improvement Range</div>
+      </h2>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value">+10-15pct</div>
+          <div class="stat-label">R@R通过率提升
+            <div class="en-translation">R@R Pass Rate Improvement</div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-value">-20%</div>
+          <div class="stat-label">Ramp延误率降低
+            <div class="en-translation">Ramp Delay Rate Reduction</div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-value">15-20%</div>
+          <div class="stat-label">首月DPPM降低
+            <div class="en-translation">First-Month DPPM Reduction</div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-value">50-60%</div>
+          <div class="stat-label">决策效率提升
+            <div class="en-translation">Decision Efficiency Improvement</div>
+          </div>
+        </div>
+      </div>
+      
+      <p style="margin-top: 30px; color: #5a6a7d; line-height: 1.6;">
+        以上数据基于实际行业案例的效果统计，展示了AI技术在Pilot&Ramp&Launch管理流程中的应用价值。
+        参考案例：SEMI/E仿真方法在功率模块开发中的应用（离散事件仿真方向）
+        <span class="en-translation">The above data is based on actual effect statistics from industry cases, demonstrating the application value of AI technology in Pilot&Ramp&Launch management processes. Reference cases: Application of SEMI/E simulation methods in power module development (discrete event simulation direction).</span>
+      </p>
+    </div>
+    
+    <!-- 技术实现框架 -->
+    <div class="best-practice-section">
+      <h2 class="section-title">技术实现框架
+        <div class="en-translation">Technical Implementation Framework</div>
+      </h2>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <i class="fas fa-chart-line"></i>
+          <div class="stat-value">时序预测
+            <div class="en-translation">Time Series Forecasting</div>
+          </div>
+          <div class="stat-label">LSTM/Transformer算法
+            <div class="en-translation">LSTM/Transformer Algorithms</div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <i class="fas fa-cogs"></i>
+          <div class="stat-value">离散事件仿真
+            <div class="en-translation">Discrete Event Simulation</div>
+          </div>
+          <div class="stat-label">SEMI/E仿真方法
+            <div class="en-translation">SEMI/E Simulation Methods</div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <i class="fas fa-lightbulb"></i>
+          <div class="stat-value">策略推荐
+            <div class="en-translation">Strategy Recommendation</div>
+          </div>
+          <div class="stat-label">机器学习优化
+            <div class="en-translation">Machine Learning Optimization</div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <i class="fas fa-database"></i>
+          <div class="stat-value">数据整合
+            <div class="en-translation">Data Integration</div>
+          </div>
+          <div class="stat-label">APQC NPI指标库
+            <div class="en-translation">APQC NPI Metric Library</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

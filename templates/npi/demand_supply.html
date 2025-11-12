@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新产品需求/供应管理流程分析 | NP Demand/Supply Management Process Analysis</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <style>
+    /* 全局样式 */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* 标题区域样式 */
+    .header-section {
+      background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+      color: white;
+      padding: 40px 20px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    
+    .process-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .process-title {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .process-subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 15px;
+    }
+    
+    .process-desc {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .en-translation {
+      display: block;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-top: 5px;
+      font-style: italic;
+    }
+    
+    /* 内容区域样式 */
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .section-title h2 {
+      font-size: 2rem;
+      color: #2c3e50;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 15px;
+      display: inline-block;
+    }
+    
+    .process-blocks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 25px;
+    }
+    
+    .process-block {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .process-block:hover {
+      transform: translateY(-5px);
+    }
+    
+    .block-header {
+      background: linear-gradient(135deg, #9b59b6 0%, #3498db 100%);
+      color: white;
+      padding: 20px;
+    }
+    
+    .block-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .block-subtitle {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+    
+    .block-body {
+      padding: 20px;
+    }
+    
+    .core-value {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 4px solid #9b59b6;
+    }
+    
+    .core-value-title {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    
+    .core-value-content {
+      color: #5a6a7d;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    .content-area {
+      margin: 20px 0;
+    }
+    
+    .optimization-title {
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+    
+    .optimization-list {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .optimization-list li {
+      margin-bottom: 10px;
+      color: #5a6a7d;
+    }
+    
+    .block-actions {
+      text-align: right;
+      margin-top: 20px;
+    }
+    
+    .best-practice-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .best-practice-btn:hover {
+      opacity: 0.9;
+      transform: translateX(5px);
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .process-blocks {
+        grid-template-columns: 1fr;
+      }
+      
+      .process-title {
+        font-size: 2rem;
+      }
+      
+      .block-title {
+        font-size: 1.2rem;
+      }
+    }
+    
+    /* 新产品管理特定样式 */
+    .new-product-process .process-icon {
+      background-color: rgba(255, 255, 255, 0.2);
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 流程标题区域 -->
+    <section class="header-section new-product-process">
+      <div class="header-content">
+        <div class="process-icon">
+          <i class="fas fa-cube"></i>
+        </div>
+        <h1 class="process-title">新产品需求/供应管理
+          <span class="en-translation">NP Demand/Supply Management</span>
+        </h1>
+        <div class="process-desc">
+          统筹新产品的需求预测、供应规划，确保供需匹配
+          <span class="en-translation">Coordinate new product demand forecasting and supply planning to ensure supply-demand matching.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 关键流程块区域 -->
+    <div class="section-title">
+      <h2>关键流程模块
+        <span class="en-translation">Key Process Modules</span>
+      </h2>
+    </div>
+    
+    <div class="process-blocks">
+      <!-- 产能管理-->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-map-marked-alt"></i>
+            产能管理
+            <span class="en-translation">Capacity Management</span>
+          </div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
+            <p class="core-value-content">
+              建立产能模型（工序/设备/班次/良率/稼动/切换）与时间窗规则，形成能力度量与承诺边界的统一口径。
+              <span class="en-translation">Establish a capacity model (processes, equipment, shifts, yield, OEE, changeover) and time window rules to form unified standards for capacity measurement and commitment boundaries.</span>
+            </p>
+          </div>
+          
+          <div class="content-area">
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
+            <ul class="optimization-list">
+              <li>建立工序 / 设备 / 班次 / 良率 / 切换的产能模型与情景仿真，输出放量窗口与约束解耦策略。
+                <span class="en-translation">Build capacity model & scenario simulation (process/equipment/shift/yield/changeover), output ramp-up window & constraint decoupling strategy.</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('npi.best_practice', process='demand_supply_management', module_name='capacity') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- PSS 管理 -->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-bullseye"></i>
+            PSS 管理
+            <span class="en-translation">PSS Management</span>
+          </div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值
+              <span class="en-translation">Core Value</span>
+            </div>
+            <p class="core-value-content">
+              定义可出货供给（PSS）的计量单位、时间窗与里程碑（POR→SLE），形成对市场承诺的供给基线与审计证据。
+              <span class="en-translation">Define the measurement units, time windows and milestones (POR→SLE) for shippable supply (PSS) to form a supply baseline and audit evidence for market commitments.</span>
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">优化建议：
+              <span class="en-translation">Optimization Suggestions:</span>
+            </div>
+            <ul class="optimization-list">
+              <li>将 PSS 定义的单位、时间窗、门限与缺口算法标准化，形成市场承诺与供给基线的一致呈现
+                <span class="en-translation">Standardize PSS units, time windows, thresholds & gap algorithms; form consistent presentation of market commitment and supply baseline.</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="block-actions">
+            <a href="{{ url_for('npi.best_practice', process='demand_supply_management', module_name='pss') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 工装管理（ODM）-->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-map-marked-alt"></i>
+            工装管理（ODM）
+          </div>
+          <div class="block-subtitle">Tooling Management (ODM)</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值</div>
+            <p class="core-value-content">
+              对复制工装的数量、配置、合格性与可用率建立标准与记录口径，保障冗余能力与批量一致性。。
+              <span class="en-translation">Establish standards and recording criteria for the quantity, configuration, qualification, and availability of duplicate tooling to ensure redundancy capability and batch consistency.</span>
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>建立复制工装数量 / 寿命 / 能力 / 可用率的健康评分，联动产能模型生成冗余与备份策略。
+                <span class="en-translation">Establish health score for duplicate tooling (quantity/life/capacity/availability); link to capacity model to generate redundancy & backup strategies.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('npi.best_practice', process='demand_supply_management', module_name='tooling') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>  
+      
+      <!-- API 管理-->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-map-marked-alt"></i>
+            API 管理
+          </div>
+          <div class="block-subtitle">API Management</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值</div>
+            <p class="core-value-content">
+              建立量产在管零部件清单与状态编码（合格/待定/替代/停用等），确保BOM覆盖与物料可用性的判定口径一致。
+              <span class="en-translation">Establish a managed parts list and status codes (qualified/pending/alternative/discontinued, etc.) for mass production to ensure consistent judgment criteria for BOM coverage and material availability.</span>
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>标准化在管件状态码、就绪属性与替代关系；以 BOM 覆盖与在途可用性驱动短缺预警。
+                <span class="en-translation">Standardize in-transit component status codes, readiness attributes & alternatives; drive shortage alerts via BOM coverage and in-transit availability.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('npi.best_practice', process='demand_supply_management', module_name='api') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div> 
+
+       <!-- SCRR 管理-->
+      <div class="process-block">
+        <div class="block-header">
+          <div class="block-title">
+            <i class="fas fa-map-marked-alt"></i>
+            SCRR 管理
+          </div>
+          <div class="block-subtitle">SCRR Management</div>
+        </div>
+        <div class="block-body">
+          <div class="core-value">
+            <div class="core-value-title">核心价值</div>
+            <p class="core-value-content">
+              建立供应链就绪度评审（SCRR）的条目库、判定标准与证据清单，统一风险分级与整改闭环要求。
+              <span class="en-translation">Establish the item library, assessment criteria and evidence list for Supply Chain Readiness Review (SCRR), and standardize requirements for risk classification and rectification closed-loop.</span>
+            </p>
+          </div>
+          <div class="content-area">
+            <div class="optimization-title">优化建议：</div>
+            <ul class="optimization-list">
+              <li>对 SCRR 条目进行证据自动抽取与合规校验，生成缺口清单与整改跟踪，按风险分级监控闭环。
+                <span class="en-translation">Conduct automatic evidence extraction & compliance verification for SCRR items; generate gap list & rectification tracking; implement risk-based graded monitoring and closed loop.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="block-actions">
+            <a href="{{ url_for('npi.best_practice', process='demand_supply_management', module_name='scrr') }}" class="best-practice-btn">
+              Best Practice <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+</body>
+</html>
