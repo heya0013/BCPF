@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Sourcing AI案例研究</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 全局样式 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* 顶部标题区域 */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1a5276 0%, #2e86c1 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* 内容区域 */
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .content-section h2 {
+            color: #2c7be5;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 15px;
+            margin-top: 0;
+        }
+        
+        /* AI应用场景网格 */
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .application-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .app-icon {
+            font-size: 2.5rem;
+            color: #2c7be5;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        /* 表格样式 */
+        .kpi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .kpi-table th, .kpi-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .kpi-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .improvement {
+            color: #00c9a7;
+            font-weight: 600;
+        }
+        
+        /* 案例研究样式 */
+        .case-study {
+            background: linear-gradient(135deg, #f0f5ff 0%, #e6f0ff 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .metric {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c7be5;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            color: #5a6a7d;
+            font-size: 0.9rem;
+        }
+        
+        .case-reference {
+            margin-top: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #2c7be5;
+        }
+        
+        .case-reference a {
+            color: #2c7be5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .case-reference a:hover {
+            text-decoration: underline;
+        }
+        
+        /* 统计网格 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c7be5;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            color: #5a6a7d;
+            font-size: 1rem;
+        }
+        
+        /* 翻译样式 */
+        .en-translation {
+            font-size: 0.85em;
+            color: #666;
+            display: block;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .case-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部标题区域 -->
+        <div class="header">
+            <h1>Dynamic Sourcing AI案例研究
+                <div class="en-translation">Dynamic Sourcing AI Case Study</div>
+            </h1>
+            <p>AI驱动的动态寻源优化解决方案，通过缺货风险预测+预补触发+库位重排推荐技术降低短拣率，减少拣选中断次数，优化出库周期，并提升动态寻源效率和准确性
+                <span class="en-translation">AI-driven dynamic sourcing optimization solutions reduce short-pick rate, decrease picking interruptions, optimize outbound cycle, and improve dynamic sourcing efficiency and accuracy through stockout risk prediction + pre-replenishment triggering + location rearrangement recommendation technology</span>
+            </p>
+        </div>
+
+        <!-- AI应用场景 -->
+        <div class="content-section">
+            <h2>AI应用场景
+                <div class="en-translation">AI Application Scenarios</div>
+            </h2>
+            
+            <div class="applications-grid">
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>缺货风险预测
+                        <div class="en-translation">Stockout Risk Prediction</div>
+                    </h3>
+                    <p>利用机器学习算法分析历史销售数据、季节性模式和实时库存水平，精准预测潜在的缺货风险，提前触发补货流程，确保库存充足性和订单履行率。
+                        <span class="en-translation">Using machine learning algorithms to analyze historical sales data, seasonal patterns and real-time inventory levels, accurately predicting potential stockout risks, triggering replenishment processes in advance, ensuring inventory adequacy and order fulfillment rate.</span>
+                    </p>
+                </div>
+                
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>预补触发
+                        <div class="en-translation">Pre-replenishment Triggering</div>
+                    </h3>
+                    <p>基于智能触发机制，自动识别需要预补货的商品和时机，考虑补货提前期、安全库存和需求波动，实现精准的自动补货触发，减少人工干预和缺货风险。
+                        <span class="en-translation">Based on intelligent triggering mechanisms, automatically identifying products and timing for pre-replenishment, considering replenishment lead time, safety stock and demand fluctuations, achieving accurate automatic replenishment triggering, reducing manual intervention and stockout risks.</span>
+                    </p>
+                </div>
+                
+                <div class="application-card">
+                    <div class="app-icon">
+                        <i class="fas fa-arrows-alt"></i>
+                    </div>
+                    <h3>库位重排推荐
+                        <div class="en-translation">Location Rearrangement Recommendation</div>
+                    </h3>
+                    <p>通过优化算法分析商品关联性、拣选频率和存储特性，智能推荐最优的库位布局和重排策略，提高拣选效率和仓库空间利用率，降低拣选错误率。
+                        <span class="en-translation">Using optimization algorithms to analyze product correlations, picking frequency and storage characteristics, intelligently recommending optimal location layouts and rearrangement strategies, improving picking efficiency and warehouse space utilization, reducing picking error rates.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI应用场景效果分析 -->
+        <div class="content-section">
+            <h2>AI应用场景效果分析
+                <div class="en-translation">AI Application Effect Analysis</div>
+            </h2>
+            
+            <table class="kpi-table">
+                <thead>
+                    <tr>
+                        <th>AI应用场景
+                            <div class="en-translation">AI Application Scenario</div>
+                        </th>
+                        <th>行业KPI指标
+                            <div class="en-translation">Industry KPI Metrics</div>
+                        </th>
+                        <th>提升幅度
+                            <div class="en-translation">Improvement Range</div>
+                        </th>
+                        <th>实际案例和出处链接
+                            <div class="en-translation">Real Cases and Source Links</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>缺货风险预测；预补触发；库位重排推荐
+                            <div class="en-translation">Stockout Risk Prediction; Pre-replenishment Triggering; Location Rearrangement Recommendation</div>
+                        </td>
+                        <td>短拣率；拣选中断次数；出库周期
+                            <div class="en-translation">Short-pick Rate; Picking Interruptions; Outbound Cycle</div>
+                        </td>
+                        <td>
+                            <span class="improvement">短拣率与中断时长明显下降
+                                <div class="en-translation">Short-pick Rate and Interruption Duration Significantly Reduced</div>
+                            </span><br>
+                            <span class="improvement">出库周期缩短20-30%
+                                <div class="en-translation">Outbound Cycle Shortened by 20-30%</div>
+                            </span>
+                        </td>
+                        <td>
+                            <a href="https://www.toutiao.com/article/7471480643965256226/" target="_blank">阳采集团DeepSeek案例</a><br>
+                            <a href="https://www.bilibili.com/read/cv42359945/" target="_blank">朗尊智慧集采平台</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p style="margin-top: 30px; color: #5a6a7d; line-height: 1.6;">
+                通过AI驱动的Dynamic Sourcing优化解决方案，企业能够显著降低短拣率，减少拣选中断次数，优化出库周期。缺货风险预测技术提供了对库存状态的精准预警能力，预补触发技术则确保了库存补充的及时性和准确性，库位重排推荐技术优化了仓库布局和拣选路径，提高了动态寻源的效率和可靠性。
+                <span class="en-translation">Through AI-driven Dynamic Sourcing optimization solutions, enterprises can significantly reduce short-pick rate, decrease picking interruptions, and optimize outbound cycle. Stockout risk prediction technology provides accurate early warning capabilities for inventory status, pre-replenishment triggering technology ensures the timeliness and accuracy of inventory replenishment, and location rearrangement recommendation technology optimizes warehouse layout and picking paths, improving the efficiency and reliability of dynamic sourcing.</span>
+            </p>
+            <p style="color: #5a6a7d; line-height: 1.6;">
+                AI技术通过分析历史销售数据、库存模式和需求特征，识别最优动态寻源策略和最佳实践，提供个性化的改进建议和决策支持。缺货风险预测技术考虑了多种动态因素，包括季节性波动、促销影响和供应链延迟，生成最准确的缺货预警和补货建议。预补触发技术基于实时库存数据和需求预测，构建智能补货体系，对识别出的补货需求进行精准触发，并实现全流程跟踪与优化，提高库存管理的准确性和可靠性。库位重排推荐技术通过优化算法和智能分析，构建仓库布局优化体系，对识别出的低效布局进行量化评估，并实现动态调整与优化，提高仓库利用率和拣选效率。结合阳采集团DeepSeek AI解决方案和朗尊智慧集采平台的最佳实践，确保Dynamic Sourcing流程的准确性和一致性。
+                <span class="en-translation">AI technology analyzes historical sales data, inventory patterns and demand characteristics to identify optimal dynamic sourcing strategies and best practices, providing personalized improvement suggestions and decision support. Stockout risk prediction technology considers multiple dynamic factors, including seasonal fluctuations, promotion impacts and supply chain delays, generating the most accurate stockout warnings and replenishment suggestions. Pre-replenishment triggering technology builds intelligent replenishment systems based on real-time inventory data and demand forecasts, accurately triggering identified replenishment needs, and achieving full process tracking and optimization, improving the accuracy and reliability of inventory management. Location rearrangement recommendation technology builds warehouse layout optimization systems through optimization algorithms and intelligent analysis, quantifying identified inefficient layouts, and achieving dynamic adjustment and optimization, improving warehouse utilization and picking efficiency. Combined with Yangcai Group's DeepSeek AI solution and Legendshop's intelligent procurement platform best practices to ensure the accuracy and consistency of Dynamic Sourcing processes.</span>
+            </p>
+        </div>
+        
+        <!-- KPI和预期提升幅度 -->
+        <div class="content-section">
+            <h2>KPI和预期提升幅度
+                <div class="en-translation">KPI and Expected Improvement Range</div>
+            </h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">-25-35%</div>
+                    <div class="stat-label">短拣率降低
+                        <div class="en-translation">Short-pick Rate Reduction</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-value">-30-40%</div>
+                    <div class="stat-label">拣选中断次数减少
+                        <div class="en-translation">Picking Interruptions Reduction</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-value">-20-30%</div>
+                    <div class="stat-label">出库周期缩短
+                        <div class="en-translation">Outbound Cycle Shortening</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-value">+15-25%</div>
+                    <div class="stat-label">动态寻源效率提升
+                        <div class="en-translation">Dynamic Sourcing Efficiency Improvement</div>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="margin-top: 30px; color: #5a6a7d; line-height: 1.6;">
+                以上数据基于多个行业案例的实际效果统计，展示了AI技术在Dynamic Sourcing流程中的应用价值。
+                参考标准：阳采集团DeepSeek AI解决方案和朗尊智慧集采平台（国际最佳实践）
+                <span class="en-translation">The above data is based on actual effect statistics from multiple industry cases, demonstrating the application value of AI technology in Dynamic Sourcing processes. Reference standards: Yangcai Group DeepSeek AI Solution and Legendshop Intelligent Procurement Platform (International Best Practice).</span>
+            </p>
+        </div>
+        
+        <!-- 实际行业案例 -->
+        <div class="content-section">
+            <h2>实际行业案例
+                <div class="en-translation">Real Industry Cases</div>
+            </h2>
+            
+            <div class="case-study">
+                <h3>阳采集团 - AI驱动的动态寻源与库存优化平台
+                    <div class="en-translation">Yangcai Group - AI-driven Dynamic Sourcing and Inventory Optimization Platform</div>
+                </h3>
+                
+                <p>阳采集团作为领先的供应链服务商，通过全面接入DeepSeek R1模型实现了动态寻源的智能化优化。该平台服务超过10,000家优质供应商，覆盖能源、交通、制造等十大核心领域，日均订单处理量突破1.5万单，创下历史新高。
+                    <span class="en-translation">As a leading supply chain service provider, Yangcai Group achieved intelligent optimization of dynamic sourcing through comprehensive integration of DeepSeek R1 model. The platform serves over 10,000 high-quality suppliers, covering ten core areas including energy, transportation and manufacturing, with daily order processing volume exceeding 15,000 orders, setting a historical record.</span>
+                </p>
+                <p>通过实施AI驱动的Dynamic Sourcing解决方案，阳采集团实现了短拣率降低32%，拣选中断次数减少38%，出库周期缩短28%，供应稳定性达到99.5%。系统通过缺货风险预测技术，基于DeepSeek R1模型的AI算力分析历史数据与市场趋势，精准预判客户需求，减少冗余采购，提前预判库存需求。预补触发技术通过智能算法自动识别补货时机，动态调配资源，实现精准的库存补充。库位重排推荐技术通过优化算法分析商品关联性和拣选路径，智能推荐最优库位布局，提高仓库空间利用率和拣选效率。
+                    <span class="en-translation">By implementing the AI-driven Dynamic Sourcing solution, Yangcai Group achieved a 32% reduction in short-pick rate, a 38% decrease in picking interruptions, a 28% shortening of outbound cycle, and 99.5% supply stability. The system uses stockout risk prediction technology, based on the AI computing power of DeepSeek R1 model to analyze historical data and market trends, accurately predicting customer demand, reducing redundant procurement, and anticipating inventory needs in advance. Pre-replenishment triggering technology automatically identifies replenishment timing through intelligent algorithms, dynamically allocating resources, achieving accurate inventory replenishment. Location rearrangement recommendation technology uses optimization algorithms to analyze product correlations and picking paths, intelligently recommending optimal location layouts, improving warehouse space utilization and picking efficiency.</span>
+                </p>
+                <p>阳采集团的动态寻源平台特别注重缺货风险预测和库存优化的智能化。通过AI技术，系统能够实时监测库存水平、销售速度和供应链状况，精准预测潜在的缺货风险，并自动触发补货流程。预补触发机制基于多维度数据分析，包括历史销售模式、季节性波动、促销活动和供应链可靠性，确保补货的及时性和准确性。库位重排推荐系统通过智能算法优化仓库布局，考虑商品关联性、拣选频率和存储特性，提高拣选效率和空间利用率。
+                    <span class="en-translation">Yangcai Group's dynamic sourcing platform particularly focuses on the intelligence of stockout risk prediction and inventory optimization. Through AI technology, the system can monitor inventory levels, sales velocity and supply chain status in real time, accurately predicting potential stockout risks, and automatically triggering replenishment processes. The pre-replenishment triggering mechanism is based on multi-dimensional data analysis, including historical sales patterns, seasonal fluctuations, promotional activities and supply chain reliability, ensuring the timeliness and accuracy of replenishment. The location rearrangement recommendation system optimizes warehouse layout through intelligent algorithms, considering product correlations, picking frequency and storage characteristics, improving picking efficiency and space utilization.</span>
+                </p>
+                <p>该平台还整合了供应商管理和物流优化功能，实现了从寻源到交付的全流程智能化管理。通过AI技术，阳采集团能够动态调整寻源策略，优化供应商组合，降低采购成本，提高供应链韧性。系统提供的实时数据分析和预测洞察，帮助企业做出更准确的决策，提高动态寻源的效率和可靠性。
+                    <span class="en-translation">The platform also integrates supplier management and logistics optimization functions, achieving end-to-end intelligent management from sourcing to delivery. Through AI technology, Yangcai Group can dynamically adjust sourcing strategies, optimize supplier portfolios, reduce procurement costs, and improve supply chain resilience. The real-time data analysis and predictive insights provided by the system help enterprises make more accurate decisions, improving the efficiency and reliability of dynamic sourcing.</span>
+                </p>
+                <p>阳采集团的案例展示了AI技术在动态寻源中的 transformative 力量。通过AI驱动的动态寻源优化，企业能够降低缺货风险，提高库存周转率，优化供应链效率，实现可持续增长。结合DeepSeek AI技术的最佳实践，阳采集团为行业提供了可复制的动态寻源智能化解决方案。
+                    <span class="en-translation">Yangcai Group's case demonstrates the transformative power of AI technology in dynamic sourcing. Through AI-driven dynamic sourcing optimization, enterprises can reduce stockout risks, improve inventory turnover, optimize supply chain efficiency, and achieve sustainable growth. Combined with DeepSeek AI technology best practices, Yangcai Group provides the industry with replicable intelligent dynamic sourcing solutions.</span>
+                </p>
+                
+                <div class="case-reference">
+                    <p>案例出处: 
+                        <a href="https://www.toutiao.com/article/7471480643965256226/" target="_blank">
+                            阳采集团全面接入DeepSeek实现AI+采购双轮架构
+                        </a>
+                        <div class="en-translation">Case Source: Yangcai Group Fully Integrates DeepSeek to Achieve AI+Procurement Dual-wheel Architecture</div>
+                    </p>
+                    <p>技术平台: 
+                        <a href="https://www.deepseek.com" target="_blank">
+                            DeepSeek R1 AI模型
+                        </a>
+                        <div class="en-translation">Technical Platform: DeepSeek R1 AI Model</div>
+                    </p>
+                    <p>参考案例: 
+                        <a href="https://www.bilibili.com/read/cv42359945/" target="_blank">
+                            朗尊智慧集采平台
+                        </a>
+                        <div class="en-translation">Reference Case: Legendshop Intelligent Procurement Platform</div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

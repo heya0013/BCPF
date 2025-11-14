@@ -268,78 +268,7 @@
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='control_tower', module_name='visibility') }}" class="best-practice-btn">
-              Best Practice <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-      
-      <!-- 订单履约负面因素分析 -->
-      <div class="process-block">
-        <div class="block-header">
-          <div class="block-title">
-            <i class="fas fa-bullseye"></i>
-            订单履约负面因素分析
-            <span class="en-translation">Order Detractor Analysis</span>
-          </div>
-        </div>
-        <div class="block-body">
-          <div class="core-value">
-            <div class="core-value-title">核心价值
-              <span class="en-translation">Core Value</span>
-            </div>
-            <p class="core-value-content">
-              关键控制点，建议补充标准术语以提升判定准确度。
-              <span class="en-translation">Key Control Points: It is recommended to supplement standard terms to improve the accuracy of judgment.</span>
-            </p>
-          </div>
-          
-          <div class="content-area">
-            <div class="optimization-title">优化建议：
-              <span class="en-translation">Optimization Suggestions:</span>
-            </div>
-            <ul class="optimization-list">
-              <li>沉淀流程事件与异常字典，建立告警—处置—回写的闭环。
-                <span class="en-translation">Integrate process events and exception dictionaries to establish a closed loop of alarm - disposal - write back.</span>
-              </li>
-            </ul>
-          </div>
-          
-          <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='control_tower', module_name='detractor') }}" class="best-practice-btn">
-              Best Practice <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 订单装载计划-->
-      <div class="process-block">
-        <div class="block-header">
-          <div class="block-title">
-            <i class="fas fa-map-marked-alt"></i>
-            订单装载计划
-          </div>
-          <div class="block-subtitle">Order Load Plan</div>
-        </div>
-        <div class="block-body">
-          <div class="core-value">
-            <div class="core-value-title">核心价值</div>
-            <p class="core-value-content">
-              关键控制点，建议补充标准术语以提升判定准确度。
-              <span class="en-translation">Key Control Points: It is recommended to supplement standard terms to improve the accuracy of judgment.</span>
-            </p>
-          </div>
-          <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
-            <ul class="optimization-list">
-              <li>沉淀流程事件与异常字典，建立告警—处置—回写的闭环。</li>
-              <span class="en-translation"> Integrate process events and exception dictionaries to establish a closed loop of alarm - disposal - write back.</span>
-            </ul>
-          </div>
-          <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='control_tower', module_name='order_load') }}" class="best-practice-btn">
+            <a href="{{ url_for('order_fulfillment.best_practice', process='control_tower', module_name='visibility') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>

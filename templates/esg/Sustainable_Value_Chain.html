@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>计费与支付- 订单履约流程分析 | Billing&Payment - Order fulfillment Process Analysis</title>
+  <title>可持续价值链流程分析 |  Sustainable Value Chain Process Analysis</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <style>
@@ -219,12 +219,12 @@
         <div class="process-icon">
           <i class="fas fa-cube"></i>
         </div>
-        <h1 class="process-title">计费与支付
-          <span class="en-translation">Billing & Payment</span>
+        <h1 class="process-title">可持续价值链
+          <span class="en-translation">Sustainable Value Chain</span>
         </h1>
         <div class="process-desc">
-          处理订单的发票开具和付款流程。
-          <span class="en-translation">Handles the invoicing and payment processing for orders.</span>
+          覆盖采购、生产到回收全环节的可持续运营体系
+          <span class="en-translation">A sustainable operation system covering procurement, production to recycling.</span>
         </div>
       </div>
     </section>
@@ -237,13 +237,13 @@
     </div>
     
     <div class="process-blocks">
-      <!--订单电子发票-->
+      <!-- 合规与风险缓解-->
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
             <i class="fas fa-map-marked-alt"></i>
-            订单电子发票
-            <span class="en-translation">Order E-invoice</span>
+            合规与风险缓解
+            <span class="en-translation">Compliance and Risk Mitigation</span>
           </div>
         </div>
         <div class="block-body">
@@ -252,8 +252,8 @@
               <span class="en-translation">Core Value</span>
             </div>
             <p class="core-value-content">
-              开票合规与税控：税率/税码/抬头/明细与履约一致；电子发票/税控平台直连减少退票。
-              <span class="en-translation">Invoicing Compliance and Tax Control: Tax rates/codes/titles/details are consistent with fulfillment; direct connection to electronic invoicing/tax control platforms reduces invoice returns.</span>
+              该流程涉及被广泛采用的国际标准/法规口径，需形成可审计、可追溯与可比的证据体系。
+              <span class="en-translation"> Involves internationally adopted standards/regulatory frameworks and requires the establishment of an auditable, traceable and comparable evidence system.</span>
             </p>
           </div>
           
@@ -262,27 +262,27 @@
               <span class="en-translation">Optimization Suggestions:</span>
             </div>
             <ul class="optimization-list">
-              <li>以电子签收影像 / 坐标作为计费 / 开票 / 收入确认的证据前置；按 IFRS 15 履约义务进行确认。
-                <span class="en-translation">Use electronic signature images/coordinates as evidence for billing/invoicing/revenue recognition; confirm according to IFRS 15 performance obligations.</span>
+              <li>将内部指标与证据自动映射到 GRI/ISSB (IFRS S1/S2)/ESRS/CDP，生成一致化披露
+                <span class="en-translation">Automatically map internal indicators and evidence to GRI/ISSB (IFRS S1/S2)/ESRS/CDP to generate consistent disclosures.</span>
               </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='billing', module_name='e_invoice') }}" class="best-practice-btn">
+            <a href="{{ url_for('esg.best_practice', process='value_chain', module_name='compliance') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </div>
       </div>
       
-      <!-- 客户账单流程 -->
+      <!-- 商业道德实践 -->
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
             <i class="fas fa-bullseye"></i>
-            客户账单流程
-            <span class="en-translation">Customer Billing</span>
+            商业道德实践
+            <span class="en-translation">Ethical Business Practice</span>
           </div>
         </div>
         <div class="block-body">
@@ -291,55 +291,59 @@
               <span class="en-translation">Core Value</span>
             </div>
             <p class="core-value-content">
-              开票合规与税控：税率 / 税码 / 抬头 / 明细与履约一致；电子发票 / 税控平台直连减少退票。
-              <span class="en-translation">Invoicing Compliance and Tax Control: Tax rates/codes/titles/details are consistent with fulfillment; direct connection to electronic invoicing/tax control platforms reduces invoice returns.</span>
+              该流程涉及被广泛采用的国际标准/法规口径，需形成可审计、可追溯与可比的证据体系。
+              <span class="en-translation">Involves internationally adopted standards/regulatory frameworks and requires the establishment of an auditable, traceable and comparable evidence system.</span>
             </p>
           </div>
+          
           <div class="content-area">
             <div class="optimization-title">优化建议：
               <span class="en-translation">Optimization Suggestions:</span>
             </div>
             <ul class="optimization-list">
-              <li>按合同费率 / 附加费与运单事件自动计费；治理费率版本与费目映射，减少错计漏计。
-                <span class="en-translation">Automatically bill according to contract rates/additional fees and waybill events; govern rate versions and fee item mapping to reduce miscalculations and omissions.</span>
+              <li>构建统一台账（活动数据 / 排放因子 / 边界 / 方法），与披露模板映射，支持 Scope 1/2/3 与 PCF/LCA。
+                <span class="en-translation">Establish a unified accounting book (activity data/emission factors/boundaries/methods), map it to disclosure templates, and support Scope 1/2/3 as well as PCF/LCA.</span>
+              </li>
+              <li>同时输出地点法与市场法，并对 PPA/REC 证据与追溯进行自动校验与留痕。
+                <span class="en-translation">Simultaneously output the location-based method and market-based method, and conduct automatic verification and traceability of PPA/REC evidence.</span>
               </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='billing', module_name='customer_billing') }}" class="best-practice-btn">
+            <a href="{{ url_for('esg.best_practice', process='value_chain', module_name='business_practice') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </div>
       </div>
 
-      <!-- 发票、客户账单与应收账款流程-->
+      <!-- 责任采购-->
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
             <i class="fas fa-map-marked-alt"></i>
-            发票、客户账单与应收账款流程
+            责任采购
           </div>
-          <div class="block-subtitle">Invoice, Customer Billing & AR</div>
+          <div class="block-subtitle">Responsible Sourcing</div>
         </div>
         <div class="block-body">
           <div class="core-value">
             <div class="core-value-title">核心价值</div>
             <p class="core-value-content">
-              开票合规与税控：税率/税码/抬头/明细与履约一致；电子发票/税控平台直连减少退票。
-              <span class="en-translation">Invoicing Compliance and Tax Control: Tax rates/codes/titles/details are consistent with fulfillment; direct connection to electronic invoicing/tax control platforms reduces invoice returns.</span>
+              该流程涉及被广泛采用的国际标准/法规口径，需形成可审计、可追溯与可比的证据体系。
+              <span class="en-translation">Involves internationally adopted standards/regulatory frameworks and requires the establishment of an auditable, traceable and comparable evidence system.</span>
             </p>
           </div>
           <div class="content-area">
             <div class="optimization-title">优化建议：</div>
             <ul class="optimization-list">
-              <li>合同 — 运单 — 发票自动核对，差异分类后自动生成红字 / 贷项并回写原因，支持再对账闭环。</li>
-              <span class="en-translation">Contract - Waybill - Invoice automatic verification, after difference classification, automatically generate red字 / credit note and write back the reason, support re-accounting closed loop.</span>
+              <li>按品类与碳物强分层，结合问卷与发票抽取，逐步从二次因子转向一次数据。</li>
+              <span class="en-translation">Stratify by product category and carbon intensity, combine questionnaire and invoice extraction, and gradually shift from secondary factors to primary data.</span>
             </ul>
           </div>
           <div class="block-actions">
-            <a href="{{ url_for('best_practice', process='billing', module_name='invoice_customer_billing') }}" class="best-practice-btn">
+            <a href="{{ url_for('esg.best_practice', process='value_chain', module_name='responsible') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>退货- 订单履约流程分析 | ​Customer Return - Order fulfillment Process Analysis</title>
+  <title>计费与支付- 订单履约流程分析 | Billing&Payment - Order fulfillment Process Analysis</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <style>
@@ -219,12 +219,12 @@
         <div class="process-icon">
           <i class="fas fa-cube"></i>
         </div>
-        <h1 class="process-title">退货
-          <span class="en-translation">​Customer Return</span>
+        <h1 class="process-title">计费与支付
+          <span class="en-translation">Billing & Payment</span>
         </h1>
         <div class="process-desc">
-          管理客户发起的退货和退款流程
-          <span class="en-translation">Manages the process of customer-initiated returns and refunds.</span>
+          处理订单的发票开具和付款流程。
+          <span class="en-translation">Handles the invoicing and payment processing for orders.</span>
         </div>
       </div>
     </section>
@@ -237,13 +237,13 @@
     </div>
     
     <div class="process-blocks">
-      <!-- 价值回收-->
+      <!--订单电子发票-->
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
             <i class="fas fa-map-marked-alt"></i>
-            价值回收
-            <span class="en-translation">Value Recovery</span>
+            订单电子发票
+            <span class="en-translation">Order E-invoice</span>
           </div>
         </div>
         <div class="block-body">
@@ -252,8 +252,8 @@
               <span class="en-translation">Core Value</span>
             </div>
             <p class="core-value-content">
-              处置决策：在返修 / 翻新 / 退供应商 / 报废 / 再售之间择优，平衡回收价值与 SLA。
-              <span class="en-translation">Disposal Decision: Optimize between repair, refurbishment, return to supplier, scrapping, and resale, balancing recovery value and SLA.</span>
+              开票合规与税控：税率/税码/抬头/明细与履约一致；电子发票/税控平台直连减少退票。
+              <span class="en-translation">Invoicing Compliance and Tax Control: Tax rates/codes/titles/details are consistent with fulfillment; direct connection to electronic invoicing/tax control platforms reduces invoice returns.</span>
             </p>
           </div>
           
@@ -262,30 +262,27 @@
               <span class="en-translation">Optimization Suggestions:</span>
             </div>
             <ul class="optimization-list">
-              <li>结合序列号 / 日志与图像 / 自述，自动给出故障类别与处置建议，减少 NFF（无故障检出）与误判。
-                <span class="en-translation"> Integrate serial numbers/supply chain logs with images/customer statements to automatically assign fault categories and disposal recommendations, reducing NFF (Nothing Found Faulty) and misjudgments to avoid invalid value recovery costs.</span>
-              </li>
-              <li>基于质量分级、市场价格与 SLA，优化返修 / 翻新 / 再售 / RTV（退供应商）/ 报废的配比，最大化回收价值。
-                <span class="en-translation">Optimize the ratio of repair/refurbishment/resale/RTV (Return to Vendor)/scrapping based on quality grading, market prices, and SLA to maximize recovery value.</span>
+              <li>以电子签收影像 / 坐标作为计费 / 开票 / 收入确认的证据前置；按 IFRS 15 履约义务进行确认。
+                <span class="en-translation">Use electronic signature images/coordinates as evidence for billing/invoicing/revenue recognition; confirm according to IFRS 15 performance obligations.</span>
               </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('order_fulfillment.best_practice', process='customer_return', module_name='recovery') }}" class="best-practice-btn">
+            <a href="{{ url_for('order_fulfillment.best_practice', process='billing', module_name='e_invoice') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </div>
       </div>
       
-      <!-- 	订单到货即损 -->
+      <!-- 客户账单流程 -->
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
             <i class="fas fa-bullseye"></i>
-            	订单到货即损
-            <span class="en-translation">Order DOA</span>
+            客户账单流程
+            <span class="en-translation">Customer Billing</span>
           </div>
         </div>
         <div class="block-body">
@@ -294,63 +291,55 @@
               <span class="en-translation">Core Value</span>
             </div>
             <p class="core-value-content">
-              诊断与质检：DOA/NFF 判定与功能测试，决定后续处置与赔付口径。
-              <span class="en-translation">Diagnosis and Quality Inspection: DOA/NFF determination and functional testing to decide subsequent disposal and compensation criteria.</span>
+              开票合规与税控：税率 / 税码 / 抬头 / 明细与履约一致；电子发票 / 税控平台直连减少退票。
+              <span class="en-translation">Invoicing Compliance and Tax Control: Tax rates/codes/titles/details are consistent with fulfillment; direct connection to electronic invoicing/tax control platforms reduces invoice returns.</span>
             </p>
           </div>
-          
           <div class="content-area">
             <div class="optimization-title">优化建议：
               <span class="en-translation">Optimization Suggestions:</span>
             </div>
             <ul class="optimization-list">
-              <li>结合序列号 / 日志与图像 / 自述，自动给出故障类别与处置建议，减少 NFF（无故障检出）与误判。
-                <span class="en-translation">Integrate serial numbers/supply chain logs with images/customer statements to automatically assign fault categories and disposal recommendations, reducing NFF (Nothing Found Faulty) and misjudgments to avoid invalid value recovery costs.</span>
-              </li>
-              <li>将诊断结果与政策引擎对齐，自动触发退款 / 换新 / 补发 / 贷项，并回写原因与证据链。
-                <span class="en-translation">Align diagnostic results with policy engines to automatically trigger refunds/replacements/reshipments/credits, and write back reasons and evidence chains.</span>
+              <li>按合同费率 / 附加费与运单事件自动计费；治理费率版本与费目映射，减少错计漏计。
+                <span class="en-translation">Automatically bill according to contract rates/additional fees and waybill events; govern rate versions and fee item mapping to reduce miscalculations and omissions.</span>
               </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('order_fulfillment.best_practice', process='customer_return', module_name='doa') }}" class="best-practice-btn">
+            <a href="{{ url_for('order_fulfillment.best_practice', process='billing', module_name='customer_billing') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </div>
       </div>
 
-      <!-- 退货接收与风险拦截-->
+      <!-- 发票、客户账单与应收账款流程-->
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
             <i class="fas fa-map-marked-alt"></i>
-            退货接收与风险拦截
+            发票、客户账单与应收账款流程
           </div>
-          <div class="block-subtitle">Customer Return</div>
+          <div class="block-subtitle">Invoice, Customer Billing & AR</div>
         </div>
         <div class="block-body">
           <div class="core-value">
             <div class="core-value-title">核心价值</div>
             <p class="core-value-content">
-              逆向 / 售后端的关键控制点，影响客户体验、回收价值与合规。
-              <span class="en-translation">These are key control points in the reverse supply chain/after-sales segment, affecting customer experience, recovery value, and supply chain compliance (e.g., environmental disposal norms, return policies).</span>
+              开票合规与税控：税率/税码/抬头/明细与履约一致；电子发票/税控平台直连减少退票。
+              <span class="en-translation">Invoicing Compliance and Tax Control: Tax rates/codes/titles/details are consistent with fulfillment; direct connection to electronic invoicing/tax control platforms reduces invoice returns.</span>
             </p>
           </div>
           <div class="content-area">
             <div class="optimization-title">优化建议：</div>
             <ul class="optimization-list">
-              <li>结合序列号 / 日志与图像 / 自述，自动给出故障类别与处置建议，减少 NFF（无故障检出）与误判。
-                <span class="en-translation">Integrate serial numbers/supply chain logs with images/customer statements to automatically assign fault categories and disposal recommendations, reducing NFF (Nothing Found Faulty) and misjudgments to avoid invalid value recovery costs.</span>
-              </li>
-              <li>基于质量分级、市场价格与 SLA，优化返修 / 翻新 / 再售 / RTV（退供应商）/ 报废的配比，最大化回收价值。
-                <span class="en-translation">Optimize the ratio of repair/refurbishment/resale/RTV (Return to Vendor)/scrap based on quality grading, market prices, and SLAs to maximize recovery value.</span>
-              </li>
+              <li>合同 — 运单 — 发票自动核对，差异分类后自动生成红字 / 贷项并回写原因，支持再对账闭环。</li>
+              <span class="en-translation">Contract - Waybill - Invoice automatic verification, after difference classification, automatically generate red字 / credit note and write back the reason, support re-accounting closed loop.</span>
             </ul>
           </div>
           <div class="block-actions">
-            <a href="{{ url_for('order_fulfillment.best_practice', process='customer_return', module_name='return') }}" class="best-practice-btn">
+            <a href="{{ url_for('order_fulfillment.best_practice', process='billing', module_name='invoice_customer_billing') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>

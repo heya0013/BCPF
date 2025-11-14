@@ -13,47 +13,47 @@ order_bp = Blueprint(
 @order_bp.route('/')
 def home():
     # 蓝图模板文件夹已指定为 order_fulfillment，直接写相对路径
-    return render_template('index.html')
+    return render_template('Order_fulfillment/index.html')
 
 # 订单录入路由
-@order_bp.route('/Order_Entry')
-def Order_Entry():
-    return render_template('Order_Entry.html')
+@order_bp.route('/entry')
+def entry():
+    return render_template('entry.html')
 
 # 订单优先级路由（修复原代码中的空格错误）
-@order_bp.route('/Order_Prioritization')
-def Order_Prioritization():
-    return render_template('Order_Prioritization.html')  # 移除文件名中的空格
+@order_bp.route('/order_prioritization')
+def order_prioritization():
+    return render_template('order_prioritization.html')  # 移除文件名中的空格
 
 # 订单 sourcing 路由
-@order_bp.route('/Order_Sourcing')
-def Order_Sourcing():
-    return render_template('Order_Sourcing.html')
+@order_bp.route('/order_sourcing')
+def order_sourcing():
+    return render_template('order_sourcing.html')
 
 # 订单承诺路由
-@order_bp.route('/Order_Promise')
-def Order_Promise():
-    return render_template('Order_Promise.html')
+@order_bp.route('/order_promise')
+def order_promise():
+    return render_template('order_promise.html')
 
 # 订单排程路由（修复原代码中的空格错误）
-@order_bp.route('/Order_Scheduling')
-def Order_Scheduling():
-    return render_template('Order_Scheduling.html')  # 移除文件名中的空格
+@order_bp.route('/order_scheduling')
+def order_scheduling():
+    return render_template('order_scheduling.html')  # 移除文件名中的空格
 
 # 账单与支付路由
-@order_bp.route('/Billing_Payment')
-def Billing_Payment():
-    return render_template('Billing_Payment.html')
+@order_bp.route('/billing')
+def billing():
+    return render_template('billing.html')
 
 # 客户退货路由
-@order_bp.route('/Customer_Return')
-def Customer_Return():
-    return render_template('Customer_Return.html')
+@order_bp.route('/customer_return')
+def customer_return():
+    return render_template('customer_return.html')
 
 # 履约控制塔路由
-@order_bp.route('/Fulfill_Control_Tower')
-def Fulfill_Control_Tower():
-    return render_template('Fulfill_Control_Tower.html')
+@order_bp.route('/control_tower')
+def control_tower():
+    return render_template('control_tower.html')
 
 # 最佳实践路由
 @order_bp.route('/best-practice/<process>/<module_name>')

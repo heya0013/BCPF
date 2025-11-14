@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>退货- 订单履约流程分析 | ​Customer Return - Order fulfillment Process Analysis</title>
+  <title>脱碳流程分析 | Decarbonization Process Analysis</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <style>
@@ -219,12 +219,12 @@
         <div class="process-icon">
           <i class="fas fa-cube"></i>
         </div>
-        <h1 class="process-title">退货
-          <span class="en-translation">​Customer Return</span>
+        <h1 class="process-title">脱碳
+          <span class="en-translation">Decarbonization</span>
         </h1>
         <div class="process-desc">
-          管理客户发起的退货和退款流程
-          <span class="en-translation">Manages the process of customer-initiated returns and refunds.</span>
+          减少或消除产品全生命周期的碳排放
+          <span class="en-translation">Reducing or eliminating carbon emissions throughout product's lifecycle.</span>
         </div>
       </div>
     </section>
@@ -235,15 +235,14 @@
         <span class="en-translation">Key Process Modules</span>
       </h2>
     </div>
-    
     <div class="process-blocks">
-      <!-- 价值回收-->
+      <!--运输二氧化碳排放-->
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
             <i class="fas fa-map-marked-alt"></i>
-            价值回收
-            <span class="en-translation">Value Recovery</span>
+            运输二氧化碳排放
+            <span class="en-translation">Transportation CO₂ emission</span>
           </div>
         </div>
         <div class="block-body">
@@ -252,40 +251,36 @@
               <span class="en-translation">Core Value</span>
             </div>
             <p class="core-value-content">
-              处置决策：在返修 / 翻新 / 退供应商 / 报废 / 再售之间择优，平衡回收价值与 SLA。
-              <span class="en-translation">Disposal Decision: Optimize between repair, refurbishment, return to supplier, scrapping, and resale, balancing recovery value and SLA.</span>
+              供应链排放应基于 GHG Scope 3 分类开展核算，采用一次数据与模型估算并行并逐步提升一次数据占比
+              <span class="en-translation">Supply chain emissions shall be accounted for based on GHG Scope 3 classification, adopting the parallel use of primary data and model estimation and gradually increasing the proportion of primary data.</span>
             </p>
           </div>
-          
           <div class="content-area">
             <div class="optimization-title">优化建议：
               <span class="en-translation">Optimization Suggestions:</span>
             </div>
             <ul class="optimization-list">
-              <li>结合序列号 / 日志与图像 / 自述，自动给出故障类别与处置建议，减少 NFF（无故障检出）与误判。
-                <span class="en-translation"> Integrate serial numbers/supply chain logs with images/customer statements to automatically assign fault categories and disposal recommendations, reducing NFF (Nothing Found Faulty) and misjudgments to avoid invalid value recovery costs.</span>
-              </li>
-              <li>基于质量分级、市场价格与 SLA，优化返修 / 翻新 / 再售 / RTV（退供应商）/ 报废的配比，最大化回收价值。
-                <span class="en-translation">Optimize the ratio of repair/refurbishment/resale/RTV (Return to Vendor)/scrapping based on quality grading, market prices, and SLA to maximize recovery value.</span>
+              <li>对接计量 / SCADA / 账单，按 ISO 50001 与 GHG Protocol 组织活动数据与排放因子，统一核算口径
+                <span class="en-translation">Connect metering/SCADA/bills, organize activity data and emission factors in accordance with ISO 50001 and GHG Protocol, and unify accounting standards.</span>
               </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('order_fulfillment.best_practice', process='customer_return', module_name='recovery') }}" class="best-practice-btn">
+            <a href="{{ url_for('esg.best_practice', process='decar', module_name='emission') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </div>
       </div>
       
-      <!-- 	订单到货即损 -->
+      <!-- 低碳制造 -->
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
             <i class="fas fa-bullseye"></i>
-            	订单到货即损
-            <span class="en-translation">Order DOA</span>
+            低碳制造
+            <span class="en-translation">Low-carbon Manufacturing</span>
           </div>
         </div>
         <div class="block-body">
@@ -294,68 +289,30 @@
               <span class="en-translation">Core Value</span>
             </div>
             <p class="core-value-content">
-              诊断与质检：DOA/NFF 判定与功能测试，决定后续处置与赔付口径。
-              <span class="en-translation">Diagnosis and Quality Inspection: DOA/NFF determination and functional testing to decide subsequent disposal and compensation criteria.</span>
+              该流程涉及国际通行标准/法规口径，需形成可审计、可追溯与可比的证据体系
+              <span class="en-translation">Involves internationally accepted standards/regulatory frameworks and requires the establishment of an auditable, traceable and comparable evidence system.</span>
             </p>
           </div>
-          
           <div class="content-area">
             <div class="optimization-title">优化建议：
               <span class="en-translation">Optimization Suggestions:</span>
             </div>
             <ul class="optimization-list">
-              <li>结合序列号 / 日志与图像 / 自述，自动给出故障类别与处置建议，减少 NFF（无故障检出）与误判。
-                <span class="en-translation">Integrate serial numbers/supply chain logs with images/customer statements to automatically assign fault categories and disposal recommendations, reducing NFF (Nothing Found Faulty) and misjudgments to avoid invalid value recovery costs.</span>
+              <li>建立数据血缘、内控点与证据留痕，按 ISAE 3000/IFRS S1/S2 组织有限 / 合理保证材料
+                <span class="en-translation">Establish data lineage, internal control points and evidence traceability, and organize limited/reasonable assurance materials in accordance with ISAE 3000 and IFRS S1/S2.</span>
               </li>
-              <li>将诊断结果与政策引擎对齐，自动触发退款 / 换新 / 补发 / 贷项，并回写原因与证据链。
-                <span class="en-translation">Align diagnostic results with policy engines to automatically trigger refunds/replacements/reshipments/credits, and write back reasons and evidence chains.</span>
+              <li>按 GRI 303/306 与 ESRS E3/E5 建立取排水 / 废弃物的口径、台账与证据，自动映射披露模板
+                <span class="en-translation">Establish standards, accounting books and evidence for water intake/discharge and waste in accordance with GRI 303/306 and ESRS E3/E5, and automatically map to disclosure templates.</span>
               </li>
             </ul>
-          </div>
-          
+          </div> 
           <div class="block-actions">
-            <a href="{{ url_for('order_fulfillment.best_practice', process='customer_return', module_name='doa') }}" class="best-practice-btn">
+            <a href="{{ url_for('esg.best_practice', process='decar', module_name='lowcarbon') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </div>
       </div>
-
-      <!-- 退货接收与风险拦截-->
-      <div class="process-block">
-        <div class="block-header">
-          <div class="block-title">
-            <i class="fas fa-map-marked-alt"></i>
-            退货接收与风险拦截
-          </div>
-          <div class="block-subtitle">Customer Return</div>
-        </div>
-        <div class="block-body">
-          <div class="core-value">
-            <div class="core-value-title">核心价值</div>
-            <p class="core-value-content">
-              逆向 / 售后端的关键控制点，影响客户体验、回收价值与合规。
-              <span class="en-translation">These are key control points in the reverse supply chain/after-sales segment, affecting customer experience, recovery value, and supply chain compliance (e.g., environmental disposal norms, return policies).</span>
-            </p>
-          </div>
-          <div class="content-area">
-            <div class="optimization-title">优化建议：</div>
-            <ul class="optimization-list">
-              <li>结合序列号 / 日志与图像 / 自述，自动给出故障类别与处置建议，减少 NFF（无故障检出）与误判。
-                <span class="en-translation">Integrate serial numbers/supply chain logs with images/customer statements to automatically assign fault categories and disposal recommendations, reducing NFF (Nothing Found Faulty) and misjudgments to avoid invalid value recovery costs.</span>
-              </li>
-              <li>基于质量分级、市场价格与 SLA，优化返修 / 翻新 / 再售 / RTV（退供应商）/ 报废的配比，最大化回收价值。
-                <span class="en-translation">Optimize the ratio of repair/refurbishment/resale/RTV (Return to Vendor)/scrap based on quality grading, market prices, and SLAs to maximize recovery value.</span>
-              </li>
-            </ul>
-          </div>
-          <div class="block-actions">
-            <a href="{{ url_for('order_fulfillment.best_practice', process='customer_return', module_name='return') }}" class="best-practice-btn">
-              Best Practice <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-      </div>  
     </div>
   </div>
 </body>

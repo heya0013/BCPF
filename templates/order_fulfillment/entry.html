@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>退货- 订单履约流程分析 | ​Customer Return - Order fulfillment Process Analysis</title>
+  <title>订单录入- 订单履约流程分析 | Order Entry - Order fulfillment Process Analysis</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <style>
@@ -219,12 +219,12 @@
         <div class="process-icon">
           <i class="fas fa-cube"></i>
         </div>
-        <h1 class="process-title">退货
-          <span class="en-translation">​Customer Return</span>
+        <h1 class="process-title">订单录入
+          <span class="en-translation">In-bound to MFG</span>
         </h1>
         <div class="process-desc">
-          管理客户发起的退货和退款流程
-          <span class="en-translation">Manages the process of customer-initiated returns and refunds.</span>
+          接收并录入客户订单信息的初始环节。
+          <span class="en-translation">The initial stage of receiving and entering customer order information.</span>
         </div>
       </div>
     </section>
@@ -237,13 +237,13 @@
     </div>
     
     <div class="process-blocks">
-      <!-- 价值回收-->
+      <!-- 信用管理-->
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
             <i class="fas fa-map-marked-alt"></i>
-            价值回收
-            <span class="en-translation">Value Recovery</span>
+            信用管理
+            <span class="en-translation">Credit Management</span>
           </div>
         </div>
         <div class="block-body">
@@ -252,8 +252,8 @@
               <span class="en-translation">Core Value</span>
             </div>
             <p class="core-value-content">
-              处置决策：在返修 / 翻新 / 退供应商 / 报废 / 再售之间择优，平衡回收价值与 SLA。
-              <span class="en-translation">Disposal Decision: Optimize between repair, refurbishment, return to supplier, scrapping, and resale, balancing recovery value and SLA.</span>
+              信用与条款：授信额度、账期与逾期状态为硬性前置，防止无效承诺与拒收。；下发放行：向仓储系统下发并锁定库存，将优先级信息一并传递。
+              <span class="en-translation">Credit and Terms: Credit limits, payment terms, and overdue status are hard prerequisites to prevent invalid commitments and order rejection. ; Issue Release Instructions: Send release instructions to the warehouse management system, lock the corresponding inventory, and transmit priority information simultaneously.</span>
             </p>
           </div>
           
@@ -262,30 +262,27 @@
               <span class="en-translation">Optimization Suggestions:</span>
             </div>
             <ul class="optimization-list">
-              <li>结合序列号 / 日志与图像 / 自述，自动给出故障类别与处置建议，减少 NFF（无故障检出）与误判。
-                <span class="en-translation"> Integrate serial numbers/supply chain logs with images/customer statements to automatically assign fault categories and disposal recommendations, reducing NFF (Nothing Found Faulty) and misjudgments to avoid invalid value recovery costs.</span>
-              </li>
-              <li>基于质量分级、市场价格与 SLA，优化返修 / 翻新 / 再售 / RTV（退供应商）/ 报废的配比，最大化回收价值。
-                <span class="en-translation">Optimize the ratio of repair/refurbishment/resale/RTV (Return to Vendor)/scrapping based on quality grading, market prices, and SLA to maximize recovery value.</span>
+              <li>接入客户授信、账期与逾期记录，对异常订单自动挂起并回写原因，减少后段拒收
+                <span class="en-translation">Integrate customer credit, payment terms, and overdue records to automatically suspend abnormal orders and write back reasons, reducing downstream order rejection.</span>
               </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('order_fulfillment.best_practice', process='customer_return', module_name='recovery') }}" class="best-practice-btn">
+            <a href="{{ url_for('order_fulfillment.best_practice', process='entry', module_name='credit_management') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </div>
       </div>
       
-      <!-- 	订单到货即损 -->
+      <!-- 信用放行 -->
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
             <i class="fas fa-bullseye"></i>
-            	订单到货即损
-            <span class="en-translation">Order DOA</span>
+            信用放行
+            <span class="en-translation">Credit Release</span>
           </div>
         </div>
         <div class="block-body">
@@ -294,8 +291,8 @@
               <span class="en-translation">Core Value</span>
             </div>
             <p class="core-value-content">
-              诊断与质检：DOA/NFF 判定与功能测试，决定后续处置与赔付口径。
-              <span class="en-translation">Diagnosis and Quality Inspection: DOA/NFF determination and functional testing to decide subsequent disposal and compensation criteria.</span>
+              异常拦截：禁运、超额、信息缺失等进入挂起，等待处理后再放行。；下发放行：向仓储系统下发并锁定库存，将优先级信息一并传递。
+              <span class="en-translation">Exception Interception: Issues such as embargoes, exceeding limits, and missing information will be put on hold, awaiting processing before release. ; Issue Release Instructions: Send release instructions to the warehouse management system, lock the corresponding inventory, and transmit priority information simultaneously.</span>
             </p>
           </div>
           
@@ -304,53 +301,46 @@
               <span class="en-translation">Optimization Suggestions:</span>
             </div>
             <ul class="optimization-list">
-              <li>结合序列号 / 日志与图像 / 自述，自动给出故障类别与处置建议，减少 NFF（无故障检出）与误判。
-                <span class="en-translation">Integrate serial numbers/supply chain logs with images/customer statements to automatically assign fault categories and disposal recommendations, reducing NFF (Nothing Found Faulty) and misjudgments to avoid invalid value recovery costs.</span>
-              </li>
-              <li>将诊断结果与政策引擎对齐，自动触发退款 / 换新 / 补发 / 贷项，并回写原因与证据链。
-                <span class="en-translation">Align diagnostic results with policy engines to automatically trigger refunds/replacements/reshipments/credits, and write back reasons and evidence chains.</span>
+              <li>用大模型从客户 PO / 邮件 / 门户自动抽取字段，匹配主数据并提示缺失项，异常自动拦截与回询
+                <span class="en-translation">Use LLMs to automatically extract fields from customer POs/emails/portals, match them with master data, and prompt for missing items. Automatically intercept and inquire about anomalies.</span>
               </li>
             </ul>
           </div>
           
           <div class="block-actions">
-            <a href="{{ url_for('order_fulfillment.best_practice', process='customer_return', module_name='doa') }}" class="best-practice-btn">
+            <a href="{{ url_for('order_fulfillment.best_practice', process='entry', module_name='credit_release') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </div>
       </div>
 
-      <!-- 退货接收与风险拦截-->
+      <!-- 订单放行-->
       <div class="process-block">
         <div class="block-header">
           <div class="block-title">
             <i class="fas fa-map-marked-alt"></i>
-            退货接收与风险拦截
+            订单放行
           </div>
-          <div class="block-subtitle">Customer Return</div>
+          <div class="block-subtitle">Order Release</div>
         </div>
         <div class="block-body">
           <div class="core-value">
             <div class="core-value-title">核心价值</div>
             <p class="core-value-content">
-              逆向 / 售后端的关键控制点，影响客户体验、回收价值与合规。
-              <span class="en-translation">These are key control points in the reverse supply chain/after-sales segment, affecting customer experience, recovery value, and supply chain compliance (e.g., environmental disposal norms, return policies).</span>
+              信用与条款：授信额度、账期与逾期状态为硬性前置，防止无效承诺与拒收。；下发放行：向仓储系统下发并锁定库存，将优先级信息一并传递。
+              <span class="en-translation">Credit and Terms: Credit limits, payment terms, and overdue status are hard prerequisites to prevent invalid commitments and refusals. ; Release Instructions: Send release instructions to the warehouse management system, lock the corresponding inventory, and transmit priority information simultaneously.</span>
             </p>
           </div>
           <div class="content-area">
             <div class="optimization-title">优化建议：</div>
             <ul class="optimization-list">
-              <li>结合序列号 / 日志与图像 / 自述，自动给出故障类别与处置建议，减少 NFF（无故障检出）与误判。
-                <span class="en-translation">Integrate serial numbers/supply chain logs with images/customer statements to automatically assign fault categories and disposal recommendations, reducing NFF (Nothing Found Faulty) and misjudgments to avoid invalid value recovery costs.</span>
-              </li>
-              <li>基于质量分级、市场价格与 SLA，优化返修 / 翻新 / 再售 / RTV（退供应商）/ 报废的配比，最大化回收价值。
-                <span class="en-translation">Optimize the ratio of repair/refurbishment/resale/RTV (Return to Vendor)/scrap based on quality grading, market prices, and SLAs to maximize recovery value.</span>
-              </li>
+              <li>结合在库、在制、在途与产能计算可承诺时间窗；缺货时给出替代料或分批承诺方案并对客户展示可解释理由</li>
+              <span class="en-translation"> Combine inventory, work-in-progress, in-transit, and capacity data to calculate a reliable promise window; in case of stockouts, provide alternative materials or partial fulfillment plans with explainable reasons for customers.</span>
             </ul>
           </div>
           <div class="block-actions">
-            <a href="{{ url_for('order_fulfillment.best_practice', process='customer_return', module_name='return') }}" class="best-practice-btn">
+            <a href="{{ url_for('order_fulfillment.best_practice', process='entry', module_name='order_release') }}" class="best-practice-btn">
               Best Practice <i class="fas fa-arrow-right"></i>
             </a>
           </div>
